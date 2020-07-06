@@ -1,6 +1,6 @@
 {
 	"common": {
-		"name": "hafasfahrplan",
+		"name": "fahrplan",
 		"version": "0.0.1",
 		"news": {
 			"0.0.1": {
@@ -16,10 +16,10 @@
 				"zh-cn": "首次出版"
 			}
 		},
-		"title": "HAFAS Fahrplan",
+		"title": "Fahrplan",
 		"titleLang": {
-			"en": "HAFAS Fahrplan",
-			"de": "HAFAS Fahrplan"
+			"en": "Fahrplan",
+			"de": "Fahrplan"
 		},
 		"desc": {
 			"en": "Get connection information of defined routes from HAFAS",

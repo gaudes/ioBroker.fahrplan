@@ -1,0 +1,76 @@
+{
+	"common": {
+		"name": "hafasfahrplan",
+		"version": "0.0.1",
+		"news": {
+			"0.0.1": {
+				"en": "initial release",
+				"de": "Erstveröffentlichung",
+				"ru": "Начальная версия",
+				"pt": "lançamento inicial",
+				"nl": "Eerste uitgave",
+				"fr": "Première version",
+				"it": "Versione iniziale",
+				"es": "Versión inicial",
+				"pl": "Pierwsze wydanie",
+				"zh-cn": "首次出版"
+			}
+		},
+		"title": "HAFAS Fahrplan",
+		"titleLang": {
+			"en": "HAFAS Fahrplan",
+			"de": "HAFAS Fahrplan"
+		},
+		"desc": {
+			"en": "Get connection information of defined routes from HAFAS",
+			"de": "Verbindungsinformationen aus HAFAS zu konfigurierten Route "
+		},
+		"authors": [
+			"Gaudes <ralf@gaudes.net>"
+		],
+		"keywords": [
+			"ioBroker",
+			"template",
+			"Smart Home",
+			"home automation"
+		],
+		"license": "MIT",
+		"platform": "Javascript/Node.js",
+		"main": "main.js",
+		"icon": "fahrplan.png",
+		"enabled": true,
+		"extIcon": "https://raw.githubusercontent.com/gaudes/ioBroker.Fahrplan/master/admin/fahrplan.png",
+		"readme": "https://github.com/gaudes/ioBroker.Fahrplan/blob/master/README.md",
+		"loglevel": "info",
+		"mode": "daemon",
+		"type": "date-and-time",
+		"compact": true,
+		"connectionType": "cloud",
+		"dataSource": "poll",
+		"materialize": true,
+		"messagebox": true,
+		"dependencies": [
+			{
+				"js-controller": ">=1.4.2"
+			}
+		]
+	},
+	"native": {
+		"Provider": "DB",
+		"CreateHTML": "true",
+		"SaveJSON": "true",
+		"UpdateInterval": 5,
+		"routes":{
+			"enabled": false,
+			"station_from": "",
+			"station_to": "",
+			"station_via1": "",
+			"station_via2": "",
+			"traintype": "0",
+			"transfers": "0",
+			"bycicle": false
+		}
+	},
+	"objects": [],
+	"instanceObjects": []
+}

@@ -1,0 +1,299 @@
+<html>
+
+<head>
+
+	<!-- Load ioBroker scripts and styles-->
+	<link rel="stylesheet" type="text/css" href="../../css/adapter.css" />
+	<link rel="stylesheet" type="text/css" href="../../lib/css/materialize.css">
+
+	<script type="text/javascript" src="../../lib/js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="../../socket.io/socket.io.js"></script>
+
+	<script type="text/javascript" src="../../js/translate.js"></script>
+	<script type="text/javascript" src="../../lib/js/materialize.js"></script>
+	<script type="text/javascript" src="../../js/adapter-settings.js"></script>
+
+	<!-- Load our own files -->
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<script type="text/javascript" src="words.js"></script>
+
+	<script type="text/javascript">
+
+		// This will be called by the admin adapter when the settings page loads
+		function load(settings, onChange) {
+			if (!settings) return;
+
+			routes = settings.routes || [];  
+
+			$('.value').each(function () {
+				var $key = $(this);
+				var id = $key.attr('id');
+				if ($key.attr('type') === 'checkbox') {
+					// do not call onChange direct, because onChange could expect some arguments
+					$key.prop('checked', settings[id])
+						.on('change', () => onChange())
+						;
+				} else {
+					// do not call onChange direct, because onChange could expect some arguments
+					$key.val(settings[id])
+						.on('change', () => onChange())
+						.on('keyup', () => onChange())
+						;
+				}
+			});
+
+			setProvider();
+
+			onChange(false);
+			// reinitialize all the Materialize labels on the page if you are dynamically adding inputs:
+			if (M) M.updateTextFields();
+
+
+			values2table("routes", routes, onChange);
+
+
+			$('#Provider').on('change', function(){
+				setProvider();
+				values2table("routes", routes, onChange);
+			});
+
+			$('#getStation').on('click', function () {
+				var $getStation = $('#getStation');
+                if (!active) {
+					showToast(_('Please activate instance'));
+                    return;
+				}
+				$("#tbodyid").empty();
+				let StationProvider = $('#Provider').val();
+				let StationName = $('#StationSearch').val();
+				sendTo(adapter + "." + instance, 'getStations', {
+					provider: StationProvider,
+					station: StationName
+                }, function (result) {
+					var $grid = $('#StationSearchResult');
+					for (var object of result) {
+						$("#tbodyid").append("<tr><td>" + object.name + "</td><td>" + object.id + "</td></tr>");
+                    }
+				});	
+			});
+			
+			socket.emit('getState', 'system.adapter.' + adapter + '.' + instance + '.alive', function (err, state) {
+                active = /*common.enabled ||*/ (state && state.val);
+            });
+		}
+
+		// This will be called by the admin adapter when the user presses the save button
+		function save(callback) {
+			$('#StationSearch').val('');
+			var obj = {};
+			$('.value').each(function () {
+				var $this = $(this);
+				if ($this.attr('type') === 'checkbox') {
+					obj[$this.attr('id')] = $this.prop('checked');
+				} else {
+					obj[$this.attr('id')] = $this.val();
+				}
+			});
+			obj.routes = table2values("routes");
+			callback(obj);
+		}
+
+		function setProvider(){
+			if ($('#Provider').val() === "DB"){
+				$('th[data-name="traintype"]').attr("data-options", "all/Alle;nationalExpress/ICE;national/IC,EC;regionalExp/RE,IR;regional/RB;suburban/S-Bahn;bus/Bus;subway/U-Bahn;tram/Tram");
+			} else if ($('#Provider').val() === "OEBB"){
+				$('th[data-name="traintype"]').attr("data-options", "all/Alle;nationalExpress/ICE,RJ;national/IC,EC;interregional/D,EN;regional/R,REX;suburban/S-Bahn;bus/Bus;subway/U-Bahn;tram/Tram");
+			} else{
+				$('th[data-name="traintype"]').attr("data-options", "all/Alle");
+			} 	
+		} 
+	</script>
+
+</head>
+
+<body>
+	<div class="m adapter-container">
+		<div class="row">
+			<!-- Tabs Navigation-->
+			<div class="col s12">
+				<ul class="tabs">
+					<li class="tab col s2"><a href="#tab_settings" class="translate">general</a></li>
+					<li class="tab col s2"><a href="#tab_routes" class="translate">routes</a></li>
+				</ul>
+			</div>
+
+			<!-- Tab Settings-->
+			<div id="tab_settings" class="col s12 page">
+				<div class="row">
+					<div class="col s12 m2 l1">
+						<img src="fahrplan.png" class="logo">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col s6">
+						<div>
+							<h5 class="translate">general</h5>
+						</div>
+						<div class="input-field">
+							<select class="value " id="Provider" type="text">
+								<option value="DB">Deutsche Bahn</option>
+								<option value="OEBB">Österreichische Bundenbahnen</option>
+							</select>
+							<label for="Provider" class="translate">Provider</label>
+						</div>
+						<div><br /></div>
+						<div class="input-field">
+							<select class="value " id="CreateHTML" type="text">
+								<option value="true" class="translate">Yes</option>
+								<option value="false" class="translate">No</option>
+							</select>
+							<label for="CreateHTML" class="translate">CreateHTML</label>
+						</div>
+						<div><br /></div>
+						<div class="input-field">
+							<input type="number" class="value" min="1" id="UpdateInterval" />
+							<label for="UpdateInterval" class="translate">UpdateInterval</label>
+						</div>
+						<div><br /></div>
+						<div class="input-field">
+							<select class="value " id="SaveJSON" type="text">
+								<option value="true" class="translate">Yes</option>
+								<option value="false" class="translate">No</option>
+							</select>
+							<label for="SaveJSON" class="translate">SaveJSON</label>
+						</div>
+					</div>
+						<div class="col s6">
+							<div>
+								<h5 class="translate">StationSearch</h5>
+							</div>
+							<div class="input-field">
+								<input type="text" class="value" id="StationSearch" />
+								<label for="StationSearch" class="translate">Location</label>
+								<a id="getStation" class=" btn-small translate">SearchButton</a>
+							</div>
+							<div>
+								<div class="table-values-div">
+									<table id="StationSearchResult">
+										<tr>
+											<th>Station</th>
+											<th>ID</th>
+										  </tr>
+										  <tbody id="tbodyid"></tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Tab Routes-->
+			<div id="tab_routes" class="col s12 page">
+				<div class="col s12" id="routes">
+					<div class="row">
+						<div class="col">
+							<a class="btn-floating waves-effect waves-light blue table-button-add" id="routes_table"><i class="material-icons">add</i></a>
+						</div>
+					</div>
+					<div class="table-values-div">
+						<table class="table-values">
+							<thead>
+								<tr>
+									<th data-name="_index" style="width: 50px; background: #64b5f6; text-align: center" data-style="text-align: center">Nr</th>
+									<th data-name="enabled"  style="width: 50px; background: #64b5f6" data-style="width: 70px" data-type="checkbox" class="translate">active</th>
+									<th data-name="station_from" data-type="number" style="width: 15%; background: #64b5f6" class="translate">StationFrom</th>
+									<th data-name="station_to" data-type="number" style="width: 15%; background: #64b5f6" class="translate">StationTo</th>
+									<th data-name="station_via" data-type="number"  style="width: 15%; background: #64b5f6">Via</th>
+									<th data-name="traintype" data-type="select multiple" data-options="0/Alle"  style="width: 70px; background: #64b5f6" class="translate">TrainType</th>
+									<th data-name="transfers"  style="width: 50px; background: #64b5f6" data-style="width: 70px" data-type="number" class="translate">Transfers</th>
+									<th data-name="bicycle"  style="width: 50px; background: #64b5f6" data-style="width: 70px" data-type="checkbox" class="translate">Bycicle</th>
+									<th data-buttons="delete" style="width: 100px; background: #64b5f6"></th>
+								</tr>
+							</thead>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<!-- Tab Routes2-->
+			<div id="tab_routes2">
+				<div class="row">
+					<div class="col s6 input-field">
+						<input type="checkbox" class="value" id="Active" />
+						<label for="Active" class="translate">Active</label>
+					</div>
+					<div class="col s6">
+						<select class="value" id="Provider" type="text">
+							<option value="DB" default>Deutsche Bahn</option>
+							<option value="OEBB">Österreichische Bundenbahnen</option>
+						</select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col s5 input-field">
+						<input type="text" class="value" id="StationFromSearchName" />
+						<label for="StationFromSearchName" class="translate">StationFromSearchName</label>
+					</div>
+					<div class="col s1">
+						<a id="getStationFrom" class=" btn-small translate">Suche</a>
+					</div>
+					<div class="col s5 input-field">
+						<input type="text" class="value" id="StationToSearchName" />
+						<label for="StationToSearchName" class="translate">StationToSearchName</label>
+					</div>
+					<div class="col s1">
+						<a id="getStationTo" class=" btn-small translate">Suche</a>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col s6">
+						<select class="value" id="StationFrom" type="text" disabled>
+							<option value="DB" default>Deutsche Bahn</option>
+							<option value="OEBB">Österreichische Bundenbahnen</option>
+						</select>
+					</div>
+					<div class="col s6">
+						<select class="value" id="StationTo" type="text" disabled>
+							<option value="DB" default>Deutsche Bahn</option>
+							<option value="OEBB">Österreichische Bundenbahnen</option>
+						</select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col s5 input-field">
+						<input type="text" class="value" id="StationVia1SearchName" />
+						<label for="StationVia1SearchName" class="translate">StationVia1SearchName</label>
+					</div>
+					<div class="col s1">
+						<a id="getStationVia1" class=" btn-small translate">Suche</a>
+					</div>
+					<div class="col s5 input-field">
+						<input type="text" class="value" id="StationVia2SearchName" />
+						<label for="StationVia2SearchName" class="translate">StationVia2SearchName</label>
+					</div>
+					<div class="col s1">
+						<a id="getStationVia2" class=" btn-small translate">Suche</a>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col s6">
+						<select class="value" id="StationVia1" type="text" disabled>
+							<option value="DB" default>Deutsche Bahn</option>
+							<option value="OEBB">Österreichische Bundenbahnen</option>
+						</select>
+					</div>
+					<div class="col s6">
+						<select class="value" id="StationVia2" type="text" disabled>
+							<option value="DB" default>Deutsche Bahn</option>
+							<option value="OEBB">Österreichische Bundenbahnen</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>

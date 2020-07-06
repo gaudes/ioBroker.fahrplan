@@ -120,8 +120,8 @@ function updateRoutesTimer(){
 	}
 	else
 	{	 	
-		adapter.log.info("No routes defined, stopping adapter");
-		adapter.terminate("No routes defined");
+		adapter.log.info("No routes defined, adapter sleeping");
+		// adapter.terminate("No routes defined");
 	} 
 	updateRoutesTimeout = setTimeout(updateRoutesTimer, parseInt(adapter.config.UpdateInterval) * 60 * 1000);
 }

@@ -47,7 +47,7 @@ Auf der rechten Seite ist die Suchfunktion integriert. Zuerst muss ein Anbieter 
 Danach kann über das Suchfeld und Drücken des Knopfs "Suche" nach einer Station gesucht werden.
 Die Suchergebnisse der aktuellen Suche werden in der Tabelle angezeigt.
 
-### Tab Routen
+#### Tab Routen
 Mit dem +-Button können neue Einträge zur Tabelle hinzugefügt werden.
 
 | Einstellung                 | Beschreibung
@@ -75,7 +75,7 @@ Search function for theses IDs is integrated in Tab Settings.
 | Update interval             |  Interval for updates of the routes in minutes
 | Save JSON elements          |  Return from HAFAS is JSON, should be saved for troubleshooting
 
-### Tab Routes
+#### Tab Routes
 With +-Button new entries can be added to the table.
 
 | Setting                     | Description

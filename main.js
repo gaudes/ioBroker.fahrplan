@@ -415,16 +415,12 @@ async function getRoute(HRoute, Index) {
  */
 async function getStation(Provider, SearchString){
 	adapter.log.silly("Search: Provider = " + Provider + " SearchString = " + SearchString);
-	let client = null;
+	/*let client = null;
 	if (Provider === "DB") {	
 		client = createClient(dbProfile, 'ioBroker.DBFahrplan')
 	} else{
 		return null;
-	} 
-	/*client.locations(SearchString, {results: 3})
-		.then(({locations}) =>{ return locations[0]} ) 
-		.catch(({e}) => adapter.log.error(e));
-	*/
+	} */
 	const msg = await client.locations(SearchString, {results: 10});
 	adapter.log.silly("STATION: " + JSON.stringify(msg));
 	return msg;

@@ -120,6 +120,7 @@ function updateRoutesTimer(){
 			getRoute(RoutesConfig[i], parseInt(i));
 			CounterRoutes++;
 		}
+		adapter.log.info("Updated " + CounterRoutes + " routes, " + CounterRoutesEnabled + " enabled and " + CounterRoutesDisabled + " disabled");
 	}
 	else
 	{	 	
@@ -385,7 +386,6 @@ async function getRoute(HRoute, Index) {
 			}
 			HTMLShort = HTMLShort + "</table>"
 			if (adapter.config.CreateHTML === "true"){
-				adapter.log.debug("HTML: " + HTMLShort);
 				await SetTextState(Index.toString() + ".HTML", "HTML", "HTML", HTMLShort);
 			} else{
 				await deleteObject(Index.toString() + ".HTML");
@@ -536,7 +536,7 @@ async function deleteUnusedSections(Route, Connection, Sections){
 	try{ 
 		let States = await adapter.getStatesAsync(Route.toString() + "." + Connection.toString() + ".*");
 		let SectionRegEx = adapter.name + "." + adapter.instance + "." + Route.toString() + "." + Connection.toString() + ".(\\d*).*$";
-		adapter.log.silly("DELETE Route #" + Route + " Connection #" + Connection + " with max section # " + Sections + " and regex:" + SectionRegEx);	
+		adapter.log.silly("Delete Route #" + Route + " Connection #" + Connection + " with max section # " + Sections + " and regex:" + SectionRegEx);	
 		for (let State in States){
 			let Searcher = State.toString().match(new RegExp(SectionRegEx));
 			if (Searcher !== null){ 
@@ -562,7 +562,7 @@ async function deleteUnusedConnections(Route, Connections){
 	try{ 
 		let States = await adapter.getStatesAsync(Route.toString() + ".*");
 		let SectionRegEx = adapter.name + "." + adapter.instance + "." + Route.toString() + ".(\\d*).*$";
-		adapter.log.silly("DELETE Route #" + Route + " with max Connection #" + Connections + " and regex:" + SectionRegEx);	
+		adapter.log.silly("Delete Route #" + Route + " with max Connection #" + Connections + " and regex:" + SectionRegEx);	
 		for (let State in States){
 			let Searcher = State.toString().match(new RegExp(SectionRegEx));
 			if (Searcher !== null){ 

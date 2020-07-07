@@ -59,17 +59,7 @@
 		"Provider": "DB",
 		"CreateHTML": "true",
 		"SaveJSON": "true",
-		"UpdateInterval": 5,
-		"routes":{
-			"enabled": false,
-			"station_from": "",
-			"station_to": "",
-			"station_via1": "",
-			"station_via2": "",
-			"traintype": "0",
-			"transfers": "0",
-			"bycicle": false
-		}
+		"UpdateInterval": 5
 	},
 	"objects": [],
 	"instanceObjects": []

@@ -74,6 +74,7 @@ class Fahrplan extends utils.Adapter {
 //#region Global Variables
 const createClient = require('hafas-client');
 const dbProfile = require('hafas-client/p/db');
+const oebbProfile = require('hafas-client/p/oebb');
 let client = null;
 const adapter = new utils.Adapter('fahrplan');
 let UpdateInterval = 5;
@@ -90,6 +91,8 @@ let CounterRoutesDisabled = 0;
 function main(){
 	if (adapter.config.Provider === "DB") {	
 		client = createClient(dbProfile, 'ioBroker.Fahrplan')
+	} else if (adapter.config.Provider === "OEBB") {	
+			client = createClient(oebbProfile, 'ioBroker.Fahrplan')
 	} else{
 		adapter.log.error("Unknown provider configured");
 		adapter.terminate("Unknown provider configured")
@@ -241,15 +244,15 @@ async function getRoute(HRoute, Index) {
 							if (ConnSub.departureDelay === 0 && ConnSub.departureDelay < 60){
 								await SetBoolState(Index.toString() + "." + i + ".DepartureOnTime", "DepartureOnTime", "DepartureOnTime", true);
 								await SetBoolState(Index.toString() + "." + i + ".DepartureDelayed", "DepartureDelayed", "DepartureDelayed", false);
-								HTMLShort = HTMLShort + '<tr><td><font color="green">' + ConnSub.departure + '</font></td>';
+								HTMLShort = HTMLShort + '<tr><td><font color="green">' + adapter.formatDate(new Date(ConnSub.departure), "hh:mm") + '</font></td>';
 							} else if (ConnSub.departureDelay > 60){
 								await SetBoolState(Index.toString() + "." + i + ".DepartureOnTime", "DepartureOnTime", "DepartureOnTime", false);
 								await SetBoolState(Index.toString() + "." + i + ".DepartureDelayed", "DepartureDelayed", "DepartureDelayed", true);
-								HTMLShort = HTMLShort + '<tr><td><font color="red">' + ConnSub.departure + '</font></td>';
+								HTMLShort = HTMLShort + '<tr><td><font color="red">' + adapter.formatDate(new Date(ConnSub.departure), "hh:mm") + '</font></td>';
 							} else{
 								await SetBoolState(Index.toString() + "." + i + ".DepartureOnTime", "DepartureOnTime", "DepartureOnTime", false);
 								await SetBoolState(Index.toString() + "." + i + ".DepartureDelayed", "DepartureDelayed", "DepartureDelayed", false);
-								HTMLShort = HTMLShort + '<tr><td>' + ConnSub.departure + '</td>';
+								HTMLShort = HTMLShort + '<tr><td>' + adapter.formatDate(new Date(ConnSub.departure), "hh:mm") + '</td>';
 							}
 						} 
 					} catch (err){
@@ -361,15 +364,15 @@ async function getRoute(HRoute, Index) {
 							if (ConnSub.arrivalDelay === 0 && ConnSub.arrivalDelay < 60){
 								await SetBoolState(Index.toString() + "." + i + ".ArrivalOnTime", "ArrivalOnTime", "ArrivalOnTime", true);
 								await SetBoolState(Index.toString() + "." + i + ".ArrivalDelayed", "ArrivalDelayed", "ArrivalDelayed", false);
-								HTMLShort = HTMLShort + '<td><font color="green">' + ConnSub.arrival + '</font></td></tr>';
+								HTMLShort = HTMLShort + '<td><font color="green">' + adapter.formatDate(new Date(ConnSub.arrival), "hh:mm") + '</font></td></tr>';
 							} else if (ConnSub.arrivalDelay > 60){
 								await SetBoolState(Index.toString() + "." + i + ".ArrivalOnTime", "ArrivalOnTime", "ArrivalOnTime", false);
 								await SetBoolState(Index.toString() + "." + i + ".ArrivalDelayed", "ArrivalDelayed", "ArrivalDelayed", true);
-								HTMLShort = HTMLShort + '<td><font color="red">' + ConnSub.arrival + '</font></td></tr>';
+								HTMLShort = HTMLShort + '<td><font color="red">' + adapter.formatDate(new Date(ConnSub.arrival), "hh:mm") + '</font></td></tr>';
 							} else{
 								await SetBoolState(Index.toString() + "." + i + ".ArrivalOnTime", "ArrivalOnTime", "ArrivalOnTime", false);
 								await SetBoolState(Index.toString() + "." + i + ".ArrivalDelayed", "ArrivalDelayed", "ArrivalDelayed", false);
-								HTMLShort = HTMLShort + '<td>' + ConnSub.arrival + '</td></tr>';
+								HTMLShort = HTMLShort + '<td>' + adapter.formatDate(new Date(ConnSub.arrival), "hh:mm") + '</td></tr>';
 							}
 							// Final objects
 							await SetBoolState(Index.toString() + "." + i + ".TransfersReachable", "TransfersReachable", "TransfersReachable", TransfersReachable);

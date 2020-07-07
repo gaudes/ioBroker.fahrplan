@@ -7,7 +7,7 @@
 ![Number of Installations (stable)](http://iobroker.live/badges/fahrplan-stable.svg)
 [![Dependency Status](https://img.shields.io/david/gaudes/iobroker.fahrplan.svg)](https://david-dm.org/gaudes/iobroker.fahrplan)
 [![Known Vulnerabilities](https://snyk.io/test/github/gaudes/ioBroker.fahrplan/badge.svg)](https://snyk.io/test/github/gaudes/ioBroker.fahrplan)
-[![Travis-CI](http://img.shields.io/travis/gaudes/ioBroker.Fahrplan/master.svg)](https://travis-ci.org/github/gaudes/ioBroker.Fahrplan)
+[![Travis-CI](http://img.shields.io/travis/gaudes/ioBroker.Fahrplan/master.svg)](https://travis-ci.com/github/gaudes/ioBroker.Fahrplan)
 
 [![NPM](https://nodei.co/npm/iobroker.fahrplan.png?downloads=true)](https://nodei.co/npm/iobroker.fahrplan/)
 

@@ -31,7 +31,7 @@ class Fahrplan extends utils.Adapter {
 	 */
 	async onReady() {
 		if (this.config.UpdateInterval){
-			UpdateInterval = this.config.UpdateInterval;
+			iUpdateInterval = this.config.UpdateInterval;
 		} 
 		await new Promise(r => setTimeout(r, 2000));
 		main();
@@ -47,8 +47,9 @@ class Fahrplan extends utils.Adapter {
     async onMessage(obj) {
         if (typeof obj === "object" && obj.message) {
             if (obj.command === "getStations") {
-				let SearchResult = await getStation(obj.message.provider, obj.message.station);
-                if (obj.callback) this.sendTo(obj.from, obj.command, SearchResult, obj.callback);
+				// @ts-ignore Provider and message always in message
+				let jSearchResult = await getStation(obj.message.provider, obj.message.station);
+                if (obj.callback) this.sendTo(obj.from, obj.command, jSearchResult, obj.callback);
             }
         }
 	}
@@ -61,7 +62,7 @@ class Fahrplan extends utils.Adapter {
 	 */
 	onUnload(callback) {
 		try {
-			clearTimeout(updateRoutesTimeout);
+			clearTimeout(tUpdateRoutesTimeout);
 			this.log.info("cleaned everything up...");
 			callback();
 		} catch (e) {
@@ -72,16 +73,16 @@ class Fahrplan extends utils.Adapter {
 }
 
 //#region Global Variables
-const createClient = require('hafas-client');
-const dbProfile = require('hafas-client/p/db');
-const oebbProfile = require('hafas-client/p/oebb');
-let client = null;
+const hCreateClient = require('hafas-client');
+const hDBprofile = require('hafas-client/p/db');
+const hOEBBprofile = require('hafas-client/p/oebb');
+let hClient = null;
 const adapter = new utils.Adapter('fahrplan');
-let UpdateInterval = 5;
-let updateRoutesTimeout = null;
-let CounterRoutes = 0;
-let CounterRoutesEnabled = 0;
-let CounterRoutesDisabled = 0;
+let iUpdateInterval = 5;
+let tUpdateRoutesTimeout = null;
+let iCounterRoutes = 0;
+let iCounterRoutesEnabled = 0;
+let iCounterRoutesDisabled = 0;
 //#endregion
 
 //#region Function MAIN
@@ -90,14 +91,14 @@ let CounterRoutesDisabled = 0;
  */
 function main(){
 	if (adapter.config.Provider === "DB") {	
-		client = createClient(dbProfile, 'ioBroker.Fahrplan')
+		hClient = hCreateClient(hDBprofile, 'ioBroker.Fahrplan')
 	} else if (adapter.config.Provider === "OEBB") {	
-			client = createClient(oebbProfile, 'ioBroker.Fahrplan')
+			hClient = hCreateClient(hOEBBprofile, 'ioBroker.Fahrplan')
 	} else{
 		adapter.log.error("Unknown provider configured");
 		adapter.terminate("Unknown provider configured")
 	} 
-	adapter.log.info("Adapter started, Updates every " + UpdateInterval + " minutes");
+	adapter.log.info(`Adapter started, Updates every ${iUpdateInterval} minutes`);
 	updateRoutesTimer();
 } 
 //#endregion
@@ -107,302 +108,302 @@ function main(){
  * Timer function running in configured interval
  */
 function updateRoutesTimer(){
-	updateRoutesTimeout && clearTimeout(updateRoutesTimeout);
+	tUpdateRoutesTimeout && clearTimeout(tUpdateRoutesTimeout);
 	adapter.log.silly("Timer Event");
 	// Checking Routes for Updates
-	let RoutesConfig = adapter.config.routes||new Array(); 
-	if (typeof RoutesConfig !== "undefined" && RoutesConfig.length > 0){
+	let aRoutesConfig = adapter.config.routes || new Array(); 
+	if (typeof aRoutesConfig !== "undefined" && aRoutesConfig.length > 0){
 		adapter.log.debug("Routes defined, continuing");
-		CounterRoutes = 0;
-		CounterRoutesDisabled = 0;
-		CounterRoutesEnabled = 0;
-		for (let i in RoutesConfig) {
-			getRoute(RoutesConfig[i], parseInt(i));
-			CounterRoutes++;
+		iCounterRoutes = 0;
+		iCounterRoutesDisabled = 0;
+		iCounterRoutesEnabled = 0;
+		for (let iRouteConfigCurrent in aRoutesConfig) {
+			getRoute(aRoutesConfig[iRouteConfigCurrent], parseInt(iRouteConfigCurrent));
+			iCounterRoutes++;
 		}
-		adapter.log.info("Updated " + CounterRoutes + " routes, " + CounterRoutesEnabled + " enabled and " + CounterRoutesDisabled + " disabled");
+		adapter.log.info(`Updated ${iCounterRoutes} routes, ${iCounterRoutesEnabled} enabled and ${iCounterRoutesDisabled} disabled`);
 	}
 	else
 	{	 	
 		adapter.log.info("No routes defined, adapter sleeping");
 		// adapter.terminate("No routes defined");
 	} 
-	updateRoutesTimeout = setTimeout(updateRoutesTimer, parseInt(adapter.config.UpdateInterval) * 60 * 1000);
+	tUpdateRoutesTimeout = setTimeout(updateRoutesTimer, adapter.config.UpdateInterval * 60 * 1000);
 }
 //#endregion
 
 //#region Function getRoute
 /**
 * Gets Route information from Website and extracts connections
-* @param {object} HRoute Single configuration entry for route
-* @param {number} Index Index of the configuration entry
+* @param {object} oRoute Single configuration entry for route
+* @param {number} iRouteIndex Index of the configuration entry
 */
-async function getRoute(HRoute, Index) {
+async function getRoute(oRoute, iRouteIndex) {
 	try{ 
-		if (HRoute.enabled == true){
-			CounterRoutesEnabled++;
-			adapter.log.debug("Route #" + Index.toString() + " from " + HRoute.station_from + " to " + HRoute.station_to + " running");
+		if (oRoute.enabled == true){
+			iCounterRoutesEnabled++;
+			adapter.log.debug(`Route #${iRouteIndex.toString()} from ${oRoute.station_from} to ${oRoute.station_to} running`);
 			// Getting Station_From details
-			let StationFromResult = null;
+			let aStationFromResult = null;
 			try{ 
-				StationFromResult = await client.locations(HRoute.station_from);
-				adapter.log.silly("Route #" + Index.toString() + " STATION_FROM: " + JSON.stringify(StationFromResult));
-				if (StationFromResult.length === 1){
-					await SetTextState(Index.toString() + ".StationFrom", "From station", "From station", StationFromResult[0].name);
-					await SetTextState(Index.toString() + ".StationFrom.Name", "From station name", "From station name", StationFromResult[0].name);
-					await SetTextState(Index.toString() + ".StationFrom.eBhf", "From station eBhf", "From station eBhf", StationFromResult[0].id);
-					await SetTextState(Index.toString() + ".StationFrom.Type", "From station Type", "From station Type", StationFromResult[0]["type"]);
+				aStationFromResult = await hClient.locations(oRoute.station_from);
+				adapter.log.silly(`Route #${iRouteIndex.toString()} STATION_FROM: ${JSON.stringify(aStationFromResult)}`);
+				if (aStationFromResult.length === 1){
+					await SetChannel(`${iRouteIndex.toString()}.StationFrom`, aStationFromResult[0].name, "From station");
+					await SetTextState(`${iRouteIndex.toString()}.StationFrom.Name`, "From station name", "From station name", aStationFromResult[0].name);
+					await SetTextState(`${iRouteIndex.toString()}.StationFrom.eBhf`, "From station eBhf", "From station eBhf", aStationFromResult[0].id);
+					await SetTextState(`${iRouteIndex.toString()}.StationFrom.Type`, "From station Type", "From station Type", aStationFromResult[0]["type"]);
 				} else{
-					adapter.log.error("Multiple results found for station " + HRoute.station_from);
+					adapter.log.error(`Multiple results found for station ${oRoute.station_from}`);
 				}
 			} catch (err){
-				throw new Error("Station-From (Route #" + Index + ")" + err);
+				throw new Error(`Station-From (Route #${iRouteIndex})${err}`);
 			} 
 			// Getting Station_To details
-			let StationToResult = null;
+			let aStationToResult = null;
 			try { 
-				StationToResult = await client.locations(HRoute.station_to);
-				adapter.log.silly("Route #" + Index.toString() + " STATION_TO: " + JSON.stringify(StationToResult));
-				if (StationToResult.length === 1){
-					await SetTextState(Index.toString() + ".StationTo", "To station", "To station", StationToResult[0].name);
-					await SetTextState(Index.toString() + ".StationTo.Name", "To station name", "To station name", StationToResult[0].name);
-					await SetTextState(Index.toString() + ".StationTo.eBhf", "To station eBhf", "To station eBhf", StationToResult[0].id);
-					await SetTextState(Index.toString() + ".StationTo.Type", "To station Type", "To station Type", StationToResult[0]["type"]);
+				aStationToResult = await hClient.locations(oRoute.station_to);
+				adapter.log.silly(`Route #${iRouteIndex.toString()} STATION_TO: ${JSON.stringify(aStationToResult)}`);
+				if (aStationToResult.length === 1){
+					await SetChannel(`${iRouteIndex.toString()}.StationTo`, aStationToResult[0].name, "To station");
+					await SetTextState(`${iRouteIndex.toString()}.StationTo.Name`, "To station name", "To station name", aStationToResult[0].name);
+					await SetTextState(`${iRouteIndex.toString()}.StationTo.eBhf`, "To station eBhf", "To station eBhf", aStationToResult[0].id);
+					await SetTextState(`${iRouteIndex.toString()}.StationTo.Type`, "To station Type", "To station Type", aStationToResult[0]["type"]);
 				} else{
-					adapter.log.error("Multiple results found for station " + HRoute.station_to);
+					adapter.log.error(`Multiple results found for station ${oRoute.station_to}`);
 				} 
 			} catch (err){
-				throw new Error("Station-To (Route #" + Index + ")" + err);
+				throw new Error(`Station-To (Route #${iRouteIndex})${err}`);
 			} 
 			// Building Base-State for Connection, set Configuration State
-			let HTMLShort = "";
+			let sHTMLShort = "";
 			try{ 
-				await SetBoolState(Index.toString() + ".Enabled", "Configuration State of Route #" + Index.toString(), "Route State from Adapter configuration", HRoute.enabled);
-				await SetTextState(Index.toString(), "Route #" + Index.toString(), "Route from Adapter configuration", StationFromResult[0].name + " - " + StationToResult[0].name);
+				await SetBoolState(`${iRouteIndex.toString()}.Enabled`, `Configuration State of Route #${iRouteIndex.toString()}`, "Route State from Adapter configuration", oRoute.enabled);
+				await SetChannel(iRouteIndex.toString(), `Route #${iRouteIndex.toString()} - ${aStationFromResult[0].name} - ${aStationToResult[0].name}`, "Route from Adapter configuration");
 				if (adapter.config.SaveJSON !== false){
-					await SetTextState(Index.toString() + ".StationFrom.JSON", "From station JSON", "From station JSON", JSON.stringify(StationFromResult[0]));
-					await SetTextState(Index.toString() + ".StationTo.JSON", "To station JSON", "To station JSON", JSON.stringify(StationToResult[0]));
+					await SetTextState(`${iRouteIndex.toString()}.StationFrom.JSON`, "From station JSON", "From station JSON", JSON.stringify(aStationFromResult[0]));
+					await SetTextState(`${iRouteIndex.toString()}.StationTo.JSON`, "To station JSON", "To station JSON", JSON.stringify(aStationToResult[0]));
 				} 
-				HTMLShort = '<table><tr><th align="left" colspan="3">';
-				HTMLShort = HTMLShort + StationFromResult[0].name + " - " + StationToResult[0].name;
-				HTMLShort = HTMLShort + '</th></tr>'
+				sHTMLShort = '<table><tr><th align="left" colspan="3">';
+				sHTMLShort = `${sHTMLShort}${aStationFromResult[0].name} - ${aStationToResult[0].name}`;
+				sHTMLShort = `${sHTMLShort}</th></tr>`
 			} catch (err){
-				throw new Error("Base-States (Route #" + Index + ")" + err);
+				throw new Error(`Base-States (Route #${iRouteIndex})${err}`);
 			} 
 			// Searching route
-			let RouteResult = null;
+			let aRouteResult = null;
 			try{ 
-				let RouteOptions = { results: 3, language: "de" };
-				if (HRoute.station_via !== "") RouteOptions["via"] = HRoute.station_via;
-				if (HRoute.transfers >= 0) RouteOptions["transfers"] = HRoute.transfers;
-				if (HRoute.bycicles === true) RouteOptions["bike"] = true;
-				let TrainType = HRoute.traintype.toString().split(",");
-				if (!(TrainType.indexOf('all') > -1)){
-					let ProductOption = {}; 
-					for (let i in TrainType){
-						ProductOption[TrainType[i]] = true
+				let aRouteOptions = { results: 3, language: "de", remarks: true };
+				if (oRoute.station_via !== "") aRouteOptions["via"] = oRoute.station_via;
+				if (oRoute.transfers >= 0) aRouteOptions["transfers"] = oRoute.transfers;
+				if (oRoute.bycicles === true) aRouteOptions["bike"] = true;
+				let aTrainType = oRoute.traintype.toString().split(",");
+				if (!(aTrainType.indexOf('all') > -1)){
+					let aProductOption = {}; 
+					for (let i in aTrainType){
+						aProductOption[aTrainType[i]] = true
 					}
-					RouteOptions["products"] = ProductOption;
+					aRouteOptions["products"] = aProductOption;
 				} 
-				adapter.log.silly("Route #" + Index.toString() + " ROUTEOPTIONS: " + JSON.stringify(RouteOptions));
-				RouteResult = await client.journeys(HRoute.station_from, HRoute.station_to, RouteOptions);
+				adapter.log.silly(`Route #${iRouteIndex.toString()} ROUTEOPTIONS: ${JSON.stringify(aRouteOptions)}`);
+				aRouteResult = await hClient.journeys(oRoute.station_from, oRoute.station_to, aRouteOptions);
 				if (adapter.config.SaveJSON !== false){
-					await SetTextState(Index.toString() + ".JSON", "Route JSON", "Route JSON", JSON.stringify(RouteResult));
+					await SetTextState(`${iRouteIndex.toString()}.JSON`, "Route JSON", "Route JSON", JSON.stringify(aRouteResult));
 				} 
-				adapter.log.silly("Route #" + Index.toString() + " ROUTE: " + JSON.stringify(RouteResult));
+				adapter.log.silly(`Route #${iRouteIndex.toString()} ROUTE: ${JSON.stringify(aRouteResult)}`);
 			} catch (err){
-				throw new Error("Route-Search (Route #" + Index + ")" + err);
+				throw new Error(`Route-Search (Route #${iRouteIndex})${err}`);
 			} 
 			// Saving Route to objects
-			for (let i in RouteResult.journeys) {
-				let Conn = RouteResult.journeys[i];
-				adapter.log.silly("Route #" + Index.toString() + " Journey #" + i + ": " + JSON.stringify(Conn));
+			for (let iJourneysCurrent in aRouteResult.journeys) {
+				let aConn = aRouteResult.journeys[iJourneysCurrent];
+				adapter.log.silly(`Route #${iRouteIndex.toString()} Journey #${iJourneysCurrent}: ${JSON.stringify(aConn)}`);
 				// Count sections
-				let CounterSection = 0;
-				for (let j in Conn.legs ) {
-					CounterSection++;
+				let iCounterSection = 0;
+				for (let iSectionCurrent in aConn.legs ) {
+					iCounterSection++;
 				}
-				CounterSection--;
-				let TransfersReachable = false;
-				for (let j in Conn.legs ) {
-					let ConnSub = Conn.legs[j];
-					adapter.log.silly("Route #" + Index.toString() + " Journey #" + i + " Leg #" + j + ": " + JSON.stringify(ConnSub));
+				iCounterSection--;
+				let bTransfersReachable = false;
+				for (let j in aConn.legs ) {
+					let aConnSub = aConn.legs[j];
+					adapter.log.silly(`Route #${iRouteIndex.toString()} Journey #${iJourneysCurrent} Leg #${j}: ${JSON.stringify(aConnSub)}`);
 					if (adapter.config.SaveJSON !== false){
-						await SetTextState(Index.toString() + "." + i + ".JSON", "Journey JSON", "Journey JSON", JSON.stringify(ConnSub));
+						await SetTextState(`${iRouteIndex.toString()}.${iJourneysCurrent}.JSON`, "Journey JSON", "Journey JSON", JSON.stringify(aConnSub));
 					} 
 					// Initialize Connection variables
-					let ConnSumDelay = 0;
+					let iConnSumDelay = 0;
 					try{ 
 						// Save overall trainchanges
-						await SetTextState(Index.toString() + "." + i + ".Changes", "Changes", "Changes", CounterSection.toString());
+						await SetTextState(`${iRouteIndex.toString()}.${iJourneysCurrent}.Changes`, "Changes", "Changes", iCounterSection.toString());
 						// Save overall departure
 						if (parseInt(j) === 0){
-							await SetTextState(Index.toString() + "." + i, "Connection #" + i.toString(), "Connection", StationFromResult[0].name + " - " + StationToResult[0].name);
-							await SetTextState(Index.toString() + "." + i + ".Departure", "Departure", "Departure", ConnSub.departure);
-							await SetTextState(Index.toString() + "." + i + ".DeparturePlanned", "DeparturePlanned", "DeparturePlanned", ConnSub.plannedDeparture);
-							await SetTextState(Index.toString() + "." + i + ".DepartureDelaySeconds", "DepartureDelaySeconds", "DepartureDelaySeconds", ConnSub.departureDelay);
+							await SetChannel(`${iRouteIndex.toString()}.${iJourneysCurrent}`, `Connection #${iJourneysCurrent.toString()} ${aStationFromResult[0].name} - ${aStationToResult[0].name}`, "Connection");
+							await SetTextState(`${iRouteIndex.toString()}.${iJourneysCurrent}.Departure`, "Departure", "Departure", aConnSub.departure);
+							await SetTextState(`${iRouteIndex.toString()}.${iJourneysCurrent}.DeparturePlanned`, "DeparturePlanned", "DeparturePlanned", aConnSub.plannedDeparture);
+							await SetTextState(`${iRouteIndex.toString()}.${iJourneysCurrent}.DepartureDelaySeconds`, "DepartureDelaySeconds", "DepartureDelaySeconds", aConnSub.departureDelay);
 							// Departure on time or delayed
-							if (ConnSub.departureDelay === 0 && ConnSub.departureDelay < 60){
-								await SetBoolState(Index.toString() + "." + i + ".DepartureOnTime", "DepartureOnTime", "DepartureOnTime", true);
-								await SetBoolState(Index.toString() + "." + i + ".DepartureDelayed", "DepartureDelayed", "DepartureDelayed", false);
-								HTMLShort = HTMLShort + '<tr><td><font color="green">' + adapter.formatDate(new Date(ConnSub.departure), "hh:mm") + '</font></td>';
-							} else if (ConnSub.departureDelay > 60){
-								await SetBoolState(Index.toString() + "." + i + ".DepartureOnTime", "DepartureOnTime", "DepartureOnTime", false);
-								await SetBoolState(Index.toString() + "." + i + ".DepartureDelayed", "DepartureDelayed", "DepartureDelayed", true);
-								HTMLShort = HTMLShort + '<tr><td><font color="red">' + adapter.formatDate(new Date(ConnSub.departure), "hh:mm") + '</font></td>';
+							if (aConnSub.departureDelay === 0 && aConnSub.departureDelay < 60){
+								await SetBoolState(`${iRouteIndex.toString()}.${iJourneysCurrent}.DepartureOnTime`, "DepartureOnTime", "DepartureOnTime", true);
+								await SetBoolState(`${iRouteIndex.toString()}.${iJourneysCurrent}.DepartureDelayed`, "DepartureDelayed", "DepartureDelayed", false);
+								sHTMLShort = `${sHTMLShort}<tr><td><font color="green">${adapter.formatDate(new Date(aConnSub.departure), "hh:mm")}</font></td>`;
+							} else if (aConnSub.departureDelay > 60){
+								await SetBoolState(`${iRouteIndex.toString()}.${iJourneysCurrent}.DepartureOnTime`, "DepartureOnTime", "DepartureOnTime", false);
+								await SetBoolState(`${iRouteIndex.toString()}.${iJourneysCurrent}.DepartureDelayed`, "DepartureDelayed", "DepartureDelayed", true);
+								sHTMLShort = `${sHTMLShort}<tr><td><font color="red">${adapter.formatDate(new Date(aConnSub.departure), "hh:mm")}</font></td>`;
 							} else{
-								await SetBoolState(Index.toString() + "." + i + ".DepartureOnTime", "DepartureOnTime", "DepartureOnTime", false);
-								await SetBoolState(Index.toString() + "." + i + ".DepartureDelayed", "DepartureDelayed", "DepartureDelayed", false);
-								HTMLShort = HTMLShort + '<tr><td>' + adapter.formatDate(new Date(ConnSub.departure), "hh:mm") + '</td>';
+								await SetBoolState(`${iRouteIndex.toString()}.${iJourneysCurrent}.DepartureOnTime`, "DepartureOnTime", "DepartureOnTime", false);
+								await SetBoolState(`${iRouteIndex.toString()}.${iJourneysCurrent}.DepartureDelayed`, "DepartureDelayed", "DepartureDelayed", false);
+								sHTMLShort = `${sHTMLShort}<tr><td>${adapter.formatDate(new Date(aConnSub.departure), "hh:mm")}</td>`;
 							}
 						} 
 					} catch (err){
-						throw new Error("Journey-Overall1 (Route #" + Index + " Journey #" + i + " Section #" + j + ")" + err);
+						throw new Error(`Journey-Overall1 (Route #${iRouteIndex} Journey #${iJourneysCurrent} Section #${j})${err}`);
 					} 
 					// Save section information
 					try{ 
-						if (ConnSub.arrivalDelay > 0){
-							ConnSumDelay = ConnSumDelay + ConnSub.arrivalDelay;
+						if (aConnSub.arrivalDelay > 0){
+							iConnSumDelay = iConnSumDelay + aConnSub.arrivalDelay;
 						}
-						await SetTextState(Index.toString() + "." + i + "." + j, "Section #" + j.toString(), "Section", StationFromResult[0].name + " - " + StationToResult[0].name);
-						await SetTextState(Index.toString() + "." + i + "." + j + ".StationFrom", "StationFrom", "StationFrom", ConnSub.origin.name);
-						await SetTextState(Index.toString() + "." + i + "." + j + ".StationFrom.Name", "StationFromName", "StationFromName", ConnSub.origin.name);
-						if (ConnSub["departurePlatform"]){ 
-							await SetTextState(Index.toString() + "." + i + "." + j + ".StationFrom.Platform", "StationFromPlatform", "StationFromPlatform", ConnSub.departurePlatform);
+						await SetChannel(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}`, `Section #${j.toString()} ${aStationFromResult[0].name} - ${aStationToResult[0].name}`, "Section");
+						await SetChannel(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.StationFrom`, aConnSub.origin.name, "StationFrom");
+						await SetTextState(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.StationFrom.Name`, "StationFromName", "StationFromName", aConnSub.origin.name);
+						if (aConnSub["departurePlatform"]){ 
+							await SetTextState(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.StationFrom.Platform`, "StationFromPlatform", "StationFromPlatform", aConnSub.departurePlatform);
 						} else{
-							await SetTextState(Index.toString() + "." + i + "." + j + ".StationFrom.Platform", "StationFromPlatform", "StationFromPlatform", "");
+							await SetTextState(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.StationFrom.Platform`, "StationFromPlatform", "StationFromPlatform", "");
 						} 
-						if (ConnSub["plannedDeparturePlatform"]){
-							await SetTextState(Index.toString() + "." + i + "." + j + ".StationFrom.PlatformPlanned", "StationFromPlatformPlanned", "StationFromPlatformPlanned", ConnSub.plannedDeparturePlatform);
+						if (aConnSub["plannedDeparturePlatform"]){
+							await SetTextState(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.StationFrom.PlatformPlanned`, "StationFromPlatformPlanned", "StationFromPlatformPlanned", aConnSub.plannedDeparturePlatform);
 						} else {
-							await SetTextState(Index.toString() + "." + i + "." + j + ".StationFrom.PlatformPlanned", "StationFromPlatformPlanned", "StationFromPlatformPlanned", "");
+							await SetTextState(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.StationFrom.PlatformPlanned`, "StationFromPlatformPlanned", "StationFromPlatformPlanned", "");
 						}
-						await SetTextState(Index.toString() + "." + i + "." + j + ".StationTo", "StationTo", "StationTo", ConnSub.destination.name);
-						await SetTextState(Index.toString() + "." + i + "." + j + ".StationTo.Name", "StationToName", "StationToName", ConnSub.destination.name);
-						if (ConnSub["arrivalPlatform"]){
-							await SetTextState(Index.toString() + "." + i + "." + j + ".StationTo.Platform", "StationToPlatform", "StationToPlatform", ConnSub.arrivalPlatform);
+						await SetChannel(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.StationTo`, aConnSub.destination.name, "StationTo");
+						await SetTextState(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.StationTo.Name`, "StationToName", "StationToName", aConnSub.destination.name);
+						if (aConnSub["arrivalPlatform"]){
+							await SetTextState(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.StationTo.Platform`, "StationToPlatform", "StationToPlatform", aConnSub.arrivalPlatform);
 						} else {
-							await SetTextState(Index.toString() + "." + i + "." + j + ".StationTo.Platform", "StationToPlatform", "StationToPlatform", "");
+							await SetTextState(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.StationTo.Platform`, "StationToPlatform", "StationToPlatform", "");
 						}
-						if (ConnSub["plannedArrivalPlatform"]){ 
-							await SetTextState(Index.toString() + "." + i + "." + j + ".StationTo.PlatformPlanned", "StationToPlatformPlanned", "StationToPlatformPlanned", ConnSub.plannedArrivalPlatform);
+						if (aConnSub["plannedArrivalPlatform"]){ 
+							await SetTextState(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.StationTo.PlatformPlanned`, "StationToPlatformPlanned", "StationToPlatformPlanned", aConnSub.plannedArrivalPlatform);
 						} else {
-							await SetTextState(Index.toString() + "." + i + "." + j + ".StationTo.PlatformPlanned", "StationToPlatformPlanned", "StationToPlatformPlanned", "");
+							await SetTextState(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.StationTo.PlatformPlanned`, "StationToPlatformPlanned", "StationToPlatformPlanned", "");
 						}	
-						await SetTextState(Index.toString() + "." + i + "." + j + ".Departure", "Departure", "Departure", ConnSub.departure);
-						await SetTextState(Index.toString() + "." + i + "." + j + ".DeparturePlanned", "DeparturePlanned", "DeparturePlanned", ConnSub.plannedDeparture);
-						await SetTextState(Index.toString() + "." + i + "." + j + ".DepartureDelaySeconds", "DepartureDelaySeconds", "DepartureDelaySeconds", ConnSub.departureDelay);
-						if (ConnSub["reachable"] === true || ConnSub["reachable"] === false){ 
-							await SetBoolState(Index.toString() + "." + i + "." + j + ".Reachable", "Reachable", "Reachable", ConnSub.reachable);
-							if (ConnSub["reachable"] === true){
-								TransfersReachable = true;
+						await SetTextState(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.Departure`, "Departure", "Departure", aConnSub.departure);
+						await SetTextState(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.DeparturePlanned`, "DeparturePlanned", "DeparturePlanned", aConnSub.plannedDeparture);
+						await SetTextState(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.DepartureDelaySeconds`, "DepartureDelaySeconds", "DepartureDelaySeconds", aConnSub.departureDelay);
+						if (aConnSub["reachable"] === true || aConnSub["reachable"] === false){ 
+							await SetBoolState(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.Reachable`, "Reachable", "Reachable", aConnSub.reachable);
+							if (aConnSub["reachable"] === true){
+								bTransfersReachable = true;
 							} 
 						} else {
-							await deleteObject(Index.toString() + "." + i + "." + j + ".Reachable");
+							await deleteObject(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.Reachable`);
 						}
-						if (ConnSub["walking"]){ 
-							await SetBoolState(Index.toString() + "." + i + "." + j + ".Walking", "Walking", "Walking", ConnSub.walking);
+						if (aConnSub["walking"]){ 
+							await SetBoolState(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.Walking`, "Walking", "Walking", aConnSub.walking);
 						} else {
-							await deleteObject(Index.toString() + "." + i + "." + j + ".Walking");
+							await deleteObject(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.Walking`);
 						}
-						if (ConnSub.departureDelay === 0 && ConnSub.departureDelay < 60){
-							await SetBoolState(Index.toString() + "." + i + "." + j + ".DepartureOnTime", "DepartureOnTime", "DepartureOnTime", true);
-							await SetBoolState(Index.toString() + "." + i + "." + j + ".DepartureDelayed", "DepartureDelayed", "DepartureDelayed", false);
-						} else if (ConnSub.departureDelay >= 60){
-							await SetBoolState(Index.toString() + "." + i + "." + j + ".DepartureOnTime", "DepartureOnTime", "DepartureOnTime", false);
-							await SetBoolState(Index.toString() + "." + i + "." + j + ".DepartureDelayed", "DepartureDelayed", "DepartureDelayed", true);
-						} else if (ConnSub.departureDelay === null) {
-							await SetBoolState(Index.toString() + "." + i + "." + j + ".DepartureOnTime", "DepartureOnTime", "DepartureOnTime", false);
-							await SetBoolState(Index.toString() + "." + i + "." + j + ".DepartureDelayed", "DepartureDelayed", "DepartureDelayed", false);
+						if (aConnSub.departureDelay === 0 && aConnSub.departureDelay < 60){
+							await SetBoolState(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.DepartureOnTime`, "DepartureOnTime", "DepartureOnTime", true);
+							await SetBoolState(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.DepartureDelayed`, "DepartureDelayed", "DepartureDelayed", false);
+						} else if (aConnSub.departureDelay >= 60){
+							await SetBoolState(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.DepartureOnTime`, "DepartureOnTime", "DepartureOnTime", false);
+							await SetBoolState(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.DepartureDelayed`, "DepartureDelayed", "DepartureDelayed", true);
+						} else if (aConnSub.departureDelay === null) {
+							await SetBoolState(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.DepartureOnTime`, "DepartureOnTime", "DepartureOnTime", false);
+							await SetBoolState(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.DepartureDelayed`, "DepartureDelayed", "DepartureDelayed", false);
 						}
-						await SetTextState(Index.toString() + "." + i + "." + j + ".Arrival", "Arrival", "Arrival", ConnSub.arrival);
-						await SetTextState(Index.toString() + "." + i + "." + j + ".ArrivalPlanned", "ArrivalPlanned", "ArrivalPlanned", ConnSub.plannedArrival);
-						await SetTextState(Index.toString() + "." + i + "." + j + ".ArrivalDelaySeconds", "ArrivalDelaySeconds", "ArrivalDelaySeconds", ConnSub.arrivalDelay);
-						if (ConnSub.arrivalDelay === 0 && ConnSub.arrivalDelay < 60){
-							await SetBoolState(Index.toString() + "." + i + "." + j + ".ArrivalOnTime", "ArrivalOnTime", "ArrivalOnTime", true);
-							await SetBoolState(Index.toString() + "." + i + "." + j + ".ArrivalDelayed", "ArrivalDelayed", "ArrivalDelayed", false);
-						} else if (ConnSub.arrivalDelay >= 60){
-							await SetBoolState(Index.toString() + "." + i + "." + j + ".ArrivalOnTime", "ArrivalOnTime", "ArrivalOnTime", false);
-							await SetBoolState(Index.toString() + "." + i + "." + j + ".ArrivalDelayed", "ArrivalDelayed", "ArrivalDelayed", true);
-						} else if (ConnSub.arrivalDelay === null) {
-							await SetBoolState(Index.toString() + "." + i + "." + j + ".ArrivalOnTime", "ArrivalOnTime", "ArrivalOnTime", false);
-							await SetBoolState(Index.toString() + "." + i + "." + j + ".ArrivalDelayed", "ArrivalDelayed", "ArrivalDelayed", false);
+						await SetTextState(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.Arrival`, "Arrival", "Arrival", aConnSub.arrival);
+						await SetTextState(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.ArrivalPlanned`, "ArrivalPlanned", "ArrivalPlanned", aConnSub.plannedArrival);
+						await SetTextState(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.ArrivalDelaySeconds`, "ArrivalDelaySeconds", "ArrivalDelaySeconds", aConnSub.arrivalDelay);
+						if (aConnSub.arrivalDelay === 0 && aConnSub.arrivalDelay < 60){
+							await SetBoolState(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.ArrivalOnTime`, "ArrivalOnTime", "ArrivalOnTime", true);
+							await SetBoolState(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.ArrivalDelayed`, "ArrivalDelayed", "ArrivalDelayed", false);
+						} else if (aConnSub.arrivalDelay >= 60){
+							await SetBoolState(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.ArrivalOnTime`, "ArrivalOnTime", "ArrivalOnTime", false);
+							await SetBoolState(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.ArrivalDelayed`, "ArrivalDelayed", "ArrivalDelayed", true);
+						} else if (aConnSub.arrivalDelay === null) {
+							await SetBoolState(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.ArrivalOnTime`, "ArrivalOnTime", "ArrivalOnTime", false);
+							await SetBoolState(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.ArrivalDelayed`, "ArrivalDelayed", "ArrivalDelayed", false);
 						}
 					} catch (err){
-						throw new Error("Journey-Section (Route #" + Index + " Journey #" + i + " Section #" + j + ")" + err);
+						throw new Error(`Journey-Section (Route #${iRouteIndex} Journey #${iJourneysCurrent} Section #${j})${err}`);
 					} 
 					// Line information
 					try{ 
-						if (ConnSub["line"]){ 
-							await SetTextState(Index.toString() + "." + i + "." + j + ".Line", "Line", "Line", ConnSub.line.name);
-							await SetTextState(Index.toString() + "." + i + "." + j + ".Line.Name", "Line Name", "Line Name", ConnSub.line.name);
-							await SetTextState(Index.toString() + "." + i + "." + j + ".Line.Mode", "Line Mode", "Line Mode", ConnSub.line.mode);
-							await SetTextState(Index.toString() + "." + i + "." + j + ".Line.Product", "Line Product", "Line Product", ConnSub.line.product);
-							if (ConnSub.line["operator"]){ 
-								await SetTextState(Index.toString() + "." + i + "." + j + ".Line.Operator", "Line Operator", "Line Operator", ConnSub.line.operator.name);
+						if (aConnSub["line"]){ 
+							await SetChannel(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.Line`, aConnSub.line.name, "Line");
+							await SetTextState(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.Line.Name`, "Line Name", "Line Name", aConnSub.line.name);
+							await SetTextState(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.Line.Mode`, "Line Mode", "Line Mode", aConnSub.line.mode);
+							await SetTextState(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.Line.Product`, "Line Product", "Line Product", aConnSub.line.product);
+							if (aConnSub.line["operator"]){ 
+								await SetTextState(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.Line.Operator`, "Line Operator", "Line Operator", aConnSub.line.operator.name);
 							} else{
-								await SetTextState(Index.toString() + "." + i + "." + j + ".Line.Operator", "Line Operator", "Line Operator", "");
+								await SetTextState(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.Line.Operator`, "Line Operator", "Line Operator", "");
 							} 	
-							await SetTextState(Index.toString() + "." + i + "." + j + ".Line.Direction", "Line Direction", "Line Direction", ConnSub.direction);
+							await SetTextState(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.Line.Direction`, "Line Direction", "Line Direction", aConnSub.direction);
 						} else{
-							await deleteObject(Index.toString() + "." + i + "." + j + ".Line.Name");
-							await deleteObject(Index.toString() + "." + i + "." + j + ".Line.Mode");
-							await deleteObject(Index.toString() + "." + i + "." + j + ".Line.Product");
-							await deleteObject(Index.toString() + "." + i + "." + j + ".Line.Operator");
-							await deleteObject(Index.toString() + "." + i + "." + j + ".Line.Direction");
-							await deleteObject(Index.toString() + "." + i + "." + j + ".Line");
+							await deleteObject(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.Line.Name`);
+							await deleteObject(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.Line.Mode`);
+							await deleteObject(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.Line.Product`);
+							await deleteObject(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.Line.Operator`);
+							await deleteObject(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.Line.Direction`);
+							await deleteObject(`${iRouteIndex.toString()}.${iJourneysCurrent}.${j}.Line`);
 						} 
 					} catch (err){
-						throw new Error("Journey-Line (Route #" + Index + " Journey #" + i + " Section #" + j + ")" + err);
+						throw new Error(`Journey-Line (Route #${iRouteIndex} Journey #${iJourneysCurrent} Section #${j})${err}`);
 					} 	
 					// Save overall arrival and final objects
 					try{ 
-						if (parseInt(j) === CounterSection){
-							await SetTextState(Index.toString() + "." + i + ".Arrival", "Arrival", "Arrival", ConnSub.arrival);
-							await SetTextState(Index.toString() + "." + i + ".ArrivalPlanned", "ArrivalPlanned", "ArrivalPlanned", ConnSub.plannedArrival);
-							await SetTextState(Index.toString() + "." + i + ".ArrivalDelaySeconds", "ArrivalDelaySeconds", "ArrivalDelaySeconds", ConnSub.arrivalDelay);
+						if (parseInt(j) === iCounterSection){
+							await SetTextState(`${iRouteIndex.toString()}.${iJourneysCurrent}.Arrival`, "Arrival", "Arrival", aConnSub.arrival);
+							await SetTextState(`${iRouteIndex.toString()}.${iJourneysCurrent}.ArrivalPlanned`, "ArrivalPlanned", "ArrivalPlanned", aConnSub.plannedArrival);
+							await SetTextState(`${iRouteIndex.toString()}.${iJourneysCurrent}.ArrivalDelaySeconds`, "ArrivalDelaySeconds", "ArrivalDelaySeconds", aConnSub.arrivalDelay);
 							// Arrival on time or delayed
-							if (ConnSub.arrivalDelay === 0 && ConnSub.arrivalDelay < 60){
-								await SetBoolState(Index.toString() + "." + i + ".ArrivalOnTime", "ArrivalOnTime", "ArrivalOnTime", true);
-								await SetBoolState(Index.toString() + "." + i + ".ArrivalDelayed", "ArrivalDelayed", "ArrivalDelayed", false);
-								HTMLShort = HTMLShort + '<td><font color="green">' + adapter.formatDate(new Date(ConnSub.arrival), "hh:mm") + '</font></td></tr>';
-							} else if (ConnSub.arrivalDelay > 60){
-								await SetBoolState(Index.toString() + "." + i + ".ArrivalOnTime", "ArrivalOnTime", "ArrivalOnTime", false);
-								await SetBoolState(Index.toString() + "." + i + ".ArrivalDelayed", "ArrivalDelayed", "ArrivalDelayed", true);
-								HTMLShort = HTMLShort + '<td><font color="red">' + adapter.formatDate(new Date(ConnSub.arrival), "hh:mm") + '</font></td></tr>';
+							if (aConnSub.arrivalDelay === 0 && aConnSub.arrivalDelay < 60){
+								await SetBoolState(`${iRouteIndex.toString()}.${iJourneysCurrent}.ArrivalOnTime`, "ArrivalOnTime", "ArrivalOnTime", true);
+								await SetBoolState(`${iRouteIndex.toString()}.${iJourneysCurrent}.ArrivalDelayed`, "ArrivalDelayed", "ArrivalDelayed", false);
+								sHTMLShort = `${sHTMLShort}<td><font color="green">${adapter.formatDate(new Date(aConnSub.arrival), "hh:mm")}</font></td></tr>`;
+							} else if (aConnSub.arrivalDelay > 60){
+								await SetBoolState(`${iRouteIndex.toString()}.${iJourneysCurrent}.ArrivalOnTime`, "ArrivalOnTime", "ArrivalOnTime", false);
+								await SetBoolState(`${iRouteIndex.toString()}.${iJourneysCurrent}.ArrivalDelayed`, "ArrivalDelayed", "ArrivalDelayed", true);
+								sHTMLShort = `${sHTMLShort}<td><font color="red">${adapter.formatDate(new Date(aConnSub.arrival), "hh:mm")}</font></td></tr>`;
 							} else{
-								await SetBoolState(Index.toString() + "." + i + ".ArrivalOnTime", "ArrivalOnTime", "ArrivalOnTime", false);
-								await SetBoolState(Index.toString() + "." + i + ".ArrivalDelayed", "ArrivalDelayed", "ArrivalDelayed", false);
-								HTMLShort = HTMLShort + '<td>' + adapter.formatDate(new Date(ConnSub.arrival), "hh:mm") + '</td></tr>';
+								await SetBoolState(`${iRouteIndex.toString()}.${iJourneysCurrent}.ArrivalOnTime`, "ArrivalOnTime", "ArrivalOnTime", false);
+								await SetBoolState(`${iRouteIndex.toString()}.${iJourneysCurrent}.ArrivalDelayed`, "ArrivalDelayed", "ArrivalDelayed", false);
+								sHTMLShort = `${sHTMLShort}<td>${adapter.formatDate(new Date(aConnSub.arrival), "hh:mm")}</td></tr>`;
 							}
 							// Final objects
-							await SetBoolState(Index.toString() + "." + i + ".TransfersReachable", "TransfersReachable", "TransfersReachable", TransfersReachable);
-							await deleteUnusedSections(Index, parseInt(i), CounterSection);
+							await SetBoolState(`${iRouteIndex.toString()}.${iJourneysCurrent}.TransfersReachable`, "TransfersReachable", "TransfersReachable", bTransfersReachable);
+							await deleteUnusedSections(iRouteIndex, parseInt(iJourneysCurrent), iCounterSection);
 						} 
 					} catch (err){
-						throw new Error("Journey-Overall2 (Route #" + Index + " Journey #" + i + " Section #" + j + ")" + err);
+						throw new Error(`Journey-Overall2 (Route #${iRouteIndex} Journey #${iJourneysCurrent} Section #${j})${err}`);
 					} 	
 				}	
 			}
-			HTMLShort = HTMLShort + "</table>"
-			if (adapter.config.CreateHTML === "true"){
-				await SetTextState(Index.toString() + ".HTML", "HTML", "HTML", HTMLShort);
+			sHTMLShort = `${sHTMLShort}</table>`
+			if (adapter.config.CreateHTML === true){
+				await SetTextState(`${iRouteIndex.toString()}.HTML`, "HTML", "HTML", sHTMLShort);
 			} else{
-				await deleteObject(Index.toString() + ".HTML");
+				await deleteObject(`${iRouteIndex.toString()}.HTML`);
 			} 
-			await deleteUnusedConnections(Index, 2);
+			await deleteUnusedConnections(iRouteIndex, 2);
 		} else {
 			try{ 
-				CounterRoutesDisabled++;
-				await deleteConnections(Index)
-				adapter.log.debug("Route #" + Index.toString() + " from " + HRoute.station_from + " to " + HRoute.station_to + " disabled");
-				await SetBoolState(Index.toString() + ".Enabled", "Configuration State of Route #" + Index.toString(), "Route State from Adapter configuration", false)
+				iCounterRoutesDisabled++;
+				await deleteConnections(iRouteIndex)
+				adapter.log.debug(`Route #${iRouteIndex.toString()} from ${oRoute.station_from} to ${oRoute.station_to} disabled`);
+				await SetBoolState(`${iRouteIndex.toString()}.Enabled`, `Configuration State of Route #${iRouteIndex.toString()}`, "Route State from Adapter configuration", false)
 			} catch (err){
-				throw new Error("Route-Disabled (Route #" + Index + ")" + err);
+				throw new Error(`Route-Disabled (Route #${iRouteIndex})${err}`);
 			} 	
 		}
 	} catch(e){
-		adapter.log.error("Exception in getRoute [" + e + "]");
+		adapter.log.error(`Exception in getRoute [${e}]`);
 	}
 }
 //#endregion
@@ -410,50 +411,50 @@ async function getRoute(HRoute, Index) {
 //#region Helper Function getStation
 /**
  * Helper function for StationSearch in Admin
- * @param {string} Provider Configured provider in Admin
- * @param {string} SearchString Searchstring entered in Admin
+ * @param {string} sProvider Configured provider in Admin
+ * @param {string} sSearchString Searchstring entered in Admin
  */
-async function getStation(Provider, SearchString){
-	adapter.log.silly("Search: Provider = " + Provider + " SearchString = " + SearchString);
+async function getStation(sProvider, sSearchString){
+	adapter.log.silly(`Search: Provider = ${sProvider} SearchString = ${sSearchString}`);
 	/*let client = null;
 	if (Provider === "DB") {	
 		client = createClient(dbProfile, 'ioBroker.DBFahrplan')
 	} else{
 		return null;
 	} */
-	const msg = await client.locations(SearchString, {results: 10});
-	adapter.log.silly("STATION: " + JSON.stringify(msg));
-	return msg;
+	const sResult = await hClient.locations(sSearchString, {results: 10});
+	adapter.log.silly(`STATION: ${JSON.stringify(sResult)}`);
+	return sResult;
 } 
 //#endregion
 
 //#region Helper Function SetTextState
 /**
 * Sets Text State
-* @param {string} StateName Name of the State
-* @param {string} DisplayName Displayed Name of the State
-* @param {string} Description Description of the State
-* @param {string} Value Value of the State
+* @param {string} sStateName Name of the State
+* @param {string} sDisplayName Displayed Name of the State
+* @param {string} sDescription Description of the State
+* @param {string} sValue Value of the State
 */
-async function SetTextState(StateName, DisplayName, Description, Value){
+async function SetTextState(sStateName, sDisplayName, sDescription, sValue){
 	try{ 
-		await adapter.setObjectAsync(StateName, {
+		await adapter.setObjectAsync(sStateName, {
 			type: "state",
 			common: {
-				name: DisplayName,
+				name: sDisplayName,
 				type: "string",
 				role: "state",
 				read: true,
 				write: false,
-				desc: Description
+				desc: sDescription
 			},
 			native: {},
 		});	
-		await adapter.setStateAsync(StateName, { val: Value, ack: true });
+		await adapter.setStateAsync(sStateName, { val: sValue, ack: true });
 		return true;
 	}catch(e){
-		adapter.log.error("Exception in SetTextState [" + e + "]");
-		throw "Exception in SetTextState [" + e + "]";
+		adapter.log.error(`Exception in SetTextState [${e}]`);
+		throw `Exception in SetTextState [${e}]`;
 	} 	
 } 
 //#endregion
@@ -461,44 +462,69 @@ async function SetTextState(StateName, DisplayName, Description, Value){
 //#region Helper Function SetBoolState
 /**
 * Sets boolean State
-* @param {string} StateName Name of the State
-* @param {string} DisplayName Displayed Name of the State
-* @param {string} Description Description of the State
-* @param {boolean} Value Value of the State
+* @param {string} sStateName Name of the State
+* @param {string} sDisplayName Displayed Name of the State
+* @param {string} sDescription Description of the State
+* @param {boolean} bValue Value of the State
 */
-async function SetBoolState(StateName, DisplayName, Description, Value){
+async function SetBoolState(sStateName, sDisplayName, sDescription, bValue){
 		try{ 
-		await adapter.setObjectAsync(StateName, {
+		await adapter.setObjectAsync(sStateName, {
 			type: "state",
 			common: {
-				name: DisplayName,
+				name: sDisplayName,
 				type: "boolean",
 				role: "state",
 				read: true,
 				write: false,
-				desc: Description
+				desc: sDescription
 			},
 			native: {},
 		});	
-		await adapter.setStateAsync(StateName, { val: Value, ack: true });
+		await adapter.setStateAsync(sStateName, { val: bValue, ack: true });
 		return true;
 	} catch (e){
-		adapter.log.error("Exception in SetBoolState [" + e + "]");
-		throw "Exception in SetBoolState [" + e + "]";
+		adapter.log.error(`Exception in SetBoolState [${e}]`);
+		throw `Exception in SetBoolState [${e}]`;
 	} 	
+}
+//#endregion
+
+//#region Helper Function SetChannel
+/**
+* Sets and creates channel object
+* @param {string} sStateName Name of the Channel
+* @param {string} sDisplayName Displayed Name of the Channel
+* @param {string} sDescription Description of the Channel
+*/
+async function SetChannel(sStateName, sDisplayName, sDescription){
+	try{ 
+		await adapter.setObjectNotExistsAsync(sStateName,{
+			type: "channel",
+			common:{
+				name: sDisplayName,
+				desc: sDescription
+			},
+			native:{} 
+		});
+		return true;
+	} catch (e){
+		adapter.log.error(`Exception in SetChannel [${e}]`);
+		throw `Exception in SetChannel [${e}]`;
+	} 
 }
 //#endregion
 
 //#region Helper Function deleteObject
 /**
-* Sets boolean State
-* @param {string} StateName Name of the State
+* Deletes object
+* @param {string} sStateName Name of the State
 */
-async function deleteObject(StateName){
+async function deleteObject(sStateName){
 	try{ 
-		let State = await adapter.getStateAsync(StateName);
+		let State = await adapter.getStateAsync(sStateName);
 		if (State !== null){
-			adapter.delObject(StateName);
+			adapter.delObject(sStateName);
 		} 
 	}catch(err){
 		adapter.log.error(err);
@@ -509,13 +535,13 @@ async function deleteObject(StateName){
 //#region Helper Function deleteConnections
 /**
 * Sets boolean State
-* @param {Number} Route Number of Route from configuration
+* @param {Number} iRoute Number of Route from configuration
 */
-async function deleteConnections(Route){
+async function deleteConnections(iRoute){
 	try{ 
-		let States = await adapter.getStatesOfAsync(Route.toString());
+		let States = await adapter.getStatesOfAsync(iRoute.toString());
 		for (let State of States){
-			if (State["_id"] !== adapter.name + "." + adapter.instance + "." + Route + ".Enabled") { 
+			if (State["_id"] !== `${adapter.name}.${adapter.instance}.${iRoute}.Enabled`) { 
 				await adapter.delObjectAsync(State["_id"]);
 			}	
 		} 
@@ -528,19 +554,19 @@ async function deleteConnections(Route){
 //#region Helper Function deleteUnusedSections
 /**
 * Sets boolean State
-* @param {Number} Route Number of Route from configuration
-* @param {Number} Connection Number of Connection
-* @param {Number} Sections Number of Sections in Connection
+* @param {Number} iRoute Number of Route from configuration
+* @param {Number} iConnection Number of Connection
+* @param {Number} iSections Number of Sections in Connection
 */
-async function deleteUnusedSections(Route, Connection, Sections){
+async function deleteUnusedSections(iRoute, iConnection, iSections){
 	try{ 
-		let States = await adapter.getStatesAsync(Route.toString() + "." + Connection.toString() + ".*");
-		let SectionRegEx = adapter.name + "." + adapter.instance + "." + Route.toString() + "." + Connection.toString() + ".(\\d*).*$";
-		adapter.log.silly("Delete Route #" + Route + " Connection #" + Connection + " with max section # " + Sections + " and regex:" + SectionRegEx);	
+		let States = await adapter.getStatesAsync(`${iRoute.toString()}.${iConnection.toString()}.*`);
+		let SectionRegEx = `${adapter.name}.${adapter.instance}.${iRoute.toString()}.${iConnection.toString()}.(\\d*).*$`;
+		adapter.log.silly(`Delete Route #${iRoute} Connection #${iConnection} with max section # ${iSections} and regex:${SectionRegEx}`);	
 		for (let State in States){
 			let Searcher = State.toString().match(new RegExp(SectionRegEx));
 			if (Searcher !== null){ 
-				if (parseInt(Searcher[1]) > Sections ){
+				if (parseInt(Searcher[1]) > iSections ){
 					//adapter.log.error(State);
 					await adapter.delObjectAsync(State);
 				}
@@ -555,18 +581,18 @@ async function deleteUnusedSections(Route, Connection, Sections){
 //#region Helper Function deleteUnusedConnections
 /**
 * Sets boolean State
-* @param {Number} Route Number of Route from configuration
-* @param {Number} Connections Number of Connections in Route
+* @param {Number} iRoute Number of Route from configuration
+* @param {Number} iConnections Number of Connections in Route
 */
-async function deleteUnusedConnections(Route, Connections){
+async function deleteUnusedConnections(iRoute, iConnections){
 	try{ 
-		let States = await adapter.getStatesAsync(Route.toString() + ".*");
-		let SectionRegEx = adapter.name + "." + adapter.instance + "." + Route.toString() + ".(\\d*).*$";
-		adapter.log.silly("Delete Route #" + Route + " with max Connection #" + Connections + " and regex:" + SectionRegEx);	
+		let States = await adapter.getStatesAsync(`${iRoute.toString()}.*`);
+		let SectionRegEx = `${adapter.name}.${adapter.instance}.${iRoute.toString()}.(\\d*).*$`;
+		adapter.log.silly(`Delete Route #${iRoute} with max Connection #${iConnections} and regex:${SectionRegEx}`);	
 		for (let State in States){
 			let Searcher = State.toString().match(new RegExp(SectionRegEx));
 			if (Searcher !== null){ 
-				if (parseInt(Searcher[1]) > Connections ){
+				if (parseInt(Searcher[1]) > iConnections ){
 					//adapter.log.error(State);
 					await adapter.delObjectAsync(State);
 				}

@@ -93,6 +93,9 @@ With +-Button new entries can be added to the table.
 
 ## Changelog
 
+### 0.0.2 (09.07.2020)
+* (Gaudes) code enhancements (refactoring, correct names for variables)
+
 ### 0.0.1 (06.07.2020)
 * (Gaudes) initial release
 

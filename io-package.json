@@ -58,7 +58,7 @@
 		"UpdateInterval": 5,
 		"routes": [
 			{
-			  "enabled": true,
+			  "enabled": false,
 			  "station_from": "",
 			  "station_to": "",
 			  "station_via": "",

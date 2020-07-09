@@ -33,6 +33,11 @@
 					$key.prop('checked', settings[id])
 						.on('change', () => onChange())
 						;
+				} else if ($key.hasClass("isBoolean")){
+					$key.val((settings[id]).toString())
+						.on('change', () => onChange())
+						.on('keyup', () => onChange())
+						; 
 				} else {
 					// do not call onChange direct, because onChange could expect some arguments
 					$key.val(settings[id])
@@ -90,6 +95,14 @@
 				var $this = $(this);
 				if ($this.attr('type') === 'checkbox') {
 					obj[$this.attr('id')] = $this.prop('checked');
+				} else if ($this.hasClass("isBoolean")) {
+					if ($this.val() === "true"){ 
+						obj[$this.attr('id')] = true;
+					} else if ($this.val() === "false"){
+						obj[$this.attr('id')] = false;
+					} else{
+						obj[$this.attr('id')] = null;
+					} 
 				} else {
 					obj[$this.attr('id')] = $this.val();
 				}
@@ -143,9 +156,9 @@
 						</div>
 						<div><br /></div>
 						<div class="input-field">
-							<select class="value " id="CreateHTML" type="text">
-								<option value=true class="translate">Yes</option>
-								<option value=false class="translate">No</option>
+							<select class="value isBoolean" id="CreateHTML" type="text">
+								<option value="true" class="translate">Yes</option>
+								<option value="false" class="translate">No</option>
 							</select>
 							<label for="CreateHTML" class="translate">CreateHTML</label>
 						</div>
@@ -156,9 +169,9 @@
 						</div>
 						<div><br /></div>
 						<div class="input-field">
-							<select class="value " id="SaveJSON" type="text">
-								<option value=true class="translate">Yes</option>
-								<option value=false class="translate">No</option>
+							<select class="value isBoolean" id="SaveJSON" type="text">
+								<option value="true" class="translate">Yes</option>
+								<option value="false" class="translate">No</option>
 							</select>
 							<label for="SaveJSON" class="translate">SaveJSON</label>
 						</div>

@@ -1,7 +1,7 @@
 {
 	"common": {
 		"name": "fahrplan",
-		"version": "0.0.2",
+		"version": "0.1.0",
 		"news": {
 			"0.0.1": {
 				"en": "initial release",
@@ -10,6 +10,10 @@
 			"0.0.2": {
 				"en": "some code refactorings and renames",
 				"de": "Refaktorisierungen und Umbenennungen im Code"
+			},
+			"0.1.0": {
+				"en": "first public alpha release",
+				"de": "Erste öffentliche Alpha-Version"
 			}
 		},
 		"title": "Fahrplan",

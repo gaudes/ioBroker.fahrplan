@@ -6,7 +6,7 @@
     "name": "Gaudes",
     "email": "ralf@gaudes.net"
   },
-  "homepage": "https://github.com/gaudes/ioBroker.Fahrplan",
+  "homepage": "https://github.com/gaudes/ioBroker.fahrplan",
   "license": "MIT",
   "keywords": [
     "ioBroker",
@@ -16,7 +16,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/gaudes/ioBroker.Fahrplan.git"
+    "url": "https://github.com/gaudes/ioBroker.fahrplan.git"
   },
   "dependencies": {
     "@iobroker/adapter-core": "^2.4.0",
@@ -54,7 +54,7 @@
     "lint": "eslint"
   },
   "bugs": {
-    "url": "https://github.com/gaudes/ioBroker.Fahrplan/issues"
+    "url": "https://github.com/gaudes/ioBroker.fahrplan/issues"
   },
   "readmeFilename": "README.md"
 }

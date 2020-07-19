@@ -81,5 +81,29 @@ systemDictionary = {
 	"SaveJSON":{
 		"en": "Save JSON elements",
 		"de": "JSON-Elemente speichern"
+	},
+	"SaveObjects":{
+		"en": "Save detailed objects",
+		"de": "Detailierte Objekte speichern"
+	},
+	"Journey":{
+		"en": "Journey objects",
+		"de": "Reise-Objekte"
+	},
+	"JourneySection":{
+		"en": "Journey and Section objects",
+		"de": "Reise- und Reiseabschnittsobjekte"
+	},
+	"Timetable":{
+		"en": "Timetable",
+		"de": "Zeiten"
+	},
+	"TimetableDelay":{
+		"en": "Timetable & Delay",
+		"de": "Zeiten & Verspätung"
+	},
+	"TimetableDelayPlatform":{
+		"en": "Timetable & Delay & Platform",
+		"de": "Zeiten & Verspätung & Bahnsteig"
 	} 
 };

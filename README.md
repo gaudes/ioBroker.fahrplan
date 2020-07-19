@@ -37,12 +37,13 @@ Die Start- und Zielorte sowie Zwischenziele müssen mit ihrer numerischen ID ang
 Eine Suchfunktion ist im Tab Einstellungen integriert.
 
 #### Tab Einstellungen
-| Einstellung                 | Beschreibung
-|-----------------------------|---
-| Anbieter                    |  Auswahl des zu verwendenden Anbieters, aktuell DB und ÖBB
-| HTML-Ansicht erzeugen       |  Erzeugt pro Route eine kurze HTML-Tabelle in einem Objekt
-| Aktualisierungsintervall    |  Intervall in dem die Route aktualisiert werden, Angabe in Minuten
-| JSON-Elemente speichern     |  Die Rückgabe von HAFAS erfolgt als JSON, diese sollten zur Fehlerbehebung gespeichert werden
+| Einstellung                  | Beschreibung
+|------------------------------|---
+| Anbieter                     |  Auswahl des zu verwendenden Anbieters, aktuell DB und ÖBB
+| HTML-Ansicht erzeugen        |  Erzeugt pro Route eine konfigurierbare HTML-Tabelle in einem Objekt
+| Aktualisierungsintervall     |  Intervall in dem die Route aktualisiert werden, Angabe in Minuten
+| Detailierte Objekte speichern|  Konfiguration der auszugebenden Objekte
+| JSON-Elemente speichern      |  Die Rückgabe von HAFAS erfolgt als JSON, diese sollten zur Fehlerbehebung gespeichert werden
 
 Auf der rechten Seite ist die Suchfunktion integriert. Zuerst muss ein Anbieter ausgewählt werden.
 Danach kann über das Suchfeld und Drücken des Knopfs "Suche" nach einer Station gesucht werden.
@@ -72,8 +73,9 @@ Search function for theses IDs is integrated in Tab Settings.
 | Setting                     | Description
 |-----------------------------|---
 | Provider                    |  Selection of public transport provider, currently DB und ÖBB
-| Create HTML view            |  Creates per route a simple HTML table in an object
+| Create HTML view            |  Creates per route a configurable HTML table in an object
 | Update interval             |  Interval for updates of the routes in minutes
+| Save detailed objects       |  Configuration of output objects
 | Save JSON elements          |  Return from HAFAS is JSON, should be saved for troubleshooting
 
 #### Tab Routes
@@ -92,6 +94,9 @@ With +-Button new entries can be added to the table.
 | Bycicle                     | Select only connections where bycicles allowed
 
 ## Changelog
+
+### 0.1.1 (19.07.2020)
+* (Gaudes) code refactoring to classes, more config options for objects and HTML
 
 ### 0.1.0 (14.07.2020)
 * (Gaudes) First public alpha release

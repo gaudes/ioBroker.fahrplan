@@ -103,6 +103,8 @@
 					} else{
 						obj[$this.attr('id')] = null;
 					} 
+				} else if ($this.hasClass("isNumeric")){
+					obj[$this.attr('id')] = parseInt($this.val());
 				} else {
 					obj[$this.attr('id')] = $this.val();
 				}
@@ -156,9 +158,11 @@
 						</div>
 						<div><br /></div>
 						<div class="input-field">
-							<select class="value isBoolean" id="CreateHTML" type="text">
-								<option value="true" class="translate">Yes</option>
-								<option value="false" class="translate">No</option>
+							<select class="value isNumeric" id="CreateHTML" type="text">
+								<option value="0" class="translate">No</option>
+								<option value="1" class="translate">Timetable</option>
+								<option value="2" class="translate">TimetableDelay</option>
+								<option value="3" class="translate">TimetableDelayPlatform</option>
 							</select>
 							<label for="CreateHTML" class="translate">CreateHTML</label>
 						</div>
@@ -166,6 +170,15 @@
 						<div class="input-field">
 							<input type="number" class="value" min="1" id="UpdateInterval" />
 							<label for="UpdateInterval" class="translate">UpdateInterval</label>
+						</div>
+						<div><br /></div>
+						<div class="input-field">
+							<select class="value isNumeric" id="SaveObjects" type="text">
+								<option value="0" class="translate">No</option>
+								<option value="1" class="translate">Journey</option>
+								<option value="2" class="translate">JourneySection</option>
+							</select>
+							<label for="SaveObjects" class="translate">SaveObjects</label>
 						</div>
 						<div><br /></div>
 						<div class="input-field">

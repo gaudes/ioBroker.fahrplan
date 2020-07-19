@@ -1,7 +1,7 @@
 {
 	"common": {
 		"name": "fahrplan",
-		"version": "0.1.0",
+		"version": "0.1.1",
 		"news": {
 			"0.0.1": {
 				"en": "initial release",
@@ -14,6 +14,10 @@
 			"0.1.0": {
 				"en": "first public alpha release",
 				"de": "Erste öffentliche Alpha-Version"
+			},
+			"0.1.1": {
+				"en": "code refactoring to classes, more config options for objects and HTML",
+				"de": "Refaktorisierung mit Klassen, mehr Konfigurationsoptionen für Objekte und HTML"
 			}
 		},
 		"title": "Fahrplan",
@@ -57,8 +61,9 @@
 	},
 	"native": {
 		"Provider": "DB",
-		"CreateHTML": true,
+		"CreateHTML": 1,
 		"SaveJSON": true,
+		"SaveObjects": 2,
 		"UpdateInterval": 5,
 		"routes": [
 			{

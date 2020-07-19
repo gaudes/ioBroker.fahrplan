@@ -326,7 +326,7 @@ class fJourney{
 				// Section Departure information
 				CurrSection.departure = aConnSub.departure;
 				CurrSection.departurePlanned = aConnSub.plannedDeparture;
-				if (aConnSub.departureDelay >= 0){
+				if (aConnSub.departureDelay !== null && aConnSub.departureDelay >= 0){
 					CurrSection.departureDelaySeconds = aConnSub.departureDelay;
 					this.departureDelaySeconds = this.departureDelaySeconds + aConnSub.departureDelay;
 					if (aConnSub.departureDelay === 0 && aConnSub.departureDelay < 60){
@@ -347,7 +347,7 @@ class fJourney{
 				// Section Arrival information
 				CurrSection.arrival = aConnSub.arrival;
 				CurrSection.arrivalPlanned = aConnSub.plannedArrival;
-				if (aConnSub.arrivalDelay >= 0){
+				if (aConnSub.arrivalDelay !== null && aConnSub.arrivalDelay >= 0){
 					CurrSection.arrivalDelaySeconds = aConnSub.arrivalDelay;
 					this.arrivalDelaySeconds = this.arrivalDelaySeconds + aConnSub.arrivalDelay;
 					if (aConnSub.arrivalDelay === 0 && aConnSub.arrivalDelay < 60){

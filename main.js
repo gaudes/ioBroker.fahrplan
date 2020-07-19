@@ -329,12 +329,12 @@ class fJourney{
 				if (aConnSub.departureDelay > 0){
 					CurrSection.departureDelaySeconds = aConnSub.departureDelay;
 					this.departureDelaySeconds = this.departureDelaySeconds + aConnSub.departureDelay;
+					if (CurrSection.departureDelaySeconds === 0 && CurrSection.departureDelaySeconds < 60){
+						CurrSection.departureOnTime = true;
+					} else if (this.departureDelaySeconds >= 60){
+						CurrSection.departureDelayed = true;
+					} 
 				}	
-				if (CurrSection.departureDelaySeconds === 0 && CurrSection.departureDelaySeconds < 60){
-					CurrSection.departureOnTime = true;
-				} else if (this.departureDelaySeconds >= 60){
-					CurrSection.departureDelayed = true;
-				} 
 				// Overall Departure information
 				if (parseInt(iSectionCurrent) === 0){ 
 					this.departure = CurrSection.departure;
@@ -350,12 +350,12 @@ class fJourney{
 				if (aConnSub.arrivalDelay > 0){
 					CurrSection.arrivalDelaySeconds = aConnSub.arrivalDelay;
 					this.arrivalDelaySeconds = this.arrivalDelaySeconds + aConnSub.arrivalDelay;
+					if (CurrSection.arrivalDelaySeconds === 0 && CurrSection.arrivalDelaySeconds < 60){
+						CurrSection.arrivalOnTime = true;
+					} else if (CurrSection.arrivalDelaySeconds >= 60){
+						CurrSection.arrivalDelayed = true;
+					}
 				}	
-				if (CurrSection.arrivalDelaySeconds === 0 && CurrSection.arrivalDelaySeconds < 60){
-					CurrSection.arrivalOnTime = true;
-				} else if (CurrSection.arrivalDelaySeconds >= 60){
-					CurrSection.arrivalDelayed = true;
-				}
 				// Overall Arrival information
 				if (parseInt(iSectionCurrent) === iCounterSection){ 
 					this.arrival = CurrSection.arrival;

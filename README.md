@@ -95,6 +95,9 @@ With +-Button new entries can be added to the table.
 
 ## Changelog
 
+### 0.1.2 (19.07.2020)
+* (Gaudes) quickfix ontime
+
 ### 0.1.1 (19.07.2020)
 * (Gaudes) code refactoring to classes, more config options for objects and HTML
 

@@ -1,7 +1,7 @@
 {
 	"common": {
 		"name": "fahrplan",
-		"version": "0.1.1",
+		"version": "0.1.2",
 		"news": {
 			"0.0.1": {
 				"en": "initial release",
@@ -18,6 +18,10 @@
 			"0.1.1": {
 				"en": "code refactoring to classes, more config options for objects and HTML",
 				"de": "Refaktorisierung mit Klassen, mehr Konfigurationsoptionen für Objekte und HTML"
+			},
+			"0.1.2": {
+				"en": "quick fix for ontime",
+				"de": "Fehlerbehebung ontime"
 			}
 		},
 		"title": "Fahrplan",

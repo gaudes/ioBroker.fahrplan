@@ -1,7 +1,7 @@
 {
 	"common": {
 		"name": "fahrplan",
-		"version": "0.1.2",
+		"version": "0.1.3",
 		"news": {
 			"0.0.1": {
 				"en": "initial release",
@@ -22,6 +22,10 @@
 			"0.1.2": {
 				"en": "quick fix for ontime",
 				"de": "Fehlerbehebung ontime"
+			},
+			"0.1.3": {
+				"en": "correct object types, delay notification",
+				"de": "Korrekte Objekttypen, Verspätungsalarm"
 			}
 		},
 		"title": "Fahrplan",
@@ -81,7 +85,19 @@
 			  "transfers": "",
 			  "bicycle": false
 			}
-		]	
+		],
+		"delays":[
+			{	
+				"enabled": false,
+				"route": "",
+				"departplan": "",
+				"notistart": "",
+				"output_id": "",
+				"days":[
+					"7"
+				] 
+			}	
+		] 
 	},
 	"objects": [],
 	"instanceObjects": []

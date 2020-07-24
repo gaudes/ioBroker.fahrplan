@@ -33,6 +33,11 @@ class Fahrplan extends utils.Adapter {
 		if (this.config.UpdateInterval){
 			iUpdateInterval = this.config.UpdateInterval;
 		} 
+		adapter.getForeignObjectAsync("system.config", (err, obj) => {
+			if (obj && obj.common && obj.common.language) {
+				SysLang = obj.common.language;
+			}
+		});
 		await new Promise(r => setTimeout(r, 2000));
 		main();
 	}
@@ -83,6 +88,7 @@ let tUpdateRoutesTimeout = null;
 let iCounterRoutes = 0;
 let iCounterRoutesEnabled = 0;
 let iCounterRoutesDisabled = 0;
+let SysLang = "";
 //#endregion
 
 //#region Function MAIN
@@ -168,7 +174,7 @@ class fStation {
 			if (this.platform !== null) await SetTextState(`${BasePath}.Platform`, `${BaseDesc} Platform`, `${BaseDesc} Platform`, this.platform);
 			if (this.platformplanned !== null) await SetTextState(`${BasePath}.PlatformPlanned`, `${BaseDesc} PlatformPlanned`, `${BaseDesc} PlatformPlanned`, this.platformplanned);
 			if (adapter.config.SaveJSON !== false){
-				await SetTextState(`${BasePath}.JSON`, `${BaseDesc} JSON`, `${BaseDesc} JSON`, this.json);
+				await SetTextState(`${BasePath}.JSON`, `${BaseDesc} JSON`, `${BaseDesc} JSON`, this.json, "json");
 			}	
 		} catch(e) {
 			throw new Error(`Exception in writeStation [${e}]`);
@@ -256,15 +262,15 @@ class fSection{
 				this.StationFrom.writeStation(`${BasePath}.StationFrom`, "StationFrom");
 				this.StationTo.writeStation(`${BasePath}.StationTo`, "StationTo");
 				// Departure Values
-				await SetTextState(`${BasePath}.Departure`, "Departure", "Departure", this.departure);
-				await SetTextState(`${BasePath}.DeparturePlanned`, "DeparturePlanned", "DeparturePlanned", this.departurePlanned);
-				await SetTextState(`${BasePath}.DepartureDelaySeconds`, "DepartureDelaySeconds", "DepartureDelaySeconds", this.departureDelaySeconds.toString());
+				await SetTextState(`${BasePath}.Departure`, "Departure", "Departure", this.departure, "date");
+				await SetTextState(`${BasePath}.DeparturePlanned`, "DeparturePlanned", "DeparturePlanned", this.departurePlanned, "date");
+				await SetNumState(`${BasePath}.DepartureDelaySeconds`, "DepartureDelaySeconds", "DepartureDelaySeconds", this.departureDelaySeconds);
 				await SetBoolState(`${BasePath}.DepartureOnTime`, "DepartureOnTime", "DepartureOnTime", this.departureOnTime);
 				await SetBoolState(`${BasePath}.DepartureDelayed`, "DepartureDelayed", "DepartureDelayed", this.departureDelayed);
 				// Arrival Values
-				await SetTextState(`${BasePath}.Arrival`, "Arrival", "Arrival", this.arrival);
-				await SetTextState(`${BasePath}.ArrivalPlanned`, "ArrivalPlanned", "ArrivalPlanned", this.arrivalPlanned);
-				await SetTextState(`${BasePath}.ArrivalDelaySeconds`, "ArrivalDelaySeconds", "ArrivalDelaySeconds", this.arrivalDelaySeconds.toString());
+				await SetTextState(`${BasePath}.Arrival`, "Arrival", "Arrival", this.arrival, "date");
+				await SetTextState(`${BasePath}.ArrivalPlanned`, "ArrivalPlanned", "ArrivalPlanned", this.arrivalPlanned, "date");
+				await SetNumState(`${BasePath}.ArrivalDelaySeconds`, "ArrivalDelaySeconds", "ArrivalDelaySeconds", this.arrivalDelaySeconds);
 				await SetBoolState(`${BasePath}.ArrivalOnTime`, "ArrivalOnTime", "ArrivalOnTime", this.arrivalOnTime);
 				await SetBoolState(`${BasePath}.ArrivalDelayed`, "ArrivalDelayed", "ArrivalDelayed", this.arrivalDelayed);
 				// Line Values
@@ -293,6 +299,9 @@ class fJourney{
 		this.arrivalDelaySeconds = 0;
 		this.arrivalDelayed = false;
 		this.arrivalOnTime = false;
+		this.notify = false;
+		this.notifyText = "";
+		this.notifyValue = 0;
 		this.json = "";
 		this.transfersReachable = true;
 		this.changes = -1;
@@ -390,6 +399,65 @@ class fJourney{
 	}
 
 	/**
+	* Checks Journey for delays
+	* @param {string} BasePath Path to channel with journey information
+	* @param {number} RouteIndex Index number of Route
+	*/
+	async checkDelay(BasePath, RouteIndex){
+		try {  
+			let ConfigDelays = adapter.config.delays||[];
+			let RouteDelays = ConfigDelays.filter(delay=>delay.route===RouteIndex.toString() && delay.enabled===true && delay.notistart !== "");
+			if (RouteDelays.length > 0) adapter.log.silly(`Configured Delays for Route #${RouteIndex}: ${JSON.stringify(RouteDelays)}`);
+			for (let iRouteDelayCurrent in RouteDelays ) {
+				let RouteDelay = RouteDelays[iRouteDelayCurrent];
+				if ((RouteDelay.departplan === "" || RouteDelay.departplan === adapter.formatDate(new Date(this.departure), "hh:mm")) && ( RouteDelay.days.includes("7") || RouteDelay.days.includes(new Date(this.departure).getDay().toString()))){
+					let NotiStartTime = new Date(this.departurePlanned);
+					NotiStartTime.setMinutes(NotiStartTime.getMinutes() - parseInt(RouteDelay.notistart));
+					if (new Date() >= new Date(NotiStartTime) && new Date() <= new Date(this.departure) ){
+						// this.departureDelaySeconds = 180;
+						if (this.departureDelaySeconds > 60){
+							let OldNotifyValue = await adapter.getStateAsync(`${BasePath}.NotifyValue`);
+							adapter.log.silly(`OldNotifyValue: ${JSON.stringify(OldNotifyValue)} `);
+							if (OldNotifyValue === null || !OldNotifyValue || (OldNotifyValue !== null && OldNotifyValue && this.departureDelaySeconds !== OldNotifyValue.val)){ 
+								this.notify = true;
+								this.notifyValue = this.departureDelaySeconds;
+								this.notifyText = await this.buildDelayNotification();
+								adapter.log.silly(`DELAY NOTIFICATION: ${this.notifyText}`);
+								if (RouteDelay.output_id !== ""){
+									// Buidling output string
+									await adapter.setForeignStateAsync(RouteDelay.output_id, this.notifyText);
+								} 
+							}		
+						} 
+					}
+				} 
+			}	
+		} catch(e) {
+			throw new Error(`Exception in checkDelay [${e}]`);
+		} 	
+	}
+
+	/**
+	* Build delay string output
+	*/
+	async buildDelayNotification(){
+		try{
+			let sOut = "";
+			switch (SysLang){
+				case "de":
+					sOut = `Verbindung von ${this.StationFrom.name} nach ${this.StationTo.name}, geplante Abfahrt ${adapter.formatDate(new Date(this.departure), "hh:mm")} verspätet sich um ${this.departureDelaySeconds / 60} Minuten`;
+					break;
+				default:
+					sOut = `Connection from ${this.StationFrom.name} to ${this.StationTo.name} with planned departure ${adapter.formatDate(new Date(this.departure), "hh:mm")} is ${this.departureDelaySeconds / 60} minutes late`;
+					break
+			} 
+			return sOut;
+		} catch(e){
+			throw new Error(`Exception in buildDelayNotification [${e}]`);
+		} 
+	}	
+
+	/**
 	* Writes Journey information to ioBroker
 	* @param {string} BasePath Path to channel with journey information
 	* @param {number} RouteIndex Index number of Route
@@ -399,7 +467,7 @@ class fJourney{
 		try {  
 			await SetChannel(`${BasePath}`, `Connection ${this.StationFrom.name} - ${this.StationTo.name}`, `Connection`);
 			if (adapter.config.SaveJSON !== false){
-				await SetTextState(`${BasePath}.JSON`, "Journey JSON", "Journey JSON", this.json);	
+				await SetTextState(`${BasePath}.JSON`, "Journey JSON", "Journey JSON", this.json, "json");	
 			}
 			if (adapter.config.SaveObjects === 1){
 				await deleteUnusedSections(RouteIndex, JourneyIndex, -1);
@@ -408,18 +476,21 @@ class fJourney{
 				await SetTextState(`${BasePath}.Changes`, "Changes", "Changes", this.changes.toString());
 				await SetBoolState(`${BasePath}.TransfersReachable`, "TransfersReachable", "TransfersReachable", this.transfersReachable);
 				// Overall Departure Values
-				await SetTextState(`${BasePath}.Departure`, "Departure", "Departure", this.departure);
-				await SetTextState(`${BasePath}.DeparturePlanned`, "DeparturePlanned", "DeparturePlanned", this.departurePlanned);
-				await SetTextState(`${BasePath}.DepartureDelaySeconds`, "DepartureDelaySeconds", "DepartureDelaySeconds", this.departureDelaySeconds.toString());
+				await SetTextState(`${BasePath}.Departure`, "Departure", "Departure", this.departure, "date");
+				await SetTextState(`${BasePath}.DeparturePlanned`, "DeparturePlanned", "DeparturePlanned", this.departurePlanned, "date");
+				await SetNumState(`${BasePath}.DepartureDelaySeconds`, "DepartureDelaySeconds", "DepartureDelaySeconds", this.departureDelaySeconds);
 				await SetBoolState(`${BasePath}.DepartureOnTime`, "DepartureOnTime", "DepartureOnTime", this.departureOnTime);
 				await SetBoolState(`${BasePath}.DepartureDelayed`, "DepartureDelayed", "DepartureDelayed", this.departureDelayed);
 				// Overall Arrival Values
-				await SetTextState(`${BasePath}.Arrival`, "Arrival", "Arrival", this.arrival);
-				await SetTextState(`${BasePath}.ArrivalPlanned`, "ArrivalPlanned", "ArrivalPlanned", this.arrivalPlanned);
-				await SetTextState(`${BasePath}.ArrivalDelaySeconds`, "ArrivalDelaySeconds", "ArrivalDelaySeconds", this.arrivalDelaySeconds.toString());
+				await SetTextState(`${BasePath}.Arrival`, "Arrival", "Arrival", this.arrival, "date");
+				await SetTextState(`${BasePath}.ArrivalPlanned`, "ArrivalPlanned", "ArrivalPlanned", this.arrivalPlanned, "date");
+				await SetNumState(`${BasePath}.ArrivalDelaySeconds`, "ArrivalDelaySeconds", "ArrivalDelaySeconds", this.arrivalDelaySeconds);
 				await SetBoolState(`${BasePath}.ArrivalOnTime`, "ArrivalOnTime", "ArrivalOnTime", this.arrivalOnTime);
 				await SetBoolState(`${BasePath}.ArrivalDelayed`, "ArrivalDelayed", "ArrivalDelayed", this.arrivalDelayed);
-
+				// Notification Information
+				await SetBoolState(`${BasePath}.Notify`, "Notify", "Notify", this.notify);
+				await SetNumState(`${BasePath}.NotifyValue`, "NotifyValue", "NotifyValue", this.notifyValue);
+				await SetTextState(`${BasePath}.NotifyText`, "NotifyText", "NotifyText", this.notifyText);
 			}
 			if (adapter.config.SaveObjects >= 2){
 				for (let iSectionsCurrent in this.Sections) {
@@ -569,7 +640,7 @@ class fRoute{
 					this.html = `${this.html}${this.Journeys[iJourneysCurrent].createHTML()}`;
 				}
 				this.html = `${this.html}</table>`;
-				await SetTextState(`${this.index.toString()}.HTML`, "HTML", "HTML", this.html);
+				await SetTextState(`${this.index.toString()}.HTML`, "HTML", "HTML", this.html, "html");
 			} else{
 				await deleteObject(`${this.index.toString()}.HTML`)
 			} 	
@@ -589,7 +660,7 @@ class fRoute{
 			adapter.log.silly(`Route #${this.index.toString()} FROM: ${this.StationFrom.id} TO: ${this.StationTo.id} ROUTEOPTIONS: ${JSON.stringify(RouteOptions.returnRouteOptions())}`);
 			aRouteResult = await hClient.journeys(this.StationFrom.id, this.StationTo.id, RouteOptions.returnRouteOptions());
 			if (adapter.config.SaveJSON !== false){
-				await SetTextState(`${this.index.toString()}.JSON`, "Route JSON", "Route JSON", JSON.stringify(aRouteResult));
+				await SetTextState(`${this.index.toString()}.JSON`, "Route JSON", "Route JSON", JSON.stringify(aRouteResult), "json");
 			} 
 			adapter.log.silly(`Route #${this.index.toString()} ROUTE: ${JSON.stringify(aRouteResult)}`);
 		} catch (e){
@@ -603,6 +674,7 @@ class fRoute{
 			CurrentJourney.StationFrom = this.StationFrom;
 			CurrentJourney.StationTo = this.StationTo;
 			CurrentJourney.parseJourney(aConn);
+			await CurrentJourney.checkDelay(`${this.index}.${iJourneysCurrent}`, this.index);
 			this.Journeys.push(CurrentJourney);
 		}
 	} 
@@ -772,12 +844,6 @@ async function getRoute(oRoute, iRouteIndex) {
  */
 async function getStation(sProvider, sSearchString){
 	adapter.log.silly(`Search: Provider = ${sProvider} SearchString = ${sSearchString}`);
-	/*let client = null;
-	if (Provider === "DB") {	
-		client = createClient(dbProfile, 'ioBroker.DBFahrplan')
-	} else{
-		return null;
-	} */
 	const sResult = await hClient.locations(sSearchString, {results: 10});
 	adapter.log.silly(`STATION: ${JSON.stringify(sResult)}`);
 	return sResult;
@@ -792,14 +858,45 @@ async function getStation(sProvider, sSearchString){
 * @param {string} sDescription Description of the State
 * @param {string} sValue Value of the State
 */
-async function SetTextState(sStateName, sDisplayName, sDescription, sValue){
+async function SetTextState(sStateName, sDisplayName, sDescription, sValue, sRole = "state"){
 	try{ 
 		await adapter.setObjectAsync(sStateName, {
 			type: "state",
 			common: {
 				name: sDisplayName,
 				type: "string",
-				role: "state",
+				role: sRole,
+				read: true,
+				write: false,
+				desc: sDescription
+			},
+			native: {},
+		});	
+		await adapter.setStateAsync(sStateName, { val: sValue, ack: true });
+		return true;
+	}catch(e){
+		adapter.log.error(`Exception in SetTextState [${e}]`);
+		throw `Exception in SetTextState [${e}]`;
+	} 	
+} 
+//#endregion
+
+//#region Helper Function SetNumState
+/**
+* Sets Numeric State
+* @param {string} sStateName Name of the State
+* @param {string} sDisplayName Displayed Name of the State
+* @param {string} sDescription Description of the State
+* @param {number} sValue Value of the State
+*/
+async function SetNumState(sStateName, sDisplayName, sDescription, sValue, sRole = "value"){
+	try{ 
+		await adapter.setObjectAsync(sStateName, {
+			type: "state",
+			common: {
+				name: sDisplayName,
+				type: "number",
+				role: sRole,
 				read: true,
 				write: false,
 				desc: sDescription

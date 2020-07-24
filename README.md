@@ -64,6 +64,21 @@ Mit dem +-Button können neue Einträge zur Tabelle hinzugefügt werden.
 | Max. Umstiege               | Maximale Anzahl an Umstiegen. 0 für nur direkte Verbindungen.
 | Fahrradmitnahme             | Nur Verbindungen mit Fahrradmitnahme auswählen
 
+#### Tab Verspätungsalarm
+Mit dem +-Button können neue Einträge zur Tabelle hinzugefügt werden.
+
+| Einstellung                 | Beschreibung
+|-----------------------------|---
+| Nr                          | Die Nummer entspricht dem Unterknote in den Objekten und wird automatisch vergeben.
+| Aktiv                       | Wenn der Verspätungsalarm aktiviert ist wird dieser geprüft
+| Route                       | Route auf die sich der Alarm beziehen soll
+| Geplante Abfahrt            | Geplante Abfahrtszeit der zu prüfenden Route (Leer = Alle Verbindungen)
+| Wochentag                   | Wochentage an denen die Prüfung erfolgen soll
+| Benachrichtigung in Minuten | Anzahl der Minuten vor der Abfahrt, in denen benachrichtigt werden soll
+| Objekt für Ausgabetext      | Angabe eines vorhandenen Objekts
+
+Hinweis zum Ausgabetext: Hier kann neben einfachen Objekten für VIS z.B. auch das "speak"-Objekt des Alexa-Adapters oder das "reponse"-Objekt des Telegram-Adapters verwendet werden.
+
 ### English
 
 Start and Desination and stopovers has to be identified with a numeric id.
@@ -93,7 +108,25 @@ With +-Button new entries can be added to the table.
 | Max. transfers              | Maximum transfers on route, 0 for direct connections only
 | Bycicle                     | Select only connections where bycicles allowed
 
+#### Tab Delay alarm
+With +-Button new entries can be added to the table.
+
+| Einstellung                 | Beschreibung
+|-----------------------------|---
+| Nr                          | The number match the subnode in objects and is assigned automatically
+| Activ                       | Check for delay alarm is activated
+| Route                       | Route concerning this delay alarm
+| Planned Departure           | Planned departure of connection to be checked (Empty = All Routes)
+| Weekdays                    | Weekdays when connection should be checked
+| Notification in minutes     | Minutes before departure when delay alarm is active
+| Object for output text      | ioBroker state for text output
+
+Hint for "Object for output text": Simple states for usage in VIS could be used, but also "speak"-state of Alexa adapter or "response"-state of Telegram adapter.
+
 ## Changelog
+
+### 0.1.3 (24.07.2020)
+* (Gaudes) correct object types, delay notification
 
 ### 0.1.2 (19.07.2020)
 * (Gaudes) quickfix ontime

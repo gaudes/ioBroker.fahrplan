@@ -5,14 +5,17 @@
 	<!-- Load ioBroker scripts and styles-->
 	<link rel="stylesheet" type="text/css" href="../../css/adapter.css" />
 	<link rel="stylesheet" type="text/css" href="../../lib/css/materialize.css">
-
+	
 	<script type="text/javascript" src="../../lib/js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="../../socket.io/socket.io.js"></script>
-
-	<script type="text/javascript" src="../../js/translate.js"></script>
+    <script type="text/javascript" src="../../js/translate.js"></script>
 	<script type="text/javascript" src="../../lib/js/materialize.js"></script>
 	<script type="text/javascript" src="../../js/adapter-settings.js"></script>
 
+	<script type="text/javascript" src="../../lib/js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="../../lib/js/selectID.js"></script>
+	<script type="text/javascript" src="../../lib/js/jquery.fancytree-all.min.js"></script>
+	
 	<!-- Load our own files -->
 	<link rel="stylesheet" type="text/css" href="style.css" />
 	<script type="text/javascript" src="words.js"></script>
@@ -23,7 +26,8 @@
 		function load(settings, onChange) {
 			if (!settings) return;
 
-			routes = settings.routes || [];  
+			routes = settings.routes || [];
+			delays = settings.delays || [];
 
 			$('.value').each(function () {
 				var $key = $(this);
@@ -48,6 +52,7 @@
 			});
 
 			setProvider();
+			setRoutesForDelays();
 
 			onChange(false);
 			// reinitialize all the Materialize labels on the page if you are dynamically adding inputs:
@@ -55,7 +60,7 @@
 
 
 			values2table("routes", routes, onChange);
-
+			values2table("delays", delays, onChange);
 
 			$('#Provider').on('change', function(){
 				setProvider();
@@ -81,6 +86,12 @@
                     }
 				});	
 			});
+
+			$('.tabs li').click(function () { 
+				setProvider();
+				setRoutesForDelays();
+			});
+
 			
 			socket.emit('getState', 'system.adapter.' + adapter + '.' + instance + '.alive', function (err, state) {
                 active = /*common.enabled ||*/ (state && state.val);
@@ -110,6 +121,7 @@
 				}
 			});
 			obj.routes = table2values("routes");
+			obj.delays = table2values("delays");
 			callback(obj);
 		}
 
@@ -120,8 +132,16 @@
 				$('th[data-name="traintype"]').attr("data-options", "all/Alle;nationalExpress/ICE,RJ;national/IC,EC;interregional/D,EN;regional/R,REX;suburban/S-Bahn;bus/Bus;subway/U-Bahn;tram/Tram");
 			} else{
 				$('th[data-name="traintype"]').attr("data-options", "all/Alle");
-			} 	
-		} 
+			} 
+		};
+		
+		function setRoutesForDelays(){
+			RouteNumbers = new Array();
+			for (let i = 0; i < routes.length; i++){
+				RouteNumbers.push(`${i}/${i}: ${routes[i].station_from} - ${routes[i].station_to}`);
+			}
+			$('th[data-name="route"]').attr("data-options", RouteNumbers.join(";"));
+		};
 	</script>
 
 </head>
@@ -134,6 +154,7 @@
 				<ul class="tabs">
 					<li class="tab col s2"><a href="#tab_settings" class="translate">general</a></li>
 					<li class="tab col s2"><a href="#tab_routes" class="translate">routes</a></li>
+					<li class="tab col s2"><a href="#tab_delays" class="translate">delays</a></li>
 				</ul>
 			</div>
 
@@ -231,9 +252,36 @@
 									<th data-name="station_from" data-type="number" style="width: 15%; background: #64b5f6" class="translate">StationFrom</th>
 									<th data-name="station_to" data-type="number" style="width: 15%; background: #64b5f6" class="translate">StationTo</th>
 									<th data-name="station_via" data-type="number"  style="width: 15%; background: #64b5f6">Via</th>
-									<th data-name="traintype" data-type="select multiple" data-options="0/Alle"  style="width: 70px; background: #64b5f6" class="translate">TrainType</th>
+									<th data-name="traintype" data-type="select multiple" data-options="0/All"  style="width: 70px; background: #64b5f6" class="translate">TrainType</th>
 									<th data-name="transfers"  style="width: 50px; background: #64b5f6" data-style="width: 70px" data-type="number" class="translate">Transfers</th>
 									<th data-name="bicycle"  style="width: 50px; background: #64b5f6" data-style="width: 70px" data-type="checkbox" class="translate">Bycicle</th>
+									<th data-buttons="delete" style="width: 100px; background: #64b5f6"></th>
+								</tr>
+							</thead>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<!-- Tab Delays-->
+			<div id="tab_delays" class="col s12 page">
+				<div class="col s12" id="delays">
+					<div class="row">
+						<div class="col">
+							<a class="btn-floating waves-effect waves-light blue table-button-add" id="delays_table"><i class="material-icons">add</i></a>
+						</div>
+					</div>
+					<div class="table-values-div">
+						<table class="table-values">
+							<thead>
+								<tr>
+									<th data-name="_index" style="width: 50px; background: #64b5f6; text-align: center" data-style="text-align: center">Nr</th>
+									<th data-name="enabled"  style="width: 50px; background: #64b5f6" data-type="checkbox" class="translate">active</th>
+									<th data-name="route" style="width: 70px; background: #64b5f6" data-type="select" data-options="">Route</th>
+									<th data-name="departplan" style="width: 150px; background: #64b5f6" data-type="time" data-options=""  class="translate">departplan</th>
+									<th data-name="days" data-type="select multiple" data-options="7/All;1/Monday;2/Tuesday;3/Wednesday;4/Thursday;5/Friday;6/Saturday;0/Sunday"  style="width: 150px; background: #64b5f6" class="translate">Weekdays</th>
+									<th data-name="notistart" style="width: 150px; background: #64b5f6" data-type="number" data-options=""  class="translate">notistart</th>
+									<th data-name="output_id" style="background: #64b5f6" data-type="OID"  class="translate">outputid</th>
 									<th data-buttons="delete" style="width: 100px; background: #64b5f6"></th>
 								</tr>
 							</thead>

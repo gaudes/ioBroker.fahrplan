@@ -14,7 +14,7 @@ systemDictionary = {
 		"pl": "Ustawienia adaptera dla DBFahrplan",
 		"zh-cn": "DBFahrplan的适配器设置"
 	},
-	"general":{
+	"general":{ 
 		"en": "Settings",
 		"de": "Einstellungen"
 	},
@@ -105,5 +105,57 @@ systemDictionary = {
 	"TimetableDelayPlatform":{
 		"en": "Timetable & Delay & Platform",
 		"de": "Zeiten & Verspätung & Bahnsteig"
+	},
+	"delays":{
+		"en": "Delay alarm",
+		"de": "Verspätungsalarm"
+	},
+	"departplan":{
+		"en": "Planned departure",
+		"de": "Geplante Abfahrt"
+	},
+	"notistart":{
+		"en": "Notification in minutes before departure",
+		"de": "Benachrichtigung in Minuten vor Abfahrt"
+	},
+	"outputid":{
+		"en": "Object for output text",
+		"de": "Objekt für Ausgabetext"
+	},
+	"All":{
+		"en": "All",
+		"de": "Alle"
+	},
+	"Weekdays":{
+		"en": "Weekdays",
+		"de": "Wochentage"
+	},
+	"Sunday":{
+		"en": "Sunday",
+		"de": "Sonntag"
+	},
+	"Monday":{
+		"en": "Monday",
+		"de": "Montag"
+	},
+	"Tuesday":{
+		"en": "Tuesday",
+		"de": "Dienstag"
+	},
+	"Wednesday":{
+		"en": "Wednesday",
+		"de": "Mittwoch"
+	},
+	"Thursday":{
+		"en": "Thursday",
+		"de": "Donnerstag"
+	},
+	"Friday":{
+		"en": "Friday",
+		"de": "Freitag"
+	},
+	"Saturday":{
+		"en": "Saturday",
+		"de": "Samstag"
 	} 
 };

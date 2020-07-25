@@ -1,7 +1,7 @@
 {
 	"common": {
 		"name": "fahrplan",
-		"version": "0.1.3",
+		"version": "0.1.4",
 		"news": {
 			"0.0.1": {
 				"en": "initial release",
@@ -26,6 +26,10 @@
 			"0.1.3": {
 				"en": "correct object types, delay notification",
 				"de": "Korrekte Objekttypen, Verspätungsalarm"
+			},
+			"0.1.4": {
+				"en": "fix deletion of unused states and channels",
+				"de": "Löschen unbenutzer Objekte korrigiert"
 			}
 		},
 		"title": "Fahrplan",

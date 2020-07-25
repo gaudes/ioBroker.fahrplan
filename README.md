@@ -125,6 +125,9 @@ Hint for "Object for output text": Simple states for usage in VIS could be used,
 
 ## Changelog
 
+### 0.1.4 (25.07.2020)
+* (Gaudes) fix deletion of unused states and channels
+
 ### 0.1.3 (24.07.2020)
 * (Gaudes) correct object types, delay notification
 

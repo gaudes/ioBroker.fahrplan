@@ -496,7 +496,7 @@ class fJourney{
 				for (let iSectionsCurrent in this.Sections) {
 					this.Sections[iSectionsCurrent].writeSection(`${BasePath}.${iSectionsCurrent}`)
 				}
-				await deleteUnusedSections(RouteIndex, JourneyIndex, this.Sections.length);
+				await deleteUnusedSections(RouteIndex, JourneyIndex, this.Sections.length - 1);
 			} 
 			if (adapter.config.SaveObjects === 0) {
 				await deleteUnusedSections(RouteIndex, JourneyIndex, -1);
@@ -1013,18 +1013,29 @@ async function deleteConnections(iRoute){
 */
 async function deleteUnusedSections(iRoute, iConnection, iSections){
 	try{ 
-		let States = await adapter.getStatesAsync(`${iRoute.toString()}.${iConnection.toString()}.*`);
+		let States = await adapter.getObjectAsync(`${iRoute.toString()}.${iConnection.toString()}.*`);
 		let SectionRegEx = `${adapter.name}.${adapter.instance}.${iRoute.toString()}.${iConnection.toString()}.(\\d*).*$`;
 		adapter.log.silly(`Delete Route #${iRoute} Connection #${iConnection} with max section # ${iSections} and regex:${SectionRegEx}`);	
 		for (let State in States){
 			let Searcher = State.toString().match(new RegExp(SectionRegEx));
 			if (Searcher !== null){ 
 				if (parseInt(Searcher[1]) > iSections ){
-					//adapter.log.error(State);
 					await adapter.delObjectAsync(State);
 				}
 			}	
 		} 
+		adapter.getChannels((error, Channels) => {
+			if (Channels && Channels !== null){ 
+				for (let Channel of Channels){
+					let Searcher = Channel["_id"].toString().match(new RegExp(SectionRegEx));
+					if (Searcher !== null){ 
+						if (parseInt(Searcher[1]) > iSections ){
+							adapter.delObject(Channel["_id"]);
+						}
+					}	
+				}
+			}	
+		});
 	}catch(err){
 		adapter.log.error(err);
 	}
@@ -1039,7 +1050,7 @@ async function deleteUnusedSections(iRoute, iConnection, iSections){
 */
 async function deleteUnusedConnections(iRoute, iConnections){
 	try{ 
-		let States = await adapter.getStatesAsync(`${iRoute.toString()}.*`);
+		let States = await adapter.getObjectAsync(`${iRoute.toString()}.*`);
 		let SectionRegEx = `${adapter.name}.${adapter.instance}.${iRoute.toString()}.(\\d*).*$`;
 		adapter.log.silly(`Delete Route #${iRoute} with max Connection #${iConnections} and regex:${SectionRegEx}`);	
 		for (let State in States){
@@ -1050,7 +1061,19 @@ async function deleteUnusedConnections(iRoute, iConnections){
 					await adapter.delObjectAsync(State);
 				}
 			}	
-		} 
+		}
+		adapter.getChannels((error, Channels) => {
+			if (Channels && Channels !== null){ 
+				for (let Channel of Channels){
+					let Searcher = Channel["_id"].toString().match(new RegExp(SectionRegEx));
+					if (Searcher !== null){ 
+						if (parseInt(Searcher[1]) > iConnections ){
+							adapter.delObject(Channel["_id"]);
+						}
+					}	
+				}
+			}	
+		});
 	}catch(err){
 		adapter.log.error(err);
 	}

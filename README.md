@@ -21,6 +21,8 @@ Der Zugriff auf HAFAS erfolgt hierbei über [HAFAS-Client](https://github.com/pu
 Die gewünschten Routen müssen in der Adapterkonfiguration eingerichtet und aktiviert werden.
 Über einen konfigurierbaren Intervall ruft der Adapter dann regelmäßig die Verbindungsinformationen ab.
 
+Als Verspätung ist alles größer 60 Sekunden definiert.
+
 ### English
 This adapter for ioBroker uses HAFAS and stores the data as states in ioBroker.
 Therefor the mobile API of HAFAS is used. HAFAS is a public transport management system used by public transport providers across Europe, e.g. Deutsche Bahn.
@@ -28,6 +30,8 @@ Therefor the mobile API of HAFAS is used. HAFAS is a public transport management
 
 The desired routes has to be configured and enabled in the adapter configuration.
 The Adapter retrieves the connection information by a configured interval automatically.
+
+A delay is configured greater than 60 seconds.
 
 ## Konfiguration
 
@@ -57,7 +61,9 @@ Mit dem +-Button können neue Einträge zur Tabelle hinzugefügt werden.
 | Nr                          | Die Nummer entspricht dem Unterknote in den Objekten und wird automatisch vergeben.
 | Aktiv                       | Wenn die Route aktiviert ist werden die Verbindungsinfos aktualisiert
 | Von                         | Numerische ID von Startbahnhof oder Starthaltestelle (Ermittlung über Suche)
+| Von (Eigener Name)          | Benutzerdefinierter Name von Startbahnhof oder Starthaltestelle, für HTML- und Verspätungstext verwendet
 | Nach                        | Numerische ID von Zielbahnhof oder Zielhaltestelle (Ermittlung über Suche)
+| Nach (Eigener Name)         | Benutzerdefinierter Name von Zielbahnhof oder Zielhaltestelle, für HTML- und Verspätungstext verwendet
 | Via 1                       | Fahrt über bestimmten Ort angegeben als numerische ID (optional, sonst leer)
 | Via 2                       | Fahrt über bestimmten Ort angegeben als numerische ID (optional, sonst leer)
 | Verkehrsmittel              | Auswahl des Verkehrsmittels, z.B. Bus, S-Bahn, usw. Standardmäßig werden alle Verkehrsmittel ausgewählt
@@ -101,7 +107,9 @@ With +-Button new entries can be added to the table.
 | Nr                          | The number match the subnode in objects and is assigned automatically
 | Activ                       | Connection information is updated when route is activ
 | From                        | Numeric ID of start station oder start stop
+| From (Custom name)          | Custom name for start station oder start stop, used in HTML- and delay notification output
 | To                          | Numeric ID of destination station oder destination stop
+| From (Custom name)          | Custom name for destination station oder destination stop, used in HTML- and delay notification output
 | Via 1                       | Ride over special station as numeric ID (optional, empty per default)
 | Via 2                       | Ride over special station as numeric ID (optional, empty per default)
 | Vehicle                     | Selection of vehicle, e.g. Bus, S-Bahn, etc. Per default all vehicles are selected
@@ -124,6 +132,9 @@ With +-Button new entries can be added to the table.
 Hint for "Object for output text": Simple states for usage in VIS could be used, but also "speak"-state of Alexa adapter or "response"-state of Telegram adapter.
 
 ## Changelog
+
+### 0.1.5 (27.07.2020)
+* (Gaudes) Custom names for departure and arrival stations, fix of delay output text
 
 ### 0.1.4 (25.07.2020)
 * (Gaudes) fix deletion of unused states and channels

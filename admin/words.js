@@ -30,9 +30,17 @@ systemDictionary = {
 		"en": "From",
 		"de": "Von"
 	},
+	"StationFromName":{
+		"en": "From (Custom Name)",
+		"de": "Von (Eigener Name)"
+	},
 	"StationTo":{
 		"en": "To",
 		"de": "Nach"
+	},
+	"StationToName":{
+		"en": "To (Custom Name)",
+		"de": "Nach (Eigener Name)"
 	},
 	"TrainType":{
 		"en": "Vehicle",

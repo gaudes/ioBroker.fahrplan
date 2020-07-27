@@ -1,7 +1,7 @@
 {
 	"common": {
 		"name": "fahrplan",
-		"version": "0.1.4",
+		"version": "0.1.5",
 		"news": {
 			"0.0.1": {
 				"en": "initial release",
@@ -30,6 +30,10 @@
 			"0.1.4": {
 				"en": "fix deletion of unused states and channels",
 				"de": "Löschen unbenutzer Objekte korrigiert"
+			},
+			"0.1.5": {
+				"en": "Custom names for departure and arrival stations, fix of delay output text",
+				"de": "Eigene Namen für Abfahrts- und Ankunftsbahnhof, Fehlerbehebung Verspätungsmeldung"
 			}
 		},
 		"title": "Fahrplan",
@@ -81,7 +85,9 @@
 			{
 			  "enabled": false,
 			  "station_from": "",
+			  "station_from_name": "",
 			  "station_to": "",
+			  "station_to_name": "",
 			  "station_via": "",
 			  "traintype": [
 				"all"

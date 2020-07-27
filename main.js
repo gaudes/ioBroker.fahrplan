@@ -113,6 +113,7 @@ function main(){
 class fStation {
 	constructor(){
 		this.name = "";
+		this.customname = "";
 		this.id = null;
 		this.type = "";
 		this.json = "";
@@ -169,7 +170,8 @@ class fStation {
 				await SetTextState(`${BasePath}.eBhf`, `${BaseDesc} eBhf`, `${BaseDesc} eBhf`, "");
 			} else { 
 				await SetTextState(`${BasePath}.eBhf`, `${BaseDesc} eBhf`, `${BaseDesc} eBhf`, this.id.toString());
-			}		
+			}
+			await SetTextState(`${BasePath}.CustomName`, `${BaseDesc} Custom Name`, `${BaseDesc} Custom Name`, this.customname);
 			await SetTextState(`${BasePath}.Type`, `${BaseDesc} Type`, `${BaseDesc} Type`, this.type);
 			if (this.platform !== null) await SetTextState(`${BasePath}.Platform`, `${BaseDesc} Platform`, `${BaseDesc} Platform`, this.platform);
 			if (this.platformplanned !== null) await SetTextState(`${BasePath}.PlatformPlanned`, `${BaseDesc} PlatformPlanned`, `${BaseDesc} PlatformPlanned`, this.platformplanned);
@@ -445,10 +447,10 @@ class fJourney{
 			let sOut = "";
 			switch (SysLang){
 				case "de":
-					sOut = `Verbindung von ${this.StationFrom.name} nach ${this.StationTo.name}, geplante Abfahrt ${adapter.formatDate(new Date(this.departure), "hh:mm")} verspätet sich um ${this.departureDelaySeconds / 60} Minuten`;
+					sOut = `Verbindung von ${this.StationFrom.customname} nach ${this.StationTo.customname}, geplante Abfahrt ${adapter.formatDate(new Date(this.departurePlanned), "hh:mm")} verspätet sich um ${this.departureDelaySeconds / 60} Minuten`;
 					break;
 				default:
-					sOut = `Connection from ${this.StationFrom.name} to ${this.StationTo.name} with planned departure ${adapter.formatDate(new Date(this.departure), "hh:mm")} is ${this.departureDelaySeconds / 60} minutes late`;
+					sOut = `Connection from ${this.StationFrom.customname} to ${this.StationTo.customname} with planned departure ${adapter.formatDate(new Date(this.departurePlanned), "hh:mm")} is ${this.departureDelaySeconds / 60} minutes late`;
 					break
 			} 
 			return sOut;
@@ -635,7 +637,7 @@ class fRoute{
 	async writeHTML(){
 		try {
 			if (adapter.config.CreateHTML > 0){ 
-				this.html = `<table><tr><th align="left" colspan="${adapter.config.CreateHTML + 1}">${this.StationFrom.name} - ${this.StationTo.name}</th></tr>`;
+				this.html = `<table><tr><th align="left" colspan="${adapter.config.CreateHTML + 1}">${this.StationFrom.customname} - ${this.StationTo.customname}</th></tr>`;
 				for (let iJourneysCurrent in this.Journeys) {
 					this.html = `${this.html}${this.Journeys[iJourneysCurrent].createHTML()}`;
 				}
@@ -643,7 +645,7 @@ class fRoute{
 				await SetTextState(`${this.index.toString()}.HTML`, "HTML", "HTML", this.html, "html");
 			} else{
 				await deleteObject(`${this.index.toString()}.HTML`)
-			} 	
+			}
 		} catch (e){
 			throw new Error(`Exception in writeStates [${e}]`);
 		}
@@ -778,6 +780,11 @@ async function getRoute(oRoute, iRouteIndex) {
 			// Getting Station_From details
 			try{
 				await Route.StationFrom.getStation(oRoute.station_from);
+				if (oRoute.station_from_name !== ""){
+					Route.StationFrom.customname = oRoute.station_from_name;
+				} else {
+					Route.StationFrom.customname = Route.StationFrom.name;
+				} 
 				await Route.StationFrom.writeStation(`${iRouteIndex.toString()}.StationFrom`, "From station");
 			} catch (err){
 				throw new Error(`Station-From (Route #${iRouteIndex})${err}`);
@@ -785,6 +792,11 @@ async function getRoute(oRoute, iRouteIndex) {
 			// Getting Station_To details
 			try{
 				await Route.StationTo.getStation(oRoute.station_to);
+				if (oRoute.station_to_name !== ""){
+					Route.StationTo.customname = oRoute.station_to_name;
+				} else {
+					Route.StationTo.customname = Route.StationTo.name;
+				} 
 				await Route.StationTo.writeStation(`${iRouteIndex.toString()}.StationTo`, "To station");
 			} catch (err){
 				throw new Error(`Station-To (Route #${iRouteIndex})${err}`);

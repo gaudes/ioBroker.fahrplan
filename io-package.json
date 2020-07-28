@@ -1,7 +1,7 @@
 {
 	"common": {
 		"name": "fahrplan",
-		"version": "0.1.5",
+		"version": "0.1.6",
 		"news": {
 			"0.0.1": {
 				"en": "initial release",
@@ -34,6 +34,10 @@
 			"0.1.5": {
 				"en": "Custom names for departure and arrival stations, fix of delay output text",
 				"de": "Eigene Namen für Abfahrts- und Ankunftsbahnhof, Fehlerbehebung Verspätungsmeldung"
+			},
+			"0.1.6": {
+				"en": "Fix of delay output text with custom names of stations",
+				"de": "Fehlerbehebung Verspätungsmeldung mit eigenen Namen der Bahnhöfe"
 			}
 		},
 		"title": "Fahrplan",
@@ -105,8 +109,9 @@
 				"output_id": "",
 				"days":[
 					"7"
-				] 
-			}	
+				],
+				"createobjects": true
+			}
 		] 
 	},
 	"objects": [],

@@ -114,6 +114,10 @@ systemDictionary = {
 		"en": "Timetable & Delay & Platform",
 		"de": "Zeiten & Verspätung & Bahnsteig"
 	},
+	"TimetableDelayPlatformSections":{
+		"en": "Timetable with Sections & Delay & Platform",
+		"de": "Zeiten mit Reiseabschnitten & Verspätung & Bahnsteig"
+	},
 	"delays":{
 		"en": "Delay alarm",
 		"de": "Verspätungsalarm"
@@ -165,5 +169,5 @@ systemDictionary = {
 	"Saturday":{
 		"en": "Saturday",
 		"de": "Samstag"
-	} 
+	}
 };

@@ -133,6 +133,9 @@ Hint for "Object for output text": Simple states for usage in VIS could be used,
 
 ## Changelog
 
+### 0.1.6 (28.07.2020)
+* (Gaudes) Fix of delay output text with custom names of stations
+
 ### 0.1.5 (27.07.2020)
 * (Gaudes) Custom names for departure and arrival stations, fix of delay output text
 

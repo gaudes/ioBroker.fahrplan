@@ -150,6 +150,7 @@ class fStation {
 		try {  
 			this.id = Station.id;
 			this.name = Station.name;
+			this.customname = Station.name;
 			this.type = Station.type;
 			this.json = JSON.stringify(Station);
 		} catch(e) {
@@ -327,11 +328,17 @@ class fJourney{
 				let aConnSub = Journey.legs[iSectionCurrent];
 				// Create current section object
 				let CurrSection = new fSection();
-				// Section Stations and Platforms
+				// Section Stations and Platforms, overwrite for first and last section
 				CurrSection.StationFrom.setStation(aConnSub.origin);
+				CurrSection.StationTo.setStation(aConnSub.destination);
+				if (parseInt(iSectionCurrent) === 0){ 
+					CurrSection.StationFrom = this.StationFrom;
+				} 
+				if (parseInt(iSectionCurrent) === iCounterSection){ 
+					CurrSection.StationTo = this.StationTo;
+				}
 				if (aConnSub["departurePlatform"]) CurrSection.StationFrom.platform = aConnSub.departurePlatform;
 				if (aConnSub["plannedDeparturePlatform"]) CurrSection.StationFrom.platformplanned = aConnSub.plannedDeparturePlatform;
-				CurrSection.StationTo.setStation(aConnSub.destination);
 				if (aConnSub["arrivalPlatform"]) CurrSection.StationTo.platform = aConnSub.arrivalPlatform;
 				if (aConnSub["plannedArrivalPlatform"]) CurrSection.StationTo.platformplanned = aConnSub.plannedArrivalPlatform;
 				// Section Departure information
@@ -428,7 +435,7 @@ class fJourney{
 								if (RouteDelay.output_id !== ""){
 									// Buidling output string
 									await adapter.setForeignStateAsync(RouteDelay.output_id, this.notifyText);
-								} 
+								}
 							}		
 						} 
 					}
@@ -659,8 +666,8 @@ class fRoute{
 		let aRouteResult = null;
 		// RouteSearch
 		try{
-			adapter.log.silly(`Route #${this.index.toString()} FROM: ${this.StationFrom.id} TO: ${this.StationTo.id} ROUTEOPTIONS: ${JSON.stringify(RouteOptions.returnRouteOptions())}`);
-			aRouteResult = await hClient.journeys(this.StationFrom.id, this.StationTo.id, RouteOptions.returnRouteOptions());
+			adapter.log.silly(`Route #${this.index.toString()} FROM: ${this.StationFrom.id} TO: ${this.StationTo.id} ROUTEOPTIONS: ${RouteOptions.returnRouteOptions().toString()}`);
+			aRouteResult = await hClient.journeys(this.StationFrom.id.toString(), this.StationTo.id.toString(), RouteOptions.returnRouteOptions());
 			if (adapter.config.SaveJSON !== false){
 				await SetTextState(`${this.index.toString()}.JSON`, "Route JSON", "Route JSON", JSON.stringify(aRouteResult), "json");
 			} 
@@ -719,7 +726,7 @@ class fRouteOptions{
 	*/
 	returnRouteOptions(){
 		try{ 
-			let aRouteOptions = { results: this.results, language: this.language, remarks: this.remarks };
+			let aRouteOptions = { results: this.results, language: this.language, remarks: this.remarks, departure: new Date() };
 			if (this.via !== "") aRouteOptions["via"] = this.via;
 			if (this.transfers >= 0) aRouteOptions["transfers"] = this.transfers;
 			if (this.bycicles === true) aRouteOptions["bike"] = this.bycicles;

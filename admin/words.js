@@ -316,7 +316,15 @@ systemDictionary = {
 	},
 	"Timetable":{
 		"en": "Timetable",
-		"de": "Zeiten"
+		"de": "Zeiten",
+		"ru": "Расписание уроков",
+		"pt": "Calendário",
+		"nl": "Rooster",
+		"fr": "Calendrier",
+		"it": "Orario",
+		"es": "Calendario",
+		"pl": "Rozkład jazdy",
+		"zh-cn": "时间表"
 	},
 	"TimetableDelay":{
 		"en": "Timetable & Delay",

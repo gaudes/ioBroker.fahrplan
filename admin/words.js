@@ -14,93 +14,305 @@ systemDictionary = {
 		"pl": "Ustawienia adaptera dla DBFahrplan",
 		"zh-cn": "DBFahrplan的适配器设置"
 	},
-	"general":{ 
-		"en": "Settings",
-		"de": "Einstellungen"
-	},
-	"routes":{
-		"en": "Routes",
-		"de": "Routen"
-	},
 	"active":{
 		"en": "Active",
-		"de": "Aktiv"
+		"de": "Aktiv",
+		"ru": "активный",
+		"pt": "Ativo",
+		"nl": "Actief",
+		"fr": "actif",
+		"it": "Attivo",
+		"es": "Activo",
+		"pl": "Aktywny",
+		"zh-cn": "活性"
 	},
-	"StationFrom":{
-		"en": "From",
-		"de": "Von"
-	},
-	"StationFromName":{
-		"en": "From (Custom Name)",
-		"de": "Von (Eigener Name)"
-	},
-	"StationTo":{
-		"en": "To",
-		"de": "Nach"
-	},
-	"StationToName":{
-		"en": "To (Custom Name)",
-		"de": "Nach (Eigener Name)"
-	},
-	"TrainType":{
-		"en": "Vehicle",
-		"de": "Verkehrsmittel"
-	},
-	"Transfers":{
-		"en": "Max. transfers",
-		"de": "Max. Umstiege"
+	"All":{
+		"en": "All",
+		"de": "Alle",
+		"ru": "Все",
+		"pt": "Tudo",
+		"nl": "Allemaal",
+		"fr": "Tout",
+		"it": "Tutti",
+		"es": "Todas",
+		"pl": "Wszystko",
+		"zh-cn": "所有"
 	},
 	"Bycicle":{
 		"en": "Bycicle",
-		"de": "Fahrradmitnahme"
+		"de": "Fahrradmitnahme",
+		"ru": "Велосипедный транспорт",
+		"pt": "Transporte de bicicleta",
+		"nl": "Fietsvervoer",
+		"fr": "Transport à vélo",
+		"it": "Trasporto di biciclette",
+		"es": "Transporte de bicicletas",
+		"pl": "Transport rowerowy",
+		"zh-cn": "自行车运输"
 	},
-	"CreateHTML": {
-		"en": "Create HTML view",
-		"de": "HTML-Ansicht erzeugen",
+	"CreateHTMLJourney": {
+		"en": "Create HTML view per Journey",
+		"de": "HTML-Ansicht erzeugen pro Verbindung",
+		"ru": "Создать HTML-представление для поездки",
+		"pt": "Criar visualização HTML por jornada",
+		"nl": "Maak HTML-weergave per reis",
+		"fr": "Créer une vue HTML par trajet",
+		"it": "Crea una vista HTML per Journey",
+		"es": "Crear vista HTML por viaje",
+		"pl": "Utwórz widok HTML na podróż",
+		"zh-cn": "按旅程创建HTML视图"
 	},
-	"Yes":{
-		"en": "Yes",
-		"de": "Ja"
+	"CreateHTMLRoute": {
+		"en": "Create HTML view for route",
+		"de": "HTML-Ansicht erzeugen für Route",
+		"ru": "Создать HTML-представление для маршрута",
+		"pt": "Criar visualização HTML para rota",
+		"nl": "Maak HTML-weergave voor route",
+		"fr": "Créer une vue HTML pour l'itinéraire",
+		"it": "Crea una vista HTML per il percorso",
+		"es": "Crear vista HTML para ruta",
+		"pl": "Utwórz widok HTML dla trasy",
+		"zh-cn": "创建路线的HTML视图"
 	},
-	"No":{
-		"en": "No",
-		"de": "Nein"
+	"delays":{
+		"en": "Delay alarm",
+		"de": "Verspätungsalarm",
+		"ru": "Задержка тревоги",
+		"pt": "Atraso no alarme",
+		"nl": "Alarm vertragen",
+		"fr": "Alarme de retard",
+		"it": "Ritardo allarme",
+		"es": "Alarma de retraso",
+		"pl": "Alarm opóźnienia",
+		"zh-cn": "警报延迟"
 	},
-	"UpdateInterval":{
-		"en:": "Update interval in minutes",
-		"de": "Aktualisierungsinterval in Minuten"
+	"DelayTime":{
+		"en": "Mark delayed after delay in minutes",
+		"de": "Verspätet markieren ab Verspätung in Minuten",
+		"ru": "Задержка после задержки в минутах",
+		"pt": "Atraso após atraso em minutos",
+		"nl": "Vertraagd na vertraging in minuten",
+		"fr": "Retardé après un délai en minutes",
+		"it": "Ritardato dopo un ritardo in minuti",
+		"es": "Retrasado tras retraso en minutos",
+		"pl": "Opóźniony po opóźnieniu w minutach",
+		"zh-cn": "延迟几分钟后延迟"
 	},
-	"StationSearch":{
-		"en": "Search for Station",
-		"de": "Stationssuche"
+	"departplan":{
+		"en": "Planned departure",
+		"de": "Geplante Abfahrt",
+		"ru": "Запланированный отъезд",
+		"pt": "Partida planejada",
+		"nl": "Gepland vertrek",
+		"fr": "Départ prévu",
+		"it": "Partenza prevista",
+		"es": "Salida planificada",
+		"pl": "Planowany wyjazd",
+		"zh-cn": "计划出发"
 	},
-	"Location":{
-		"en": "Location",
-		"de": "Ort"
-	},
-	"SearchButton":{
-		"en": "Search",
-		"de": "Suche"
-	},
-	"Provider":{
-		"en": "Provider",
-		"de": "Anbieter"
-	},
-	"SaveJSON":{
-		"en": "Save JSON elements",
-		"de": "JSON-Elemente speichern"
-	},
-	"SaveObjects":{
-		"en": "Save detailed objects",
-		"de": "Detailierte Objekte speichern"
+	"general":{ 
+		"en": "Settings",
+		"de": "Einstellungen",
+		"ru": "настройки",
+		"pt": "Configurações",
+		"nl": "Instellingen",
+		"fr": "Paramètres",
+		"it": "impostazioni",
+		"es": "Configuraciones",
+		"pl": "Ustawienia",
+		"zh-cn": "设定值"
 	},
 	"Journey":{
 		"en": "Journey objects",
-		"de": "Reise-Objekte"
+		"de": "Reise-Objekte",
+		"ru": "Объекты путешествий",
+		"pt": "Objetos de viagem",
+		"nl": "Reisobjecten",
+		"fr": "Objets de voyage",
+		"it": "Oggetti del viaggio",
+		"es": "Objetos de viaje",
+		"pl": "Obiekty podróży",
+		"zh-cn": "旅途对象"
 	},
 	"JourneySection":{
 		"en": "Journey and Section objects",
-		"de": "Reise- und Reiseabschnittsobjekte"
+		"de": "Reise- und Reiseabschnittsobjekte",
+		"ru": "Объекты путешествий и секций",
+		"pt": "Objetos de viagem e seção",
+		"nl": "Reis- en sectieobjecten",
+		"fr": "Objets Journey et Section",
+		"it": "Oggetti Journey e Section",
+		"es": "Objetos de viaje y sección",
+		"pl": "Obiekty podróży i sekcji",
+		"zh-cn": "旅程和分区对象"
+	},
+	"Location":{
+		"en": "Location",
+		"de": "Ort",
+		"ru": "Расположение",
+		"pt": "Localização",
+		"nl": "Plaats",
+		"fr": "Emplacement",
+		"it": "Posizione",
+		"es": "Ubicación",
+		"pl": "Lokalizacja",
+		"zh-cn": "位置"
+	},
+	"No":{
+		"en": "No",
+		"de": "Nein",
+		"ru": "нет",
+		"pt": "Não",
+		"nl": "Nee",
+		"fr": "Non",
+		"it": "No",
+		"es": "No",
+		"pl": "Nie",
+		"zh-cn": "没有"
+	},
+	"notistart":{
+		"en": "Notification in minutes before departure",
+		"de": "Benachrichtigung in Minuten vor Abfahrt",
+		"ru": "Уведомление за несколько минут до отправления",
+		"pt": "Notificação em minutos antes da partida",
+		"nl": "Melding binnen enkele minuten voor vertrek",
+		"fr": "Notification en quelques minutes avant le départ",
+		"it": "Notifica in pochi minuti prima della partenza",
+		"es": "Notificación en minutos antes de la salida",
+		"pl": "Powiadomienie na kilka minut przed odlotem",
+		"zh-cn": "出发前几分钟内通知"
+	},
+	"outputid":{
+		"en": "Object for output text",
+		"de": "Objekt für Ausgabetext",
+		"ru": "Объект для вывода текста",
+		"pt": "Objeto para texto de saída",
+		"nl": "Object voor uitvoertekst",
+		"fr": "Objet pour le texte de sortie",
+		"it": "Oggetto per il testo di output",
+		"es": "Objeto para texto de salida",
+		"pl": "Obiekt dla tekstu wyjściowego",
+		"zh-cn": "输出文字的对象"
+	},
+	"Provider":{
+		"en": "Provider",
+		"de": "Anbieter",
+		"ru": "поставщик",
+		"pt": "Fornecedor",
+		"nl": "Aanbieder",
+		"fr": "Fournisseur",
+		"it": "Provider",
+		"es": "Proveedor",
+		"pl": "Dostawca",
+		"zh-cn": "提供者"
+	},
+	"routes":{
+		"en": "Routes",
+		"de": "Routen",
+		"ru": "Маршруты",
+		"pt": "Rotas",
+		"nl": "Routes",
+		"fr": "Itinéraires",
+		"it": "Itinerari",
+		"es": "Rutas",
+		"pl": "Trasy",
+		"zh-cn": "路线"
+	},
+	"SaveJSON":{
+		"en": "Save JSON elements",
+		"de": "JSON-Elemente speichern",
+		"ru": "Сохранить элементы JSON",
+		"pt": "Salvar elementos JSON",
+		"nl": "Sla JSON-elementen op",
+		"fr": "Enregistrer les éléments JSON",
+		"it": "Salva elementi JSON",
+		"es": "Guardar elementos JSON",
+		"pl": "Zapisz elementy JSON",
+		"zh-cn": "保存JSON元素"
+	},
+	"SaveObjects":{
+		"en": "Save detailed objects",
+		"de": "Detailierte Objekte speichern",
+		"ru": "Сохранить подробные объекты",
+		"pt": "Salvar objetos detalhados",
+		"nl": "Bewaar gedetailleerde objecten",
+		"fr": "Enregistrer des objets détaillés",
+		"it": "Salva oggetti dettagliati",
+		"es": "Guardar objetos detallados",
+		"pl": "Zapisz szczegółowe obiekty",
+		"zh-cn": "保存详细对象"
+	},
+	"SearchButton":{
+		"en": "Search",
+		"de": "Suche",
+		"ru": "Поиск",
+		"pt": "Procurar",
+		"nl": "Zoeken",
+		"fr": "Chercher",
+		"it": "Ricerca",
+		"es": "Buscar",
+		"pl": "Szukaj",
+		"zh-cn": "搜索"
+	},
+	"StationFrom":{
+		"en": "From",
+		"de": "Von",
+		"ru": "Из",
+		"pt": "De",
+		"nl": "Van",
+		"fr": "De",
+		"it": "A partire dal",
+		"es": "De",
+		"pl": "Z",
+		"zh-cn": "从"
+	},
+	"StationFromName":{
+		"en": "From (Custom Name)",
+		"de": "Von (Eigener Name)",
+		"ru": "От (Пользовательское имя)",
+		"pt": "De (nome personalizado)",
+		"nl": "Van (aangepaste naam)",
+		"fr": "De (nom personnalisé)",
+		"it": "Da (nome personalizzato)",
+		"es": "De (nombre personalizado)",
+		"pl": "Od (nazwa niestandardowa)",
+		"zh-cn": "来自（自定义名称）"
+	},
+	"StationSearch":{
+		"en": "Search for Station",
+		"de": "Stationssuche",
+		"ru": "Поиск станции",
+		"pt": "Pesquisar Estação",
+		"nl": "Zoek naar Station",
+		"fr": "Rechercher Station",
+		"it": "Cerca la stazione",
+		"es": "Buscar estación",
+		"pl": "Szukaj stacji",
+		"zh-cn": "搜索站"
+	},
+	"StationTo":{
+		"en": "To",
+		"de": "Nach",
+		"ru": "к",
+		"pt": "Para",
+		"nl": "Naar",
+		"fr": "À",
+		"it": "Per",
+		"es": "A",
+		"pl": "Do",
+		"zh-cn": "至"
+	},
+	"StationToName":{
+		"en": "To (Custom Name)",
+		"de": "Nach (Eigener Name)",
+		"ru": "Кому (Пользовательское имя)",
+		"pt": "Para (Nome personalizado)",
+		"nl": "Aan (aangepaste naam)",
+		"fr": "À (nom personnalisé)",
+		"it": "A (nome personalizzato)",
+		"es": "Para (nombre personalizado)",
+		"pl": "Do (nazwa własna)",
+		"zh-cn": "到（自定义名称）"
 	},
 	"Timetable":{
 		"en": "Timetable",
@@ -108,66 +320,170 @@ systemDictionary = {
 	},
 	"TimetableDelay":{
 		"en": "Timetable & Delay",
-		"de": "Zeiten & Verspätung"
+		"de": "Zeiten & Verspätung",
+		"ru": "Расписание уроков",
+		"pt": "Calendário",
+		"nl": "Rooster",
+		"fr": "Calendrier",
+		"it": "Orario",
+		"es": "Calendario",
+		"pl": "Rozkład jazdy",
+		"zh-cn": "时间表"
 	},
 	"TimetableDelayPlatform":{
 		"en": "Timetable & Delay & Platform",
-		"de": "Zeiten & Verspätung & Bahnsteig"
+		"de": "Zeiten & Verspätung & Bahnsteig",
+		"ru": "Расписание и задержки и платформа",
+		"pt": "Horário e atraso e plataforma",
+		"nl": "Tijdschema & vertraging & platform",
+		"fr": "Horaire et retard et plateforme",
+		"it": "Orario, ritardo e piattaforma",
+		"es": "Horario y retraso y plataforma",
+		"pl": "Harmonogram i opóźnienia i platforma",
+		"zh-cn": "时间表与延误与平台"
 	},
-	"TimetableDelayPlatformSections":{
-		"en": "Timetable with Sections & Delay & Platform",
-		"de": "Zeiten mit Reiseabschnitten & Verspätung & Bahnsteig"
+	"TrainType":{
+		"en": "Vehicle",
+		"de": "Verkehrsmittel",
+		"ru": "Транспортное средство",
+		"pt": "Veículo",
+		"nl": "Voertuig",
+		"fr": "Véhicule",
+		"it": "Veicolo",
+		"es": "Vehículo",
+		"pl": "Pojazd",
+		"zh-cn": "车辆"
 	},
-	"delays":{
-		"en": "Delay alarm",
-		"de": "Verspätungsalarm"
+	"Transfers":{
+		"en": "Max. transfers",
+		"de": "Max. Umstiege",
+		"ru": "максимальные переводы",
+		"pt": "transferências máximas",
+		"nl": "maximale transfers",
+		"fr": "transferts maximum",
+		"it": "trasferimenti massimi",
+		"es": "transferencias máximas",
+		"pl": "maksymalne transfery",
+		"zh-cn": "最大转账"
 	},
-	"departplan":{
-		"en": "Planned departure",
-		"de": "Geplante Abfahrt"
-	},
-	"notistart":{
-		"en": "Notification in minutes before departure",
-		"de": "Benachrichtigung in Minuten vor Abfahrt"
-	},
-	"outputid":{
-		"en": "Object for output text",
-		"de": "Objekt für Ausgabetext"
-	},
-	"All":{
-		"en": "All",
-		"de": "Alle"
+	"UpdateInterval":{
+		"en:": "Update interval in minutes",
+		"de": "Aktualisierungsinterval in Minuten",
+		"ru": "Интервал обновления в минутах",
+		"pt": "Intervalo de atualização em minutos",
+		"nl": "Update-interval in minuten",
+		"fr": "Intervalle de mise à jour en minutes",
+		"it": "Intervallo di aggiornamento in minuti",
+		"es": "Intervalo de actualización en minutos",
+		"pl": "Częstotliwość aktualizacji w minutach",
+		"zh-cn": "更新间隔（以分钟为单位）"
 	},
 	"Weekdays":{
 		"en": "Weekdays",
-		"de": "Wochentage"
+		"de": "Wochentage",
+		"ru": "Будни",
+		"pt": "Dias da semana",
+		"nl": "Doordeweekse dagen",
+		"fr": "Jours de la semaine",
+		"it": "Giorni della settimana",
+		"es": "Días laborables",
+		"pl": "Dni powszednie",
+		"zh-cn": "平日"
+	},
+	"Yes":{
+		"en": "Yes",
+		"de": "Ja",
+		"ru": "да",
+		"pt": "sim",
+		"nl": "Ja",
+		"fr": "Oui",
+		"it": "sì",
+		"es": "si",
+		"pl": "tak",
+		"zh-cn": "是"
 	},
 	"Sunday":{
 		"en": "Sunday",
-		"de": "Sonntag"
+		"de": "Sonntag",
+		"ru": "Воскресенье",
+		"pt": "domingo",
+		"nl": "zondag",
+		"fr": "dimanche",
+		"it": "Domenica",
+		"es": "domingo",
+		"pl": "niedziela",
+		"zh-cn": "星期日"
 	},
 	"Monday":{
 		"en": "Monday",
-		"de": "Montag"
+		"de": "Montag",
+		"ru": "понедельник",
+		"pt": "Segunda-feira",
+		"nl": "maandag",
+		"fr": "Lundi",
+		"it": "Lunedi",
+		"es": "lunes",
+		"pl": "poniedziałek",
+		"zh-cn": "星期一"
 	},
 	"Tuesday":{
 		"en": "Tuesday",
-		"de": "Dienstag"
+		"de": "Dienstag",
+		"ru": "вторник",
+		"pt": "terça",
+		"nl": "dinsdag",
+		"fr": "Mardi",
+		"it": "martedì",
+		"es": "martes",
+		"pl": "wtorek",
+		"zh-cn": "星期二"
 	},
 	"Wednesday":{
 		"en": "Wednesday",
-		"de": "Mittwoch"
+		"de": "Mittwoch",
+		"ru": "среда",
+		"pt": "Quarta-feira",
+		"nl": "woensdag",
+		"fr": "Mercredi",
+		"it": "mercoledì",
+		"es": "miércoles",
+		"pl": "środa",
+		"zh-cn": "星期三"
 	},
 	"Thursday":{
 		"en": "Thursday",
-		"de": "Donnerstag"
+		"de": "Donnerstag",
+		"ru": "Четверг",
+		"pt": "quinta-feira",
+		"nl": "donderdag",
+		"fr": "Jeudi",
+		"it": "giovedi",
+		"es": "jueves",
+		"pl": "czwartek",
+		"zh-cn": "星期四"
 	},
 	"Friday":{
 		"en": "Friday",
-		"de": "Freitag"
+		"de": "Freitag",
+		"ru": "пятница",
+		"pt": "Sexta-feira",
+		"nl": "vrijdag",
+		"fr": "Vendredi",
+		"it": "Venerdì",
+		"es": "viernes",
+		"pl": "piątek",
+		"zh-cn": "星期五"
 	},
 	"Saturday":{
 		"en": "Saturday",
-		"de": "Samstag"
+		"de": "Samstag",
+		"ru": "суббота",
+		"pt": "sábado",
+		"nl": "zaterdag",
+		"fr": "samedi",
+		"it": "Sabato",
+		"es": "sábado",
+		"pl": "sobota",
+		"zh-cn": "星期六"
 	}
 };

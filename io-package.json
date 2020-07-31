@@ -1,7 +1,7 @@
 {
 	"common": {
 		"name": "fahrplan",
-		"version": "0.1.6",
+		"version": "0.1.7",
 		"news": {
 			"0.0.1": {
 				"en": "initial release",
@@ -38,6 +38,10 @@
 			"0.1.6": {
 				"en": "Fix of delay output text with custom names of stations",
 				"de": "Fehlerbehebung Verspätungsmeldung mit eigenen Namen der Bahnhöfe"
+			},
+			"0.1.7": {
+				"en": "Translations, fix adapter checker E502, configurable delay time, HTML output for journeys with section information, fix product selection",
+				"de": "Übersetzungen, Adapter-Checker E502 behoben, konfigurierbare Verspätungszeit, HTML-Ausgabe für Reisen mit Informationen zu Reiseabschnitten, Fehlerbehebung Produktauswahl"
 			}
 		},
 		"title": "Fahrplan",
@@ -82,9 +86,11 @@
 	"native": {
 		"Provider": "DB",
 		"CreateHTML": 1,
+		"CreateHTMLJourney": 1,
 		"SaveJSON": true,
 		"SaveObjects": 2,
 		"UpdateInterval": 5,
+		"DelayTime": 1,
 		"routes": [
 			{
 			  "enabled": false,

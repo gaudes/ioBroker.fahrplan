@@ -80,7 +80,31 @@ class Fahrplan extends utils.Adapter {
 //#region Global Variables
 const hCreateClient = require('hafas-client');
 const hDBprofile = require('hafas-client/p/db');
+const hDBproducts ={
+	nationalExpress: false,
+	national: false,
+	regionalExp: false,
+	regional: false,
+	suburban: false,
+	bus: false,
+	subway: false,
+	tram: false,
+	ferry: false,
+	taxi: false
+} 
 const hOEBBprofile = require('hafas-client/p/oebb');
+const hOEBBproducts ={
+	nationalExpress: false,
+	national: false,
+	interregional: false,
+	regional: false,
+	suburban: false,
+	bus: false,
+	subway: false,
+	tram: false,
+	ferry: false,
+	onCall: false
+} 
 let hClient = null;
 const adapter = new utils.Adapter('fahrplan');
 let iUpdateInterval = 5;
@@ -89,6 +113,19 @@ let iCounterRoutes = 0;
 let iCounterRoutesEnabled = 0;
 let iCounterRoutesDisabled = 0;
 let SysLang = "";
+// Language specific Header for HTML journey output
+let sJourneyHTMLHeader ={
+	"en": '<tr><th align="left">Station</th><th align="center">Time</th><th align="center">Platform</th><th align="center">Delay</th></tr>',
+	"de": '<tr><th align="left">Station</th><th align="center">Zeit</th><th align="center">Plattform</th><th align="center">Verspätung</th></tr>',
+	"ru": '<tr><th align="left">остановка</th><th align="center">Время</th><th align="center">Платформа</th><th align="center">задержка</th></tr>',
+	"pt": '<tr><th align="left">estação</th><th align="center">Tempo</th><th align="center">Plataforma</th><th align="center">Demora</th></tr>',
+	"nl": '<tr><th align="left">Station</th><th align="center">Tijd</th><th align="center">Platform</th><th align="center">Vertraging</th></tr>',
+	"fr": '<tr><th align="left">Station</th><th align="center">Temps</th><th align="center">Plate-forme</th><th align="center">Retard</th></tr>',
+	"it": '<tr><th align="left">Stazione</th><th align="center">Tempo</th><th align="center">piattaforma</th><th align="center">Ritardo</th></tr>',
+	"es": '<tr><th align="left">Estación</th><th align="center">Hora</th><th align="center">Plataforma</th><th align="center">Retrasar</th></tr>',
+	"pl": '<tr><th align="left">Stacja</th><th align="center">Czas</th><th align="center">Platforma</th><th align="center">Opóźnienie</th></tr>',
+	"zh-cn": '<tr><th align="left">站</th><th align="center">时间</th><th align="center">平台</th><th align="center">延迟</th></tr>'
+} 
 //#endregion
 
 //#region Function MAIN
@@ -308,6 +345,7 @@ class fJourney{
 		this.json = "";
 		this.transfersReachable = true;
 		this.changes = -1;
+		this.html = "";
 	}
 
 	/**
@@ -347,9 +385,9 @@ class fJourney{
 				if (aConnSub.departureDelay !== null && aConnSub.departureDelay >= 0){
 					CurrSection.departureDelaySeconds = aConnSub.departureDelay;
 					this.departureDelaySeconds = this.departureDelaySeconds + aConnSub.departureDelay;
-					if (aConnSub.departureDelay === 0 && aConnSub.departureDelay < 60){
+					if (aConnSub.departureDelay === 0 && aConnSub.departureDelay < (adapter.config.DelayTime * 60)){
 						CurrSection.departureOnTime = true;
-					} else if (aConnSub.departureDelay >= 60){
+					} else if (aConnSub.departureDelay >= (adapter.config.DelayTime * 60)){
 						CurrSection.departureDelayed = true;
 					} 
 				}	
@@ -368,9 +406,9 @@ class fJourney{
 				if (aConnSub.arrivalDelay !== null && aConnSub.arrivalDelay >= 0){
 					CurrSection.arrivalDelaySeconds = aConnSub.arrivalDelay;
 					this.arrivalDelaySeconds = this.arrivalDelaySeconds + aConnSub.arrivalDelay;
-					if (aConnSub.arrivalDelay === 0 && aConnSub.arrivalDelay < 60){
+					if (aConnSub.arrivalDelay === 0 && aConnSub.arrivalDelay < (adapter.config.DelayTime * 60)){
 						CurrSection.arrivalOnTime = true;
-					} else if (aConnSub.arrivalDelay >= 60){
+					} else if (aConnSub.arrivalDelay >= (adapter.config.DelayTime * 60)){
 						CurrSection.arrivalDelayed = true;
 					}
 				}	
@@ -424,7 +462,7 @@ class fJourney{
 					NotiStartTime.setMinutes(NotiStartTime.getMinutes() - parseInt(RouteDelay.notistart));
 					if (new Date() >= new Date(NotiStartTime) && new Date() <= new Date(this.departure) ){
 						// this.departureDelaySeconds = 180;
-						if (this.departureDelaySeconds > 60){
+						if (this.departureDelaySeconds !== 0 && this.departureDelaySeconds >= (adapter.config.DelayTime * 60)){
 							let OldNotifyValue = await adapter.getStateAsync(`${BasePath}.NotifyValue`);
 							adapter.log.silly(`OldNotifyValue: ${JSON.stringify(OldNotifyValue)} `);
 							if (OldNotifyValue === null || !OldNotifyValue || (OldNotifyValue !== null && OldNotifyValue && this.departureDelaySeconds !== OldNotifyValue.val)){ 
@@ -454,10 +492,10 @@ class fJourney{
 			let sOut = "";
 			switch (SysLang){
 				case "de":
-					sOut = `Verbindung von ${this.StationFrom.customname} nach ${this.StationTo.customname}, geplante Abfahrt ${adapter.formatDate(new Date(this.departurePlanned), "hh:mm")} verspätet sich um ${this.departureDelaySeconds / 60} Minuten`;
+					sOut = `Verbindung von ${this.StationFrom.customname} nach ${this.StationTo.customname}, geplante Abfahrt ${adapter.formatDate(new Date(this.departurePlanned), "hh:mm")} verspätet sich um ${Math.ceil(this.departureDelaySeconds / 60)} Minuten`;
 					break;
 				default:
-					sOut = `Connection from ${this.StationFrom.customname} to ${this.StationTo.customname} with planned departure ${adapter.formatDate(new Date(this.departurePlanned), "hh:mm")} is ${this.departureDelaySeconds / 60} minutes late`;
+					sOut = `Connection from ${this.StationFrom.customname} to ${this.StationTo.customname} with planned departure ${adapter.formatDate(new Date(this.departurePlanned), "hh:mm")} is ${Math.ceil(this.departureDelaySeconds / 60)} minutes late`;
 					break
 			} 
 			return sOut;
@@ -594,6 +632,91 @@ class fJourney{
 			throw new Error(`Exception in createHTML [${e}]`);
 		} 
 	} 
+
+	/**
+	* Creates and saves HTML per Journey
+	* @param {string} BasePath Path to channel with journey information
+	*/
+	async writeJourneyHTML(BasePath){
+		try {
+			if (adapter.config.CreateHTMLJourney >= 1){
+				this.html = `<table><tr><th align="left" colspan="4">${this.StationFrom.customname} - ${this.StationTo.customname}</th></tr>`;
+				this.html = `${this.html}${sJourneyHTMLHeader[SysLang]}`;
+				for (let iSectionsCurrent in this.Sections) {
+					let oSection = this.Sections[iSectionsCurrent];
+					// Departure
+					if (this.Sections.length === 1 || (parseInt(iSectionsCurrent) === 0 && this.Sections.length > 1)){ 
+						this.html = `${this.html}<tr><td>${oSection.StationFrom.customname}</td>`;						
+					} else{
+						this.html = `${this.html}<tr>`;
+					} 
+					// Time
+					if (oSection.departureOnTime === true){ 
+						this.html = `${this.html}<td align="center"><font color="green">${adapter.formatDate(new Date(oSection.departure), "hh:mm")}</font></td>`;
+					} else if (oSection.departureDelayed === true){
+						this.html = `${this.html}<td align="center"><font color="red">${adapter.formatDate(new Date(oSection.departure), "hh:mm")}</font></td>`;
+					} else{
+						this.html = `${this.html}<td align="center">${adapter.formatDate(new Date(oSection.departure), "hh:mm")}</td>`;
+					}
+					// platform
+					if (oSection.StationFrom.platform === null){
+						this.html = `${this.html}<td align="center">-</td>`;
+					} else if (oSection.StationFrom.platform === oSection.StationFrom.platformplanned){ 
+						this.html = `${this.html}<td align="center"><font color="green">${oSection.StationFrom.platform}</font></td>`;
+					} else {
+						this.html = `${this.html}<td align="center"><font color="red">${oSection.StationFrom.platform}</font></td>`;
+					}
+					// Delay
+					let dDelay = Math.ceil(oSection.departureDelaySeconds / 60);
+					if (oSection.departureOnTime === true){ 
+						this.html = `${this.html}<td align="center"><font color="green">${dDelay}</font></td>`;
+					} else if (this.departureDelayed === true){
+						this.html = `${this.html}<td align="center"><font color="red">${dDelay}</font></td>`;
+					} else{
+						this.html = `${this.html}<td align="center">${dDelay}</td>`;
+					}
+					if (parseInt(iSectionsCurrent) === (parseInt(this.Sections.length.toString()) - 1)){ 
+						this.html = `${this.html}</tr><tr><td>${oSection.StationTo.customname}</td>`;						
+					} else{
+						this.html = `${this.html}</tr><tr><td rowspan="2" valign="top">${oSection.StationTo.customname}</td>`;
+					} 
+					// Arrival
+					// Time
+					if (oSection.arrivalOnTime === true){ 
+						this.html = `${this.html}<td align="center"><font color="green">${adapter.formatDate(new Date(oSection.arrival), "hh:mm")}</font></td>`;
+					} else if (oSection.arrivalDelayed === true){
+						this.html = `${this.html}<td align="center"><font color="red">${adapter.formatDate(new Date(oSection.arrival), "hh:mm")}</font></td>`;
+					} else{
+						this.html = `${this.html}<td align="center">${adapter.formatDate(new Date(oSection.arrival), "hh:mm")}</td>`;
+					}
+					// Platform
+					if (oSection.StationTo.platform === null){
+						this.html = `${this.html}<td align="center">-</td>`;
+					} else if (oSection.StationTo.platform === oSection.StationTo.platformplanned){ 
+						this.html = `${this.html}<td align="center"><font color="green">${oSection.StationTo.platform}</font></td>`;
+					} else {
+						this.html = `${this.html}<td align="center"><font color="red">${oSection.StationTo.platform}</font></td>`;
+					}
+					// Delay
+					let aDelay = Math.ceil(oSection.arrivalDelaySeconds / 60);
+					if (oSection.arrivalOnTime === true){ 
+						this.html = `${this.html}<td align="center"><font color="green">${aDelay}</font></td>`;
+					} else if (this.arrivalDelayed === true){
+						this.html = `${this.html}<td align="center"><font color="red">${aDelay}</font></td>`;
+					} else{
+						this.html = `${this.html}<td align="center">${aDelay}</td>`;
+					}
+					this.html = `${this.html}</tr>`;
+				}
+				this.html = `${this.html}</table>`;
+				await SetTextState(`${BasePath}.HTML`, "HTML", "HTML", this.html, "html");
+			} else{
+				await deleteObject(`${BasePath}.HTML`)
+			} 
+		} catch(e){
+			throw new Error(`Exception in writeJourneyHTML [${e}]`);
+		} 
+	}	
 }
 //#endregion
 
@@ -653,6 +776,10 @@ class fRoute{
 			} else{
 				await deleteObject(`${this.index.toString()}.HTML`)
 			}
+			// Create HTML states per Journey if configured
+			for (let iJourneysCurrent in this.Journeys) {
+				this.Journeys[iJourneysCurrent].writeJourneyHTML(`${this.index}.${iJourneysCurrent}`);
+			}
 		} catch (e){
 			throw new Error(`Exception in writeStates [${e}]`);
 		}
@@ -710,7 +837,15 @@ class fRouteOptions{
 		try{ 
 			let aProducts = Products.split(",");
 			if (!(aProducts.indexOf('all') > -1)){
-				let aProductOption = {}; 
+				let aProductOption = {};
+				switch(adapter.config.Provider){
+					case "DB":
+						aProductOption = hDBproducts;
+						break;
+					case "OEBB":
+						aProductOption = hOEBBproducts;
+						break;
+				} 
 				for (let i in aProducts){
 					aProductOption[aProducts[i]] = true
 				}

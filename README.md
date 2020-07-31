@@ -21,8 +21,6 @@ Der Zugriff auf HAFAS erfolgt hierbei über [HAFAS-Client](https://github.com/pu
 Die gewünschten Routen müssen in der Adapterkonfiguration eingerichtet und aktiviert werden.
 Über einen konfigurierbaren Intervall ruft der Adapter dann regelmäßig die Verbindungsinformationen ab.
 
-Als Verspätung ist alles größer 60 Sekunden definiert.
-
 ### English
 This adapter for ioBroker uses HAFAS and stores the data as states in ioBroker.
 Therefor the mobile API of HAFAS is used. HAFAS is a public transport management system used by public transport providers across Europe, e.g. Deutsche Bahn.
@@ -30,8 +28,6 @@ Therefor the mobile API of HAFAS is used. HAFAS is a public transport management
 
 The desired routes has to be configured and enabled in the adapter configuration.
 The Adapter retrieves the connection information by a configured interval automatically.
-
-A delay is configured greater than 60 seconds.
 
 ## Konfiguration
 
@@ -44,8 +40,9 @@ Eine Suchfunktion ist im Tab Einstellungen integriert.
 | Einstellung                  | Beschreibung
 |------------------------------|---
 | Anbieter                     |  Auswahl des zu verwendenden Anbieters, aktuell DB und ÖBB
-| HTML-Ansicht erzeugen        |  Erzeugt pro Route eine konfigurierbare HTML-Tabelle in einem Objekt
 | Aktualisierungsintervall     |  Intervall in dem die Route aktualisiert werden, Angabe in Minuten
+| Verspätet markieren ab       |  Verspätung in Minuten ab der die Verbindung als verspätet markiert wird. Standardmäßig werden nur Verspätungen ab zwei Minuten markiert
+| HTML-Ansicht erzeugen        |  Erzeugt pro Route eine konfigurierbare HTML-Tabelle in einem Objekt
 | Detailierte Objekte speichern|  Konfiguration der auszugebenden Objekte
 | JSON-Elemente speichern      |  Die Rückgabe von HAFAS erfolgt als JSON, diese sollten zur Fehlerbehebung gespeichert werden
 
@@ -94,8 +91,9 @@ Search function for theses IDs is integrated in Tab Settings.
 | Setting                     | Description
 |-----------------------------|---
 | Provider                    |  Selection of public transport provider, currently DB und ÖBB
-| Create HTML view            |  Creates per route a configurable HTML table in an object
 | Update interval             |  Interval for updates of the routes in minutes
+| Mark delayed after Delay in |  Define minutes after a delay should be marked as delay, per default a delay is marked when the delay is larger than one minute
+| Create HTML view            |  Creates per route a configurable HTML table in an object
 | Save detailed objects       |  Configuration of output objects
 | Save JSON elements          |  Return from HAFAS is JSON, should be saved for troubleshooting
 
@@ -132,6 +130,13 @@ With +-Button new entries can be added to the table.
 Hint for "Object for output text": Simple states for usage in VIS could be used, but also "speak"-state of Alexa adapter or "response"-state of Telegram adapter.
 
 ## Changelog
+
+### 0.1.7 (31.07.2020)
+* (Gaudes) Translations for foreign languages
+* (Gaudes) Fix adapter checker E502
+* (Gaudes) Configurable delay time
+* (Gaudes) HTML output for journeys with section information
+* (Gaudes) Fix product selection
 
 ### 0.1.6 (28.07.2020)
 * (Gaudes) Fix of delay output text with custom names of stations

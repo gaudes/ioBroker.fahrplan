@@ -1,7 +1,7 @@
 {
 	"common": {
 		"name": "fahrplan",
-		"version": "0.1.7",
+		"version": "0.1.8",
 		"news": {
 			"0.0.1": {
 				"en": "initial release",
@@ -42,6 +42,10 @@
 			"0.1.7": {
 				"en": "Translations, fix adapter checker E502, configurable delay time, HTML output for journeys with section information, fix product selection",
 				"de": "Übersetzungen, Adapter-Checker E502 behoben, konfigurierbare Verspätungszeit, HTML-Ausgabe für Reisen mit Informationen zu Reiseabschnitten, Fehlerbehebung Produktauswahl"
+			},
+			"0.1.8": {
+				"en": "Fix creation of channels",
+				"de": "Erzeugung von Kanälen behoben"
 			}
 		},
 		"title": "Fahrplan",

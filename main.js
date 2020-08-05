@@ -465,7 +465,7 @@ class fJourney{
 						if (this.departureDelaySeconds !== 0 && this.departureDelaySeconds >= (adapter.config.DelayTime * 60)){
 							let OldNotifyValue = await adapter.getStateAsync(`${BasePath}.NotifyValue`);
 							adapter.log.silly(`OldNotifyValue: ${JSON.stringify(OldNotifyValue)} `);
-							if (OldNotifyValue === null || !OldNotifyValue || (OldNotifyValue !== null && OldNotifyValue && this.departureDelaySeconds !== OldNotifyValue.val)){ 
+							if (OldNotifyValue === null || !OldNotifyValue || (OldNotifyValue !== null && OldNotifyValue && OldNotifyValue.val !== null && parseInt(this.departureDelaySeconds.toString()) !== parseInt(OldNotifyValue.val.toString()))){ 
 								this.notify = true;
 								this.notifyValue = this.departureDelaySeconds;
 								this.notifyText = await this.buildDelayNotification();
@@ -1106,7 +1106,7 @@ async function SetBoolState(sStateName, sDisplayName, sDescription, bValue){
 */
 async function SetChannel(sStateName, sDisplayName, sDescription){
 	try{ 
-		await adapter.setObjectNotExistsAsync(sStateName,{
+		await adapter.setObjectAsync(sStateName,{
 			type: "channel",
 			common:{
 				name: sDisplayName,

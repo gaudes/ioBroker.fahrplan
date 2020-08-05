@@ -131,6 +131,9 @@ Hint for "Object for output text": Simple states for usage in VIS could be used,
 
 ## Changelog
 
+### 0.1.8 (05.08.2020)
+* (Gaudes) Fix creation of channels
+
 ### 0.1.7 (31.07.2020)
 * (Gaudes) Translations for foreign languages
 * (Gaudes) Fix adapter checker E502

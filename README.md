@@ -131,6 +131,9 @@ Hint for "Object for output text": Simple states for usage in VIS could be used,
 
 ## Changelog
 
+### 0.1.9 (07.08.2020)
+* (Gaudes) Fix object type for datetime objects
+
 ### 0.1.8 (05.08.2020)
 * (Gaudes) Fix creation of channels
 

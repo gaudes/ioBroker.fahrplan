@@ -1,7 +1,7 @@
 {
 	"common": {
 		"name": "fahrplan",
-		"version": "0.1.8",
+		"version": "0.1.9",
 		"news": {
 			"0.0.1": {
 				"en": "initial release",
@@ -46,6 +46,10 @@
 			"0.1.8": {
 				"en": "Fix creation of channels",
 				"de": "Erzeugung von Kanälen behoben"
+			},
+			"0.1.9": {
+				"en": "Fix object type for datetime objects",
+				"de": "Objekttypen für Datumswerte korrigiert"
 			}
 		},
 		"title": "Fahrplan",

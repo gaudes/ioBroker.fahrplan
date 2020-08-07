@@ -302,14 +302,14 @@ class fSection{
 				this.StationFrom.writeStation(`${BasePath}.StationFrom`, "StationFrom");
 				this.StationTo.writeStation(`${BasePath}.StationTo`, "StationTo");
 				// Departure Values
-				await SetTextState(`${BasePath}.Departure`, "Departure", "Departure", this.departure, "date");
-				await SetTextState(`${BasePath}.DeparturePlanned`, "DeparturePlanned", "DeparturePlanned", this.departurePlanned, "date");
+				await SetNumState(`${BasePath}.Departure`, "Departure", "Departure", (new Date(this.departure)).getTime(), "date");
+				await SetNumState(`${BasePath}.DeparturePlanned`, "DeparturePlanned", "DeparturePlanned", (new Date(this.departurePlanned)).getTime(), "date");
 				await SetNumState(`${BasePath}.DepartureDelaySeconds`, "DepartureDelaySeconds", "DepartureDelaySeconds", this.departureDelaySeconds);
 				await SetBoolState(`${BasePath}.DepartureOnTime`, "DepartureOnTime", "DepartureOnTime", this.departureOnTime);
 				await SetBoolState(`${BasePath}.DepartureDelayed`, "DepartureDelayed", "DepartureDelayed", this.departureDelayed);
 				// Arrival Values
-				await SetTextState(`${BasePath}.Arrival`, "Arrival", "Arrival", this.arrival, "date");
-				await SetTextState(`${BasePath}.ArrivalPlanned`, "ArrivalPlanned", "ArrivalPlanned", this.arrivalPlanned, "date");
+				await SetNumState(`${BasePath}.Arrival`, "Arrival", "Arrival", (new Date(this.arrival)).getTime(), "date");
+				await SetNumState(`${BasePath}.ArrivalPlanned`, "ArrivalPlanned", "ArrivalPlanned", (new Date(this.arrivalPlanned)).getTime(), "date");
 				await SetNumState(`${BasePath}.ArrivalDelaySeconds`, "ArrivalDelaySeconds", "ArrivalDelaySeconds", this.arrivalDelaySeconds);
 				await SetBoolState(`${BasePath}.ArrivalOnTime`, "ArrivalOnTime", "ArrivalOnTime", this.arrivalOnTime);
 				await SetBoolState(`${BasePath}.ArrivalDelayed`, "ArrivalDelayed", "ArrivalDelayed", this.arrivalDelayed);
@@ -520,17 +520,17 @@ class fJourney{
 				await deleteUnusedSections(RouteIndex, JourneyIndex, -1);
 			}
 			if (adapter.config.SaveObjects >= 1){
-				await SetTextState(`${BasePath}.Changes`, "Changes", "Changes", this.changes.toString());
+				await SetNumState(`${BasePath}.Changes`, "Changes", "Changes", this.changes);
 				await SetBoolState(`${BasePath}.TransfersReachable`, "TransfersReachable", "TransfersReachable", this.transfersReachable);
 				// Overall Departure Values
-				await SetTextState(`${BasePath}.Departure`, "Departure", "Departure", this.departure, "date");
-				await SetTextState(`${BasePath}.DeparturePlanned`, "DeparturePlanned", "DeparturePlanned", this.departurePlanned, "date");
+				await SetNumState(`${BasePath}.Departure`, "Departure", "Departure", (new Date(this.departure)).getTime(), "date");
+				await SetNumState(`${BasePath}.DeparturePlanned`, "DeparturePlanned", "DeparturePlanned", (new Date(this.departurePlanned)).getTime(), "date");
 				await SetNumState(`${BasePath}.DepartureDelaySeconds`, "DepartureDelaySeconds", "DepartureDelaySeconds", this.departureDelaySeconds);
 				await SetBoolState(`${BasePath}.DepartureOnTime`, "DepartureOnTime", "DepartureOnTime", this.departureOnTime);
 				await SetBoolState(`${BasePath}.DepartureDelayed`, "DepartureDelayed", "DepartureDelayed", this.departureDelayed);
 				// Overall Arrival Values
-				await SetTextState(`${BasePath}.Arrival`, "Arrival", "Arrival", this.arrival, "date");
-				await SetTextState(`${BasePath}.ArrivalPlanned`, "ArrivalPlanned", "ArrivalPlanned", this.arrivalPlanned, "date");
+				await SetNumState(`${BasePath}.Arrival`, "Arrival", "Arrival", (new Date(this.arrival)).getTime(), "date");
+				await SetNumState(`${BasePath}.ArrivalPlanned`, "ArrivalPlanned", "ArrivalPlanned", (new Date(this.arrivalPlanned)).getTime(), "date");
 				await SetNumState(`${BasePath}.ArrivalDelaySeconds`, "ArrivalDelaySeconds", "ArrivalDelaySeconds", this.arrivalDelaySeconds);
 				await SetBoolState(`${BasePath}.ArrivalOnTime`, "ArrivalOnTime", "ArrivalOnTime", this.arrivalOnTime);
 				await SetBoolState(`${BasePath}.ArrivalDelayed`, "ArrivalDelayed", "ArrivalDelayed", this.arrivalDelayed);

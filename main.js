@@ -4,6 +4,7 @@ const utils = require("@iobroker/adapter-core");
 const fHelpers = require("./lib/helper.js");
 const fRoute = require("./lib/route.js");
 const fRouteOptions = require("./lib/routeoptions.js");
+const fStation = require("./lib/station.js");
 
 //#region Global Variables
 const hCreateClient = require('hafas-client');
@@ -80,7 +81,7 @@ class Fahrplan extends utils.Adapter {
 			if (typeof obj === "object" && obj.message) {
 				if (obj.command === "getStations") {
 					// @ts-ignore Provider and message always in message
-					let jSearchResult = await getStation(obj.message.provider, obj.message.station);
+					let jSearchResult = await this.helper.getStation(obj.message.provider, obj.message.station);
 					if (obj.callback) this.sendTo(obj.from, obj.command, jSearchResult, obj.callback);
 				}
 			}

@@ -1,7 +1,7 @@
 {
 	"common": {
 		"name": "fahrplan",
-		"version": "0.1.11",
+		"version": "0.1.12",
 		"news": {
 			"0.0.1": {
 				"en": "initial release",
@@ -170,7 +170,19 @@
 				"es": "Corregir error con tiempo de espera",
 				"pl": "Napraw błąd z przekroczeniem limitu czasu",
 				"zh-cn": "修复超时错误"
-			}  
+			},
+			"0.1.12":{
+				"en": "Fix station search",
+				"de": "Fehler bei Stationssuche korrigiert",
+				"ru": "Исправить поиск станции",
+				"pt": "Corrigir pesquisa de estação",
+				"nl": "Station zoeken repareren",
+				"fr": "Correction de la recherche de stations",
+				"it": "Correggi la ricerca delle stazioni",
+				"es": "Corregir búsqueda de emisoras",
+				"pl": "Napraw wyszukiwanie stacji",
+				"zh-cn": "固定电台搜索"
+			} 
 		},
 		"title": "Fahrplan",
 		"titleLang": {

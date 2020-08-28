@@ -85,7 +85,7 @@ class Fahrplan extends utils.Adapter {
 				}
 			}
 		}catch(e){
-			adapter.log.error(`Exception receiving Message for Adapter [${e}]`);
+			this.log.error(`Exception receiving Message for Adapter [${e}]`);
 		} 
 	}
 	//#endregion
@@ -133,7 +133,9 @@ class Fahrplan extends utils.Adapter {
 				this.log.info("No routes defined, adapter sleeping");
 				// adapter.terminate("No routes defined");
 			} 
-			tUpdateRoutesTimeout = setTimeout(this.updateRoutesTimer, this.config.UpdateInterval * 60 * 1000);
+			tUpdateRoutesTimeout = setTimeout(() => {
+				this.updateRoutesTimer();
+			}, (this.config.UpdateInterval * 60 * 1000));
 		}catch(e){
 			this.log.error(`Exception executing Timer [${e}]`);
 		} 	
@@ -212,9 +214,9 @@ class Fahrplan extends utils.Adapter {
 			} else {
 				try{ 
 					iCounterRoutesDisabled++;
-					await deleteConnections(iRouteIndex)
+					await this.helper.deleteConnections(iRouteIndex)
 					this.log.debug(`Route #${iRouteIndex.toString()} from ${oRoute.station_from} to ${oRoute.station_to} disabled`);
-					await SetBoolState(`${iRouteIndex.toString()}.Enabled`, `Configuration State of Route #${iRouteIndex.toString()}`, "Route State from Adapter configuration", false)
+					await this.helper.SetBoolState(`${iRouteIndex.toString()}.Enabled`, `Configuration State of Route #${iRouteIndex.toString()}`, "Route State from Adapter configuration", false)
 				} catch (err){
 					throw new Error(`Route-Disabled (Route #${iRouteIndex})${err}`);
 				} 	

@@ -131,6 +131,9 @@ Hint for "Object for output text": Simple states for usage in VIS could be used,
 
 ## Changelog
 
+### 0.1.11 (28.08.2020)
+* (Gaudes) Fix error with timeout
+
 ### 0.1.10 (28.08.2020)
 * (Gaudes) Fix structure of classes and files
 * (Gaudes) Fix language in io-package.json

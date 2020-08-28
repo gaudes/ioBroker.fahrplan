@@ -1,7 +1,7 @@
 {
 	"common": {
 		"name": "fahrplan",
-		"version": "0.1.10",
+		"version": "0.1.11",
 		"news": {
 			"0.0.1": {
 				"en": "initial release",
@@ -158,7 +158,19 @@
 				"es": "Arregle la estructura de clases y archivos, arregle el lenguaje en io-package.json, más limpiezas en el código",
 				"pl": "Napraw strukturę klas i plików, popraw język w io-package.json, dalsze porządki w kodzie",
 				"zh-cn": "修复类和文件的结构，修复io-package.json中的语言，进一步清理代码"
-			}
+			},
+			"0.1.11":{
+				"en": "Fix error with timeout",
+				"de": "Fehler mit Timeout behoben",
+				"ru": "Исправить ошибку с таймаутом",
+				"pt": "Corrigir erro com tempo limite",
+				"nl": "Herstel fout met time-out",
+				"fr": "Correction d'une erreur avec timeout",
+				"it": "Risolto errore con timeout",
+				"es": "Corregir error con tiempo de espera",
+				"pl": "Napraw błąd z przekroczeniem limitu czasu",
+				"zh-cn": "修复超时错误"
+			}  
 		},
 		"title": "Fahrplan",
 		"titleLang": {

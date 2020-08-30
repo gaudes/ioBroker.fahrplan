@@ -131,6 +131,11 @@ Hint for "Object for output text": Simple states for usage in VIS could be used,
 
 ## Changelog
 
+<!--
+	Placeholder for the next version (at the beginning of the line):
+	### __WORK IN PROGRESS__
+-->
+
 ### 0.1.12 (29.08.2020)
 * (Gaudes) Fix station search
 

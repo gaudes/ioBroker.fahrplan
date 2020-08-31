@@ -21,6 +21,9 @@ Der Zugriff auf HAFAS erfolgt hierbei über [HAFAS-Client](https://github.com/pu
 Die gewünschten Routen müssen in der Adapterkonfiguration eingerichtet und aktiviert werden.
 Über einen konfigurierbaren Intervall ruft der Adapter dann regelmäßig die Verbindungsinformationen ab.
 
+Zusätzlich bietet der Adapter eine Abfahrtstafel für konfigurierte Stationen.
+Hierbei werden die nächsten drei Verbindungen abgerufen und als Objekte und HTML dargestellt.
+
 ### English
 This adapter for ioBroker uses HAFAS and stores the data as states in ioBroker.
 Therefor the mobile API of HAFAS is used. HAFAS is a public transport management system used by public transport providers across Europe, e.g. Deutsche Bahn.
@@ -28,6 +31,9 @@ Therefor the mobile API of HAFAS is used. HAFAS is a public transport management
 
 The desired routes has to be configured and enabled in the adapter configuration.
 The Adapter retrieves the connection information by a configured interval automatically.
+
+Additionally the Adapter provides a departure timetable for configured stations.
+Here the next three connections are reveived and created as objects and HTML.
 
 ## Konfiguration
 
@@ -55,7 +61,7 @@ Mit dem +-Button können neue Einträge zur Tabelle hinzugefügt werden.
 
 | Einstellung                 | Beschreibung
 |-----------------------------|---
-| Nr                          | Die Nummer entspricht dem Unterknote in den Objekten und wird automatisch vergeben.
+| Nr                          | Die Nummer entspricht dem Unterknoten in den Objekten und wird automatisch vergeben.
 | Aktiv                       | Wenn die Route aktiviert ist werden die Verbindungsinfos aktualisiert
 | Von                         | Numerische ID von Startbahnhof oder Starthaltestelle (Ermittlung über Suche)
 | Von (Eigener Name)          | Benutzerdefinierter Name von Startbahnhof oder Starthaltestelle, für HTML- und Verspätungstext verwendet
@@ -72,7 +78,7 @@ Mit dem +-Button können neue Einträge zur Tabelle hinzugefügt werden.
 
 | Einstellung                 | Beschreibung
 |-----------------------------|---
-| Nr                          | Die Nummer entspricht dem Unterknote in den Objekten und wird automatisch vergeben.
+| Nr                          | Die Nummer entspricht dem Unterknoten in den Objekten und wird automatisch vergeben.
 | Aktiv                       | Wenn der Verspätungsalarm aktiviert ist wird dieser geprüft
 | Route                       | Route auf die sich der Alarm beziehen soll
 | Geplante Abfahrt            | Geplante Abfahrtszeit der zu prüfenden Route (Leer = Alle Verbindungen)
@@ -81,6 +87,17 @@ Mit dem +-Button können neue Einträge zur Tabelle hinzugefügt werden.
 | Objekt für Ausgabetext      | Angabe eines vorhandenen Objekts
 
 Hinweis zum Ausgabetext: Hier kann neben einfachen Objekten für VIS z.B. auch das "speak"-Objekt des Alexa-Adapters oder das "reponse"-Objekt des Telegram-Adapters verwendet werden.
+
+#### Tab Abfahrtstafeln
+Mit dem +-Button können neue Einträge zur Tabelle hinzugefügt werden.
+
+| Einstellung                 | Beschreibung
+|-----------------------------|---
+| Nr                          | Die Nummer entspricht dem Unterknoten in den Objekten und wird automatisch vergeben.
+| Aktiv                       | Wenn der Eintrag aktiviert ist wird dieser abgerufen
+| Von                         | Numerische ID von Startbahnhof oder Starthaltestelle (Ermittlung über Suche)
+| Von (Eigener Name)          | Benutzerdefinierter Name von Startbahnhof oder Starthaltestelle, für HTML-Ausgabe verwendet
+
 
 ### English
 
@@ -129,12 +146,25 @@ With +-Button new entries can be added to the table.
 
 Hint for "Object for output text": Simple states for usage in VIS could be used, but also "speak"-state of Alexa adapter or "response"-state of Telegram adapter.
 
+#### Tab Departure Timetables
+With +-Button new entries can be added to the table.
+
+| Setting                     | Description
+|-----------------------------|---
+| Nr                          | The number match the subnode in objects and is assigned automatically
+| Activ                       | Connection information is updated when item is activ
+| From                        | Numeric ID of start station oder start stop
+| From (Custom name)          | Custom name for start station oder start stop, used in HTML- and delay notification output
+
 ## Changelog
 
 <!--
 	Placeholder for the next version (at the beginning of the line):
 	### __WORK IN PROGRESS__
 -->
+
+### __WORK IN PROGRESS__
+* (Gaudes) Include Departure Timetable for configured stations
 
 ### 0.1.12 (29.08.2020)
 * (Gaudes) Fix station search

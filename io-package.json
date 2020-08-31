@@ -274,6 +274,13 @@
 				],
 				"createobjects": true
 			}
+		],
+		"departuretimetable":[
+			{
+				"enabled": false,
+				"station_from": "",
+			  	"station_from_name": ""
+			}
 		] 
 	},
 	"objects": [],

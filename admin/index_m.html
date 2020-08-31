@@ -28,6 +28,7 @@
 
 			routes = settings.routes || [];
 			delays = settings.delays || [];
+			departuretimetable = settings.departuretimetable || [];
 
 			$('.value').each(function () {
 				var $key = $(this);
@@ -61,6 +62,7 @@
 
 			values2table("routes", routes, onChange);
 			values2table("delays", delays, onChange);
+			values2table("departuretimetable", departuretimetable, onChange);
 
 			$('#Provider').on('change', function(){
 				setProvider();
@@ -122,6 +124,7 @@
 			});
 			obj.routes = table2values("routes");
 			obj.delays = table2values("delays");
+			obj.departuretimetable = table2values("departuretimetable");
 			callback(obj);
 		}
 
@@ -155,6 +158,7 @@
 					<li class="tab col s2"><a href="#tab_settings" class="translate">general</a></li>
 					<li class="tab col s2"><a href="#tab_routes" class="translate">routes</a></li>
 					<li class="tab col s2"><a href="#tab_delays" class="translate">delays</a></li>
+					<li class="tab col s2"><a href="#tab_deptt" class="translate">departuretimetable</a></li>
 				</ul>
 			</div>
 
@@ -297,6 +301,30 @@
 									<th data-name="days" data-type="select multiple" data-options="7/All;1/Monday;2/Tuesday;3/Wednesday;4/Thursday;5/Friday;6/Saturday;0/Sunday"  style="width: 150px; background: #64b5f6" class="translate">Weekdays</th>
 									<th data-name="notistart" style="width: 150px; background: #64b5f6" data-type="number" data-options=""  class="translate">notistart</th>
 									<th data-name="output_id" style="background: #64b5f6" data-type="OID"  class="translate">outputid</th>
+									<th data-buttons="delete" style="width: 100px; background: #64b5f6"></th>
+								</tr>
+							</thead>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<!-- Tab Routes-->
+			<div id="tab_deptt" class="col s12 page">
+				<div class="col s12" id="departuretimetable">
+					<div class="row">
+						<div class="col">
+							<a class="btn-floating waves-effect waves-light blue table-button-add" id="departuretimetable_table"><i class="material-icons">add</i></a>
+						</div>
+					</div>
+					<div class="table-values-div">
+						<table class="table-values">
+							<thead>
+								<tr>
+									<th data-name="_index" style="width: 50px; background: #64b5f6; text-align: center" data-style="text-align: center">Nr</th>
+									<th data-name="enabled"  style="width: 50px; background: #64b5f6" data-style="width: 70px" data-type="checkbox" class="translate">active</th>
+									<th data-name="station_from" data-type="number" style="width: 15%; background: #64b5f6" class="translate">StationFrom</th>
+									<th data-name="station_from_name" data-type="text" style="width: 15%; background: #64b5f6" class="translate">StationFromName</th>
 									<th data-buttons="delete" style="width: 100px; background: #64b5f6"></th>
 								</tr>
 							</thead>

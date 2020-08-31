@@ -4,7 +4,8 @@ const utils = require("@iobroker/adapter-core");
 const fHelpers = require("./lib/helper.js");
 const fRoute = require("./lib/route.js");
 const fRouteOptions = require("./lib/routeoptions.js");
-const fStation = require("./lib/station.js");
+const fDepTT = require("iobroker.fahrplan/lib/deptt.js");
+// const fStation = require("./lib/station.js");
 
 //#region Global Variables
 const hCreateClient = require('hafas-client');
@@ -16,6 +17,9 @@ let tUpdateRoutesTimeout = null;
 let iCounterRoutes = 0;
 let iCounterRoutesEnabled = 0;
 let iCounterRoutesDisabled = 0;
+let iCounterDepTT = 0;
+let iCounterDepTTEnabled = 0;
+let iCounterDepTTDisabled = 0;
 //#endregion
 
 
@@ -131,9 +135,25 @@ class Fahrplan extends utils.Adapter {
 			}
 			else
 			{	 	
-				this.log.info("No routes defined, adapter sleeping");
-				// adapter.terminate("No routes defined");
-			} 
+				this.log.info("No routes defined");
+			}
+			// Checking departure timetable for updates
+			let aDepTTConfig = this.config.departuretimetable || new Array();
+			if (typeof aDepTTConfig !== "undefined" && aDepTTConfig.length > 0){
+				this.log.debug("Departure Timetables defined, continuing");
+				iCounterDepTT = 0;
+				iCounterDepTTDisabled = 0;
+				iCounterDepTTEnabled = 0;
+				for (let iDepTTConfigCurrent in aDepTTConfig) {
+					this.getDepartureTimetable(aDepTTConfig[iDepTTConfigCurrent], parseInt(iDepTTConfigCurrent));
+					iCounterDepTT++;
+				}
+				this.log.info(`Updated ${iCounterDepTT} departure timetables, ${iCounterDepTTEnabled} enabled and ${iCounterDepTTDisabled} disabled`);
+			}
+			else
+			{	 	
+				this.log.info("No departure timetabled defined");
+			}
 			tUpdateRoutesTimeout = setTimeout(() => {
 				this.updateRoutesTimer();
 			}, (this.config.UpdateInterval * 60 * 1000));
@@ -224,6 +244,71 @@ class Fahrplan extends utils.Adapter {
 			}
 		} catch(e){
 			this.log.error(`Exception in Main/getRoute [${e}]`);
+		}
+	}
+	//#endregion
+
+	//#region Function getDepartureTimetable
+	/**
+	* Gets departure timetable information from Website and extracts information
+	* @param {object} oDepTT Single configuration entry for route
+	* @param {number} iDepTTIndex Index of the configuration entry
+	*/
+	async getDepartureTimetable(oDepTT, iDepTTIndex) {
+		try{ 
+			if (oDepTT.enabled == true){
+				iCounterRoutesEnabled++;
+				// Creating Route Object
+				let DepTT = new fDepTT(this.helper);
+				DepTT.index = iDepTTIndex;
+				DepTT.enabled = true;
+				// Getting Station_From details
+				try{
+					await DepTT.StationFrom.getStation(oDepTT.station_from);
+					if (oDepTT.station_from_name !== ""){
+						DepTT.StationFrom.customname = oDepTT.station_from_name;
+					} else {
+						DepTT.StationFrom.customname = DepTT.StationFrom.name;
+					} 
+					await DepTT.StationFrom.writeStation(`DepartureTimetable${iDepTTIndex.toString()}.Station`, "Station");
+				} catch (err){
+					throw new Error(`Station (Departure Timetable #${iDepTTIndex})${err}`);
+				}
+				// Building Base-State for Connection, set Configuration State
+				try{
+					await DepTT.writeBaseStates();
+				} catch (err){
+					throw new Error(`Base-States (Departure Timetable #${iDepTTIndex})${err}`);
+				} 
+				// Searching Departure Timetable
+				try{ 
+					await DepTT.getDepTT();
+				} catch (err){
+					throw new Error(`DepartureTimetable-Search (Departure Timetable #${iDepTTIndex})${err}`);
+				}
+				// Writing Departure Timetable
+				try{ 
+					await DepTT.writeStates();
+				} catch (err){
+					throw new Error(`DepartureTimetable-Write (Departure Timetable #${iDepTTIndex})${err}`);
+				}
+				// Writing HTML Output for Departure Timetable
+				try{
+					await DepTT.writeHTML();
+				} catch (err){
+					throw new Error(`DepartureTimetable-HTML (Departure Timetable #${iDepTTIndex})${err}`);
+				} 
+			} else {
+				try{ 
+					iCounterDepTTDisabled++;
+					await this.helper.deleteDepTT(iDepTTIndex)
+					await this.helper.SetBoolState(`DepartureTimetable${iDepTTIndex.toString()}.Enabled`, `Configuration State of Departure Timetable #${iDepTTIndex.toString()}`, "Departure Timetable State from Adapter configuration", false)
+				} catch (err){
+					throw new Error(`Route-Disabled (Route #${iDepTTIndex})${err}`);
+				} 	
+			}
+		} catch(e){
+			this.log.error(`Exception in Main/getDepartureTimetable [${e}]`);
 		}
 	}
 	//#endregion

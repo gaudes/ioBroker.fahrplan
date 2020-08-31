@@ -110,6 +110,18 @@ systemDictionary = {
 		"pl": "Planowany wyjazd",
 		"zh-cn": "计划出发"
 	},
+	"departuretimetable":{
+		"en": "departure timetables",
+		"de": "Abfahrtstafeln",
+		"ru": "расписание отправления",
+		"pt": "horário de partida",
+		"nl": "vertrektijdschema",
+		"fr": "horaire de départ",
+		"it": "orario di partenza",
+		"es": "horario de salida",
+		"pl": "rozkład jazdy",
+		"zh-cn": "出发时间表"
+	},
 	"general":{ 
 		"en": "Settings",
 		"de": "Einstellungen",

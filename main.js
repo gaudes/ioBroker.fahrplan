@@ -257,7 +257,7 @@ class Fahrplan extends utils.Adapter {
 	async getDepartureTimetable(oDepTT, iDepTTIndex) {
 		try{ 
 			if (oDepTT.enabled == true){
-				iCounterRoutesEnabled++;
+				iCounterDepTTEnabled++;
 				// Creating Route Object
 				let DepTT = new fDepTT(this.helper);
 				DepTT.index = iDepTTIndex;

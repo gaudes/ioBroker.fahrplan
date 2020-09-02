@@ -4,7 +4,7 @@
 [![NPM version](http://img.shields.io/npm/v/iobroker.fahrplan.svg)](https://www.npmjs.com/package/iobroker.fahrplan)
 [![Downloads](https://img.shields.io/npm/dm/iobroker.fahrplan.svg)](https://www.npmjs.com/package/iobroker.fahrplan)
 ![Number of Installations (latest)](http://iobroker.live/badges/fahrplan-installed.svg)
-![Number of Installations (stable)](http://iobroker.live/badges/fahrplan-stable.svg)
+<!--- ![Number of Installations (stable)](http://iobroker.live/badges/fahrplan-stable.svg) --->
 [![Dependency Status](https://img.shields.io/david/gaudes/iobroker.fahrplan.svg)](https://david-dm.org/gaudes/iobroker.fahrplan)
 [![Known Vulnerabilities](https://snyk.io/test/github/gaudes/ioBroker.fahrplan/badge.svg)](https://snyk.io/test/github/gaudes/ioBroker.fahrplan)
 [![Build Status](https://travis-ci.com/gaudes/ioBroker.Fahrplan.svg?branch=master)](https://travis-ci.com/gaudes/ioBroker.Fahrplan)
@@ -165,6 +165,8 @@ With +-Button new entries can be added to the table.
 
 ### __WORK IN PROGRESS__
 * (Gaudes) Include Departure Timetable for configured stations
+* (Gaudes) Security fix for serialize-javascript
+* (Gaudes) Enhanced error handling and preparation for Sentry
 
 ### 0.1.12 (29.08.2020)
 * (Gaudes) Fix station search

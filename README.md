@@ -167,6 +167,7 @@ With +-Button new entries can be added to the table.
 * (Gaudes) Include Departure Timetable for configured stations
 * (Gaudes) Security fix for serialize-javascript
 * (Gaudes) Enhanced error handling and preparation for Sentry
+* (Gaudes) setObject replaced with setObjectNotExists
 
 ### 0.1.12 (29.08.2020)
 * (Gaudes) Fix station search

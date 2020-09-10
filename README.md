@@ -168,6 +168,8 @@ With +-Button new entries can be added to the table.
 * (Gaudes) Security fix for serialize-javascript
 * (Gaudes) Enhanced error handling and preparation for Sentry
 * (Gaudes) setObject replaced with setObjectNotExists
+* (Gaudes) Update Adapter template from 1.25.0 to 1.27.0
+* (Gaudes) Include Dependabot with auto-merge
 
 ### 0.1.12 (29.08.2020)
 * (Gaudes) Fix station search

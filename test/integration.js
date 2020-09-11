@@ -27,6 +27,6 @@ tests.integration(path.join(__dirname, ".."),{
 				console.dir(result);
 				expect(result).to.be.an("array");
 				expect(result[0]).to.deep.include({ id: "8000105" });
-			} );
+			} ).timeout(5000);
 		} );
 	}} );

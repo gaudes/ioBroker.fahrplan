@@ -170,6 +170,9 @@ With +-Button new entries can be added to the table.
 * (Gaudes) setObject replaced with setObjectNotExists
 * (Gaudes) Update Adapter template from 1.25.0 to 1.27.0
 * (Gaudes) Include Dependabot with auto-merge
+* (Gaudes) Include Dependabot updates
+* (Gaudes) Fix ESLINT errors
+* (Gaudes) Integrate Integration and Unit Tests
 
 ### 0.1.12 (29.08.2020)
 * (Gaudes) Fix station search

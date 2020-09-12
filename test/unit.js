@@ -13,6 +13,7 @@ function delay(t, val) {
 // Run unit tests - See https://github.com/ioBroker/testing for a detailed explanation and further options
 tests.unit(path.join(__dirname, ".."),{
 	defineAdditionalTests(){
+		//#region Global objects for tests to reduce multiple queries
 		// @ts-ignore
 		const { adapter, database } = utils.unit.createMocks();
 		// const { assertObjectExists } = utils.unit.createAsserts(database, adapter);
@@ -21,16 +22,31 @@ tests.unit(path.join(__dirname, ".."),{
 		const hDBprofile = require("hafas-client/p/db");
 		const Helper = new fHelper(adapter);
 		Helper.hClient = hCreateClient(hDBprofile, "ioBroker.Fahrplan");
+		const fRouteOptions = require("../lib/routeoptions.js");
+		const RouteOptions = new fRouteOptions(Helper);
 		const fStation = require("../lib/station.js");
 		const Station = new fStation(Helper);
+		const fRoute = require("../lib/route.js");
+		const Route = new fRoute(Helper);
+		const RouteConfig = {
+			"enabled": true,
+			"station_from": "8000105",
+			"station_from_name": "",
+			"station_to": "8000349",
+			"station_to_name": "",
+			"station_via": "",
+			"traintype": [ "all" ],
+			"transfers": "0",
+			"bicycle": false
+		};
+		const fJourney = require("../lib/journey.js");
+		const Journey = new fJourney(Helper);
 		let JSONDepTT = "";
+		let JSONJourney = "";
+		//#endregion
 
-
-
+		//#region Test class RouteOptions
 		describe("Test RouteOptions", () =>{
-			const fRouteOptions = require("../lib/routeoptions.js");
-			const RouteOptions = new fRouteOptions(Helper);
-
 			it("setProducts", async () =>{
 				RouteOptions.setProducts("suburban");
 				expect(RouteOptions).to.deep.include({products:{suburban: true}});
@@ -40,7 +56,9 @@ tests.unit(path.join(__dirname, ".."),{
 				expect(RouteOptions.returnRouteOptions()).to.deep.include({products:{suburban: true}});
 			});
 		} );
+		//#endregion
 
+		//#region Test class Station
 		describe("Test Station", () =>{
 			it("getStation", async () =>{
 				await Station.getStation("8000105");
@@ -59,7 +77,67 @@ tests.unit(path.join(__dirname, ".."),{
 				expect(database.getState("test.0.Station.eBhf")).to.deep.include({ val: "8000105" });
 			});
 		} );
+		//#endregion
 
+		//#region Test class Route
+		describe("Test Route", () =>{
+			it("getRoute", async () =>{
+				Route.index = 0;
+				Route.enabled = true;
+				Route.StationFrom = Station;
+				await Route.StationTo.getStation(RouteConfig.station_to);
+				await Route.getRoute(RouteOptions);
+				expect(Route.Journeys[0]).to.deep.property("json");
+				JSONJourney = Route.Journeys[0].json;
+			});
+
+			it("writeBaseStates", async () =>{
+				await Route.writeBaseStates();
+				expect(database.getState("test.0.0.Enabled")).to.deep.include({ val: true });
+			});
+
+			it("writeStates", async () =>{
+				await Route.writeStates();
+				await delay (1000);
+				expect(database.getStates("test.0.0.0")).has.property("test.0.0.0.JSON");
+			}).timeout(3000);
+
+			it("CreateHTML", async () =>{
+				adapter.config["CreateHTML"] = 1;
+				await Route.writeHTML();
+				expect(database.getStates("test.0.0")).has.property("test.0.0.HTML");
+			});
+		} );
+		//#endregion
+
+		//#region Test class Journey
+		describe("Test Journey", () =>{
+			it("parse", async () =>{
+				Journey.StationFrom = Route.StationFrom;
+				Journey.StationTo = Route.StationTo;
+				Journey.parseJourney(JSON.parse(JSONJourney));
+				expect(Journey.Sections.length).has.to.be.above(0);
+			});
+
+			it("writeJourney", async () =>{
+				await Journey.writeJourney("Journey", 0, 0);
+				await delay (1000);
+				expect(database.getStates("test.0.Journey")).has.property("test.0.Journey.JSON");
+			}).timeout(3000);
+
+			it("createHTML", async () =>{
+				expect(Journey.createHTML()).to.be.a("string").and.satisfy(msg => msg.startsWith("<tr><td>"));
+			});
+
+			it("writeJourneyHTML", async () =>{
+				adapter.config["CreateHTMLJourney"] = 1;
+				await Journey.writeJourneyHTML("Journey");
+				expect(database.getStates("test.0.Journey")).has.property("test.0.Journey.HTML");
+			});
+		} );
+		//#endregion
+
+		//#region Test class DepTT
 		describe("Test DepTT", () =>{
 			const fDeptTT = require("../lib/deptt.js");
 			const DepTT = new fDeptTT(Helper);
@@ -90,7 +168,9 @@ tests.unit(path.join(__dirname, ".."),{
 				expect(database.getState("test.0.DepartureTimetable0.HTML").val).to.be.a("string").and.satisfy(msg => msg.startsWith("<table>"));
 			});
 		} );
+		//#endregion
 
+		//#region Test class DepTTDep
 		describe("Test DepTTDep", () =>{
 			const fDeptTTDep = require("../lib/depttdep.js");
 			const DepTTDep = new fDeptTTDep(Helper);
@@ -109,8 +189,8 @@ tests.unit(path.join(__dirname, ".."),{
 			it("createHTML", async () =>{
 				expect(DepTTDep.createHTML()).to.be.a("string").and.satisfy(msg => msg.startsWith("<tr>"));
 			});
-
 		} );
+		//#endregion
 
 	}
 } );

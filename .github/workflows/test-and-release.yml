@@ -40,8 +40,10 @@ jobs:
               run: npm run test:package
 
     # Performs one expensive unit test
-    check-and-lint:
+    unit-tests:
         if: contains(github.event.head_commit.message, '[skip ci]') == false
+
+        needs: [check-and-lint]
 
         runs-on: ubuntu-latest
 

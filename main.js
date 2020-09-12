@@ -4,7 +4,7 @@ const utils = require("@iobroker/adapter-core");
 const fHelpers = require("./lib/helper.js");
 const fRoute = require("./lib/route.js");
 const fRouteOptions = require("./lib/routeoptions.js");
-const fDepTT = require("iobroker.fahrplan/lib/deptt.js");
+const fDepTT = require("./lib/deptt.js");
 // const fStation = require("./lib/station.js");
 
 //#region Global Variables

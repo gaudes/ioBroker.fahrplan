@@ -39,6 +39,33 @@ jobs:
             - name: Test package files
               run: npm run test:package
 
+    # Performs one expensive unit test
+    check-and-lint:
+        if: contains(github.event.head_commit.message, '[skip ci]') == false
+
+        runs-on: ubuntu-latest
+
+        strategy:
+            matrix:
+                node-version: [12.x]
+
+        steps:
+            - uses: actions/checkout@v1
+            - name: Use Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v1
+              with:
+                  node-version: ${{ matrix.node-version }}
+
+            - name: Install Dependencies
+              run: npm ci
+
+            - name: Test package files
+              run: npm run test:package
+            - name: Run integration tests
+              run: npm run test:integration
+            - name: Run unit tests
+              run: npm run test:unit
+
     # Runs adapter tests on all supported node versions and OSes
     adapter-tests:
         if: contains(github.event.head_commit.message, '[skip ci]') == false

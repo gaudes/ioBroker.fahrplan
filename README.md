@@ -4,34 +4,51 @@
 [![NPM version](http://img.shields.io/npm/v/iobroker.fahrplan.svg)](https://www.npmjs.com/package/iobroker.fahrplan)
 [![Downloads](https://img.shields.io/npm/dm/iobroker.fahrplan.svg)](https://www.npmjs.com/package/iobroker.fahrplan)
 ![Number of Installations (latest)](http://iobroker.live/badges/fahrplan-installed.svg)
-<!--- ![Number of Installations (stable)](http://iobroker.live/badges/fahrplan-stable.svg) --->
+![Number of Installations (stable)](http://iobroker.live/badges/fahrplan-stable.svg)
 [![Dependency Status](https://img.shields.io/david/gaudes/iobroker.fahrplan.svg)](https://david-dm.org/gaudes/iobroker.fahrplan)
-[![Known Vulnerabilities](https://snyk.io/test/github/gaudes/ioBroker.fahrplan/badge.svg)](https://snyk.io/test/github/gaudes/ioBroker.fahrplan)
-[![Build Status](https://travis-ci.com/gaudes/ioBroker.Fahrplan.svg?branch=master)](https://travis-ci.com/gaudes/ioBroker.Fahrplan)
 
 [![NPM](https://nodei.co/npm/iobroker.fahrplan.png?downloads=true)](https://nodei.co/npm/iobroker.fahrplan/)
+
+**Tests:** ![Test and Release](https://github.com/gaudes/ioBroker.testgaudes/workflows/Test%20and%20Release/badge.svg)
 
 ## Fahrplan Adapter für ioBroker
 
 ### Deutsch
-Dieser Adapter für ioBroker verwendet HAFAS und speichert die Daten als Objekte in ioBroker.
-Hierfür wird mobile API von HAFAS verwendet. HAFAS steht für HaCon Fahrplan-Auskunfts-System und wird von vielen europäischen Verkehrsunternehmen verwendet, unter anderem auch von der Deutschen Bahn.
+Dieser Adapter für ioBroker verwendet die mobile API von HAFAS verwendet. HAFAS steht für HaCon Fahrplan-Auskunfts-System und wird von vielen europäischen Verkehrsunternehmen verwendet, unter anderem auch von der Deutschen Bahn.
 Der Zugriff auf HAFAS erfolgt hierbei über [HAFAS-Client](https://github.com/public-transport/hafas-client).
 
+Der Adapter bietet hierbei drei Funktionen:
+
+#### Fahrplan für Verbindungen (Routen)
 Die gewünschten Routen müssen in der Adapterkonfiguration eingerichtet und aktiviert werden.
 Über einen konfigurierbaren Intervall ruft der Adapter dann regelmäßig die Verbindungsinformationen ab.
+Die nächsten drei Verbindungen werden als HTML und optional auch detailiert als Objekte in ioBroker dargestellt.
+Das HTML-Objekt kann einfach in VIS eingebunden werden.
 
+#### Benachrichtigung bei Verspätungen der Routen
+Für die konfigurierten Routen kann ein Verspätungsalarm aktiviert werden. So kann beispielsweise eine Benachrichtigung via Telegram oder Alexa erfolgen, falls alle oder eine bestimmte Verbindung verspätet ist.
+
+#### Abfahrtstafeln für Stationen
 Zusätzlich bietet der Adapter eine Abfahrtstafel für konfigurierte Stationen.
-Hierbei werden die nächsten drei Verbindungen abgerufen und als Objekte und HTML dargestellt.
+Hierbei werden die nächsten drei Abfahrten einer Station abgerufen und als Objekte und HTML dargestellt.
+
 
 ### English
-This adapter for ioBroker uses HAFAS and stores the data as states in ioBroker.
-Therefor the mobile API of HAFAS is used. HAFAS is a public transport management system used by public transport providers across Europe, e.g. Deutsche Bahn.
+This adapter for ioBroker uses the mobile API of HAFAS. HAFAS is a public transport management system used by public transport providers across Europe, e.g. Deutsche Bahn.
 [HAFAS-Client](https://github.com/public-transport/hafas-client) is used to access HAFAS.
 
+The adapter provides three functions:
+
+#### Timetable for Connections (Routes)
 The desired routes has to be configured and enabled in the adapter configuration.
 The Adapter retrieves the connection information by a configured interval automatically.
+The next three connections are saved in ioBroker as HTML and optional as detailed objects.
+The HTML-object could easily be used in VIS.
 
+#### Notification for delays on routes
+A delay notification can be activated for configured routes. For example, there can be a notification by Telegram or Alexa when all or one specific connection is delayed.
+
+#### Departure timetable for stations
 Additionally the Adapter provides a departure timetable for configured stations.
 Here the next three connections are reveived and created as objects and HTML.
 
@@ -43,6 +60,9 @@ Die Start- und Zielorte sowie Zwischenziele müssen mit ihrer numerischen ID ang
 Eine Suchfunktion ist im Tab Einstellungen integriert.
 
 #### Tab Einstellungen
+
+![](docs/de/img/settings.png)
+
 | Einstellung                  | Beschreibung
 |------------------------------|---
 | Anbieter                     |  Auswahl des zu verwendenden Anbieters, aktuell DB und ÖBB
@@ -57,6 +77,9 @@ Danach kann über das Suchfeld und Drücken des Knopfs "Suche" nach einer Statio
 Die Suchergebnisse der aktuellen Suche werden in der Tabelle angezeigt.
 
 #### Tab Routen
+
+![](docs/de/img/settings_routes.png)
+
 Mit dem +-Button können neue Einträge zur Tabelle hinzugefügt werden.
 
 | Einstellung                 | Beschreibung
@@ -74,6 +97,9 @@ Mit dem +-Button können neue Einträge zur Tabelle hinzugefügt werden.
 | Fahrradmitnahme             | Nur Verbindungen mit Fahrradmitnahme auswählen
 
 #### Tab Verspätungsalarm
+
+![](docs/de/img/settings_delaynotification.png)
+
 Mit dem +-Button können neue Einträge zur Tabelle hinzugefügt werden.
 
 | Einstellung                 | Beschreibung
@@ -89,6 +115,9 @@ Mit dem +-Button können neue Einträge zur Tabelle hinzugefügt werden.
 Hinweis zum Ausgabetext: Hier kann neben einfachen Objekten für VIS z.B. auch das "speak"-Objekt des Alexa-Adapters oder das "reponse"-Objekt des Telegram-Adapters verwendet werden.
 
 #### Tab Abfahrtstafeln
+
+![](docs/de/img/settings_departuretimetables.png)
+
 Mit dem +-Button können neue Einträge zur Tabelle hinzugefügt werden.
 
 | Einstellung                 | Beschreibung
@@ -105,6 +134,9 @@ Start and Desination and stopovers has to be identified with a numeric id.
 Search function for theses IDs is integrated in Tab Settings.
 
 #### Tab Settings
+
+![](docs/en/img/settings.png)
+
 | Setting                     | Description
 |-----------------------------|---
 | Provider                    |  Selection of public transport provider, currently DB und ÖBB
@@ -115,6 +147,9 @@ Search function for theses IDs is integrated in Tab Settings.
 | Save JSON elements          |  Return from HAFAS is JSON, should be saved for troubleshooting
 
 #### Tab Routes
+
+![](docs/en/img/settings_routes.png)
+
 With +-Button new entries can be added to the table.
 
 | Setting                     | Description
@@ -132,6 +167,9 @@ With +-Button new entries can be added to the table.
 | Bycicle                     | Select only connections where bycicles allowed
 
 #### Tab Delay alarm
+
+![](docs/en/img/settings_delaynotification.png)
+
 With +-Button new entries can be added to the table.
 
 | Einstellung                 | Beschreibung
@@ -147,6 +185,9 @@ With +-Button new entries can be added to the table.
 Hint for "Object for output text": Simple states for usage in VIS could be used, but also "speak"-state of Alexa adapter or "response"-state of Telegram adapter.
 
 #### Tab Departure Timetables
+
+![](docs/en/img/settings_departuretimetables.png)
+
 With +-Button new entries can be added to the table.
 
 | Setting                     | Description
@@ -173,6 +214,7 @@ With +-Button new entries can be added to the table.
 * (Gaudes) Include Dependabot updates
 * (Gaudes) Fix ESLINT errors
 * (Gaudes) Integrate Integration and Unit Tests
+* (Gaudes) Remove Travis & Snyk
 
 ### 0.1.12 (29.08.2020)
 * (Gaudes) Fix station search

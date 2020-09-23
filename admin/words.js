@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 /*global systemDictionary:true */
 "use strict";
 
@@ -122,7 +123,7 @@ systemDictionary = {
 		"pl": "rozkład jazdy",
 		"zh-cn": "出发时间表"
 	},
-	"general":{ 
+	"general":{
 		"en": "Settings",
 		"de": "Einstellungen",
 		"ru": "настройки",
@@ -193,6 +194,18 @@ systemDictionary = {
 		"es": "Notificación en minutos antes de la salida",
 		"pl": "Powiadomienie na kilka minut przed odlotem",
 		"zh-cn": "出发前几分钟内通知"
+	},
+	"NumDepartures":{
+		"en": "Departures",
+		"de": "Abfahrten",
+		"ru": "Отправления",
+		"pt": "Partidas",
+		"nl": "Vertrek",
+		"fr": "départs",
+		"it": "Partenze",
+		"es": "Salidas",
+		"pl": "Odloty",
+		"zh-cn": "出港"
 	},
 	"outputid":{
 		"en": "Object for output text",

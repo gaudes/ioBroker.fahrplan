@@ -6,10 +6,9 @@
 ![Number of Installations (latest)](http://iobroker.live/badges/fahrplan-installed.svg)
 ![Number of Installations (stable)](http://iobroker.live/badges/fahrplan-stable.svg)
 [![Dependency Status](https://img.shields.io/david/gaudes/iobroker.fahrplan.svg)](https://david-dm.org/gaudes/iobroker.fahrplan)
+![Test and Release](https://github.com/gaudes/ioBroker.fahrplan/workflows/Test%20and%20Release/badge.svg)
 
 [![NPM](https://nodei.co/npm/iobroker.fahrplan.png?downloads=true)](https://nodei.co/npm/iobroker.fahrplan/)
-
-**Tests:** ![Test and Release](https://github.com/gaudes/ioBroker.fahrplan/workflows/Test%20and%20Release/badge.svg)
 
 ## Fahrplan Adapter für ioBroker
 

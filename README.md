@@ -9,7 +9,7 @@
 
 [![NPM](https://nodei.co/npm/iobroker.fahrplan.png?downloads=true)](https://nodei.co/npm/iobroker.fahrplan/)
 
-**Tests:** ![Test and Release](https://github.com/gaudes/ioBroker.testgaudes/workflows/Test%20and%20Release/badge.svg)
+**Tests:** ![Test and Release](https://github.com/gaudes/ioBroker.fahrplan/workflows/Test%20and%20Release/badge.svg)
 
 ## Fahrplan Adapter für ioBroker
 

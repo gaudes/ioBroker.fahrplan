@@ -1,288 +1,300 @@
 {
-	"common": {
-		"name": "fahrplan",
-		"version": "0.1.12",
-		"news": {
-			"0.0.1": {
-				"en": "initial release",
-				"de": "Erstveröffentlichung",
-				"ru": "изначальный выпуск",
-				"pt": "lançamento inicial",
-				"nl": "Eerste uitgave",
-				"fr": "Première version",
-				"it": "Versione iniziale",
-				"es": "Versión inicial",
-				"pl": "Pierwsze wydanie",
-				"zh-cn": "初始发行"
-			},
-			"0.0.2": {
-				"en": "some code refactorings and renames",
-				"de": "Refaktorisierungen und Umbenennungen im Code",
-				"ru": "некоторые рефакторинги и переименования кода",
-				"pt": "algumas refatorações e renomeações de código",
-				"nl": "enkele code refactorings en hernoemingen",
-				"fr": "quelques refactorisations de code et renommer",
-				"it": "alcuni refactoring del codice e rinomina",
-				"es": "algunas refactorizaciones de código y cambios de nombre",
-				"pl": "niektóre refaktoryzacje kodu i zmiany nazw",
-				"zh-cn": "一些代码重构和重命名"
-			},
-			"0.1.0": {
-				"en": "first public alpha release",
-				"de": "Erste öffentliche Alpha-Version",
-				"ru": "первый публичный альфа-релиз",
-				"pt": "primeiro lançamento alfa público",
-				"nl": "eerste openbare alpha-release",
-				"fr": "première version alpha publique",
-				"it": "prima versione alpha pubblica",
-				"es": "primer lanzamiento alfa público",
-				"pl": "pierwsze publiczne wydanie alfa",
-				"zh-cn": "首次公开发布Alpha版"
-			},
-			"0.1.1": {
-				"en": "code refactoring to classes, more config options for objects and HTML",
-				"de": "Refaktorisierung mit Klassen, mehr Konfigurationsoptionen für Objekte und HTML",
-				"ru": "рефакторинг кода для классов, дополнительные параметры конфигурации для объектов и HTML",
-				"pt": "refatoração de código para classes, mais opções de configuração para objetos e HTML",
-				"nl": "code refactoring naar klassen, meer configuratie-opties voor objecten en HTML",
-				"fr": "refactorisation du code en classes, plus d'options de configuration pour les objets et HTML",
-				"it": "refactoring del codice in classi, più opzioni di configurazione per oggetti e HTML",
-				"es": "refactorización de código a clases, más opciones de configuración para objetos y HTML",
-				"pl": "refaktoryzacja kodu na klasy, więcej opcji konfiguracyjnych dla obiektów i HTML",
-				"zh-cn": "代码重构为类，为对象和HTML提供更多配置选项"
-			},
-			"0.1.2": {
-				"en": "quick fix for ontime",
-				"de": "Fehlerbehebung ontime",
-				"ru": "быстрое решение в срок",
-				"pt": "solução rápida para ontime",
-				"nl": "snelle oplossing voor tijd",
-				"fr": "solution rapide pour le temps",
-				"it": "soluzione rapida per la puntualità",
-				"es": "solución rápida a tiempo",
-				"pl": "szybka naprawa na czas",
-				"zh-cn": "快速准时解决"
-			},
-			"0.1.3": {
-				"en": "correct object types, delay notification",
-				"de": "Korrekte Objekttypen, Verspätungsalarm",
-				"ru": "правильные типы объектов, уведомление о задержке",
-				"pt": "tipos de objetos corretos, notificação de atraso",
-				"nl": "correcte objecttypes, vertragingsmelding",
-				"fr": "types d'objets corrects, notification de retard",
-				"it": "tipi di oggetti corretti, notifica di ritardo",
-				"es": "tipos de objetos correctos, notificación de retraso",
-				"pl": "poprawne typy obiektów, powiadamianie o opóźnieniach",
-				"zh-cn": "正确的对象类型，延迟通知"
-			},
-			"0.1.4": {
-				"en": "fix deletion of unused states and channels",
-				"de": "Löschen unbenutzer Objekte korrigiert",
-				"ru": "исправить удаление неиспользуемых состояний и каналов",
-				"pt": "corrigir a exclusão de estados e canais não utilizados",
-				"nl": "het verwijderen van ongebruikte staten en kanalen repareren",
-				"fr": "correction de la suppression des états et des canaux inutilisés",
-				"it": "correggere l'eliminazione di stati e canali inutilizzati",
-				"es": "corregir la eliminación de estados y canales no utilizados",
-				"pl": "naprawić usuwanie nieużywanych stanów i kanałów",
-				"zh-cn": "修复删除未使用的状态和通道"
-			},
-			"0.1.5": {
-				"en": "Custom names for departure and arrival stations, fix of delay output text",
-				"de": "Eigene Namen für Abfahrts- und Ankunftsbahnhof, Fehlerbehebung Verspätungsmeldung",
-				"ru": "Пользовательские названия станций отправления и прибытия, исправление вывода текста задержки",
-				"pt": "Nomes personalizados para estações de partida e chegada, correção de texto de saída de atraso",
-				"nl": "Aangepaste namen voor vertrek- en aankomststations, fix van vertragingsuitvoertekst",
-				"fr": "Noms personnalisés pour les gares de départ et d'arrivée, correction du texte de sortie de retard",
-				"it": "Nomi personalizzati per le stazioni di partenza e di arrivo, correzione del testo di output del ritardo",
-				"es": "Nombres personalizados para estaciones de salida y llegada, corrección de texto de salida con retraso",
-				"pl": "Niestandardowe nazwy stacji odjazdu i przyjazdu, poprawka tekstu wyjściowego opóźnienia",
-				"zh-cn": "出发站和到达站的自定义名称，延迟输出文本的修复"
-			},
-			"0.1.6": {
-				"en": "Fix of delay output text with custom names of stations",
-				"de": "Fehlerbehebung Verspätungsmeldung mit eigenen Namen der Bahnhöfe",
-				"ru": "Исправление вывода текста задержки с произвольными названиями станций",
-				"pt": "Correção de texto de saída de atraso com nomes personalizados de estações",
-				"nl": "Reparatie van vertragingsuitvoertekst met aangepaste namen van stations",
-				"fr": "Correction du texte de sortie de retard avec des noms personnalisés de stations",
-				"it": "Correzione del ritardo del testo in uscita con nomi personalizzati delle stazioni",
-				"es": "Corrección del texto de salida de retraso con nombres personalizados de estaciones",
-				"pl": "Poprawka tekstu wyjściowego opóźnienia z niestandardowymi nazwami stacji",
-				"zh-cn": "使用工作站的自定义名称修复延迟输出文本"
-			},
-			"0.1.7": {
-				"en": "Translations, fix adapter checker E502, configurable delay time, HTML output for journeys with section information, fix product selection",
-				"de": "Übersetzungen, Adapter-Checker E502 behoben, konfigurierbare Verspätungszeit, HTML-Ausgabe für Reisen mit Informationen zu Reiseabschnitten, Fehlerbehebung Produktauswahl",
-				"ru": "Переводы, исправление адаптера E502, настраиваемое время задержки, вывод HTML для поездок с информацией о разделах, исправление выбора продукта",
-				"pt": "Traduções, verificador de adaptador de correção E502, tempo de atraso configurável, saída HTML para viagens com informações de seção, seleção de produto de correção",
-				"nl": "Vertalingen, fix adapter checker E502, configureerbare vertragingstijd, HTML-uitvoer voor reizen met sectie-informatie, fix productselectie",
-				"fr": "Traductions, corrige le vérificateur d'adaptateur E502, temps de retard configurable, sortie HTML pour les voyages avec informations de section, sélection de produits fixes",
-				"it": "Traduzioni, correzione dell'adattatore di controllo E502, tempo di ritardo configurabile, output HTML per i viaggi con informazioni sulla sezione, correzione della selezione del prodotto",
-				"es": "Traducciones, corrector de adaptadores E502, tiempo de retardo configurable, salida HTML para viajes con información de sección, selección de productos correctos",
-				"pl": "Tłumaczenia, narzędzie do sprawdzania adapterów poprawek E502, konfigurowalny czas opóźnienia, wyjście HTML dla podróży z informacjami o sekcjach, wybór poprawek",
-				"zh-cn": "翻译，修复适配器检查器E502，可配置的延迟时间，带有部分信息的旅程HTML输出，修复产品选择"
-			},
-			"0.1.8": {
-				"en": "Fix creation of channels",
-				"de": "Erzeugung von Kanälen behoben",
-				"ru": "Исправить создание каналов",
-				"pt": "Corrigir a criação de canais",
-				"nl": "Herstel het maken van kanalen",
-				"fr": "Correction de la création de canaux",
-				"it": "Correzione della creazione di canali",
-				"es": "Corregir la creación de canales",
-				"pl": "Napraw tworzenie kanałów",
-				"zh-cn": "修复渠道的创建"
-			},
-			"0.1.9": {
-				"en": "Fix object type for datetime objects",
-				"de": "Objekttypen für Datumswerte korrigiert",
-				"ru": "Исправить тип объекта для объектов datetime",
-				"pt": "Corrigir o tipo de objeto para objetos datetime",
-				"nl": "Fix objecttype voor datetime-objecten",
-				"fr": "Correction du type d'objet pour les objets datetime",
-				"it": "Correzione del tipo di oggetto per gli oggetti datetime",
-				"es": "Corregir el tipo de objeto para objetos de fecha y hora",
-				"pl": "Napraw typ obiektu dla obiektów datetime",
-				"zh-cn": "修复日期时间对象的对象类型"
-			},
-			"0.1.10": {
-				"en": "Fix structure of classes and files, fix language in io-package.json, futher cleanups in code",
-				"de": "Struktur von Klassen und Dateien korrigiert, Sprachein io-package.json korrigiert, weitere Bereinigungen im Code",
-				"ru": "Исправление структуры классов и файлов, исправление языка в io-package.json, дальнейшая очистка кода",
-				"pt": "Corrija a estrutura de classes e arquivos, corrija a linguagem em io-package.json, mais limpezas no código",
-				"nl": "Herstel structuur van klassen en bestanden, herstel taal in io-package.json, verdere opschoning in code",
-				"fr": "Correction de la structure des classes et des fichiers, correction du langage dans io-package.json, nettoyages supplémentaires dans le code",
-				"it": "Correggi la struttura di classi e file, correggi la lingua in io-package.json, ulteriori pulizie nel codice",
-				"es": "Arregle la estructura de clases y archivos, arregle el lenguaje en io-package.json, más limpiezas en el código",
-				"pl": "Napraw strukturę klas i plików, popraw język w io-package.json, dalsze porządki w kodzie",
-				"zh-cn": "修复类和文件的结构，修复io-package.json中的语言，进一步清理代码"
-			},
-			"0.1.11":{
-				"en": "Fix error with timeout",
-				"de": "Fehler mit Timeout behoben",
-				"ru": "Исправить ошибку с таймаутом",
-				"pt": "Corrigir erro com tempo limite",
-				"nl": "Herstel fout met time-out",
-				"fr": "Correction d'une erreur avec timeout",
-				"it": "Risolto errore con timeout",
-				"es": "Corregir error con tiempo de espera",
-				"pl": "Napraw błąd z przekroczeniem limitu czasu",
-				"zh-cn": "修复超时错误"
-			},
-			"0.1.12":{
-				"en": "Fix station search",
-				"de": "Fehler bei Stationssuche korrigiert",
-				"ru": "Исправить поиск станции",
-				"pt": "Corrigir pesquisa de estação",
-				"nl": "Station zoeken repareren",
-				"fr": "Correction de la recherche de stations",
-				"it": "Correggi la ricerca delle stazioni",
-				"es": "Corregir búsqueda de emisoras",
-				"pl": "Napraw wyszukiwanie stacji",
-				"zh-cn": "固定电台搜索"
-			} 
-		},
-		"title": "Fahrplan",
-		"titleLang": {
-			"en": "Fahrplan",
-			"de": "Fahrplan",
-			"ru": "Fahrplan",
-			"pt": "Fahrplan",
-			"nl": "Fahrplan",
-			"fr": "Fahrplan",
-			"it": "Fahrplan",
-			"es": "Fahrplan",
-			"pl": "Fahrplan",
-			"zh-cn": "Fahrplan"
-		},
-		"desc": {
-			"en": "Get connection information of defined routes from HAFAS",
-			"de": "Verbindungsinformationen aus HAFAS zu konfigurierten Route",
-			"ru": "Получение информации о подключении определенных маршрутов от HAFAS",
-			"pt": "Obtenha informações de conexão de rotas definidas de HAFAS",
-			"nl": "Verkrijg verbindingsinformatie van gedefinieerde routes van HAFAS",
-			"fr": "Obtenir les informations de connexion des itinéraires définis à partir de HAFAS",
-			"it": "Ottieni informazioni sulla connessione di percorsi definiti da HAFAS",
-			"es": "Obtenga información de conexión de rutas definidas de HAFAS",
-			"pl": "Uzyskaj informacje o połączeniach zdefiniowanych tras z HAFAS",
-			"zh-cn": "从HAFAS获取已定义路由的连接信息"
-		},
-		"authors": [
-			"Gaudes <ralf@gaudes.net>"
-		],
-		"keywords": [
-			"ioBroker",
-			"template",
-			"Smart Home",
-			"home automation"
-		],
-		"license": "MIT",
-		"platform": "Javascript/Node.js",
-		"main": "main.js",
-		"icon": "fahrplan.png",
-		"enabled": true,
-		"extIcon": "https://raw.githubusercontent.com/gaudes/ioBroker.fahrplan/master/admin/fahrplan.png",
-		"readme": "https://github.com/gaudes/ioBroker.fahrplan/blob/master/README.md",
-		"loglevel": "info",
-		"mode": "daemon",
-		"type": "date-and-time",
-		"compact": true,
-		"connectionType": "cloud",
-		"dataSource": "poll",
-		"materialize": true,
-		"messagebox": true,
-		"dependencies": [
-			{
-				"js-controller": ">=2.0.0"
-			}
-		]
-	},
-	"native": {
-		"Provider": "DB",
-		"CreateHTML": 1,
-		"CreateHTMLJourney": 1,
-		"SaveJSON": true,
-		"SaveObjects": 2,
-		"UpdateInterval": 5,
-		"DelayTime": 1,
-		"routes": [
-			{
-			  "enabled": false,
-			  "station_from": "",
-			  "station_from_name": "",
-			  "station_to": "",
-			  "station_to_name": "",
-			  "station_via": "",
-			  "traintype": [
-				"all"
-			  ],
-			  "transfers": "",
-			  "bicycle": false
-			}
-		],
-		"delays":[
-			{	
-				"enabled": false,
-				"route": "",
-				"departplan": "",
-				"notistart": "",
-				"output_id": "",
-				"days":[
-					"7"
-				],
-				"createobjects": true
-			}
-		],
-		"departuretimetable":[
-			{
-				"enabled": false,
-				"station_from": "",
-			  	"station_from_name": ""
-			}
-		] 
-	},
-	"objects": [],
-	"instanceObjects": []
+    "common": {
+        "name": "fahrplan",
+        "version": "0.2.0",
+        "news": {
+            "0.2.0": {
+                "en": "Include Departure Timetable for configured stations\nSecurity fix for serialize-javascript\nEnhanced error handling and preparation for Sentry\nsetObject replaced with setObjectNotExists\nUpdate Adapter template from 1.25.0 to 1.27.0\nInclude Dependabot with auto-merge\nInclude Dependabot updates\nFix ESLINT errors\nIntegrate Integration and Unit Tests\nRemove Travis & Snyk",
+                "de": "Abflugzeitplan für konfigurierte Stationen einschließen\nSicherheitsupdate für Serialize-Javascript\nVerbesserte Fehlerbehandlung und Vorbereitung für Sentry\nsetObject wurde durch setObjectNotExists ersetzt\nAktualisieren Sie die Adaptervorlage von 1.25.0 auf 1.27.0\nFügen Sie Dependabot in die automatische Zusammenführung ein\nFügen Sie Dependabot-Updates hinzu\nBeheben Sie ESLINT-Fehler\nIntegrieren Sie Integrations- und Unit-Tests\nEntfernen Sie Travis & Snyk",
+                "ru": "Включите расписание отправления для настроенных станций\nИсправление безопасности для serialize-javascript\nУлучшенная обработка ошибок и подготовка к Sentry\nsetObject заменен на setObjectNotExists\nОбновите шаблон адаптера с 1.25.0 до 1.27.0\nВключить Dependabot с автоматическим объединением\nВключите обновления Dependabot\nИсправить ошибки ESLINT\nИнтеграция интеграции и модульных тестов\nУдалить Трэвиса и Сника",
+                "pt": "Incluir cronograma de partida para estações configuradas\nCorreção de segurança para serialize-javascript\nTratamento aprimorado de erros e preparação para Sentry\nsetObject substituído por setObjectNotExists\nAtualizar modelo de adaptador de 1.25.0 para 1.27.0\nIncluir Dependabot com mesclagem automática\nIncluir atualizações Dependabot\nCorrigir erros ESLINT\nIntegração de integração e testes de unidade\nRemover Travis e Snyk",
+                "nl": "Inclusief vertrektijdschema voor geconfigureerde stations\nBeveiligingsfix voor serialize-javascript\nVerbeterde foutafhandeling en voorbereiding voor Sentry\nsetObject vervangen door setObjectNotExists\nUpdate adaptersjabloon van 1.25.0 naar 1.27.0\nVoeg Dependabot toe met automatisch samenvoegen\nVoeg Dependabot-updates toe\nLos ESLINT-fouten op\nIntegreer integratie en unit-tests\nVerwijder Travis & Snyk",
+                "fr": "Inclure l'horaire de départ pour les stations configurées\nCorrectif de sécurité pour serialize-javascript\nGestion des erreurs et préparation améliorées pour Sentry\nsetObject remplacé par setObjectNotExists\nMettre à jour le modèle d'adaptateur de 1.25.0 à 1.27.0\nInclure Dependabot avec la fusion automatique\nInclure les mises à jour de Dependabot\nCorrection des erreurs ESLINT\nIntégrez l'intégration et les tests unitaires\nSupprimer Travis & Snyk",
+                "it": "Includi l'orario di partenza per le stazioni configurate\nCorrezione della sicurezza per serialize-javascript\nMigliore gestione degli errori e preparazione per Sentry\nsetObject sostituito con setObjectNotExists\nAggiorna il modello dell'adattatore da 1.25.0 a 1.27.0\nIncludi Dependabot con l'unione automatica\nIncludi gli aggiornamenti di Dependabot\nCorreggi gli errori ESLINT\nIntegrazione di integrazione e test unitari\nRimuovi Travis & Snyk",
+                "es": "Incluir horario de salida para estaciones configuradas\nCorrección de seguridad para serialize-javascript\nManejo de errores y preparación mejorados para Sentry\nsetObject reemplazado por setObjectNotExists\nActualizar la plantilla del adaptador de 1.25.0 a 1.27.0\nIncluir Dependabot con fusión automática\nIncluir actualizaciones de Dependabot\nCorregir errores de ESLINT\nIntegración de pruebas unitarias y de integración\nEliminar Travis & Snyk",
+                "pl": "Uwzględnij harmonogram odlotów dla skonfigurowanych stacji\nPoprawka bezpieczeństwa dla serialize-javascript\nUlepszona obsługa błędów i przygotowanie do Sentry\nsetObject zastąpiony przez setObjectNotExists\nZaktualizuj szablon adaptera z 1.25.0 do 1.27.0\nDołącz Dependabot z automatycznym scalaniem\nDołącz aktualizacje Dependabot\nNapraw błędy ESLINT\nZintegruj integrację i testy jednostkowe\nUsuń Travis & Snyk",
+                "zh-cn": "包括已配置车站的出发时刻表\n序列化的安全修复程序-javascript\n增强的错误处理和哨兵准备\n将setObject替换为setObjectNotExists\n将适配器模板从1.25.0更新到1.27.0\n包括Dependabot与自动合并\n包括Dependabot更新\n修复ESLINT错误\n集成集成和单元测试\n删除Travis＆Snyk"
+            },
+            "0.0.1": {
+                "en": "initial release",
+                "de": "Erstveröffentlichung",
+                "ru": "изначальный выпуск",
+                "pt": "lançamento inicial",
+                "nl": "Eerste uitgave",
+                "fr": "Première version",
+                "it": "Versione iniziale",
+                "es": "Versión inicial",
+                "pl": "Pierwsze wydanie",
+                "zh-cn": "初始发行"
+            },
+            "0.0.2": {
+                "en": "some code refactorings and renames",
+                "de": "Refaktorisierungen und Umbenennungen im Code",
+                "ru": "некоторые рефакторинги и переименования кода",
+                "pt": "algumas refatorações e renomeações de código",
+                "nl": "enkele code refactorings en hernoemingen",
+                "fr": "quelques refactorisations de code et renommer",
+                "it": "alcuni refactoring del codice e rinomina",
+                "es": "algunas refactorizaciones de código y cambios de nombre",
+                "pl": "niektóre refaktoryzacje kodu i zmiany nazw",
+                "zh-cn": "一些代码重构和重命名"
+            },
+            "0.1.0": {
+                "en": "first public alpha release",
+                "de": "Erste öffentliche Alpha-Version",
+                "ru": "первый публичный альфа-релиз",
+                "pt": "primeiro lançamento alfa público",
+                "nl": "eerste openbare alpha-release",
+                "fr": "première version alpha publique",
+                "it": "prima versione alpha pubblica",
+                "es": "primer lanzamiento alfa público",
+                "pl": "pierwsze publiczne wydanie alfa",
+                "zh-cn": "首次公开发布Alpha版"
+            },
+            "0.1.1": {
+                "en": "code refactoring to classes, more config options for objects and HTML",
+                "de": "Refaktorisierung mit Klassen, mehr Konfigurationsoptionen für Objekte und HTML",
+                "ru": "рефакторинг кода для классов, дополнительные параметры конфигурации для объектов и HTML",
+                "pt": "refatoração de código para classes, mais opções de configuração para objetos e HTML",
+                "nl": "code refactoring naar klassen, meer configuratie-opties voor objecten en HTML",
+                "fr": "refactorisation du code en classes, plus d'options de configuration pour les objets et HTML",
+                "it": "refactoring del codice in classi, più opzioni di configurazione per oggetti e HTML",
+                "es": "refactorización de código a clases, más opciones de configuración para objetos y HTML",
+                "pl": "refaktoryzacja kodu na klasy, więcej opcji konfiguracyjnych dla obiektów i HTML",
+                "zh-cn": "代码重构为类，为对象和HTML提供更多配置选项"
+            },
+            "0.1.2": {
+                "en": "quick fix for ontime",
+                "de": "Fehlerbehebung ontime",
+                "ru": "быстрое решение в срок",
+                "pt": "solução rápida para ontime",
+                "nl": "snelle oplossing voor tijd",
+                "fr": "solution rapide pour le temps",
+                "it": "soluzione rapida per la puntualità",
+                "es": "solución rápida a tiempo",
+                "pl": "szybka naprawa na czas",
+                "zh-cn": "快速准时解决"
+            },
+            "0.1.3": {
+                "en": "correct object types, delay notification",
+                "de": "Korrekte Objekttypen, Verspätungsalarm",
+                "ru": "правильные типы объектов, уведомление о задержке",
+                "pt": "tipos de objetos corretos, notificação de atraso",
+                "nl": "correcte objecttypes, vertragingsmelding",
+                "fr": "types d'objets corrects, notification de retard",
+                "it": "tipi di oggetti corretti, notifica di ritardo",
+                "es": "tipos de objetos correctos, notificación de retraso",
+                "pl": "poprawne typy obiektów, powiadamianie o opóźnieniach",
+                "zh-cn": "正确的对象类型，延迟通知"
+            },
+            "0.1.4": {
+                "en": "fix deletion of unused states and channels",
+                "de": "Löschen unbenutzer Objekte korrigiert",
+                "ru": "исправить удаление неиспользуемых состояний и каналов",
+                "pt": "corrigir a exclusão de estados e canais não utilizados",
+                "nl": "het verwijderen van ongebruikte staten en kanalen repareren",
+                "fr": "correction de la suppression des états et des canaux inutilisés",
+                "it": "correggere l'eliminazione di stati e canali inutilizzati",
+                "es": "corregir la eliminación de estados y canales no utilizados",
+                "pl": "naprawić usuwanie nieużywanych stanów i kanałów",
+                "zh-cn": "修复删除未使用的状态和通道"
+            },
+            "0.1.5": {
+                "en": "Custom names for departure and arrival stations, fix of delay output text",
+                "de": "Eigene Namen für Abfahrts- und Ankunftsbahnhof, Fehlerbehebung Verspätungsmeldung",
+                "ru": "Пользовательские названия станций отправления и прибытия, исправление вывода текста задержки",
+                "pt": "Nomes personalizados para estações de partida e chegada, correção de texto de saída de atraso",
+                "nl": "Aangepaste namen voor vertrek- en aankomststations, fix van vertragingsuitvoertekst",
+                "fr": "Noms personnalisés pour les gares de départ et d'arrivée, correction du texte de sortie de retard",
+                "it": "Nomi personalizzati per le stazioni di partenza e di arrivo, correzione del testo di output del ritardo",
+                "es": "Nombres personalizados para estaciones de salida y llegada, corrección de texto de salida con retraso",
+                "pl": "Niestandardowe nazwy stacji odjazdu i przyjazdu, poprawka tekstu wyjściowego opóźnienia",
+                "zh-cn": "出发站和到达站的自定义名称，延迟输出文本的修复"
+            },
+            "0.1.6": {
+                "en": "Fix of delay output text with custom names of stations",
+                "de": "Fehlerbehebung Verspätungsmeldung mit eigenen Namen der Bahnhöfe",
+                "ru": "Исправление вывода текста задержки с произвольными названиями станций",
+                "pt": "Correção de texto de saída de atraso com nomes personalizados de estações",
+                "nl": "Reparatie van vertragingsuitvoertekst met aangepaste namen van stations",
+                "fr": "Correction du texte de sortie de retard avec des noms personnalisés de stations",
+                "it": "Correzione del ritardo del testo in uscita con nomi personalizzati delle stazioni",
+                "es": "Corrección del texto de salida de retraso con nombres personalizados de estaciones",
+                "pl": "Poprawka tekstu wyjściowego opóźnienia z niestandardowymi nazwami stacji",
+                "zh-cn": "使用工作站的自定义名称修复延迟输出文本"
+            },
+            "0.1.7": {
+                "en": "Translations, fix adapter checker E502, configurable delay time, HTML output for journeys with section information, fix product selection",
+                "de": "Übersetzungen, Adapter-Checker E502 behoben, konfigurierbare Verspätungszeit, HTML-Ausgabe für Reisen mit Informationen zu Reiseabschnitten, Fehlerbehebung Produktauswahl",
+                "ru": "Переводы, исправление адаптера E502, настраиваемое время задержки, вывод HTML для поездок с информацией о разделах, исправление выбора продукта",
+                "pt": "Traduções, verificador de adaptador de correção E502, tempo de atraso configurável, saída HTML para viagens com informações de seção, seleção de produto de correção",
+                "nl": "Vertalingen, fix adapter checker E502, configureerbare vertragingstijd, HTML-uitvoer voor reizen met sectie-informatie, fix productselectie",
+                "fr": "Traductions, corrige le vérificateur d'adaptateur E502, temps de retard configurable, sortie HTML pour les voyages avec informations de section, sélection de produits fixes",
+                "it": "Traduzioni, correzione dell'adattatore di controllo E502, tempo di ritardo configurabile, output HTML per i viaggi con informazioni sulla sezione, correzione della selezione del prodotto",
+                "es": "Traducciones, corrector de adaptadores E502, tiempo de retardo configurable, salida HTML para viajes con información de sección, selección de productos correctos",
+                "pl": "Tłumaczenia, narzędzie do sprawdzania adapterów poprawek E502, konfigurowalny czas opóźnienia, wyjście HTML dla podróży z informacjami o sekcjach, wybór poprawek",
+                "zh-cn": "翻译，修复适配器检查器E502，可配置的延迟时间，带有部分信息的旅程HTML输出，修复产品选择"
+            },
+            "0.1.8": {
+                "en": "Fix creation of channels",
+                "de": "Erzeugung von Kanälen behoben",
+                "ru": "Исправить создание каналов",
+                "pt": "Corrigir a criação de canais",
+                "nl": "Herstel het maken van kanalen",
+                "fr": "Correction de la création de canaux",
+                "it": "Correzione della creazione di canali",
+                "es": "Corregir la creación de canales",
+                "pl": "Napraw tworzenie kanałów",
+                "zh-cn": "修复渠道的创建"
+            },
+            "0.1.9": {
+                "en": "Fix object type for datetime objects",
+                "de": "Objekttypen für Datumswerte korrigiert",
+                "ru": "Исправить тип объекта для объектов datetime",
+                "pt": "Corrigir o tipo de objeto para objetos datetime",
+                "nl": "Fix objecttype voor datetime-objecten",
+                "fr": "Correction du type d'objet pour les objets datetime",
+                "it": "Correzione del tipo di oggetto per gli oggetti datetime",
+                "es": "Corregir el tipo de objeto para objetos de fecha y hora",
+                "pl": "Napraw typ obiektu dla obiektów datetime",
+                "zh-cn": "修复日期时间对象的对象类型"
+            },
+            "0.1.10": {
+                "en": "Fix structure of classes and files, fix language in io-package.json, futher cleanups in code",
+                "de": "Struktur von Klassen und Dateien korrigiert, Sprachein io-package.json korrigiert, weitere Bereinigungen im Code",
+                "ru": "Исправление структуры классов и файлов, исправление языка в io-package.json, дальнейшая очистка кода",
+                "pt": "Corrija a estrutura de classes e arquivos, corrija a linguagem em io-package.json, mais limpezas no código",
+                "nl": "Herstel structuur van klassen en bestanden, herstel taal in io-package.json, verdere opschoning in code",
+                "fr": "Correction de la structure des classes et des fichiers, correction du langage dans io-package.json, nettoyages supplémentaires dans le code",
+                "it": "Correggi la struttura di classi e file, correggi la lingua in io-package.json, ulteriori pulizie nel codice",
+                "es": "Arregle la estructura de clases y archivos, arregle el lenguaje en io-package.json, más limpiezas en el código",
+                "pl": "Napraw strukturę klas i plików, popraw język w io-package.json, dalsze porządki w kodzie",
+                "zh-cn": "修复类和文件的结构，修复io-package.json中的语言，进一步清理代码"
+            },
+            "0.1.11": {
+                "en": "Fix error with timeout",
+                "de": "Fehler mit Timeout behoben",
+                "ru": "Исправить ошибку с таймаутом",
+                "pt": "Corrigir erro com tempo limite",
+                "nl": "Herstel fout met time-out",
+                "fr": "Correction d'une erreur avec timeout",
+                "it": "Risolto errore con timeout",
+                "es": "Corregir error con tiempo de espera",
+                "pl": "Napraw błąd z przekroczeniem limitu czasu",
+                "zh-cn": "修复超时错误"
+            },
+            "0.1.12": {
+                "en": "Fix station search",
+                "de": "Fehler bei Stationssuche korrigiert",
+                "ru": "Исправить поиск станции",
+                "pt": "Corrigir pesquisa de estação",
+                "nl": "Station zoeken repareren",
+                "fr": "Correction de la recherche de stations",
+                "it": "Correggi la ricerca delle stazioni",
+                "es": "Corregir búsqueda de emisoras",
+                "pl": "Napraw wyszukiwanie stacji",
+                "zh-cn": "固定电台搜索"
+            }
+        },
+        "title": "Fahrplan",
+        "titleLang": {
+            "en": "Fahrplan",
+            "de": "Fahrplan",
+            "ru": "Fahrplan",
+            "pt": "Fahrplan",
+            "nl": "Fahrplan",
+            "fr": "Fahrplan",
+            "it": "Fahrplan",
+            "es": "Fahrplan",
+            "pl": "Fahrplan",
+            "zh-cn": "Fahrplan"
+        },
+        "desc": {
+            "en": "Get connection information of defined routes from HAFAS",
+            "de": "Verbindungsinformationen aus HAFAS zu konfigurierten Route",
+            "ru": "Получение информации о подключении определенных маршрутов от HAFAS",
+            "pt": "Obtenha informações de conexão de rotas definidas de HAFAS",
+            "nl": "Verkrijg verbindingsinformatie van gedefinieerde routes van HAFAS",
+            "fr": "Obtenir les informations de connexion des itinéraires définis à partir de HAFAS",
+            "it": "Ottieni informazioni sulla connessione di percorsi definiti da HAFAS",
+            "es": "Obtenga información de conexión de rutas definidas de HAFAS",
+            "pl": "Uzyskaj informacje o połączeniach zdefiniowanych tras z HAFAS",
+            "zh-cn": "从HAFAS获取已定义路由的连接信息"
+        },
+        "authors": [
+            "Gaudes <ralf@gaudes.net>"
+        ],
+        "keywords": [
+            "ioBroker",
+            "template",
+            "Smart Home",
+            "home automation"
+        ],
+        "license": "MIT",
+        "platform": "Javascript/Node.js",
+        "main": "main.js",
+        "icon": "fahrplan.png",
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/gaudes/ioBroker.fahrplan/master/admin/fahrplan.png",
+        "readme": "https://github.com/gaudes/ioBroker.fahrplan/blob/master/README.md",
+        "loglevel": "info",
+        "mode": "daemon",
+        "type": "date-and-time",
+        "compact": true,
+        "connectionType": "cloud",
+        "dataSource": "poll",
+        "materialize": true,
+        "messagebox": true,
+        "dependencies": [
+            {
+                "js-controller": ">=2.0.0"
+            }
+        ]
+    },
+    "native": {
+        "Provider": "DB",
+        "CreateHTML": 1,
+        "CreateHTMLJourney": 1,
+        "SaveJSON": true,
+        "SaveObjects": 2,
+        "UpdateInterval": 5,
+        "DelayTime": 1,
+        "routes": [
+            {
+                "enabled": false,
+                "station_from": "",
+                "station_from_name": "",
+                "station_to": "",
+                "station_to_name": "",
+                "station_via": "",
+                "traintype": [
+                    "all"
+                ],
+                "transfers": "",
+                "bicycle": false
+            }
+        ],
+        "delays": [
+            {
+                "enabled": false,
+                "route": "",
+                "departplan": "",
+                "notistart": "",
+                "output_id": "",
+                "days": [
+                    "7"
+                ],
+                "createobjects": true
+            }
+        ],
+        "departuretimetable": [
+            {
+                "enabled": false,
+                "station_from": "",
+                "station_from_name": ""
+            }
+        ]
+    },
+    "objects": [],
+    "instanceObjects": []
 }

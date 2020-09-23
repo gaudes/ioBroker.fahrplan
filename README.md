@@ -203,7 +203,7 @@ With +-Button new entries can be added to the table.
 	### __WORK IN PROGRESS__
 -->
 
-### __WORK IN PROGRESS__
+### 0.2.0 (2020-09-23)
 * (Gaudes) Include Departure Timetable for configured stations
 * (Gaudes) Security fix for serialize-javascript
 * (Gaudes) Enhanced error handling and preparation for Sentry

@@ -280,6 +280,7 @@ class Fahrplan extends utils.Adapter {
 				DepTT.index = iDepTTIndex;
 				DepTT.enabled = true;
 				DepTT.NumDeps = oDepTT.number_of_departures || 3;
+				DepTT.DepsOffsetMin = oDepTT.timeoffset_of_departures || 0;
 				// Getting Station_From details
 				try{
 					await DepTT.StationFrom.getStation(oDepTT.station_from);

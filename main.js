@@ -279,8 +279,8 @@ class Fahrplan extends utils.Adapter {
 				const DepTT = new fDepTT(this.helper);
 				DepTT.index = iDepTTIndex;
 				DepTT.enabled = true;
-				DepTT.NumDeps = oDepTT.number_of_departures || 3;
-				DepTT.DepsOffsetMin = oDepTT.timeoffset_of_departures || 0;
+				DepTT.NumDeps = parseInt(oDepTT.number_of_departures) || 3;
+				DepTT.DepsOffsetMin = parseInt(oDepTT.timeoffset_of_departures) || 0;
 				// Getting Station_From details
 				try{
 					await DepTT.StationFrom.getStation(oDepTT.station_from);

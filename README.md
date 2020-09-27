@@ -205,6 +205,7 @@ With +-Button new entries can be added to the table.
 
 ### __WORK IN PROGRESS__
 * (Gaudes) Configurable number of departures in departure timetable
+* (Gaudes) Show product in departure timetable
 * (Gaudes) Fix platform handling in departure timetable
 * (Gaudes) Update Adapter template from 1.27.0 to 1.29.0
 

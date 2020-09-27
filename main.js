@@ -22,7 +22,6 @@ let iCounterDepTTEnabled = 0;
 let iCounterDepTTDisabled = 0;
 //#endregion
 
-
 class Fahrplan extends utils.Adapter {
 
 	//#region Constructor
@@ -60,8 +59,10 @@ class Fahrplan extends utils.Adapter {
 			}
 			if (this.config.Provider === "DB" && this.helper !== undefined) {
 				this.helper.hClient = hCreateClient(hDBprofile, "ioBroker.Fahrplan");
+				this.helper.hProfile = hDBprofile;
 			} else if (this.config.Provider === "OEBB" && this.helper !== undefined) {
 				this.helper.hClient = hCreateClient(hOEBBprofile, "ioBroker.Fahrplan");
+				this.helper.hProfile = hOEBBprofile;
 			} else{
 				this.log.error("Unknown provider configured");
 				this.terminate("Unknown provider configured");

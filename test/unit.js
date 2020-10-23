@@ -89,7 +89,7 @@ tests.unit(path.join(__dirname, ".."),{
 				await Route.getRoute(RouteOptions);
 				expect(Route.Journeys[0]).to.deep.property("json");
 				JSONJourney = Route.Journeys[0].json;
-			});
+			}).timeout(5000);
 
 			it("writeBaseStates", async () =>{
 				await Route.writeBaseStates();

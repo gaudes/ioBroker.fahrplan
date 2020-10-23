@@ -271,6 +271,7 @@
                     "all"
                 ],
                 "transfers": "",
+                "number_of_departures": 3,
                 "bicycle": false
             }
         ],

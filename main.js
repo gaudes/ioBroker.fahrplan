@@ -189,6 +189,7 @@ class Fahrplan extends utils.Adapter {
 				this.log.debug(`Route #${iRouteIndex.toString()} from ${oRoute.station_from} to ${oRoute.station_to} running`);
 				// Creating Route Object
 				const Route = new fRoute(this.helper);
+				Route.NumDeps = parseInt(oRoute.number_of_departures) || 3;
 				Route.index = iRouteIndex;
 				Route.enabled = true;
 				// Getting Station_From details
@@ -226,6 +227,7 @@ class Fahrplan extends utils.Adapter {
 				// Searching route
 				try{
 					const RouteOptions = new fRouteOptions(this.helper);
+					RouteOptions.results = Route.NumDeps;
 					RouteOptions.via = oRoute.station_via;
 					if (oRoute.transfers >= 0) RouteOptions.transfers = parseInt(oRoute.transfers);
 					RouteOptions.bycicles = oRoute.bycicles;

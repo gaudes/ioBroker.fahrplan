@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "fahrplan",
-        "version": "0.2.0",
+        "version": "0.2.1",
         "news": {
+            "0.2.1": {
+                "en": "Configurable number of journeys in routes\nConfigurable number of departures in departure timetable\nShow product in departure timetable\nFix platform handling in departure timetable\nInclude Sentry error reporting\nUpdate Adapter template from 1.27.0 to 1.29.0\nInclude Dependabot updates",
+                "de": "Konfigurierbare Anzahl von Fahrten in Routen\nKonfigurierbare Anzahl von Abfahrten im Abfahrtszeitplan\nProdukt im Abfahrtsplan anzeigen\nFestlegung der Plattformhandhabung im Abfahrtszeitplan\nSentry-Fehlerberichterstattung einschließen\nAktualisieren Sie die Adaptervorlage von 1.27.0 auf 1.29.0\nFügen Sie Dependabot-Updates hinzu",
+                "ru": "Настраиваемое количество поездок в маршрутах\nНастраиваемое количество отправлений в расписании отправлений\nПоказать товар в расписании отправления\nИсправить обработку платформы в расписании отправления\nВключить отчет об ошибках Sentry\nОбновите шаблон адаптера с 1.27.0 до 1.29.0\nВключите обновления Dependabot",
+                "pt": "Número configurável de viagens nas rotas\nNúmero configurável de partidas na tabela de horários de partida\nMostrar produto no horário de partida\nCorrigir o manuseio da plataforma no horário de partida\nIncluir relatório de erro do Sentry\nAtualizar modelo de adaptador de 1.27.0 para 1.29.0\nIncluir atualizações Dependabot",
+                "nl": "Configureerbaar aantal ritten in routes\nConfigureerbaar aantal vertrekken in het vertrekschema\nToon product in vertrektijdschema\nPlatformafhandeling in vertrektijdschema vastzetten\nInclusief Sentry-foutrapportage\nUpdate de adaptersjabloon van 1.27.0 naar 1.29.0\nVoeg Dependabot-updates toe",
+                "fr": "Nombre de trajets configurable dans les itinéraires\nNombre de départs configurable dans l'horaire de départ\nAfficher le produit dans l'horaire de départ\nCorrection de la gestion de la plate-forme dans l'horaire de départ\nInclure le rapport d'erreurs Sentry\nMettre à jour le modèle d'adaptateur de 1.27.0 à 1.29.0\nInclure les mises à jour de Dependabot",
+                "it": "Numero configurabile di viaggi nelle rotte\nNumero di partenze configurabile nell'orario di partenza\nMostra il prodotto nell'orario di partenza\nCorreggere la gestione della piattaforma nell'orario di partenza\nIncludere la segnalazione degli errori di Sentry\nAggiorna il modello dell'adattatore da 1.27.0 a 1.29.0\nIncludi gli aggiornamenti di Dependabot",
+                "es": "Número configurable de viajes en rutas\nNúmero configurable de salidas en horario de salida\nMostrar producto en horario de salida\nArreglar el manejo de la plataforma en el horario de salida\nIncluir informes de errores de Sentry\nActualizar la plantilla del adaptador de 1.27.0 a 1.29.0\nIncluir actualizaciones de Dependabot",
+                "pl": "Konfigurowalna liczba przejazdów na trasach\nKonfigurowalna liczba odjazdów w rozkładzie odlotów\nPokaż produkt w rozkładzie odlotów\nNapraw obsługę peronu w rozkładzie lotów\nUwzględnij raportowanie błędów Sentry\nZaktualizuj szablon adaptera z 1.27.0 do 1.29.0\nDołącz aktualizacje Dependabot",
+                "zh-cn": "可配置的路线行程数\n出发时间表中可配置的出发次数\n在出发时间表中显示产品\n修正出发时间表中的平台处理\n包括哨兵错误报告\n将适配器模板从1.27.0更新到1.29.0\n包括Dependabot更新"
+            },
             "0.2.0": {
                 "en": "Include Departure Timetable for configured stations\nSecurity fix for serialize-javascript\nEnhanced error handling and preparation for Sentry\nsetObject replaced with setObjectNotExists\nUpdate Adapter template from 1.25.0 to 1.27.0\nInclude Dependabot with auto-merge\nInclude Dependabot updates\nFix ESLINT errors\nIntegrate Integration and Unit Tests\nRemove Travis & Snyk",
                 "de": "Abflugzeitplan für konfigurierte Stationen einschließen\nSicherheitsupdate für Serialize-Javascript\nVerbesserte Fehlerbehandlung und Vorbereitung für Sentry\nsetObject wurde durch setObjectNotExists ersetzt\nAktualisieren Sie die Adaptervorlage von 1.25.0 auf 1.27.0\nFügen Sie Dependabot in die automatische Zusammenführung ein\nFügen Sie Dependabot-Updates hinzu\nBeheben Sie ESLINT-Fehler\nIntegrieren Sie Integrations- und Unit-Tests\nEntfernen Sie Travis & Snyk",
@@ -250,12 +262,15 @@
                 "js-controller": ">=2.0.0"
             }
         ],
-        "plugins":{
-            "sentry":{
+        "plugins": {
+            "sentry": {
                 "dsn": "https://e1304da9bf394069b7850f7e334b4657@sentry.iobroker.net/105",
-                "errorBlacklist": ["SyntaxError", "HANDLED"]
+                "errorBlacklist": [
+                    "SyntaxError",
+                    "HANDLED"
+                ]
             }
-        } 
+        }
     },
     "native": {
         "Provider": "DB",

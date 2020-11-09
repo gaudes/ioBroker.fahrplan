@@ -213,7 +213,7 @@ With +-Button new entries can be added to the table.
 	### __WORK IN PROGRESS__
 -->
 
-### __WORK IN PROGRESS__
+### 0.2.1 (2020-11-09)
 * (Gaudes) Configurable number of journeys in routes
 * (Gaudes) Configurable number of departures in departure timetable
 * (Gaudes) Show product in departure timetable

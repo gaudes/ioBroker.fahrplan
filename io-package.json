@@ -249,7 +249,13 @@
             {
                 "js-controller": ">=2.0.0"
             }
-        ]
+        ],
+        "plugins":{
+            "sentry":{
+                "dsn": "https://e1304da9bf394069b7850f7e334b4657@sentry.iobroker.net/105",
+                "errorBlacklist": ["SyntaxError", "HANDLED"]
+            }
+        } 
     },
     "native": {
         "Provider": "DB",
@@ -259,6 +265,7 @@
         "SaveObjects": 2,
         "UpdateInterval": 5,
         "DelayTime": 1,
+        "NoSentry": false,
         "routes": [
             {
                 "enabled": false,

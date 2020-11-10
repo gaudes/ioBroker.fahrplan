@@ -184,7 +184,9 @@ class Fahrplan extends utils.Adapter {
 	*/
 	async getRoute(oRoute, iRouteIndex) {
 		try{
-			if (oRoute.enabled == true){
+			if ((oRoute.station_from > 0 && oRoute.station_to > 0) === false){
+				this.log.error(`Unknown Station defined in Route #${iRouteIndex}`);
+			} else if (oRoute.enabled == true){
 				iCounterRoutesEnabled++;
 				this.log.debug(`Route #${iRouteIndex.toString()} from ${oRoute.station_from} to ${oRoute.station_to} running`);
 				// Creating Route Object

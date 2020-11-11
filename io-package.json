@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "fahrplan",
-        "version": "0.2.1",
+        "version": "0.2.2",
         "news": {
+            "0.2.2": {
+                "en": "Fixing some errors\nIntegrating Duration for Journey",
+                "de": "Einige Fehler beheben\nIntegrationsdauer für die Reise",
+                "ru": "Исправление некоторых ошибок\nИнтегрирование продолжительности путешествия",
+                "pt": "Corrigindo alguns erros\nIntegrando Duração para Viagem",
+                "nl": "Enkele fouten verhelpen\nDuur voor reis integreren",
+                "fr": "Correction de certaines erreurs\nIntégration de la durée pour le voyage",
+                "it": "Correzione di alcuni errori\nIntegrazione della durata per il viaggio",
+                "es": "Arreglando algunos errores\nIntegración de la duración del viaje",
+                "pl": "Naprawianie niektórych błędów\nIntegracja czasu trwania podróży",
+                "zh-cn": "修正一些错误\n旅程总时长"
+            },
             "0.2.1": {
                 "en": "Configurable number of journeys in routes\nConfigurable number of departures in departure timetable\nShow product in departure timetable\nFix platform handling in departure timetable\nInclude Sentry error reporting\nUpdate Adapter template from 1.27.0 to 1.29.0\nInclude Dependabot updates",
                 "de": "Konfigurierbare Anzahl von Fahrten in Routen\nKonfigurierbare Anzahl von Abfahrten im Abfahrtszeitplan\nProdukt im Abfahrtsplan anzeigen\nFestlegung der Plattformhandhabung im Abfahrtszeitplan\nSentry-Fehlerberichterstattung einschließen\nAktualisieren Sie die Adaptervorlage von 1.27.0 auf 1.29.0\nFügen Sie Dependabot-Updates hinzu",

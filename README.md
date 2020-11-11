@@ -215,6 +215,7 @@ With +-Button new entries can be added to the table.
 
 ### __WORK IN PROGRESS__
 * (Gaudes) Fixing some errors
+* (Gaudes) Integrating Duration for Journey
 
 ### 0.2.1 (2020-11-09)
 * (Gaudes) Configurable number of journeys in routes

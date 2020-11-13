@@ -280,7 +280,8 @@
                 "errorBlacklist": [
                     "SyntaxError",
                     "HANDLED",
-                    "HCI Service: request failed"
+                    "HCI Service: request failed",
+                    "EAI_AGAIN"
                 ]
             }
         }

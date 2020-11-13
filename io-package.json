@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "fahrplan",
-        "version": "0.2.2",
+        "version": "0.2.3",
         "news": {
+            "0.2.3": {
+                "en": "Verifying configuration\nFixing some more errors",
+                "de": "Konfiguration überprüfen\nEinige weitere Fehler beheben",
+                "ru": "Проверка конфигурации\nИсправляем еще несколько ошибок",
+                "pt": "Verificando a configuração\nCorrigindo mais alguns erros",
+                "nl": "Configuratie verifiëren\nNog wat fouten oplossen",
+                "fr": "Vérification de la configuration\nCorrection d'autres erreurs",
+                "it": "Verifica della configurazione\nCorrezione di altri errori",
+                "es": "Verificando la configuración\nArreglando algunos errores más",
+                "pl": "Weryfikacja konfiguracji\nNaprawianie kolejnych błędów",
+                "zh-cn": "验证配置\n解决更多错误"
+            },
             "0.2.2": {
                 "en": "Fixing some errors\nIntegrating Duration for Journey",
                 "de": "Einige Fehler beheben\nIntegrationsdauer für die Reise",

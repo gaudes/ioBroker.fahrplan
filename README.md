@@ -213,7 +213,7 @@ With +-Button new entries can be added to the table.
 	### __WORK IN PROGRESS__
 -->
 
-### __WORK IN PROGRESS__
+### 0.2.3 (2020-11-13)
 * (Gaudes) Verifying configuration
 * (Gaudes) Fixing some more errors
 

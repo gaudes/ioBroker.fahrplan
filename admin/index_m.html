@@ -72,7 +72,7 @@
 			$('#getStation').on('click', function () {
 				var $getStation = $('#getStation');
                 if (!active) {
-					showToast(_('Please activate instance'));
+					showToast(_('FahrplanConfigErrorInstance'));
                     return;
 				}
 				$("#tbodyid").empty();
@@ -127,7 +127,14 @@
 			obj.departuretimetable = table2values("departuretimetable");
 			await sendTo(adapter + "." + instance, 'verifyConfig', obj, await function (result) {
 					if (result.result !== true){
-						alert(result.msg);
+						// showToast(null, result.msg, result.tableid, result.value);
+						showToast(0, _('FahrplanConfigErrorHeader'), "", 10000, true);
+						showToast(0, "&nbsp;", "", 10000, true);
+						result.msg.forEach(element =>{
+							showToast(0, _(element.text, element.arg1, element.arg2, element.arg3), "", 10000, true);
+						});
+						showToast(0, "&nbsp;", "", 10000, true);
+						showToast(0, _('FahrplanConfigErrorFooter'), "", 10000, true);
 						return;
 					}else{
 						callback(obj);

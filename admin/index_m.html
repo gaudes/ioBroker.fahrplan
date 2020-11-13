@@ -101,7 +101,7 @@
 		}
 
 		// This will be called by the admin adapter when the user presses the save button
-		function save(callback) {
+		async function save(callback) {
 			$('#StationSearch').val('');
 			var obj = {};
 			$('.value').each(function () {
@@ -125,7 +125,14 @@
 			obj.routes = table2values("routes");
 			obj.delays = table2values("delays");
 			obj.departuretimetable = table2values("departuretimetable");
-			callback(obj);
+			await sendTo(adapter + "." + instance, 'verifyConfig', obj, await function (result) {
+					if (result.result !== true){
+						alert(result.msg);
+						return;
+					}else{
+						callback(obj);
+					} 
+				});	
 		}
 
 		function setProvider(){

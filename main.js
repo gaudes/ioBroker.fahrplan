@@ -5,6 +5,7 @@ const fHelpers = require("./lib/helper.js");
 const fRoute = require("./lib/route.js");
 const fRouteOptions = require("./lib/routeoptions.js");
 const fDepTT = require("./lib/deptt.js");
+const fStation = require("./lib/station.js");
 // const fStation = require("./lib/station.js");
 
 //#region Global Variables
@@ -88,6 +89,10 @@ class Fahrplan extends utils.Adapter {
 					// @ts-ignore Provider and message always in message
 					const jSearchResult = await this.helper.getStation(obj.message.provider, obj.message.station);
 					if (obj.callback) this.sendTo(obj.from, obj.command, jSearchResult, obj.callback);
+				} else if(obj.command === "verifyConfig"){
+					// @ts-ignore Provider and message always in message
+					const ConfigVerify = await this.helper.verifyConfig(obj.message);
+					if (obj.callback) this.sendTo(obj.from, obj.command, ConfigVerify, obj.callback);
 				}
 			}
 		}catch(e){
@@ -184,9 +189,21 @@ class Fahrplan extends utils.Adapter {
 	*/
 	async getRoute(oRoute, iRouteIndex) {
 		try{
-			if ((oRoute.station_from > 0 && oRoute.station_to > 0) === false){
-				this.log.error(`Unknown Station defined in Route #${iRouteIndex}`);
-			} else if (oRoute.enabled == true){
+			if (oRoute.enabled == true){
+				const Station = new fStation(this.helper);
+				if (oRoute.station_from === "0" || await Station.verifyStation(oRoute.station_from) !== true || oRoute.station_to === "0" || await Station.verifyStation(oRoute.station_to) !== true){
+					this.log.error(`Unknown Station defined in Route #${iRouteIndex}`);
+					return;
+				}
+				if (oRoute.station_via !== ""){
+					if (await Station.verifyStation(oRoute.station_from) !== true){
+						this.log.error(`Unknown Station defined in Route #${iRouteIndex}`);
+						return;
+					}
+				}
+				if (oRoute.station_via === "0"){
+					oRoute.station_via = "";
+				}
 				iCounterRoutesEnabled++;
 				this.log.debug(`Route #${iRouteIndex.toString()} from ${oRoute.station_from} to ${oRoute.station_to} running`);
 				// Creating Route Object
@@ -279,6 +296,11 @@ class Fahrplan extends utils.Adapter {
 	async getDepartureTimetable(oDepTT, iDepTTIndex) {
 		try{
 			if (oDepTT.enabled == true){
+				const Station = new fStation(this.helper);
+				if (oDepTT.station_from === "0" || await Station.verifyStation(oDepTT.station_from) === false){
+					this.log.error(`Unknown Station defined in Departure Timetable #${iDepTTIndex}`);
+					return;
+				}
 				iCounterDepTTEnabled++;
 				// Creating Route Object
 				const DepTT = new fDepTT(this.helper);

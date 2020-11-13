@@ -279,7 +279,8 @@
                 "dsn": "https://e1304da9bf394069b7850f7e334b4657@sentry.iobroker.net/105",
                 "errorBlacklist": [
                     "SyntaxError",
-                    "HANDLED"
+                    "HANDLED",
+                    "HCI Service: request failed"
                 ]
             }
         }

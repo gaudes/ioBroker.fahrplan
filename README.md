@@ -213,6 +213,10 @@ With +-Button new entries can be added to the table.
 	### __WORK IN PROGRESS__
 -->
 
+### __WORK IN PROGRESS__
+* (Gaudes) Verifying configuration
+* (Gaudes) Fixing some more errors
+
 ### 0.2.2 (2020-11-11)
 * (Gaudes) Fixing some errors
 * (Gaudes) Integrating Duration for Journey

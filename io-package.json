@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "fahrplan",
-        "version": "0.2.3",
+        "version": "0.2.4",
         "news": {
+            "0.2.4": {
+                "en": "Fixing connection errors to HAFAS\nSending more details about errors in Sentry",
+                "de": "Verbindungsfehler zu HAFAS beheben\nSenden weiterer Details zu Fehlern in Sentry",
+                "ru": "Исправление ошибок подключения к HAFAS\nОтправка более подробной информации об ошибках в Sentry",
+                "pt": "Corrigindo erros de conexão para HAFAS\nEnviando mais detalhes sobre erros no Sentry",
+                "nl": "Verbindingsfouten met HAFAS\nMeer details over fouten in Sentry verzenden",
+                "fr": "Correction des erreurs de connexion à HAFAS\nEnvoi de plus de détails sur les erreurs dans Sentry",
+                "it": "Correzione degli errori di connessione a HAFAS\nInvio di ulteriori dettagli sugli errori in Sentry",
+                "es": "Arreglando errores de conexión a HAFAS\nEnvío de más detalles sobre errores en Sentry",
+                "pl": "Naprawianie błędów połączenia z HAFAS\nWysyłanie szczegółowych informacji o błędach w Sentry",
+                "zh-cn": "修复HAFAS的连接错误\n发送有关Sentry中错误的更多详细信息"
+            },
             "0.2.3": {
                 "en": "Verifying configuration\nFixing some more errors",
                 "de": "Konfiguration überprüfen\nEinige weitere Fehler beheben",

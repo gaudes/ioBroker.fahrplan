@@ -85,7 +85,7 @@ class Fahrplan extends utils.Adapter {
 	async onMessage(obj) {
 		try{
 			if (typeof obj === "object" && obj.message) {
-				if (obj.command === "getStations") {
+				if (obj.command === "getStations" && obj.message["station"] && obj.message["station"].length > 0) {
 					// @ts-ignore Provider and message always in message
 					const jSearchResult = await this.helper.getStation(obj.message.provider, obj.message.station);
 					if (obj.callback) this.sendTo(obj.from, obj.command, jSearchResult, obj.callback);

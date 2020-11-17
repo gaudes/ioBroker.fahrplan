@@ -131,6 +131,8 @@ jobs:
                   node-version: ${{ matrix.node-version }}
 
             - name: Extract the version and commit body from the tag
+              env:
+                  ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
               # The body may be multiline, therefore newlines and % need to be escaped
               run: |
                   VERSION="${{ github.ref }}"

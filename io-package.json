@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "fahrplan",
-        "version": "0.2.4",
+        "version": "0.2.5",
         "news": {
+            "0.2.5": {
+                "en": "Adding more information to error in deleting unneeded channels",
+                "de": "Hinzufügen weiterer Informationen zum Fehler beim Löschen nicht benötigter Kanäle",
+                "ru": "Добавление дополнительной информации к ошибке при удалении ненужных каналов",
+                "pt": "Adicionando mais informações ao erro na exclusão de canais desnecessários",
+                "nl": "Meer informatie toevoegen aan fout bij het verwijderen van onnodige kanalen",
+                "fr": "Ajout d'informations supplémentaires à l'erreur de suppression des chaînes inutiles",
+                "it": "Aggiunta di ulteriori informazioni all'errore nell'eliminazione dei canali non necessari",
+                "es": "Agregar más información al error al eliminar canales innecesarios",
+                "pl": "Dodanie większej ilości informacji do błędu przy usuwaniu niepotrzebnych kanałów",
+                "zh-cn": "在删除不需要的频道时将更多信息添加到错误中"
+            },
             "0.2.4": {
                 "en": "Fixing connection errors to HAFAS\nSending more details about errors in Sentry",
                 "de": "Verbindungsfehler zu HAFAS beheben\nSenden weiterer Details zu Fehlern in Sentry",
@@ -230,18 +242,6 @@
                 "es": "Corregir error con tiempo de espera",
                 "pl": "Napraw błąd z przekroczeniem limitu czasu",
                 "zh-cn": "修复超时错误"
-            },
-            "0.1.12": {
-                "en": "Fix station search",
-                "de": "Fehler bei Stationssuche korrigiert",
-                "ru": "Исправить поиск станции",
-                "pt": "Corrigir pesquisa de estação",
-                "nl": "Station zoeken repareren",
-                "fr": "Correction de la recherche de stations",
-                "it": "Correggi la ricerca delle stazioni",
-                "es": "Corregir búsqueda de emisoras",
-                "pl": "Napraw wyszukiwanie stacji",
-                "zh-cn": "固定电台搜索"
             }
         },
         "title": "Fahrplan",

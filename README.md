@@ -212,6 +212,11 @@ With +-Button new entries can be added to the table.
 	Placeholder for the next version (at the beginning of the line):
 	### __WORK IN PROGRESS__
 -->
+
+### __WORK IN PROGRESS__
+* (Gaudes) Fixing connection error to HAFAS
+* (Gaudes) Fixing verifying config
+
 ### 0.2.5 (2020-11-23)
 * (Gaudes) Adding more information to error in deleting unneeded channels
 

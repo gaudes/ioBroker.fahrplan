@@ -125,7 +125,12 @@
 			obj.routes = table2values("routes");
 			obj.delays = table2values("delays");
 			obj.departuretimetable = table2values("departuretimetable");
+			if (!active) {
+				showToast(_('FahrplanConfigErrorInstance'));
+				return;
+			}
 			await sendTo(adapter + "." + instance, 'verifyConfig', obj, await function (result) {
+					console.log(JSON.stringify(result));
 					if (result.result !== true){
 						// showToast(null, result.msg, result.tableid, result.value);
 						showToast(0, _('FahrplanConfigErrorHeader'), "", 10000, true);

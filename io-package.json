@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "fahrplan",
-        "version": "0.2.6",
+        "version": "0.2.7",
         "news": {
+            "0.2.7": {
+                "en": "Fixing connection error to HAFAS",
+                "de": "Verbindungsfehler zu HAFAS behoben",
+                "ru": "Исправление ошибки подключения к HAFAS",
+                "pt": "Corrigindo erro de conexão para HAFAS",
+                "nl": "Verbindingsfout met HAFAS verholpen",
+                "fr": "Correction d'une erreur de connexion à HAFAS",
+                "it": "Correzione dell'errore di connessione a HAFAS",
+                "es": "Arreglando el error de conexión a HAFAS",
+                "pl": "Naprawianie błędu połączenia z HAFAS",
+                "zh-cn": "修复HAFAS的连接错误"
+            },
             "0.2.6": {
                 "en": "Fixing connection error to HAFAS\nFixing verifying config",
                 "de": "Verbindungsfehler zu HAFAS behoben\nKorrektur der Überprüfung der Konfiguration",
@@ -230,18 +242,6 @@
                 "es": "Corregir el tipo de objeto para objetos de fecha y hora",
                 "pl": "Napraw typ obiektu dla obiektów datetime",
                 "zh-cn": "修复日期时间对象的对象类型"
-            },
-            "0.1.10": {
-                "en": "Fix structure of classes and files, fix language in io-package.json, futher cleanups in code",
-                "de": "Struktur von Klassen und Dateien korrigiert, Sprachein io-package.json korrigiert, weitere Bereinigungen im Code",
-                "ru": "Исправление структуры классов и файлов, исправление языка в io-package.json, дальнейшая очистка кода",
-                "pt": "Corrija a estrutura de classes e arquivos, corrija a linguagem em io-package.json, mais limpezas no código",
-                "nl": "Herstel structuur van klassen en bestanden, herstel taal in io-package.json, verdere opschoning in code",
-                "fr": "Correction de la structure des classes et des fichiers, correction du langage dans io-package.json, nettoyages supplémentaires dans le code",
-                "it": "Correggi la struttura di classi e file, correggi la lingua in io-package.json, ulteriori pulizie nel codice",
-                "es": "Arregle la estructura de clases y archivos, arregle el lenguaje en io-package.json, más limpiezas en el código",
-                "pl": "Napraw strukturę klas i plików, popraw język w io-package.json, dalsze porządki w kodzie",
-                "zh-cn": "修复类和文件的结构，修复io-package.json中的语言，进一步清理代码"
             }
         },
         "title": "Fahrplan",

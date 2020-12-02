@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "fahrplan",
-        "version": "0.2.7",
+        "version": "0.2.8",
         "news": {
+            "0.2.8": {
+                "en": "Fixing connection error to HAFAS",
+                "de": "Verbindungsfehler zu HAFAS behoben",
+                "ru": "Исправление ошибки подключения к HAFAS",
+                "pt": "Corrigindo erro de conexão para HAFAS",
+                "nl": "Verbindingsfout met HAFAS verholpen",
+                "fr": "Correction d'une erreur de connexion à HAFAS",
+                "it": "Correzione dell'errore di connessione a HAFAS",
+                "es": "Arreglando el error de conexión a HAFAS",
+                "pl": "Naprawianie błędu połączenia z HAFAS",
+                "zh-cn": "修复HAFAS的连接错误"
+            },
             "0.2.7": {
                 "en": "Fixing connection error to HAFAS",
                 "de": "Verbindungsfehler zu HAFAS behoben",
@@ -230,18 +242,6 @@
                 "es": "Corregir la creación de canales",
                 "pl": "Napraw tworzenie kanałów",
                 "zh-cn": "修复渠道的创建"
-            },
-            "0.1.9": {
-                "en": "Fix object type for datetime objects",
-                "de": "Objekttypen für Datumswerte korrigiert",
-                "ru": "Исправить тип объекта для объектов datetime",
-                "pt": "Corrigir o tipo de objeto para objetos datetime",
-                "nl": "Fix objecttype voor datetime-objecten",
-                "fr": "Correction du type d'objet pour les objets datetime",
-                "it": "Correzione del tipo di oggetto per gli oggetti datetime",
-                "es": "Corregir el tipo de objeto para objetos de fecha y hora",
-                "pl": "Napraw typ obiektu dla obiektów datetime",
-                "zh-cn": "修复日期时间对象的对象类型"
             }
         },
         "title": "Fahrplan",

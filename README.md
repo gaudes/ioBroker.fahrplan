@@ -213,6 +213,9 @@ With +-Button new entries can be added to the table.
 	### __WORK IN PROGRESS__
 -->
 
+### __WORK IN PROGRESS__
+* (Gaudes) First stable release
+
 ### 0.2.8 (2020-12-02)
 * (Gaudes) Fixing connection error to HAFAS
 

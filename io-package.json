@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "fahrplan",
-        "version": "0.2.8",
+        "version": "1.0.0",
         "news": {
+            "1.0.0": {
+                "en": "First stable release",
+                "de": "Erste stabile Version",
+                "ru": "Первый стабильный выпуск",
+                "pt": "Primeira versão estável",
+                "nl": "Eerste stabiele release",
+                "fr": "Première version stable",
+                "it": "Prima versione stabile",
+                "es": "Primera versión estable",
+                "pl": "Pierwsza stabilna wersja",
+                "zh-cn": "首次稳定发布"
+            },
             "0.2.8": {
                 "en": "Fixing connection error to HAFAS",
                 "de": "Verbindungsfehler zu HAFAS behoben",
@@ -230,18 +242,6 @@
                 "es": "Traducciones, corrector de adaptadores E502, tiempo de retardo configurable, salida HTML para viajes con información de sección, selección de productos correctos",
                 "pl": "Tłumaczenia, narzędzie do sprawdzania adapterów poprawek E502, konfigurowalny czas opóźnienia, wyjście HTML dla podróży z informacjami o sekcjach, wybór poprawek",
                 "zh-cn": "翻译，修复适配器检查器E502，可配置的延迟时间，带有部分信息的旅程HTML输出，修复产品选择"
-            },
-            "0.1.8": {
-                "en": "Fix creation of channels",
-                "de": "Erzeugung von Kanälen behoben",
-                "ru": "Исправить создание каналов",
-                "pt": "Corrigir a criação de canais",
-                "nl": "Herstel het maken van kanalen",
-                "fr": "Correction de la création de canaux",
-                "it": "Correzione della creazione di canali",
-                "es": "Corregir la creación de canales",
-                "pl": "Napraw tworzenie kanałów",
-                "zh-cn": "修复渠道的创建"
             }
         },
         "title": "Fahrplan",

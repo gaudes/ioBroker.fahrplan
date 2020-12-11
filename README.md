@@ -213,6 +213,9 @@ With +-Button new entries can be added to the table.
 	### __WORK IN PROGRESS__
 -->
 
+### __WORK IN PROGRESS__
+* (Gaudes) Fixing "Gateway Timeout" from HAFAS
+
 ### 1.0.0 (2020-12-09)
 * (Gaudes) First stable release
 

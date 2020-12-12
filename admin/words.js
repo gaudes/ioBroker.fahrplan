@@ -159,6 +159,18 @@ systemDictionary = {
 		"pl": "<center>Zmiany nie zostały zapisane.<br/>Rozwiąż problemy i zapisz ponownie.</center>",
 		"zh-cn": "<center>更改未保存。请解决问题，然后再次保存。</center>"
 	},
+	"FahrplanConfigErrorStationDuplicate":{
+		"en": "<center>Identical Start-Station (From) and Destination-Station (To) %s in Route %s</center>",
+		"de": "<center>Identische Startstation (Von) und Zielstation (Nach) %s in Route %s</center>",
+		"ru": "Идентичные начальная станция (от) и конечная станция (до) %s  в маршруте %s",
+		"pt": "Estação de partida (de) e estação de destino (para) idênticas %s  na rota %s",
+		"nl": "Identiek startstation (van) en bestemmingsstation (naar) %s  in route %s",
+		"fr": "Station de départ (De) et Station de destination (A) identiques %s  dans l'itinéraire %s",
+		"it": "Stazioni di partenza (da) e di destinazione (a) identiche %s  nel percorso %s",
+		"es": "Estación de inicio (desde) y estación de destino (hasta) %s  idénticas en la ruta %s",
+		"pl": "Identyczna stacja początkowa (z) i stacja docelowa (do) %s  na trasie %s",
+		"zh-cn": "路线％s中的相同起点站（从）和终点站（至）%s"
+	},
 	"FahrplanConfigErrorStationFrom":{
 		"en": "<center>Unknown Start-Station (From) %s in Route %s</center>",
 		"de": "<center>Unbekannte Startstation (Von) %s in Route %s</center>",

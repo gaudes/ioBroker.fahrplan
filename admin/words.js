@@ -159,17 +159,29 @@ systemDictionary = {
 		"pl": "<center>Zmiany nie zostały zapisane.<br/>Rozwiąż problemy i zapisz ponownie.</center>",
 		"zh-cn": "<center>更改未保存。请解决问题，然后再次保存。</center>"
 	},
+	"FahrplanConfigErrorNoProduct":{
+		"en": "<center>No vehicle selected in Route %s</center>",
+		"de": "<center>Kein Verkehrsmittel in Route %s  ausgewählt</center>",
+		"ru": "<center>На маршруте %s  не выбран автомобиль</center>",
+		"pt": "<center>Nenhum veículo selecionado na Rota %s</center>",
+		"nl": "<center>Geen voertuig geselecteerd in Route %s</center>",
+		"fr": "<center>Aucun véhicule sélectionné dans l'itinéraire %s</center>",
+		"it": "<center>Nessun veicolo selezionato nel percorso %s</center>",
+		"es": "<center>Ningún vehículo seleccionado en la ruta %s</center>",
+		"pl": "<center>Żaden pojazd nie został wybrany na trasie %s</center>",
+		"zh-cn": "<center>在路线％s中未选择车辆</center>"
+	},
 	"FahrplanConfigErrorStationDuplicate":{
 		"en": "<center>Identical Start-Station (From) and Destination-Station (To) %s in Route %s</center>",
 		"de": "<center>Identische Startstation (Von) und Zielstation (Nach) %s in Route %s</center>",
-		"ru": "Идентичные начальная станция (от) и конечная станция (до) %s  в маршруте %s",
-		"pt": "Estação de partida (de) e estação de destino (para) idênticas %s  na rota %s",
-		"nl": "Identiek startstation (van) en bestemmingsstation (naar) %s  in route %s",
-		"fr": "Station de départ (De) et Station de destination (A) identiques %s  dans l'itinéraire %s",
-		"it": "Stazioni di partenza (da) e di destinazione (a) identiche %s  nel percorso %s",
-		"es": "Estación de inicio (desde) y estación de destino (hasta) %s  idénticas en la ruta %s",
-		"pl": "Identyczna stacja początkowa (z) i stacja docelowa (do) %s  na trasie %s",
-		"zh-cn": "路线％s中的相同起点站（从）和终点站（至）%s"
+		"ru": "<center>Идентичные начальная станция (от) и конечная станция (до) %s  в маршруте %s</center>",
+		"pt": "<center>Estação de partida (de) e estação de destino (para) idênticas %s  na rota %s</center>",
+		"nl": "<center>Identiek startstation (van) en bestemmingsstation (naar) %s  in route %s</center>",
+		"fr": "<center>Station de départ (De) et Station de destination (A) identiques %s  dans l'itinéraire %s</center>",
+		"it": "<center>Stazioni di partenza (da) e di destinazione (a) identiche %s  nel percorso %s</center>",
+		"es": "<center>Estación de inicio (desde) y estación de destino (hasta) %s  idénticas en la ruta %s</center>",
+		"pl": "<center>Identyczna stacja początkowa (z) i stacja docelowa (do) %s  na trasie %s</center>",
+		"zh-cn": "<center>路线％s中的相同起点站（从）和终点站（至）</center>"
 	},
 	"FahrplanConfigErrorStationFrom":{
 		"en": "<center>Unknown Start-Station (From) %s in Route %s</center>",

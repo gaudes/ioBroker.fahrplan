@@ -191,7 +191,7 @@ class Fahrplan extends utils.Adapter {
 		try{
 			if (oRoute.enabled == true){
 				const Station = new fStation(this.helper);
-				if (oRoute.station_from === "0" || await Station.verifyStation(oRoute.station_from) !== true || oRoute.station_to === "0" || await Station.verifyStation(oRoute.station_to) !== true){
+				if (oRoute.station_from === "0" || oRoute.station_from === "" || await Station.verifyStation(oRoute.station_from) !== true || oRoute.station_to === "0" || element.station_to === "" || await Station.verifyStation(oRoute.station_to) !== true){
 					this.log.error(`Unknown Station defined in Route #${iRouteIndex}`);
 					return;
 				}
@@ -203,6 +203,14 @@ class Fahrplan extends utils.Adapter {
 				}
 				if (oRoute.station_via === "0"){
 					oRoute.station_via = "";
+				}
+				if (oRoute.station_from === oRoute.station_to){
+					this.log.error(`Identical Start and Destination defined in Route #${iRouteIndex}`);
+					return;
+				}
+				if (! (oRoute.traintype.length > 0) ){
+					this.log.error(`No vehicle defined in Route #${iRouteIndex}`);
+					return;
 				}
 				iCounterRoutesEnabled++;
 				this.log.debug(`Route #${iRouteIndex.toString()} from ${oRoute.station_from} to ${oRoute.station_to} running`);

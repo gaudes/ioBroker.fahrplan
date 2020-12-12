@@ -191,7 +191,7 @@ class Fahrplan extends utils.Adapter {
 		try{
 			if (oRoute.enabled == true){
 				const Station = new fStation(this.helper);
-				if (oRoute.station_from === "0" || oRoute.station_from === "" || await Station.verifyStation(oRoute.station_from) !== true || oRoute.station_to === "0" || element.station_to === "" || await Station.verifyStation(oRoute.station_to) !== true){
+				if (oRoute.station_from === "0" || oRoute.station_from === "" || await Station.verifyStation(oRoute.station_from) !== true || oRoute.station_to === "0" || oRoute.station_to === "" || await Station.verifyStation(oRoute.station_to) !== true){
 					this.log.error(`Unknown Station defined in Route #${iRouteIndex}`);
 					return;
 				}

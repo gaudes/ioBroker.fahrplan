@@ -214,7 +214,7 @@ With +-Button new entries can be added to the table.
 -->
 
 ### __WORK IN PROGRESS__
-* (Gaudes) Fixing "Gateway Timeout" from HAFAS
+* (Gaudes) Fixing different errors from HAFAS
 * (Gaudes) Fixing identical start and destination station
 * (Gaudes) Require vehicle in configuration
 

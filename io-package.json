@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "fahrplan",
-        "version": "1.0.0",
+        "version": "1.0.1",
         "news": {
+            "1.0.1": {
+                "en": "Fixing different errors from HAFAS\nFixing identical start and destination station\nRequire vehicle in configuration\nInclude Dependabot updates",
+                "de": "Behebung verschiedener Fehler von HAFAS\nFixierung identischer Start- und Zielstation\nFahrzeug in Konfiguration erforderlich\nFügen Sie Dependabot-Updates hinzu",
+                "ru": "Исправление различных ошибок от HAFAS\nИсправление идентичной начальной и конечной станции\nТребуется автомобиль в конфигурации\nВключите обновления Dependabot",
+                "pt": "Corrigindo diferentes erros de HAFAS\nConsertando início e estação de destino idênticos\nExigir veículo na configuração\nIncluir atualizações Dependabot",
+                "nl": "Herstellen van verschillende fouten van HAFAS\nIdentiek start- en bestemmingsstation repareren\nVoertuig in configuratie vereist\nVoeg Dependabot-updates toe",
+                "fr": "Correction de différentes erreurs de HAFAS\nFixation des stations de départ et de destination identiques\nExiger un véhicule en configuration\nInclure les mises à jour de Dependabot",
+                "it": "Correzione di diversi errori da HAFAS\nCorrezione della stazione di partenza e di destinazione identiche\nRichiede veicolo in configurazione\nIncludi gli aggiornamenti di Dependabot",
+                "es": "Arreglando diferentes errores de HAFAS\nArreglar estaciones de inicio y destino idénticas\nRequiere vehículo en configuración\nIncluir actualizaciones de Dependabot",
+                "pl": "Naprawianie różnych błędów z HAFAS\nUstalenie identycznej stacji początkowej i docelowej\nWymagaj konfiguracji pojazdu\nDołącz aktualizacje Dependabot",
+                "zh-cn": "修复来自HAFAS的不同错误\n固定相同的起点站和终点站\n需要配置车辆\n包括Dependabot更新"
+            },
             "1.0.0": {
                 "en": "First stable release",
                 "de": "Erste stabile Version",
@@ -230,18 +242,6 @@
                 "es": "Corrección del texto de salida de retraso con nombres personalizados de estaciones",
                 "pl": "Poprawka tekstu wyjściowego opóźnienia z niestandardowymi nazwami stacji",
                 "zh-cn": "使用工作站的自定义名称修复延迟输出文本"
-            },
-            "0.1.7": {
-                "en": "Translations, fix adapter checker E502, configurable delay time, HTML output for journeys with section information, fix product selection",
-                "de": "Übersetzungen, Adapter-Checker E502 behoben, konfigurierbare Verspätungszeit, HTML-Ausgabe für Reisen mit Informationen zu Reiseabschnitten, Fehlerbehebung Produktauswahl",
-                "ru": "Переводы, исправление адаптера E502, настраиваемое время задержки, вывод HTML для поездок с информацией о разделах, исправление выбора продукта",
-                "pt": "Traduções, verificador de adaptador de correção E502, tempo de atraso configurável, saída HTML para viagens com informações de seção, seleção de produto de correção",
-                "nl": "Vertalingen, fix adapter checker E502, configureerbare vertragingstijd, HTML-uitvoer voor reizen met sectie-informatie, fix productselectie",
-                "fr": "Traductions, corrige le vérificateur d'adaptateur E502, temps de retard configurable, sortie HTML pour les voyages avec informations de section, sélection de produits fixes",
-                "it": "Traduzioni, correzione dell'adattatore di controllo E502, tempo di ritardo configurabile, output HTML per i viaggi con informazioni sulla sezione, correzione della selezione del prodotto",
-                "es": "Traducciones, corrector de adaptadores E502, tiempo de retardo configurable, salida HTML para viajes con información de sección, selección de productos correctos",
-                "pl": "Tłumaczenia, narzędzie do sprawdzania adapterów poprawek E502, konfigurowalny czas opóźnienia, wyjście HTML dla podróży z informacjami o sekcjach, wybór poprawek",
-                "zh-cn": "翻译，修复适配器检查器E502，可配置的延迟时间，带有部分信息的旅程HTML输出，修复产品选择"
             }
         },
         "title": "Fahrplan",

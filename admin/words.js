@@ -51,6 +51,18 @@ systemDictionary = {
 		"pl": "Transport rowerowy",
 		"zh-cn": "自行车运输"
 	},
+	"CreateHTMLHeadlines":{
+		"en": "Headlines creation for HTML tables",
+		"de": "Überschriftenerstellung für HTML-Tabellen",
+		"ru": "Создание заголовков для HTML-таблиц",
+		"pt": "Criação de títulos para tabelas HTML",
+		"nl": "Koppen maken voor HTML-tabellen",
+		"fr": "Création de titres pour les tableaux HTML",
+		"it": "Creazione di titoli per tabelle HTML",
+		"es": "Creación de titulares para tablas HTML",
+		"pl": "Tworzenie nagłówków dla tabel HTML",
+		"zh-cn": "HTML表的标题创建"
+	},
 	"CreateHTMLJourney": {
 		"en": "Create HTML view per Journey",
 		"de": "HTML-Ansicht erzeugen pro Verbindung",

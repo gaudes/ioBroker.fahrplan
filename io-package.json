@@ -310,6 +310,7 @@
     },
     "native": {
         "Provider": "DB",
+        "CreateHTMLHeadlines": 0,
         "CreateHTML": 1,
         "CreateHTMLJourney": 1,
         "SaveJSON": true,

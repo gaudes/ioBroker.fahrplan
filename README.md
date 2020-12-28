@@ -213,6 +213,9 @@ With +-Button new entries can be added to the table.
 	### __WORK IN PROGRESS__
 -->
 
+### __WORK IN PROGRESS__
+* (Gaudes) Configurable Headline for HTML tables
+
 ### 1.0.1 (2020-12-28)
 * (Gaudes) Fixing different errors from HAFAS
 * (Gaudes) Fixing identical start and destination station

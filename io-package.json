@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "fahrplan",
-        "version": "1.0.1",
+        "version": "1.0.2",
         "news": {
+            "1.0.2": {
+                "en": "Configurable Headline for HTML tables\nFix correct deletion of unneeded objects (Sentry)\nInclude Dependabot updates",
+                "de": "Konfigurierbare Überschrift für HTML-Tabellen\nKorrigieren Sie das korrekte Löschen nicht benötigter Objekte (Sentry).\nFügen Sie Dependabot-Updates hinzu",
+                "ru": "Настраиваемый заголовок для HTML-таблиц\nИсправить правильное удаление ненужных объектов (Sentry)\nВключите обновления Dependabot",
+                "pt": "Título configurável para tabelas HTML\nCorrigir a exclusão correta de objetos desnecessários (Sentry)\nIncluir atualizações Dependabot",
+                "nl": "Configureerbare kop voor HTML-tabellen\nCorrecte verwijdering van onnodige objecten repareren (Sentry)\nVoeg Dependabot-updates toe",
+                "fr": "Titre configurable pour les tableaux HTML\nCorrection de la suppression correcte des objets inutiles (Sentry)\nInclure les mises à jour de Dependabot",
+                "it": "Titolo configurabile per tabelle HTML\nCorreggere la corretta eliminazione di oggetti non necessari (Sentry)\nIncludi gli aggiornamenti di Dependabot",
+                "es": "Título configurable para tablas HTML\nCorregir la eliminación correcta de objetos innecesarios (Sentry)\nIncluir actualizaciones de Dependabot",
+                "pl": "Konfigurowalny nagłówek dla tabel HTML\nNapraw prawidłowe usuwanie niepotrzebnych obiektów (Sentry)\nDołącz aktualizacje Dependabot",
+                "zh-cn": "HTML表格的可配置标题\n修复了正确删除不需要的对象的问题（哨兵）\n包括Dependabot更新"
+            },
             "1.0.1": {
                 "en": "Fixing different errors from HAFAS\nFixing identical start and destination station\nRequire vehicle in configuration\nInclude Dependabot updates",
                 "de": "Behebung verschiedener Fehler von HAFAS\nFixierung identischer Start- und Zielstation\nFahrzeug in Konfiguration erforderlich\nFügen Sie Dependabot-Updates hinzu",
@@ -230,18 +242,6 @@
                 "es": "Nombres personalizados para estaciones de salida y llegada, corrección de texto de salida con retraso",
                 "pl": "Niestandardowe nazwy stacji odjazdu i przyjazdu, poprawka tekstu wyjściowego opóźnienia",
                 "zh-cn": "出发站和到达站的自定义名称，延迟输出文本的修复"
-            },
-            "0.1.6": {
-                "en": "Fix of delay output text with custom names of stations",
-                "de": "Fehlerbehebung Verspätungsmeldung mit eigenen Namen der Bahnhöfe",
-                "ru": "Исправление вывода текста задержки с произвольными названиями станций",
-                "pt": "Correção de texto de saída de atraso com nomes personalizados de estações",
-                "nl": "Reparatie van vertragingsuitvoertekst met aangepaste namen van stations",
-                "fr": "Correction du texte de sortie de retard avec des noms personnalisés de stations",
-                "it": "Correzione del ritardo del testo in uscita con nomi personalizzati delle stazioni",
-                "es": "Corrección del texto de salida de retraso con nombres personalizados de estaciones",
-                "pl": "Poprawka tekstu wyjściowego opóźnienia z niestandardowymi nazwami stacji",
-                "zh-cn": "使用工作站的自定义名称修复延迟输出文本"
             }
         },
         "title": "Fahrplan",

@@ -213,6 +213,9 @@ With +-Button new entries can be added to the table.
 	### __WORK IN PROGRESS__
 -->
 
+### __WORK IN PROGRESS__
+* (Gaudes) Station search returns only stations (Sentry Multiple results found for station)
+
 ### 1.0.2 (2021-01-12)
 * (Gaudes) Configurable Headline for HTML tables
 * (Gaudes) Fix correct deletion of unneeded objects (Sentry)

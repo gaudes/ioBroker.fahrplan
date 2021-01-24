@@ -70,7 +70,7 @@ Eine Suchfunktion ist im Tab Einstellungen integriert.
 
 | Einstellung                  | Beschreibung
 |------------------------------|---
-| Anbieter                     |  Auswahl des zu verwendenden Anbieters, aktuell DB und ÖBB
+| Anbieter                     |  Auswahl des zu verwendenden Anbieters, aktuell DB, ÖBB und SBB
 | Aktualisierungsintervall     |  Intervall in dem die Route aktualisiert werden, Angabe in Minuten
 | Verspätet markieren ab       |  Verspätung in Minuten ab der die Verbindung als verspätet markiert wird. Standardmäßig werden nur Verspätungen ab zwei Minuten markiert
 | HTML-Ansicht erzeugen        |  Erzeugt pro Route eine konfigurierbare HTML-Tabelle in einem Objekt
@@ -146,7 +146,7 @@ Search function for theses IDs is integrated in Tab Settings.
 
 | Setting                     | Description
 |-----------------------------|---
-| Provider                    |  Selection of public transport provider, currently DB und ÖBB
+| Provider                    |  Selection of public transport provider, currently DB, ÖBB and SBB
 | Update interval             |  Interval for updates of the routes in minutes
 | Mark delayed after Delay in |  Define minutes after a delay should be marked as delay, per default a delay is marked when the delay is larger than one minute
 | Create HTML view            |  Creates per route a configurable HTML table in an object

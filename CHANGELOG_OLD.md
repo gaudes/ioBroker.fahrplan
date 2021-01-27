@@ -1,4 +1,7 @@
 # Older changes
+## 0.2.7 (2020-11-28)
+* (Gaudes) Fixing connection error to HAFAS
+
 ## 0.2.6 (2020-11-25)
 * (Gaudes) Fixing connection error to HAFAS
 * (Gaudes) Fixing verifying config

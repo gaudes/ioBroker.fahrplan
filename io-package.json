@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "fahrplan",
-        "version": "1.0.2",
+        "version": "1.0.3",
         "news": {
+            "1.0.3": {
+                "en": "Station search returns only stations (Sentry Multiple results found for station)\nIntegrate SBB profile\nLeave out superflous journey per route than configured\nFix call of helper for correct counters\nInclude Dependabot updates",
+                "de": "Die Stationssuche gibt nur Stationen zurück (Sentry Mehrere Ergebnisse für Station gefunden)\nSBB-Profil integrieren\nLassen Sie überflüssige Fahrten pro Route als konfiguriert aus\nAnruf des Helfers für korrekte Zähler korrigieren\nFügen Sie Dependabot-Updates hinzu",
+                "ru": "Поиск станций возвращает только станции (для станции найдено несколько результатов Sentry)\nИнтегрировать профиль SBB\nИсключить израсходованный маршрут, превышающий настроенный\nИсправить вызов помощника для правильных счетчиков\nВключите обновления Dependabot",
+                "pt": "A pesquisa de estação retorna apenas estações (resultados múltiplos de sentinela encontrados para a estação)\nIntegrar perfil SBB\nDeixar de fora jornada supérflua por rota do que configurada\nCorrigir a chamada do ajudante para contadores corretos\nIncluir atualizações Dependabot",
+                "nl": "Station zoeken levert alleen stations op (Sentry Meerdere resultaten gevonden voor station)\nIntegreer SBB-profiel\nLaat overtollige rit per route weg dan geconfigureerd\nOproep van helper voor correcte tellers repareren\nVoeg Dependabot-updates toe",
+                "fr": "La recherche de station ne renvoie que les stations (Sentry Multiple résultats trouvés pour la station)\nIntégrer le profil CFF\nOubliez le trajet Superflous par itinéraire que celui configuré\nCorrection de l'appel de l'assistant pour les compteurs corrects\nInclure les mises à jour de Dependabot",
+                "it": "La ricerca delle stazioni restituisce solo le stazioni (Sentry più risultati trovati per la stazione)\nIntegrare il profilo FFS\nTralascia il viaggio superfluo per percorso rispetto a quanto configurato\nRisolto il problema con la chiamata dell'helper per i contatori corretti\nIncludi gli aggiornamenti di Dependabot",
+                "es": "La búsqueda de emisoras solo devuelve emisoras (Sentry se encontraron varios resultados para la emisora)\nIntegrar el perfil SBB\nDeje de lado el viaje superfluo por ruta que la configurada\nSe corrigió la llamada de ayuda para los contadores correctos.\nIncluir actualizaciones de Dependabot",
+                "pl": "Wyszukiwanie stacji zwraca tylko stacje (Sentry Znaleziono wiele wyników dla stacji)\nZintegruj profil SBB\nPomiń zbędną podróż na trasę, niż skonfigurowano\nNapraw wywołanie pomocnika dla poprawnych liczników\nDołącz aktualizacje Dependabot",
+                "zh-cn": "电台搜索仅返回电台（找到多个针对电台的结果）\n整合SBB配置文件\n忽略每个路线的多余行程\n修复呼叫助手的正确计数器\n包括Dependabot更新"
+            },
             "1.0.2": {
                 "en": "Configurable Headline for HTML tables\nFix correct deletion of unneeded objects (Sentry)\nInclude Dependabot updates",
                 "de": "Konfigurierbare Überschrift für HTML-Tabellen\nKorrigieren Sie das korrekte Löschen nicht benötigter Objekte (Sentry).\nFügen Sie Dependabot-Updates hinzu",
@@ -230,18 +242,6 @@
                 "es": "corregir la eliminación de estados y canales no utilizados",
                 "pl": "naprawić usuwanie nieużywanych stanów i kanałów",
                 "zh-cn": "修复删除未使用的状态和通道"
-            },
-            "0.1.5": {
-                "en": "Custom names for departure and arrival stations, fix of delay output text",
-                "de": "Eigene Namen für Abfahrts- und Ankunftsbahnhof, Fehlerbehebung Verspätungsmeldung",
-                "ru": "Пользовательские названия станций отправления и прибытия, исправление вывода текста задержки",
-                "pt": "Nomes personalizados para estações de partida e chegada, correção de texto de saída de atraso",
-                "nl": "Aangepaste namen voor vertrek- en aankomststations, fix van vertragingsuitvoertekst",
-                "fr": "Noms personnalisés pour les gares de départ et d'arrivée, correction du texte de sortie de retard",
-                "it": "Nomi personalizzati per le stazioni di partenza e di arrivo, correzione del testo di output del ritardo",
-                "es": "Nombres personalizados para estaciones de salida y llegada, corrección de texto de salida con retraso",
-                "pl": "Niestandardowe nazwy stacji odjazdu i przyjazdu, poprawka tekstu wyjściowego opóźnienia",
-                "zh-cn": "出发站和到达站的自定义名称，延迟输出文本的修复"
             }
         },
         "title": "Fahrplan",

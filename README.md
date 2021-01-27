@@ -217,6 +217,7 @@ With +-Button new entries can be added to the table.
 * (Gaudes) Station search returns only stations (Sentry Multiple results found for station)
 * (Gaudes) Integrate SBB profile
 * (Gaudes) Leave out superflous journey per route than configured
+* (Gaudes) Fix call of helper for correct counters
 
 ### 1.0.2 (2021-01-12)
 * (Gaudes) Configurable Headline for HTML tables

@@ -126,7 +126,7 @@ class Fahrplan extends utils.Adapter {
 	/**
 	 * Timer function running in configured interval
 	 */
-	updateTimer(){
+	async updateTimer(){
 		try{
 			tUpdateTimeout && clearTimeout(tUpdateTimeout);
 			this.log.silly("Timer Event");
@@ -142,7 +142,7 @@ class Fahrplan extends utils.Adapter {
 				iCounterRoutesDisabled = 0;
 				iCounterRoutesEnabled = 0;
 				for (const iRouteConfigCurrent in aRoutesConfig) {
-					this.getRoute(aRoutesConfig[iRouteConfigCurrent], parseInt(iRouteConfigCurrent));
+					await this.getRoute(aRoutesConfig[iRouteConfigCurrent], parseInt(iRouteConfigCurrent));
 					iCounterRoutes++;
 				}
 				this.log.info(`Updated ${iCounterRoutes} routes, ${iCounterRoutesEnabled} enabled and ${iCounterRoutesDisabled} disabled`);
@@ -163,7 +163,7 @@ class Fahrplan extends utils.Adapter {
 				iCounterDepTTDisabled = 0;
 				iCounterDepTTEnabled = 0;
 				for (const iDepTTConfigCurrent in aDepTTConfig) {
-					this.getDepartureTimetable(aDepTTConfig[iDepTTConfigCurrent], parseInt(iDepTTConfigCurrent));
+					await this.getDepartureTimetable(aDepTTConfig[iDepTTConfigCurrent], parseInt(iDepTTConfigCurrent));
 					iCounterDepTT++;
 				}
 				this.log.info(`Updated ${iCounterDepTT} departure timetables, ${iCounterDepTTEnabled} enabled and ${iCounterDepTTDisabled} disabled`);

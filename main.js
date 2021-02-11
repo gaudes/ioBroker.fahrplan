@@ -3,7 +3,7 @@
 const utils = require("@iobroker/adapter-core");
 const fHelpers = require("./lib/helper.js");
 const fRoute = require("./lib/route.js");
-const fRouteOptions = require("./lib/routeoptions.js");
+const fOptions = require("./lib/options");
 const fDepTT = require("./lib/deptt.js");
 const fStation = require("./lib/station.js");
 // const fStation = require("./lib/station.js");
@@ -36,7 +36,6 @@ class Fahrplan extends utils.Adapter {
 			name: "fahrplan",
 		});
 		try{
-			this.helper = new fHelpers(this);
 			this.on("ready", this.onReady.bind(this));
 			this.on("message", this.onMessage.bind(this));
 			this.on("unload", this.onUnload.bind(this));
@@ -51,6 +50,7 @@ class Fahrplan extends utils.Adapter {
 	 * Is called when databases are connected and adapter received configuration.
 	 */
 	async onReady() {
+		this.helper = new fHelpers(this);
 		try{
 			if (this.config.UpdateInterval){
 				iUpdateInterval = this.config.UpdateInterval;
@@ -72,10 +72,10 @@ class Fahrplan extends utils.Adapter {
 				this.log.error("Unknown provider configured");
 				this.terminate("Unknown provider configured");
 			}
-			this.log.info(`Adapter started, Updates every ${iUpdateInterval} minutes`);
+			this.helper.ReportingInfo("Info", "Adapter", `Adapter started, Updates every ${iUpdateInterval} minutes`, "main", "onReady", "", JSON.stringify(this.config));
 			this.updateTimer();
 		} catch(e){
-			if (this.helper) this.helper.ErrorReporting(e, "Exception starting Adapter", "main", "onReady");
+			if (this.helper) this.helper.ReportingError(e, "Exception starting Adapter", "main", "onReady");
 		}
 	}
 	//#endregion
@@ -100,7 +100,7 @@ class Fahrplan extends utils.Adapter {
 				}
 			}
 		}catch(e){
-			if (this.helper) this.helper.ErrorReporting(e, "Exception receiving Message for Adapter", "main", "onMessage");
+			if (this.helper) this.helper.ReportingError(e, "Exception receiving Message for Adapter", "main", "onMessage");
 		}
 	}
 	//#endregion
@@ -112,9 +112,9 @@ class Fahrplan extends utils.Adapter {
 	 */
 	onUnload(callback) {
 		try {
-			this.log.silly("Adapter unloaded");
+			if (this.helper) this.helper.ReportingInfo("Debug", "Adapter", `Adapter unloading`, "main", "onUnload");
 			clearTimeout(tUpdateTimeout);
-			this.log.info("cleaned everything up...");
+			if (this.helper) this.helper.ReportingInfo("Debug", "Adapter", `Timers cleaned up`, "main", "onUnload");
 			callback();
 		} catch (e) {
 			callback();
@@ -129,15 +129,15 @@ class Fahrplan extends utils.Adapter {
 	async updateTimer(){
 		try{
 			tUpdateTimeout && clearTimeout(tUpdateTimeout);
-			this.log.silly("Timer Event");
+			if (this.helper) this.helper.ReportingInfo("Debug", "Adapter", `Timer Event`, "main", "updateTimer");
 		} catch(e){
-			if (this.helper) this.helper.ErrorReporting(e, "Exception executing Timer action", "main", "updateTimer", "ClearTimer");
+			if (this.helper) this.helper.ReportingError(e, "Exception executing Timer action", "main", "updateTimer", "ClearTimer");
 		}
 		try{
 			// Checking Routes for Updates
 			const aRoutesConfig = this.config.routes || new Array();
 			if (typeof aRoutesConfig !== "undefined" && aRoutesConfig.length > 0){
-				this.log.debug(`${aRoutesConfig.length} Routes defined, continuing`);
+				if (this.helper) this.helper.ReportingInfo("Debug", "Route", `${aRoutesConfig.length} Routes defined, continuing`, "main", "updateTimer");
 				iCounterRoutes = 0;
 				iCounterRoutesDisabled = 0;
 				iCounterRoutesEnabled = 0;
@@ -145,20 +145,20 @@ class Fahrplan extends utils.Adapter {
 					await this.getRoute(aRoutesConfig[iRouteConfigCurrent], parseInt(iRouteConfigCurrent));
 					iCounterRoutes++;
 				}
-				this.log.info(`Updated ${iCounterRoutes} routes, ${iCounterRoutesEnabled} enabled and ${iCounterRoutesDisabled} disabled`);
+				if (this.helper) this.helper.ReportingInfo("Info", "Route", `Updated ${iCounterRoutes} routes, ${iCounterRoutesEnabled} enabled and ${iCounterRoutesDisabled} disabled`, "main", "updateTimer");
 			}
 			else
 			{
-				this.log.info("No routes defined");
+				if (this.helper) this.helper.ReportingInfo("Info", "Route", "No routes defined", "main", "updateTimer");
 			}
 		} catch (e)	{
-			if (this.helper) this.helper.ErrorReporting(e, "Exception executing Timer action", "main", "updateTimer", "UpdateRoutes");
+			if (this.helper) this.helper.ReportingError(e, "Exception executing Timer action", "main", "updateTimer", "UpdateRoutes");
 		}
 		try{
 			// Checking departure timetable for updates
 			const aDepTTConfig = this.config.departuretimetable || new Array();
 			if (typeof aDepTTConfig !== "undefined" && aDepTTConfig.length > 0){
-				this.log.debug(`${aDepTTConfig.length} Departure Timetables defined, continuing`);
+				if (this.helper) this.helper.ReportingInfo("Debug", "Departure Timetable", `${aDepTTConfig.length} Departure Timetables defined, continuing`, "main", "updateTimer", "", JSON.stringify(aDepTTConfig));
 				iCounterDepTT = 0;
 				iCounterDepTTDisabled = 0;
 				iCounterDepTTEnabled = 0;
@@ -166,21 +166,21 @@ class Fahrplan extends utils.Adapter {
 					await this.getDepartureTimetable(aDepTTConfig[iDepTTConfigCurrent], parseInt(iDepTTConfigCurrent));
 					iCounterDepTT++;
 				}
-				this.log.info(`Updated ${iCounterDepTT} departure timetables, ${iCounterDepTTEnabled} enabled and ${iCounterDepTTDisabled} disabled`);
+				if (this.helper) this.helper.ReportingInfo("Info", "Departure Timetable", `Updated ${iCounterDepTT} departure timetables, ${iCounterDepTTEnabled} enabled and ${iCounterDepTTDisabled} disabled`, "main", "updateTimer");
 			}
 			else
 			{
-				this.log.info("No departure timetabled defined");
+				if (this.helper) this.helper.ReportingInfo("Info", "Departure Timetable", "No departure timetabled defined", "main", "updateTimer");
 			}
 		}catch(e){
-			if (this.helper) this.helper.ErrorReporting(e, "Exception executing Timer action", "main", "updateTimer", "UpdateDepartureTimetables");
+			if (this.helper) this.helper.ReportingError(e, "Exception executing Timer action", "main", "updateTimer", "UpdateDepartureTimetables");
 		}
 		try{
 			tUpdateTimeout = setTimeout(() => {
 				this.updateTimer();
 			}, (this.config.UpdateInterval * 60 * 1000));
 		}catch(e){
-			if (this.helper) this.helper.ErrorReporting(e, "Exception executing Timer action", "main", "updateTimer", "SettingTimer");
+			if (this.helper) this.helper.ReportingError(e, "Exception executing Timer action", "main", "updateTimer", "SettingTimer");
 		}
 	}
 	//#endregion
@@ -217,7 +217,7 @@ class Fahrplan extends utils.Adapter {
 					return;
 				}
 				iCounterRoutesEnabled++;
-				this.log.debug(`Route #${iRouteIndex.toString()} from ${oRoute.station_from} to ${oRoute.station_to} running`);
+				if (this.helper) this.helper.ReportingInfo("Debug", "Route", `Route #${iRouteIndex.toString()} from ${oRoute.station_from} to ${oRoute.station_to} running`, "main", "getRoute", "", JSON.stringify(oRoute));
 				// Creating Route Object
 				const Route = new fRoute(this.helper);
 				Route.NumDeps = parseInt(oRoute.number_of_departures) || 3;
@@ -233,7 +233,7 @@ class Fahrplan extends utils.Adapter {
 					}
 					await Route.StationFrom.writeStation(`${iRouteIndex.toString()}.StationFrom`, "From station");
 				} catch (e){
-					if (this.helper) this.helper.ErrorReporting(e, `Exception receiving Route ${iRouteIndex}`, "main", "getRoute", "StationFrom", {station_id: oRoute.station_from, json: Route.StationFrom.json});
+					if (this.helper) this.helper.ReportingError(e, `Exception receiving Route ${iRouteIndex}`, "main", "getRoute", "StationFrom", {station_id: oRoute.station_from, json: Route.StationFrom.json});
 					return;
 				}
 				// Getting Station_To details
@@ -246,51 +246,51 @@ class Fahrplan extends utils.Adapter {
 					}
 					await Route.StationTo.writeStation(`${iRouteIndex.toString()}.StationTo`, "To station");
 				} catch (e){
-					if (this.helper) this.helper.ErrorReporting(e, `Exception receiving Route ${iRouteIndex}`, "main", "getRoute", "StationTo", {station_id: oRoute.station_to, json: Route.StationTo.json});
+					if (this.helper) this.helper.ReportingError(e, `Exception receiving Route ${iRouteIndex}`, "main", "getRoute", "StationTo", {station_id: oRoute.station_to, json: Route.StationTo.json});
 					return;
 				}
 				// Building Base-State for Connection, set Configuration State
 				try{
 					await Route.writeBaseStates();
 				} catch (e){
-					if (this.helper) this.helper.ErrorReporting(e, `Exception receiving Route ${iRouteIndex}`, "main", "getRoute", "WriteBaseStates");
+					if (this.helper) this.helper.ReportingError(e, `Exception receiving Route ${iRouteIndex}`, "main", "getRoute", "WriteBaseStates");
 				}
 				// Searching route
 				try{
-					const RouteOptions = new fRouteOptions(this.helper);
+					const RouteOptions = new fOptions(this.helper);
 					RouteOptions.results = Route.NumDeps;
 					RouteOptions.via = oRoute.station_via;
 					if (oRoute.transfers >= 0) RouteOptions.transfers = parseInt(oRoute.transfers);
 					RouteOptions.bycicles = oRoute.bycicles;
 					RouteOptions.setProducts(oRoute.traintype.toString());
-					this.log.silly(`Route #${iRouteIndex.toString()} ROUTEOPTIONS: ${JSON.stringify(RouteOptions.returnRouteOptions())}`);
+					if (this.helper) this.helper.ReportingInfo("Debug", "Route", `Route #${iRouteIndex.toString()} starting with Options: ${JSON.stringify(RouteOptions.returnRouteOptions())}`, "main", "getRoute", "", JSON.stringify(RouteOptions.returnRouteOptions()));
 					await Route.getRoute(RouteOptions);
 				} catch (e){
-					if (this.helper) this.helper.ErrorReporting(e, `Exception receiving Route ${iRouteIndex}`, "main", "getRoute", "SearchRoute");
+					if (this.helper) this.helper.ReportingError(e, `Exception receiving Route ${iRouteIndex}`, "main", "getRoute", "SearchRoute");
 					return;
 				}
 				// Writing Route
 				try{
 					await Route.writeStates();
 				} catch (e){
-					if (this.helper) this.helper.ErrorReporting(e, `Exception receiving Route ${iRouteIndex}`, "main", "getRoute", "WriteStates");
+					if (this.helper) this.helper.ReportingError(e, `Exception receiving Route ${iRouteIndex}`, "main", "getRoute", "WriteStates");
 					return;
 				}
 				// Writing HTML Output for Route
 				try{
 					await Route.writeHTML();
 				} catch (e){
-					if (this.helper) this.helper.ErrorReporting(e, `Exception receiving Route ${iRouteIndex}`, "main", "getRoute", "WriteHTML");
+					if (this.helper) this.helper.ReportingError(e, `Exception receiving Route ${iRouteIndex}`, "main", "getRoute", "WriteHTML");
 					return;
 				}
 			} else {
 				try{
 					iCounterRoutesDisabled++;
 					if (this.helper) await this.helper.deleteConnections(iRouteIndex);
-					this.log.debug(`Route #${iRouteIndex.toString()} from ${oRoute.station_from} to ${oRoute.station_to} disabled`);
+					if (this.helper) this.helper.ReportingInfo("Debug", "Route", `Route #${iRouteIndex.toString()} from ${oRoute.station_from} to ${oRoute.station_to} disabled`, "main", "getRoute", "", JSON.stringify(oRoute));
 					if (this.helper) await this.helper.SetBoolState(`${iRouteIndex.toString()}.Enabled`, `Configuration State of Route #${iRouteIndex.toString()}`, "Route State from Adapter configuration", false);
 				} catch (e){
-					if (this.helper) this.helper.ErrorReporting(e, `Exception receiving Route ${iRouteIndex}`, "main", "getRoute", "Disabled");
+					if (this.helper) this.helper.ReportingError(e, `Exception receiving Route ${iRouteIndex}`, "main", "getRoute", "Disabled");
 				}
 			}
 		} catch(e){
@@ -314,12 +314,11 @@ class Fahrplan extends utils.Adapter {
 					return;
 				}
 				iCounterDepTTEnabled++;
+				if (this.helper) this.helper.ReportingInfo("Debug", "Departure Timetable", `Departure Timetable #${iDepTTIndex.toString()} for ${oDepTT.station_from} running`, "main", "getDepartureTimetable", "", JSON.stringify(oDepTT));
 				// Creating Route Object
 				const DepTT = new fDepTT(this.helper);
 				DepTT.index = iDepTTIndex;
 				DepTT.enabled = true;
-				DepTT.NumDeps = parseInt(oDepTT.number_of_departures) || 3;
-				DepTT.DepsOffsetMin = parseInt(oDepTT.timeoffset_of_departures) || 0;
 				// Getting Station_From details
 				try{
 					await DepTT.StationFrom.getStation(oDepTT.station_from);
@@ -330,35 +329,40 @@ class Fahrplan extends utils.Adapter {
 					}
 					await DepTT.StationFrom.writeStation(`DepartureTimetable${iDepTTIndex.toString()}.Station`, "Station");
 				} catch (e){
-					if (this.helper) this.helper.ErrorReporting(e, `Exception receiving Departure Timetable ${iDepTTIndex}`, "main", "getDepartureTimetable", "Station", {station_id: oDepTT.station_from, json: DepTT.StationFrom.json});
+					if (this.helper) this.helper.ReportingError(e, `Exception receiving Departure Timetable ${iDepTTIndex}`, "main", "getDepartureTimetable", "Station", {station_id: oDepTT.station_from, json: DepTT.StationFrom.json});
 					return;
 				}
 				// Building Base-State for Connection, set Configuration State
 				try{
 					await DepTT.writeBaseStates();
 				} catch (e){
-					if (this.helper) this.helper.ErrorReporting(e, `Exception receiving Departure Timetable ${iDepTTIndex}`, "main", "getDepartureTimetable", "WriteBaseStates");
+					if (this.helper) this.helper.ReportingError(e, `Exception receiving Departure Timetable ${iDepTTIndex}`, "main", "getDepartureTimetable", "WriteBaseStates");
 					return;
 				}
 				// Searching Departure Timetable
 				try{
-					await DepTT.getDepTT();
+					const DepTTOptions = new fOptions(this.helper);
+					DepTTOptions.results = parseInt(oDepTT.number_of_departures) || 3;
+					DepTTOptions.setProducts(oDepTT.traintype.toString());
+					DepTTOptions.depsOffsetMin = parseInt(oDepTT.timeoffset_of_departures) || 0;
+					if (this.helper) this.helper.ReportingInfo("Debug", "Departure Timetable", `Departure Timetable #${iDepTTIndex.toString()} running with Options: ${JSON.stringify(DepTTOptions.returnDepTTOptions())}`, "main", "getDepartureTimetable", "", JSON.stringify(DepTTOptions.returnDepTTOptions()));
+					await DepTT.getDepTT(DepTTOptions);
 				} catch (e){
-					if (this.helper) this.helper.ErrorReporting(e, `Exception receiving Departure Timetable ${iDepTTIndex}`, "main", "getDepartureTimetable", "Get");
+					if (this.helper) this.helper.ReportingError(e, `Exception receiving Departure Timetable ${iDepTTIndex}`, "main", "getDepartureTimetable", "Get");
 					return;
 				}
 				// Writing Departure Timetable
 				try{
 					await DepTT.writeStates();
 				} catch (e){
-					if (this.helper) this.helper.ErrorReporting(e, `Exception receiving Departure Timetable ${iDepTTIndex}`, "main", "getDepartureTimetable", "WriteStates");
+					if (this.helper) this.helper.ReportingError(e, `Exception receiving Departure Timetable ${iDepTTIndex}`, "main", "getDepartureTimetable", "WriteStates");
 					return;
 				}
 				// Writing HTML Output for Departure Timetable
 				try{
 					await DepTT.writeHTML();
 				} catch (e){
-					if (this.helper) this.helper.ErrorReporting(e, `Exception receiving Departure Timetable ${iDepTTIndex}`, "main", "getDepartureTimetable", "WriteHTML");
+					if (this.helper) this.helper.ReportingError(e, `Exception receiving Departure Timetable ${iDepTTIndex}`, "main", "getDepartureTimetable", "WriteHTML");
 					return;
 				}
 			} else {
@@ -367,12 +371,12 @@ class Fahrplan extends utils.Adapter {
 					if (this.helper) await this.helper.deleteDepTT(iDepTTIndex);
 					if (this.helper) await this.helper.SetBoolState(`DepartureTimetable${iDepTTIndex.toString()}.Enabled`, `Configuration State of Departure Timetable #${iDepTTIndex.toString()}`, "Departure Timetable State from Adapter configuration", false);
 				} catch (e){
-					if (this.helper) this.helper.ErrorReporting(e, `Exception receiving Departure Timetable ${iDepTTIndex}`, "main", "getDepartureTimetable", "Disabled");
+					if (this.helper) this.helper.ReportingError(e, `Exception receiving Departure Timetable ${iDepTTIndex}`, "main", "getDepartureTimetable", "Disabled");
 					return;
 				}
 			}
 		} catch(e){
-			if (this.helper) this.helper.ErrorReporting(e, `Exception receiving Departure Timetable ${iDepTTIndex}`, "main", "getDepartureTimetable", "Unkown");
+			if (this.helper) this.helper.ReportingError(e, `Exception receiving Departure Timetable ${iDepTTIndex}`, "main", "getDepartureTimetable", "Unkown");
 		}
 	}
 	//#endregion

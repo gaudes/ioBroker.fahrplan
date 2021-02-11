@@ -22,7 +22,7 @@ tests.unit(path.join(__dirname, ".."),{
 		const hDBprofile = require("hafas-client/p/db");
 		const Helper = new fHelper(adapter);
 		Helper.hClient = hCreateClient(hDBprofile, "ioBroker.Fahrplan");
-		const fRouteOptions = require("../lib/routeoptions.js");
+		const fRouteOptions = require("iobroker.fahrplan/lib/options");
 		const RouteOptions = new fRouteOptions(Helper);
 		const fStation = require("../lib/station.js");
 		const Station = new fStation(Helper);
@@ -54,6 +54,10 @@ tests.unit(path.join(__dirname, ".."),{
 
 			it("returnRouteOptions", async () =>{
 				expect(RouteOptions.returnRouteOptions()).to.deep.include({products:{suburban: true}});
+			});
+
+			it("returnDepTTOptions", async () =>{
+				expect(RouteOptions.returnDepTTOptions()).to.deep.include({products:{suburban: true}});
 			});
 		} );
 		//#endregion
@@ -145,7 +149,7 @@ tests.unit(path.join(__dirname, ".."),{
 			it("getDepTT", async () =>{
 				DepTT.StationFrom = Station;
 				DepTT.enabled = true;
-				await DepTT.getDepTT();
+				await DepTT.getDepTT(RouteOptions);
 				JSONDepTT = DepTT.json;
 				expect(DepTT.Departures).has.lengthOf(3);
 			});

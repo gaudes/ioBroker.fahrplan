@@ -352,7 +352,10 @@
                 "enabled": false,
                 "station_from": "",
                 "station_from_name": "",
-                "number_of_departures": 3
+                "number_of_departures": 3,
+                "traintype": [
+                    "all"
+                ]
             }
         ]
     },

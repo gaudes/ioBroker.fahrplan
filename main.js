@@ -343,7 +343,11 @@ class Fahrplan extends utils.Adapter {
 				try{
 					const DepTTOptions = new fOptions(this.helper);
 					DepTTOptions.results = parseInt(oDepTT.number_of_departures) || 3;
-					DepTTOptions.setProducts(oDepTT.traintype.toString());
+					if (Array.isArray(oDepTT.traintype)){
+						DepTTOptions.setProducts(oDepTT.traintype.toString());
+					} else{
+						DepTTOptions.setProducts(["all"].toString());
+					}
 					DepTTOptions.depsOffsetMin = parseInt(oDepTT.timeoffset_of_departures) || 0;
 					if (this.helper) this.helper.ReportingInfo("Debug", "Departure Timetable", `Departure Timetable #${iDepTTIndex.toString()} running with Options: ${JSON.stringify(DepTTOptions.returnDepTTOptions())}`, "main", "getDepartureTimetable", "", JSON.stringify(DepTTOptions.returnDepTTOptions()));
 					await DepTT.getDepTT(DepTTOptions);

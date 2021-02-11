@@ -243,6 +243,18 @@ systemDictionary = {
 		"pl": "<center>Nieznana stacja %s  w rozkładzie odlotów %s</center>",
 		"zh-cn": "<center>出发时刻表％s中的未知车站 ％s</center>"
 	},
+	"FahrplanConfigErrorProductDepTT":{
+		"en": "<center>No vehicle selected in Departure Timetable %s</center>",
+		"de": "<center>Kein Verkehrsmittel in Abfahrtstafel %s  ausgewählt</center>",
+		"ru": "<center>В расписании отправлений %s не выбран автомобиль</center>",
+		"pt": "<center>Nenhum veículo selecionado no horário de partida %s</center>",
+		"nl": "<center>Geen voertuig geselecteerd in Vertrektijdschema %s</center>",
+		"fr": "<center>Aucun véhicule sélectionné dans l’horaire de départ %s</center>",
+		"it": "<center>Nessun veicolo selezionato nell'orario di partenza %s</center>",
+		"es": "<center>Ningún vehículo seleccionado en el horario de salida %s</center>",
+		"pl": "<center>Żaden pojazd nie został wybrany w rozkładzie odlotów %s</center>",
+		"zh-cn": "<center>出发时间表％s中没有选择车辆</center>"
+	},
 	"general":{
 		"en": "Settings",
 		"de": "Einstellungen",

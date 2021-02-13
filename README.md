@@ -214,7 +214,7 @@ With +-Button new entries can be added to the table.
 	### __WORK IN PROGRESS__
 -->
 
-### __WORK IN PROGRESS__
+### 1.0.4 (2021-02-13)
 * (Gaudes) Add product selection to departure timetable
 * (Gaudes) Update HAFAS client to 5.15.1 (Fix error Clientversion with OEBB profile)
 * (Gaudes) Enhanced information reporting on error (Sentry Breadcrumbs)
@@ -240,9 +240,6 @@ With +-Button new entries can be added to the table.
 
 ### 1.0.0 (2020-12-09)
 * (Gaudes) First stable release
-
-### 0.2.8 (2020-12-02)
-* (Gaudes) Fixing connection error to HAFAS
 
 ## License
 MIT License

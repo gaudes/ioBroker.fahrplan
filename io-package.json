@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "fahrplan",
-        "version": "1.0.3",
+        "version": "1.0.4",
         "news": {
+            "1.0.4": {
+                "en": "Add product selection to departure timetable\nUpdate HAFAS client to 5.15.1 (Fix error Clientversion with OEBB profile)\nEnhanced information reporting on error (Sentry Breadcrumbs)\nInclude Dependabot updates",
+                "de": "Produktauswahl zum Abfahrtszeitplan hinzufügen\nAktualisieren Sie den HAFAS-Client auf 5.15.1 (Fehler Clientversion mit OEBB-Profil behoben)\nVerbesserte Informationen zur Fehlerberichterstattung (Sentry Breadcrumbs)\nFügen Sie Dependabot-Updates hinzu",
+                "ru": "Добавить выбранный продукт в расписание отправления\nОбновите клиент HAFAS до версии 5.15.1 (исправьте ошибку Clientversion с профилем OEBB)\nРасширенная информация об ошибках (Sentry Breadcrumbs)\nВключите обновления Dependabot",
+                "pt": "Adicionar seleção de produto ao horário de partida\nAtualize o cliente HAFAS para 5.15.1 (correção de erro Clientversion com perfil OEBB)\nRelatório de informações aprimorado sobre erro (Sentry Breadcrumbs)\nIncluir atualizações Dependabot",
+                "nl": "Voeg productselectie toe aan het vertrekschema\nUpdate HAFAS-client naar 5.15.1 (Fix fout Clientversion met OEBB-profiel)\nVerbeterde informatierapportage over fouten (Sentry Breadcrumbs)\nVoeg Dependabot-updates toe",
+                "fr": "Ajouter une sélection de produits à l'horaire de départ\nMettre à jour le client HAFAS vers la version 5.15.1 (correction d'erreur Clientversion avec le profil OEBB)\nRapports d'information améliorés sur les erreurs (Sentry Breadcrumbs)\nInclure les mises à jour de Dependabot",
+                "it": "Aggiungi la selezione del prodotto all'orario di partenza\nAggiorna il client HAFAS alla 5.15.1 (correzione dell'errore versione client con profilo OEBB)\nSegnalazione avanzata delle informazioni sugli errori (Sentry Breadcrumb)\nIncludi gli aggiornamenti di Dependabot",
+                "es": "Agregar selección de productos al horario de salida\nActualice el cliente HAFAS a 5.15.1 (corrija el error Clientversion con perfil OEBB)\nInforme de información mejorado sobre errores (Sentry Breadcrumbs)\nIncluir actualizaciones de Dependabot",
+                "pl": "Dodaj wybór produktów do harmonogramu odlotów\nZaktualizuj klienta HAFAS do 5.15.1 (Napraw błąd wersji klienta z profilem OEBB)\nUlepszone raportowanie informacji o błędzie (okruszki Sentry)\nDołącz aktualizacje Dependabot",
+                "zh-cn": "将产品选择添加到出发时间表\n将HAFAS客户端更新为5.15.1（使用OEBB配置文件修复错误的Clientversion）\n增强了有关错误的信息报告（哨兵面包屑）\n包括Dependabot更新"
+            },
             "1.0.3": {
                 "en": "Station search returns only stations (Sentry Multiple results found for station)\nIntegrate SBB profile\nLeave out superflous journey per route than configured\nFix call of helper for correct counters\nInclude Dependabot updates",
                 "de": "Die Stationssuche gibt nur Stationen zurück (Sentry Mehrere Ergebnisse für Station gefunden)\nSBB-Profil integrieren\nLassen Sie überflüssige Fahrten pro Route als konfiguriert aus\nAnruf des Helfers für korrekte Zähler korrigieren\nFügen Sie Dependabot-Updates hinzu",
@@ -230,18 +242,6 @@
                 "es": "tipos de objetos correctos, notificación de retraso",
                 "pl": "poprawne typy obiektów, powiadamianie o opóźnieniach",
                 "zh-cn": "正确的对象类型，延迟通知"
-            },
-            "0.1.4": {
-                "en": "fix deletion of unused states and channels",
-                "de": "Löschen unbenutzer Objekte korrigiert",
-                "ru": "исправить удаление неиспользуемых состояний и каналов",
-                "pt": "corrigir a exclusão de estados e canais não utilizados",
-                "nl": "het verwijderen van ongebruikte staten en kanalen repareren",
-                "fr": "correction de la suppression des états et des canaux inutilisés",
-                "it": "correggere l'eliminazione di stati e canali inutilizzati",
-                "es": "corregir la eliminación de estados y canales no utilizados",
-                "pl": "naprawić usuwanie nieużywanych stanów i kanałów",
-                "zh-cn": "修复删除未使用的状态和通道"
             }
         },
         "title": "Fahrplan",

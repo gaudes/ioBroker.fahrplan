@@ -214,6 +214,9 @@ With +-Button new entries can be added to the table.
 	### __WORK IN PROGRESS__
 -->
 
+### __WORK IN PROGRESS__
+* (Gaudes) Quality fixing (lgtm.com)
+
 ### 1.0.4 (2021-02-13)
 * (Gaudes) Add product selection to departure timetable
 * (Gaudes) Update HAFAS client to 5.15.1 (Fix error Clientversion with OEBB profile)

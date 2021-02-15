@@ -26,9 +26,9 @@
 		function load(settings, onChange) {
 			if (!settings) return;
 
-			routes = settings.routes || [];
-			delays = settings.delays || [];
-			departuretimetable = settings.departuretimetable || [];
+			let routes = settings.routes || [];
+			let delays = settings.delays || [];
+			let departuretimetable = settings.departuretimetable || [];
 
 			$('.value').each(function () {
 				var $key = $(this);
@@ -70,7 +70,7 @@
 			});
 
 			$('#getStation').on('click', function () {
-				var $getStation = $('#getStation');
+				//var $getStation = $('#getStation');
                 if (!active) {
 					showToast(_('FahrplanConfigErrorInstance'));
                     return;
@@ -82,7 +82,7 @@
 					provider: StationProvider,
 					station: StationName
                 }, function (result) {
-					var $grid = $('#StationSearchResult');
+					//var $grid = $('#StationSearchResult');
 					for (var object of result) {
 						$("#tbodyid").append("<tr><td>" + object.name + "</td><td>" + object.id + "</td></tr>");
                     }
@@ -160,7 +160,7 @@
 		};
 		
 		function setRoutesForDelays(){
-			RouteNumbers = new Array();
+			let RouteNumbers = new Array();
 			for (let i = 0; i < routes.length; i++){
 				RouteNumbers.push(`${i}/${i}: ${routes[i].station_from} - ${routes[i].station_to}`);
 			}

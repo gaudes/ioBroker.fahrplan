@@ -1,4 +1,7 @@
 # Older changes
+## 1.0.0 (2020-12-09)
+* (Gaudes) First stable release
+
 ## 0.2.8 (2020-12-02)
 * (Gaudes) Fixing connection error to HAFAS
 

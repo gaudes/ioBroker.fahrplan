@@ -21,14 +21,18 @@
 	<script type="text/javascript" src="words.js"></script>
 
 	<script type="text/javascript">
+		// Global Vars
+		let routes = [];
+		let delays = [];
+		let departuretimetable = [];
 
 		// This will be called by the admin adapter when the settings page loads
 		function load(settings, onChange) {
 			if (!settings) return;
 
-			let routes = settings.routes || [];
-			let delays = settings.delays || [];
-			let departuretimetable = settings.departuretimetable || [];
+			routes = settings.routes || [];
+			delays = settings.delays || [];
+			departuretimetable = settings.departuretimetable || [];
 
 			$('.value').each(function () {
 				var $key = $(this);

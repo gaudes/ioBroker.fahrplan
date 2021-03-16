@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "fahrplan",
-        "version": "1.0.5",
+        "version": "1.0.6",
         "news": {
+            "1.0.6": {
+                "en": "Fix route selection in delay config\nFix SBB product suburban-train (Sentry #21)\nInclude Dependabot updates",
+                "de": "Korrigieren Sie die Routenauswahl in der Verzögerungskonfiguration\nFix SBB Produkt S-Bahn (Sentry # 21)\nFügen Sie Dependabot-Updates hinzu",
+                "ru": "Исправить выбор маршрута в конфигурации задержки\nИсправить товарный пригородный поезд SBB (Сторожевой № 21)\nВключите обновления Dependabot",
+                "pt": "Corrigir seleção de rota na configuração de atraso\nConsertar o trem suburbano do produto SBB (Sentinela # 21)\nIncluir atualizações Dependabot",
+                "nl": "Routeselectie in vertragingsconfiguratie repareren\nSBB-product voorstadstrein repareren (Sentry # 21)\nVoeg Dependabot-updates toe",
+                "fr": "Correction de la sélection de l'itinéraire dans la configuration du délai\nRéparer le train de banlieue du produit CFF (Sentry # 21)\nInclure les mises à jour de Dependabot",
+                "it": "Risolto il problema con la selezione del percorso nella configurazione del ritardo\nFix treno suburbano prodotto FFS (Sentry # 21)\nIncludi gli aggiornamenti di Dependabot",
+                "es": "Corregir la selección de ruta en la configuración de retardo\nArreglar el tren suburbano del producto SBB (Sentry # 21)\nIncluir actualizaciones de Dependabot",
+                "pl": "Napraw wybór trasy w konfiguracji opóźnienia\nNapraw podmiejski pociąg produktu SBB (Wartownik # 21)\nDołącz aktualizacje Dependabot",
+                "zh-cn": "修复延迟配置中的路由选择\n修复SBB产品郊区火车（Sentry＃21）\n包括Dependabot更新"
+            },
             "1.0.5": {
                 "en": "Quality fixing (lgtm.com)\nInclude Dependabot updates",
                 "de": "Qualitätsfixierung (lgtm.com)\nFügen Sie Dependabot-Updates hinzu",
@@ -230,18 +242,6 @@
                 "es": "refactorización de código a clases, más opciones de configuración para objetos y HTML",
                 "pl": "refaktoryzacja kodu na klasy, więcej opcji konfiguracyjnych dla obiektów i HTML",
                 "zh-cn": "代码重构为类，为对象和HTML提供更多配置选项"
-            },
-            "0.1.2": {
-                "en": "quick fix for ontime",
-                "de": "Fehlerbehebung ontime",
-                "ru": "быстрое решение в срок",
-                "pt": "solução rápida para ontime",
-                "nl": "snelle oplossing voor tijd",
-                "fr": "solution rapide pour le temps",
-                "it": "soluzione rapida per la puntualità",
-                "es": "solución rápida a tiempo",
-                "pl": "szybka naprawa na czas",
-                "zh-cn": "快速准时解决"
             }
         },
         "title": "Fahrplan",

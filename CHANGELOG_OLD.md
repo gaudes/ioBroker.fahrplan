@@ -1,4 +1,10 @@
 # Older changes
+## 1.0.1 (2020-12-28)
+* (Gaudes) Fixing different errors from HAFAS
+* (Gaudes) Fixing identical start and destination station
+* (Gaudes) Require vehicle in configuration
+* (Gaudes) Include Dependabot updates
+
 ## 1.0.0 (2020-12-09)
 * (Gaudes) First stable release
 

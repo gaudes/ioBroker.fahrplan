@@ -214,6 +214,9 @@ With +-Button new entries can be added to the table.
 	### __WORK IN PROGRESS__
 -->
 
+### __WORK IN PROGRESS__
+(Gaudes) Prepare for WebLate translations
+
 ### 1.0.6 (2021-03-16)
 * (Gaudes) Fix route selection in delay config
 * (Gaudes) Fix SBB product suburban-train (Sentry #21)

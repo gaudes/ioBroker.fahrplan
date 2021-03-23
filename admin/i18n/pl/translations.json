@@ -1,6 +1,9 @@
 {
     "All": "Wszystko",
     "Bycicle": "Transport rowerowy",
+    "ColorDefault": "Kolor domyślny",
+    "ColorDelay": "Kolor na opóźnienia",
+    "ColorOntime": "Kolor na czas",
     "CreateHTMLHeadlines": "Tworzenie nagłówków dla tabel HTML",
     "CreateHTMLJourney": "Utwórz widok HTML na podróż",
     "CreateHTMLRoute": "Utwórz widok HTML dla trasy",

@@ -1,6 +1,9 @@
 {
     "All": "Tout",
     "Bycicle": "Transport à vélo",
+    "ColorDefault": "Couleur par défaut",
+    "ColorDelay": "Couleur pour les retards",
+    "ColorOntime": "Couleur à temps",
     "CreateHTMLHeadlines": "Création de titres pour les tableaux HTML",
     "CreateHTMLJourney": "Créer une vue HTML par trajet",
     "CreateHTMLRoute": "Créer une vue HTML pour l'itinéraire",

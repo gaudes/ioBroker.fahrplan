@@ -1,6 +1,9 @@
 {
     "All": "Tutti",
     "Bycicle": "Trasporto di biciclette",
+    "ColorDefault": "Colore predefinito",
+    "ColorDelay": "Colore per ritardi",
+    "ColorOntime": "Colore per tempo",
     "CreateHTMLHeadlines": "Creazione di titoli per tabelle HTML",
     "CreateHTMLJourney": "Crea una vista HTML per Journey",
     "CreateHTMLRoute": "Crea una vista HTML per il percorso",

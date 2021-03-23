@@ -317,6 +317,8 @@
         "SaveObjects": 2,
         "UpdateInterval": 5,
         "DelayTime": 1,
+        "ColorOntime": "#008000",
+        "ColorDelay": "#ff0000",
         "NoSentry": false,
         "routes": [
             {

@@ -1,6 +1,9 @@
 {
     "All": "Alle",
     "Bycicle": "Fahrradmitnahme",
+    "ColorDefault": "Standardfarben",
+    "ColorDelay": "Farbe für Verspätungen",
+    "ColorOntime": "Farbe für Pünktlich",
     "CreateHTMLHeadlines": "Überschriftenerstellung für HTML-Tabellen",
     "CreateHTMLJourney": "HTML-Ansicht erzeugen pro Verbindung",
     "CreateHTMLRoute": "HTML-Ansicht erzeugen für Route",

@@ -1,6 +1,9 @@
 {
     "All": "所有",
     "Bycicle": "自行车运输",
+    "ColorDefault": "默认颜色",
+    "ColorDelay": "延迟颜色",
+    "ColorOntime": "准时上色",
     "CreateHTMLHeadlines": "HTML表的标题创建",
     "CreateHTMLJourney": "按旅程创建HTML视图",
     "CreateHTMLRoute": "创建路线的HTML视图",

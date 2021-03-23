@@ -1,6 +1,9 @@
 {
     "All": "All",
     "Bycicle": "Bycicle",
+    "ColorDefault": "Default color",
+    "ColorDelay": "Color for delays",
+    "ColorOntime": "Color for on time",
     "CreateHTMLHeadlines": "Headlines creation for HTML tables",
     "CreateHTMLJourney": "Create HTML view per Journey",
     "CreateHTMLRoute": "Create HTML view for route",

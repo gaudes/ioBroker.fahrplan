@@ -215,7 +215,8 @@ With +-Button new entries can be added to the table.
 -->
 
 ### __WORK IN PROGRESS__
-(Gaudes) Prepare for WebLate translations
+* (Gaudes) Configurable colors for delays and on time
+* (Gaudes) Prepare for WebLate translations
 
 ### 1.0.6 (2021-03-16)
 * (Gaudes) Fix route selection in delay config

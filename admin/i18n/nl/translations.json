@@ -1,6 +1,9 @@
 {
     "All": "Allemaal",
     "Bycicle": "Bij cyclus",
+    "ColorDefault": "Standaard kleur",
+    "ColorDelay": "Kleur voor vertragingen",
+    "ColorOntime": "Kleur voor op tijd",
     "CreateHTMLHeadlines": "Koppen maken voor HTML-tabellen",
     "CreateHTMLJourney": "Maak HTML-weergave per reis",
     "CreateHTMLRoute": "Maak HTML-weergave voor route",

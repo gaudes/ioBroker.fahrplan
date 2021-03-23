@@ -1,6 +1,9 @@
 {
     "All": "Все",
     "Bycicle": "Велосипедный транспорт",
+    "ColorDefault": "Цвет по умолчанию",
+    "ColorDelay": "Цвет задержек",
+    "ColorOntime": "Цвет на время",
     "CreateHTMLHeadlines": "Создание заголовков для HTML-таблиц",
     "CreateHTMLJourney": "Создать HTML-представление для поездки",
     "CreateHTMLRoute": "Создать HTML-представление для маршрута",

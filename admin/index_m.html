@@ -93,6 +93,12 @@
 				});	
 			});
 
+			$('#setDefaultColor').on('click', function () {
+				$('#ColorOntime').val("#008000");
+				$('#ColorDelay').val("#ff0000");
+				onChange(true);
+			});
+
 			$('.tabs li').click(function () { 
 				setProvider();
 				setRoutesForDelays();
@@ -225,6 +231,24 @@
 						<div class="input-field">
 							<input type="number" class="value" min="1" id="DelayTime" />
 							<label for="DelayTime" class="translate">DelayTime</label>
+						</div>
+						<div><br /></div>
+						<div>
+							<table>
+								<tr><td>
+									<div class="input-field">
+										<input type="color" class="value" id="ColorOntime" style="height: 2rem; width: 6rem; border: none;" />
+										<label for="ColorOnTime" class="translate" style="transform: translateY(-14px) scale(.8); transform-origin: 0 0;">ColorOntime</label>
+									</div>
+								</td><td>
+									<div class="input-field">
+										<input type="color" class="value" id="ColorDelay" style="height: 2rem; width: 6rem; border: none;" />
+										<label for="ColorDelay" class="translate" style="transform: translateY(-14px) scale(.8); transform-origin: 0 0;">ColorDelay</label>
+									</div>
+								</td><td>
+									<a id="setDefaultColor" class="btn-small translate">ColorDefault</a>
+								</td></tr>
+							</table>
 						</div>
 						<div><br /></div>
 						<div class="input-field">

@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "fahrplan",
-        "version": "1.0.6",
+        "version": "1.0.7",
         "news": {
+            "1.0.7": {
+                "en": "Update HAFAS client to 5.15.2 (Fix error 'invalid json response body' with OEBB profile)\nConfigurable colors for delays and on time\nPrepare for WebLate translations\nInclude Dependabot updates",
+                "de": "Aktualisieren Sie den HAFAS-Client auf 5.15.2 (Fehler 'Ungültiger JSON-Antworttext' mit OEBB-Profil behoben)\nKonfigurierbare Farben für Verzögerungen und pünktlich\nBereiten Sie sich auf WebLate-Übersetzungen vor\nFügen Sie Dependabot-Updates hinzu",
+                "ru": "Обновите клиент HAFAS до версии 5.15.2 (исправьте ошибку «недопустимое тело ответа json» с профилем OEBB)\nНастраиваемые цвета для задержек и вовремя\nПодготовьтесь к переводам WebLate\nВключите обновления Dependabot",
+                "pt": "Atualize o cliente HAFAS para 5.15.2 (corrija o erro 'corpo de resposta json inválido' com perfil OEBB)\nCores configuráveis para atrasos e pontualidade\nPrepare-se para traduções WebLate\nIncluir atualizações Dependabot",
+                "nl": "Update HAFAS-client naar 5.15.2 (Fix fout 'invalid json response body' met OEBB-profiel)\nConfigureerbare kleuren voor vertragingen en op tijd\nBereid je voor op WebLate-vertalingen\nVoeg Dependabot-updates toe",
+                "fr": "Mettez à jour le client HAFAS vers la version 5.15.2 (correction de l'erreur «corps de réponse json non valide» avec le profil OEBB)\nCouleurs configurables pour les retards et les délais\nPréparez-vous aux traductions WebLate\nInclure les mises à jour de Dependabot",
+                "it": "Aggiorna il client HAFAS alla 5.15.2 (correggi l'errore \"corpo della risposta json non valido\" con il profilo OEBB)\nColori configurabili per ritardi e puntualità\nPreparati per le traduzioni WebLate\nIncludi gli aggiornamenti di Dependabot",
+                "es": "Actualice el cliente HAFAS a 5.15.2 (corrija el error 'cuerpo de respuesta json no válido' con perfil OEBB)\nColores configurables para retrasos y puntualidad\nPrepárese para las traducciones WebLate\nIncluir actualizaciones de Dependabot",
+                "pl": "Zaktualizuj klienta HAFAS do 5.15.2 (Napraw błąd „nieprawidłowy kod odpowiedzi json” z profilem OEBB)\nKonfigurowalne kolory dla opóźnień i na czas\nPrzygotuj się na tłumaczenia WebLate\nDołącz aktualizacje Dependabot",
+                "zh-cn": "将HAFAS客户端更新为5.15.2（使用OEBB配置文件修复错误“无效的json响应正文”）\n可配置的颜色，用于延迟和准时\n准备WebLate翻译\n包括Dependabot更新"
+            },
             "1.0.6": {
                 "en": "Fix route selection in delay config\nFix SBB product suburban-train (Sentry #21)\nInclude Dependabot updates",
                 "de": "Korrigieren Sie die Routenauswahl in der Verzögerungskonfiguration\nFix SBB Produkt S-Bahn (Sentry # 21)\nFügen Sie Dependabot-Updates hinzu",
@@ -230,18 +242,6 @@
                 "es": "primer lanzamiento alfa público",
                 "pl": "pierwsze publiczne wydanie alfa",
                 "zh-cn": "首次公开发布Alpha版"
-            },
-            "0.1.1": {
-                "en": "code refactoring to classes, more config options for objects and HTML",
-                "de": "Refaktorisierung mit Klassen, mehr Konfigurationsoptionen für Objekte und HTML",
-                "ru": "рефакторинг кода для классов, дополнительные параметры конфигурации для объектов и HTML",
-                "pt": "refatoração de código para classes, mais opções de configuração para objetos e HTML",
-                "nl": "code refactoring naar klassen, meer configuratie-opties voor objecten en HTML",
-                "fr": "refactorisation du code en classes, plus d'options de configuration pour les objets et HTML",
-                "it": "refactoring del codice in classi, più opzioni di configurazione per oggetti e HTML",
-                "es": "refactorización de código a clases, más opciones de configuración para objetos y HTML",
-                "pl": "refaktoryzacja kodu na klasy, więcej opcji konfiguracyjnych dla obiektów i HTML",
-                "zh-cn": "代码重构为类，为对象和HTML提供更多配置选项"
             }
         },
         "title": "Fahrplan",

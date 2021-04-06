@@ -1,4 +1,9 @@
 # Older changes
+## 1.0.2 (2021-01-12)
+* (Gaudes) Configurable Headline for HTML tables
+* (Gaudes) Fix correct deletion of unneeded objects (Sentry)
+* (Gaudes) Include Dependabot updates
+
 ## 1.0.1 (2020-12-28)
 * (Gaudes) Fixing different errors from HAFAS
 * (Gaudes) Fixing identical start and destination station

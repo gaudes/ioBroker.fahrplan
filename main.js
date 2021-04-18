@@ -113,6 +113,7 @@ class Fahrplan extends utils.Adapter {
 	onUnload(callback) {
 		try {
 			if (this.helper) this.helper.ReportingInfo("Debug", "Adapter", `Adapter unloading`, "main", "onUnload");
+			if (this.helper) this.helper.isUnloaded = true;
 			clearTimeout(tUpdateTimeout);
 			if (this.helper) this.helper.ReportingInfo("Debug", "Adapter", `Timers cleaned up`, "main", "onUnload");
 			callback();

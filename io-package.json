@@ -333,7 +333,8 @@
                 ],
                 "transfers": "",
                 "number_of_departures": 3,
-                "bicycle": false
+                "bicycle": false,
+                "timeoffset_of_departures": 0
             }
         ],
         "delays": [
@@ -357,7 +358,8 @@
                 "number_of_departures": 3,
                 "traintype": [
                     "all"
-                ]
+                ],
+                "timeoffset_of_departures": 0
             }
         ]
     },

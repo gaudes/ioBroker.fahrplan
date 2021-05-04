@@ -25,6 +25,7 @@
     "Monday": "lunes",
     "No": "No",
     "NumDepartures": "Salidas",
+    "Offset": "Desplazamiento de tiempo",
     "Provider": "Proveedor",
     "Saturday": "sábado",
     "SaveJSON": "Guardar elementos JSON",

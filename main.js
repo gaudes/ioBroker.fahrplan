@@ -264,6 +264,7 @@ class Fahrplan extends utils.Adapter {
 					if (oRoute.transfers >= 0) RouteOptions.transfers = parseInt(oRoute.transfers);
 					RouteOptions.bycicles = oRoute.bycicles;
 					RouteOptions.setProducts(oRoute.traintype.toString());
+					RouteOptions.depsOffsetMin = parseInt(oRoute.timeoffset_of_departures) || 0;
 					if (this.helper) this.helper.ReportingInfo("Debug", "Route", `Route #${iRouteIndex.toString()} starting with Options: ${JSON.stringify(RouteOptions.returnRouteOptions())}`, "main", "getRoute", "", JSON.stringify(RouteOptions.returnRouteOptions()));
 					await Route.getRoute(RouteOptions);
 				} catch (e){

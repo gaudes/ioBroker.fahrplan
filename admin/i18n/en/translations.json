@@ -25,6 +25,7 @@
     "Monday": "Monday",
     "No": "No",
     "NumDepartures": "Departures",
+    "Offset": "Time offset",
     "Provider": "Provider",
     "Saturday": "Saturday",
     "SaveJSON": "Save JSON elements",

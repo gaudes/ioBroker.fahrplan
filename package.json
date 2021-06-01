@@ -19,7 +19,7 @@
     "url": "https://github.com/gaudes/ioBroker.fahrplan.git"
   },
   "dependencies": {
-    "@iobroker/adapter-core": "^2.4.0",
+    "@iobroker/adapter-core": "^2.5.0",
     "node-fetch": "^2.6.1",
     "hafas-client": "^5.16.0"
   },

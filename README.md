@@ -74,7 +74,7 @@ Eine Suchfunktion ist im Tab Einstellungen integriert.
 | Anbieter                        |  Auswahl des zu verwendenden Anbieters, aktuell DB, ÖBB und SBB
 | Aktualisierungsintervall        |  Intervall in dem die Route aktualisiert werden, Angabe in Minuten
 | Verspätet markieren ab          |  Verspätung in Minuten ab der die Verbindung als verspätet markiert wird. Standardmäßig werden nur Verspätungen ab zwei Minuten markiert
-| Farbe für Pünktlich             |  Farbwert für bestätigte, Pünktlichkeit
+| Farbe für Pünktlich             |  Farbwert für bestätigte Pünktlichkeit
 | Farbe für Verspätungen          |  Farbwert für Verspätungen
 | Überschriftenerstellung         |  HTML-Tabellen werden mit Überschriften erzeugt
 | HTML-Ansicht erzeugen für Route |  Erzeugt pro Route eine konfigurierbare HTML-Tabelle in einem Objekt

@@ -1,6 +1,6 @@
 {
   "name": "iobroker.fahrplan",
-  "version": "1.0.7",
+  "version": "1.1.0",
   "description": "Get connection information of defined routes from HAFAS",
   "author": {
     "name": "Gaudes",

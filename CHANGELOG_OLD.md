@@ -1,4 +1,11 @@
 # Older changes
+## 1.0.3 (2021-01-27)
+* (Gaudes) Station search returns only stations (Sentry Multiple results found for station)
+* (Gaudes) Integrate SBB profile
+* (Gaudes) Leave out superflous journey per route than configured
+* (Gaudes) Fix call of helper for correct counters
+* (Gaudes) Include Dependabot updates
+
 ## 1.0.2 (2021-01-12)
 * (Gaudes) Configurable Headline for HTML tables
 * (Gaudes) Fix correct deletion of unneeded objects (Sentry)

@@ -225,7 +225,7 @@ With +-Button new entries can be added to the table.
 	### __WORK IN PROGRESS__
 -->
 
-### __WORK IN PROGRESS__
+### 1.1.0 (2021-06-04)
 * (Gaudes) Time offset for routes and departure tables (Git #88)
 * (Gaudes) Check if unloaded before writing/deleting objects (Sentry #7)
 * (Gaudes) Include Dependabot updates
@@ -249,13 +249,6 @@ With +-Button new entries can be added to the table.
 * (Gaudes) Add product selection to departure timetable
 * (Gaudes) Update HAFAS client to 5.15.1 (Fix error Clientversion with OEBB profile)
 * (Gaudes) Enhanced information reporting on error (Sentry Breadcrumbs)
-* (Gaudes) Include Dependabot updates
-
-### 1.0.3 (2021-01-27)
-* (Gaudes) Station search returns only stations (Sentry Multiple results found for station)
-* (Gaudes) Integrate SBB profile
-* (Gaudes) Leave out superflous journey per route than configured
-* (Gaudes) Fix call of helper for correct counters
 * (Gaudes) Include Dependabot updates
 
 ## License

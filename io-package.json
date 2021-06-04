@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "fahrplan",
-        "version": "1.0.7",
+        "version": "1.1.0",
         "news": {
+            "1.1.0": {
+                "en": "Time offset for routes and departure tables (Git #88)\nCheck if unloaded before writing/deleting objects (Sentry #7)\nInclude Dependabot updates",
+                "de": "Zeitversatz für Routen und Abfahrtstabellen (Git #88)\nÜberprüfen Sie, ob sie entladen sind, bevor Sie Objekte schreiben/löschen (Sentry #7)\nDependabot-Updates einschließen",
+                "ru": "Смещение времени для таблиц маршрутов и отправлений (Git # 88)\nПеред записью / удалением объектов проверьте, не выгружены ли объекты (Sentry # 7)\nВключите обновления Dependabot",
+                "pt": "Deslocamento de tempo para rotas e tabelas de partida (Git # 88)\nVerifique se descarregado antes de escrever / excluir objetos (Sentinela # 7)\nIncluir atualizações Dependabot",
+                "nl": "Tijdsverschil voor routes en vertrektabellen (Git #88)\nControleer of het is verwijderd voordat u objecten schrijft/verwijdert (Sentry #7)\nInclusief Dependabot-updates",
+                "fr": "Décalage horaire pour les itinéraires et les tables de départ (Git #88)\nVérifiez si déchargé avant d'écrire/supprimer des objets (Sentry #7)\nInclure les mises à jour Dependabot",
+                "it": "Differenza oraria per rotte e tabelle di partenza (Git #88)\nControlla se è stato scaricato prima di scrivere/eliminare oggetti (sentenza n. 7)\nIncludi gli aggiornamenti di Dependabot",
+                "es": "Desplazamiento de tiempo para rutas y tablas de salida (Git # 88)\nVerifique si está descargado antes de escribir / eliminar objetos (Sentry # 7)\nIncluir actualizaciones de Dependabot",
+                "pl": "Przesunięcie czasowe dla tras i tabel odlotów (Git #88)\nSprawdź, czy wyładowany przed zapisaniem/usunięciem obiektów (Sentry #7)\nUwzględnij aktualizacje Dependabota",
+                "zh-cn": "路线和出发表的时间偏移（Git #88）\n在写入/删除对象之前检查是否已卸载（Sentry #7）\n包括 Dependabot 更新"
+            },
             "1.0.7": {
                 "en": "Update HAFAS client to 5.15.2 (Fix error 'invalid json response body' with OEBB profile)\nConfigurable colors for delays and on time\nPrepare for WebLate translations\nInclude Dependabot updates",
                 "de": "Aktualisieren Sie den HAFAS-Client auf 5.15.2 (Fehler 'Ungültiger JSON-Antworttext' mit OEBB-Profil behoben)\nKonfigurierbare Farben für Verzögerungen und pünktlich\nBereiten Sie sich auf WebLate-Übersetzungen vor\nFügen Sie Dependabot-Updates hinzu",
@@ -230,18 +242,6 @@
                 "es": "algunas refactorizaciones de código y cambios de nombre",
                 "pl": "niektóre refaktoryzacje kodu i zmiany nazw",
                 "zh-cn": "一些代码重构和重命名"
-            },
-            "0.1.0": {
-                "en": "first public alpha release",
-                "de": "Erste öffentliche Alpha-Version",
-                "ru": "первый публичный альфа-релиз",
-                "pt": "primeiro lançamento alfa público",
-                "nl": "eerste openbare alpha-release",
-                "fr": "première version alpha publique",
-                "it": "prima versione alpha pubblica",
-                "es": "primer lanzamiento alfa público",
-                "pl": "pierwsze publiczne wydanie alfa",
-                "zh-cn": "首次公开发布Alpha版"
             }
         },
         "title": "Fahrplan",

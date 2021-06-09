@@ -60,7 +60,7 @@ class Fahrplan extends utils.Adapter {
 				this.SysLang = SysConf.common.language;
 			}
 			if (this.config.Provider === "DB" && this.helper !== undefined) {
-				this.helper.hClient = hCreateClient(hDBprofile, "ioBroker.Fahrplan");
+				this.helper.hClient = hCreateClient(hDBprofile ,"ioBroker.Fahrplan");
 				this.helper.hProfile = hDBprofile;
 			} else if (this.config.Provider === "OEBB" && this.helper !== undefined) {
 				this.helper.hClient = hCreateClient(hOEBBprofile, "ioBroker.Fahrplan");

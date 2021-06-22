@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "fahrplan",
-        "version": "1.1.0",
+        "version": "1.1.1",
         "news": {
+            "1.1.1": {
+                "en": "Advanced error reporting for HAFAS errors\nInclude Dependabot updates",
+                "de": "Erweiterte Fehlerberichterstattung für HAFAS-Fehler\nDependabot-Updates einschließen",
+                "ru": "Расширенные отчеты об ошибках HAFAS\nВключите обновления Dependabot",
+                "pt": "Relatório de erros avançado para erros HAFAS\nIncluir atualizações Dependabot",
+                "nl": "Geavanceerde foutrapportage voor HAFAS-fouten\nInclusief Dependabot-updates",
+                "fr": "Rapport d'erreur avancé pour les erreurs HAFAS\nInclure les mises à jour Dependabot",
+                "it": "Segnalazione avanzata degli errori per gli errori HAFAS\nIncludi gli aggiornamenti di Dependabot",
+                "es": "Informe de errores avanzado para errores HAFAS\nIncluir actualizaciones de Dependabot",
+                "pl": "Zaawansowane raportowanie błędów dla błędów HAFAS\nUwzględnij aktualizacje Dependabota",
+                "zh-cn": "HAFAS 错误的高级错误报告\n包括 Dependabot 更新"
+            },
             "1.1.0": {
                 "en": "Time offset for routes and departure tables (Git #88)\nCheck if unloaded before writing/deleting objects (Sentry #7)\nInclude Dependabot updates",
                 "de": "Zeitversatz für Routen und Abfahrtstabellen (Git #88)\nÜberprüfen Sie, ob sie entladen sind, bevor Sie Objekte schreiben/löschen (Sentry #7)\nDependabot-Updates einschließen",
@@ -230,18 +242,6 @@
                 "es": "Versión inicial",
                 "pl": "Pierwsze wydanie",
                 "zh-cn": "初始发行"
-            },
-            "0.0.2": {
-                "en": "some code refactorings and renames",
-                "de": "Refaktorisierungen und Umbenennungen im Code",
-                "ru": "некоторые рефакторинги и переименования кода",
-                "pt": "algumas refatorações e renomeações de código",
-                "nl": "enkele code refactorings en hernoemingen",
-                "fr": "quelques refactorisations de code et renommer",
-                "it": "alcuni refactoring del codice e rinomina",
-                "es": "algunas refactorizaciones de código y cambios de nombre",
-                "pl": "niektóre refaktoryzacje kodu i zmiany nazw",
-                "zh-cn": "一些代码重构和重命名"
             }
         },
         "title": "Fahrplan",

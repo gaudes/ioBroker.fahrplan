@@ -1,4 +1,10 @@
 # Older changes
+## 1.0.4 (2021-02-13)
+* (Gaudes) Add product selection to departure timetable
+* (Gaudes) Update HAFAS client to 5.15.1 (Fix error Clientversion with OEBB profile)
+* (Gaudes) Enhanced information reporting on error (Sentry Breadcrumbs)
+* (Gaudes) Include Dependabot updates
+
 ## 1.0.3 (2021-01-27)
 * (Gaudes) Station search returns only stations (Sentry Multiple results found for station)
 * (Gaudes) Integrate SBB profile

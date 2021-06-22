@@ -227,6 +227,7 @@ With +-Button new entries can be added to the table.
 
 ### __WORK IN PROGRESS__
 * (Gaudes) Advanced error reporting for HAFAS errors
+* (Gaudes) Include Dependabot updates
 
 ### 1.1.0 (2021-06-04)
 * (Gaudes) Time offset for routes and departure tables (Git #88)

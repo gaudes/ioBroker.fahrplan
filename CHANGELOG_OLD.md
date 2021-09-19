@@ -1,4 +1,8 @@
 # Older changes
+## 1.0.5 (2021-02-22)
+* (Gaudes) Quality fixing (lgtm.com)
+* (Gaudes) Include Dependabot updates
+
 ## 1.0.4 (2021-02-13)
 * (Gaudes) Add product selection to departure timetable
 * (Gaudes) Update HAFAS client to 5.15.1 (Fix error Clientversion with OEBB profile)

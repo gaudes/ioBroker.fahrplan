@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "fahrplan",
-        "version": "1.1.1",
+        "version": "1.2.0",
         "news": {
+            "1.2.0": {
+                "en": "Remove support for SBB, not using HAFAS anymore\nFix Hafas error \"Bad Gateway\" with code 502 (Sentry #26)\nFix unkown station in route (Sentry #7)\nRemove support for Node 10\nUpdate to newest Adapter creator for internal dependencies\nInclude Dependabot updates",
+                "de": "Support für SBB entfernen, HAFAS nicht mehr verwenden\nHafas-Fehler \"Bad Gateway\" mit Code 502 (Sentry #26) beheben\nUnbekannte Station in Route reparieren (Sentry #7)\nEntfernen Sie die Unterstützung für Node 10\nUpdate auf den neuesten Adapter-Ersteller für interne Abhängigkeiten\nDependabot-Updates einschließen",
+                "ru": "Удалите поддержку SBB, больше не используя HAFAS\nИсправьте ошибку Hafas «Плохой шлюз» с кодом 502 (Sentry # 26)\nИсправить неизвестную станцию на маршруте (Сторожевой № 7)\nУбрать поддержку Node 10\nОбновление до новейшего конструктора адаптеров для внутренних зависимостей\nВключите обновления Dependabot",
+                "pt": "Remova o suporte para SBB, não usando mais HAFAS\nCorrija o erro Hafas \"Bad Gateway\" com o código 502 (Sentry # 26)\nCorrigir estação desconhecida na rota (Sentinela # 7)\nRemova o suporte para o Nó 10\nAtualize para o mais novo criador de adaptador para dependências internas\nIncluir atualizações Dependabot",
+                "nl": "Ondersteuning voor SBB verwijderen, HAFAS niet meer gebruiken\nRepareer Hafas-fout \"Slechte Gateway\" met code 502 (Sentry #26)\nOnbekend station in route repareren (Sentry #7)\nOndersteuning voor Node 10 . verwijderen\nUpdate naar de nieuwste adaptermaker voor interne afhankelijkheden\nInclusief Dependabot-updates",
+                "fr": "Supprimer la prise en charge des CFF, ne plus utiliser HAFAS\nCorrection de l'erreur Hafas \"Bad Gateway\" avec le code 502 (Sentry #26)\nCorrection d'une station inconnue en route (Sentinelle #7)\nSupprimer la prise en charge de Node 10\nMise à jour vers le dernier créateur d'adaptateur pour les dépendances internes\nInclure les mises à jour Dependabot",
+                "it": "Rimuovere il supporto per SBB, non utilizzare più HAFAS\nCorreggi l'errore Hafas \"Bad Gateway\" con il codice 502 (Sentry #26)\nCorreggi la stazione sconosciuta nel percorso (sentinella n. 7)\nRimuovere il supporto per il nodo 10\nAggiorna al più recente creatore di adattatori per le dipendenze interne\nIncludi gli aggiornamenti di Dependabot",
+                "es": "Eliminar el soporte para SBB, ya no usar HAFAS\nCorregir el error de Hafas \"Bad Gateway\" con el código 502 (Sentry # 26)\nArreglar la estación desconocida en la ruta (Centinela # 7)\nQuitar la compatibilidad con el nodo 10\nActualización al creador de adaptadores más reciente para dependencias internas\nIncluir actualizaciones de Dependabot",
+                "pl": "Usuń obsługę SBB, nie używam już HAFAS\nNapraw błąd Hafas „Bad Gateway” z kodem 502 (Sentry #26)\nNapraw nieznaną stację na trasie (Sentry #7)\nUsuń obsługę węzła 10\nAktualizacja do najnowszego kreatora adapterów dla wewnętrznych zależności\nUwzględnij aktualizacje Dependabota",
+                "zh-cn": "删除对 SBB 的支持，不再使用 HAFAS\n使用代码 502 (Sentry #26) 修复 Hafas 错误“Bad Gateway”\n修复路线中未知的车站（哨兵 #7）\n删除对 Node 10 的支持\n更新到最新的适配器创建者以获取内部依赖项\n包括 Dependabot 更新"
+            },
             "1.1.1": {
                 "en": "Advanced error reporting for HAFAS errors\nInclude Dependabot updates",
                 "de": "Erweiterte Fehlerberichterstattung für HAFAS-Fehler\nDependabot-Updates einschließen",
@@ -230,18 +242,6 @@
                 "es": "Incluir horario de salida para estaciones configuradas\nCorrección de seguridad para serialize-javascript\nManejo de errores y preparación mejorados para Sentry\nsetObject reemplazado por setObjectNotExists\nActualizar la plantilla del adaptador de 1.25.0 a 1.27.0\nIncluir Dependabot con fusión automática\nIncluir actualizaciones de Dependabot\nCorregir errores de ESLINT\nIntegración de pruebas unitarias y de integración\nEliminar Travis & Snyk",
                 "pl": "Uwzględnij harmonogram odlotów dla skonfigurowanych stacji\nPoprawka bezpieczeństwa dla serialize-javascript\nUlepszona obsługa błędów i przygotowanie do Sentry\nsetObject zastąpiony przez setObjectNotExists\nZaktualizuj szablon adaptera z 1.25.0 do 1.27.0\nDołącz Dependabot z automatycznym scalaniem\nDołącz aktualizacje Dependabot\nNapraw błędy ESLINT\nZintegruj integrację i testy jednostkowe\nUsuń Travis & Snyk",
                 "zh-cn": "包括已配置车站的出发时刻表\n序列化的安全修复程序-javascript\n增强的错误处理和哨兵准备\n将setObject替换为setObjectNotExists\n将适配器模板从1.25.0更新到1.27.0\n包括Dependabot与自动合并\n包括Dependabot更新\n修复ESLINT错误\n集成集成和单元测试\n删除Travis＆Snyk"
-            },
-            "0.0.1": {
-                "en": "initial release",
-                "de": "Erstveröffentlichung",
-                "ru": "изначальный выпуск",
-                "pt": "lançamento inicial",
-                "nl": "Eerste uitgave",
-                "fr": "Première version",
-                "it": "Versione iniziale",
-                "es": "Versión inicial",
-                "pl": "Pierwsze wydanie",
-                "zh-cn": "初始发行"
             }
         },
         "title": "Fahrplan",

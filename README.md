@@ -227,6 +227,7 @@ With +-Button new entries can be added to the table.
 
 ### __WORK IN PROGRESS__
 * (Gaudes) Fix Hafas error "Bad Gateway" with code 502 (Sentry #26)
+* (Gaudes) Update to newest Adapter creator for internal dependencies
 * (Gaudes) Include Dependabot updates
 
 ### 1.1.1 (2021-06-22)

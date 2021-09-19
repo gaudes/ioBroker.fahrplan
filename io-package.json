@@ -274,9 +274,11 @@
         ],
         "keywords": [
             "ioBroker",
-            "template",
             "Smart Home",
-            "home automation"
+            "home automation",
+            "Fahrplan",
+            "HAFAS",
+            "Deutsche Bahn"
         ],
         "license": "MIT",
         "platform": "Javascript/Node.js",

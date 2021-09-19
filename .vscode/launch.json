@@ -1,0 +1,27 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "attach",
+            "name": "Attach",
+            "address": "127.0.0.1",
+            "port": 9229,
+            "sourceMaps": true
+        },
+        {
+            "type": "node-terminal",
+            "name": "devserver run",
+            "request": "launch",
+            "command": "npm run devserver -- run",
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "node-terminal",
+            "name": "devserver debug",
+            "request": "launch",
+            "command": "npm run devserver -- debug --wait",
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}

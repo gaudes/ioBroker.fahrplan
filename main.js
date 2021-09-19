@@ -389,8 +389,7 @@ class Fahrplan extends utils.Adapter {
 }
 
 //#region Default
-// @ts-ignore parent is a valid property on module
-if (module.parent) {
+if (require.main !== module) {
 	// Export the constructor in compact mode
 	/**
 	 * @param {Partial<utils.AdapterOptions>} [options={}]

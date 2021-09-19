@@ -12,7 +12,6 @@ const fStation = require("./lib/station.js");
 const hCreateClient = require("hafas-client");
 const hDBprofile = require("hafas-client/p/db");
 const hOEBBprofile = require("hafas-client/p/oebb");
-const hSBBprofile = require("hafas-client/p/sbb");
 // const adapter = new utils.Adapter('fahrplan');
 let iUpdateInterval = 5;
 let tUpdateTimeout = null;
@@ -65,9 +64,6 @@ class Fahrplan extends utils.Adapter {
 			} else if (this.config.Provider === "OEBB" && this.helper !== undefined) {
 				this.helper.hClient = hCreateClient(hOEBBprofile, "ioBroker.Fahrplan");
 				this.helper.hProfile = hOEBBprofile;
-			} else if (this.config.Provider === "SBB" && this.helper !== undefined) {
-				this.helper.hClient = hCreateClient(hSBBprofile, "ioBroker.Fahrplan");
-				this.helper.hProfile = hSBBprofile;
 			} else{
 				this.log.error("Unknown provider configured");
 				this.terminate("Unknown provider configured");

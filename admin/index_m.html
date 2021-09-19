@@ -162,8 +162,6 @@
 				$('th[data-name="traintype"]').attr("data-options", "all/Alle;nationalExpress/ICE;national/IC,EC;regionalExp/RE,IR;regional/RB;suburban/S-Bahn;bus/Bus;subway/U-Bahn;tram/Tram");
 			} else if ($('#Provider').val() === "OEBB"){
 				$('th[data-name="traintype"]').attr("data-options", "all/Alle;nationalExpress/ICE,RJ;national/IC,EC;interregional/D,EN;regional/R,REX;suburban/S-Bahn;bus/Bus;subway/U-Bahn;tram/Tram");
-			} else if ($('#Provider').val() === "SBB"){
-				$('th[data-name="traintype"]').attr("data-options", "all/Alle;express-train/ICE,TGV,RJ;international-train/IC,EC;interregional-train/IR;regional-express-train/RE;watercraft/Schiff;suburban-train/S-Bahn;bus-taxi/Bus;gondola/Seilbahn;tram/Tram,Metro");
 			} else{
 				$('th[data-name="traintype"]').attr("data-options", "all/Alle");
 			} 
@@ -218,7 +216,6 @@
 							<select class="value " id="Provider" type="text">
 								<option value="DB">Deutsche Bahn</option>
 								<option value="OEBB">Österreichische Bundenbahnen</option>
-								<option value="SBB">Schweizerische Bundenbahnen</option>
 							</select>
 							<label for="Provider" class="translate">Provider</label>
 						</div>

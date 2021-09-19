@@ -228,6 +228,7 @@ With +-Button new entries can be added to the table.
 ### __WORK IN PROGRESS__
 * (Gaudes) Remove support for SBB, not using HAFAS anymore
 * (Gaudes) Fix Hafas error "Bad Gateway" with code 502 (Sentry #26)
+* (Gaudes) Fix unkown station in route (Sentry #7)
 * (Gaudes) Remove support for Node 10
 * (Gaudes) Update to newest Adapter creator for internal dependencies
 * (Gaudes) Include Dependabot updates

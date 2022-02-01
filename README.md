@@ -225,6 +225,9 @@ With +-Button new entries can be added to the table.
 	### __WORK IN PROGRESS__
 -->
 
+### __WORK IN PROGRESS__
+* (Gaudes) Include Dependabot updates
+
 ### 1.2.0 (2021-09-19)
 * (Gaudes) Remove support for SBB, not using HAFAS anymore
 * (Gaudes) Fix Hafas error "Bad Gateway" with code 502 (Sentry #26)

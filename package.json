@@ -28,7 +28,7 @@
     "hafas-client": "^5.24.0"
   },
   "devDependencies": {
-    "@alcalzone/release-script": "^3.5.8",
+    "@alcalzone/release-script": "^3.5.9",
     "@iobroker/adapter-dev": "^1.0.0",
     "@iobroker/testing": "^2.6.0",
     "@types/chai": "^4.3.1",

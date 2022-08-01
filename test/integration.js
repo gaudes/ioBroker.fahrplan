@@ -17,6 +17,7 @@ tests.integration(path.join(__dirname, ".."),{
 			it("Calling", () =>{
 				return new Promise(async (resolve) =>{
 					await harness.startAdapterAndWait();
+					await new Promise(resolve => setTimeout(resolve, 5000));
 					harness.sendTo(
 						"fahrplan.0",
 						"getStations",

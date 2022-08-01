@@ -226,6 +226,7 @@ With +-Button new entries can be added to the table.
 
 ### __WORK IN PROGRESS__
 * (Gaudes) Fix channel description for timetables (Git #176)
+* (Gaudes) Fix smaller bugs (Sentry)
 * (Gaudes) Include Dependabot updates
 
 ### 1.2.0 (2021-09-19)

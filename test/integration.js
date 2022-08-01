@@ -18,10 +18,10 @@ tests.integration(path.join(__dirname, ".."),{
 				return new Promise(async (resolve) =>{
 					await harness.startAdapterAndWait();
 					harness.sendTo(
-						harness,
 						"fahrplan.0",
 						"getStations",
-						{ provider: "DB", station: "8000105"}, (result) =>{
+						{ provider: "DB", station: "8000105"},
+						(result) =>{
 							console.dir(result);
 							expect(result).to.be.an("array");
 							expect(result[0]).to.deep.include({ id: "8000105" });

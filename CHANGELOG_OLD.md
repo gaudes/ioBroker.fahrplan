@@ -1,4 +1,9 @@
 # Older changes
+## 1.0.6 (2021-03-16)
+* (Gaudes) Fix route selection in delay config
+* (Gaudes) Fix SBB product suburban-train (Sentry #21)
+* (Gaudes) Include Dependabot updates
+
 ## 1.0.5 (2021-02-22)
 * (Gaudes) Quality fixing (lgtm.com)
 * (Gaudes) Include Dependabot updates
@@ -126,4 +131,3 @@
 
 ## 0.0.1 (06.07.2020)
 * (Gaudes) initial release
-

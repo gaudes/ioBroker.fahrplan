@@ -1,7 +1,7 @@
 {
     "common": {
         "name": "fahrplan",
-        "version": "1.2.0",
+        "version": "1.2.1",
         "news": {
             "1.2.0": {
                 "en": "Remove support for SBB, not using HAFAS anymore\nFix Hafas error \"Bad Gateway\" with code 502 (Sentry #26)\nFix unkown station in route (Sentry #7)\nRemove support for Node 10\nUpdate to newest Adapter creator for internal dependencies\nInclude Dependabot updates",

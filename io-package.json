@@ -1,370 +1,214 @@
 {
-    "common": {
-        "name": "fahrplan",
-        "version": "1.2.1",
-        "news": {
-            "1.2.0": {
-                "en": "Remove support for SBB, not using HAFAS anymore\nFix Hafas error \"Bad Gateway\" with code 502 (Sentry #26)\nFix unkown station in route (Sentry #7)\nRemove support for Node 10\nUpdate to newest Adapter creator for internal dependencies\nInclude Dependabot updates",
-                "de": "Support für SBB entfernen, HAFAS nicht mehr verwenden\nHafas-Fehler \"Bad Gateway\" mit Code 502 (Sentry #26) beheben\nUnbekannte Station in Route reparieren (Sentry #7)\nEntfernen Sie die Unterstützung für Node 10\nUpdate auf den neuesten Adapter-Ersteller für interne Abhängigkeiten\nDependabot-Updates einschließen",
-                "ru": "Удалите поддержку SBB, больше не используя HAFAS\nИсправьте ошибку Hafas «Плохой шлюз» с кодом 502 (Sentry # 26)\nИсправить неизвестную станцию на маршруте (Сторожевой № 7)\nУбрать поддержку Node 10\nОбновление до новейшего конструктора адаптеров для внутренних зависимостей\nВключите обновления Dependabot",
-                "pt": "Remova o suporte para SBB, não usando mais HAFAS\nCorrija o erro Hafas \"Bad Gateway\" com o código 502 (Sentry # 26)\nCorrigir estação desconhecida na rota (Sentinela # 7)\nRemova o suporte para o Nó 10\nAtualize para o mais novo criador de adaptador para dependências internas\nIncluir atualizações Dependabot",
-                "nl": "Ondersteuning voor SBB verwijderen, HAFAS niet meer gebruiken\nRepareer Hafas-fout \"Slechte Gateway\" met code 502 (Sentry #26)\nOnbekend station in route repareren (Sentry #7)\nOndersteuning voor Node 10 . verwijderen\nUpdate naar de nieuwste adaptermaker voor interne afhankelijkheden\nInclusief Dependabot-updates",
-                "fr": "Supprimer la prise en charge des CFF, ne plus utiliser HAFAS\nCorrection de l'erreur Hafas \"Bad Gateway\" avec le code 502 (Sentry #26)\nCorrection d'une station inconnue en route (Sentinelle #7)\nSupprimer la prise en charge de Node 10\nMise à jour vers le dernier créateur d'adaptateur pour les dépendances internes\nInclure les mises à jour Dependabot",
-                "it": "Rimuovere il supporto per SBB, non utilizzare più HAFAS\nCorreggi l'errore Hafas \"Bad Gateway\" con il codice 502 (Sentry #26)\nCorreggi la stazione sconosciuta nel percorso (sentinella n. 7)\nRimuovere il supporto per il nodo 10\nAggiorna al più recente creatore di adattatori per le dipendenze interne\nIncludi gli aggiornamenti di Dependabot",
-                "es": "Eliminar el soporte para SBB, ya no usar HAFAS\nCorregir el error de Hafas \"Bad Gateway\" con el código 502 (Sentry # 26)\nArreglar la estación desconocida en la ruta (Centinela # 7)\nQuitar la compatibilidad con el nodo 10\nActualización al creador de adaptadores más reciente para dependencias internas\nIncluir actualizaciones de Dependabot",
-                "pl": "Usuń obsługę SBB, nie używam już HAFAS\nNapraw błąd Hafas „Bad Gateway” z kodem 502 (Sentry #26)\nNapraw nieznaną stację na trasie (Sentry #7)\nUsuń obsługę węzła 10\nAktualizacja do najnowszego kreatora adapterów dla wewnętrznych zależności\nUwzględnij aktualizacje Dependabota",
-                "zh-cn": "删除对 SBB 的支持，不再使用 HAFAS\n使用代码 502 (Sentry #26) 修复 Hafas 错误“Bad Gateway”\n修复路线中未知的车站（哨兵 #7）\n删除对 Node 10 的支持\n更新到最新的适配器创建者以获取内部依赖项\n包括 Dependabot 更新"
-            },
-            "1.1.1": {
-                "en": "Advanced error reporting for HAFAS errors\nInclude Dependabot updates",
-                "de": "Erweiterte Fehlerberichterstattung für HAFAS-Fehler\nDependabot-Updates einschließen",
-                "ru": "Расширенные отчеты об ошибках HAFAS\nВключите обновления Dependabot",
-                "pt": "Relatório de erros avançado para erros HAFAS\nIncluir atualizações Dependabot",
-                "nl": "Geavanceerde foutrapportage voor HAFAS-fouten\nInclusief Dependabot-updates",
-                "fr": "Rapport d'erreur avancé pour les erreurs HAFAS\nInclure les mises à jour Dependabot",
-                "it": "Segnalazione avanzata degli errori per gli errori HAFAS\nIncludi gli aggiornamenti di Dependabot",
-                "es": "Informe de errores avanzado para errores HAFAS\nIncluir actualizaciones de Dependabot",
-                "pl": "Zaawansowane raportowanie błędów dla błędów HAFAS\nUwzględnij aktualizacje Dependabota",
-                "zh-cn": "HAFAS 错误的高级错误报告\n包括 Dependabot 更新"
-            },
-            "1.1.0": {
-                "en": "Time offset for routes and departure tables (Git #88)\nCheck if unloaded before writing/deleting objects (Sentry #7)\nInclude Dependabot updates",
-                "de": "Zeitversatz für Routen und Abfahrtstabellen (Git #88)\nÜberprüfen Sie, ob sie entladen sind, bevor Sie Objekte schreiben/löschen (Sentry #7)\nDependabot-Updates einschließen",
-                "ru": "Смещение времени для таблиц маршрутов и отправлений (Git # 88)\nПеред записью / удалением объектов проверьте, не выгружены ли объекты (Sentry # 7)\nВключите обновления Dependabot",
-                "pt": "Deslocamento de tempo para rotas e tabelas de partida (Git # 88)\nVerifique se descarregado antes de escrever / excluir objetos (Sentinela # 7)\nIncluir atualizações Dependabot",
-                "nl": "Tijdsverschil voor routes en vertrektabellen (Git #88)\nControleer of het is verwijderd voordat u objecten schrijft/verwijdert (Sentry #7)\nInclusief Dependabot-updates",
-                "fr": "Décalage horaire pour les itinéraires et les tables de départ (Git #88)\nVérifiez si déchargé avant d'écrire/supprimer des objets (Sentry #7)\nInclure les mises à jour Dependabot",
-                "it": "Differenza oraria per rotte e tabelle di partenza (Git #88)\nControlla se è stato scaricato prima di scrivere/eliminare oggetti (sentenza n. 7)\nIncludi gli aggiornamenti di Dependabot",
-                "es": "Desplazamiento de tiempo para rutas y tablas de salida (Git # 88)\nVerifique si está descargado antes de escribir / eliminar objetos (Sentry # 7)\nIncluir actualizaciones de Dependabot",
-                "pl": "Przesunięcie czasowe dla tras i tabel odlotów (Git #88)\nSprawdź, czy wyładowany przed zapisaniem/usunięciem obiektów (Sentry #7)\nUwzględnij aktualizacje Dependabota",
-                "zh-cn": "路线和出发表的时间偏移（Git #88）\n在写入/删除对象之前检查是否已卸载（Sentry #7）\n包括 Dependabot 更新"
-            },
-            "1.0.7": {
-                "en": "Update HAFAS client to 5.15.2 (Fix error 'invalid json response body' with OEBB profile)\nConfigurable colors for delays and on time\nPrepare for WebLate translations\nInclude Dependabot updates",
-                "de": "Aktualisieren Sie den HAFAS-Client auf 5.15.2 (Fehler 'Ungültiger JSON-Antworttext' mit OEBB-Profil behoben)\nKonfigurierbare Farben für Verzögerungen und pünktlich\nBereiten Sie sich auf WebLate-Übersetzungen vor\nFügen Sie Dependabot-Updates hinzu",
-                "ru": "Обновите клиент HAFAS до версии 5.15.2 (исправьте ошибку «недопустимое тело ответа json» с профилем OEBB)\nНастраиваемые цвета для задержек и вовремя\nПодготовьтесь к переводам WebLate\nВключите обновления Dependabot",
-                "pt": "Atualize o cliente HAFAS para 5.15.2 (corrija o erro 'corpo de resposta json inválido' com perfil OEBB)\nCores configuráveis para atrasos e pontualidade\nPrepare-se para traduções WebLate\nIncluir atualizações Dependabot",
-                "nl": "Update HAFAS-client naar 5.15.2 (Fix fout 'invalid json response body' met OEBB-profiel)\nConfigureerbare kleuren voor vertragingen en op tijd\nBereid je voor op WebLate-vertalingen\nVoeg Dependabot-updates toe",
-                "fr": "Mettez à jour le client HAFAS vers la version 5.15.2 (correction de l'erreur «corps de réponse json non valide» avec le profil OEBB)\nCouleurs configurables pour les retards et les délais\nPréparez-vous aux traductions WebLate\nInclure les mises à jour de Dependabot",
-                "it": "Aggiorna il client HAFAS alla 5.15.2 (correggi l'errore \"corpo della risposta json non valido\" con il profilo OEBB)\nColori configurabili per ritardi e puntualità\nPreparati per le traduzioni WebLate\nIncludi gli aggiornamenti di Dependabot",
-                "es": "Actualice el cliente HAFAS a 5.15.2 (corrija el error 'cuerpo de respuesta json no válido' con perfil OEBB)\nColores configurables para retrasos y puntualidad\nPrepárese para las traducciones WebLate\nIncluir actualizaciones de Dependabot",
-                "pl": "Zaktualizuj klienta HAFAS do 5.15.2 (Napraw błąd „nieprawidłowy kod odpowiedzi json” z profilem OEBB)\nKonfigurowalne kolory dla opóźnień i na czas\nPrzygotuj się na tłumaczenia WebLate\nDołącz aktualizacje Dependabot",
-                "zh-cn": "将HAFAS客户端更新为5.15.2（使用OEBB配置文件修复错误“无效的json响应正文”）\n可配置的颜色，用于延迟和准时\n准备WebLate翻译\n包括Dependabot更新"
-            },
-            "1.0.6": {
-                "en": "Fix route selection in delay config\nFix SBB product suburban-train (Sentry #21)\nInclude Dependabot updates",
-                "de": "Korrigieren Sie die Routenauswahl in der Verzögerungskonfiguration\nFix SBB Produkt S-Bahn (Sentry # 21)\nFügen Sie Dependabot-Updates hinzu",
-                "ru": "Исправить выбор маршрута в конфигурации задержки\nИсправить товарный пригородный поезд SBB (Сторожевой № 21)\nВключите обновления Dependabot",
-                "pt": "Corrigir seleção de rota na configuração de atraso\nConsertar o trem suburbano do produto SBB (Sentinela # 21)\nIncluir atualizações Dependabot",
-                "nl": "Routeselectie in vertragingsconfiguratie repareren\nSBB-product voorstadstrein repareren (Sentry # 21)\nVoeg Dependabot-updates toe",
-                "fr": "Correction de la sélection de l'itinéraire dans la configuration du délai\nRéparer le train de banlieue du produit CFF (Sentry # 21)\nInclure les mises à jour de Dependabot",
-                "it": "Risolto il problema con la selezione del percorso nella configurazione del ritardo\nFix treno suburbano prodotto FFS (Sentry # 21)\nIncludi gli aggiornamenti di Dependabot",
-                "es": "Corregir la selección de ruta en la configuración de retardo\nArreglar el tren suburbano del producto SBB (Sentry # 21)\nIncluir actualizaciones de Dependabot",
-                "pl": "Napraw wybór trasy w konfiguracji opóźnienia\nNapraw podmiejski pociąg produktu SBB (Wartownik # 21)\nDołącz aktualizacje Dependabot",
-                "zh-cn": "修复延迟配置中的路由选择\n修复SBB产品郊区火车（Sentry＃21）\n包括Dependabot更新"
-            },
-            "1.0.5": {
-                "en": "Quality fixing (lgtm.com)\nInclude Dependabot updates",
-                "de": "Qualitätsfixierung (lgtm.com)\nFügen Sie Dependabot-Updates hinzu",
-                "ru": "Исправление качества (lgtm.com)\nВключите обновления Dependabot",
-                "pt": "Fixação de qualidade (lgtm.com)\nIncluir atualizações Dependabot",
-                "nl": "Kwaliteitsfixatie (lgtm.com)\nVoeg Dependabot-updates toe",
-                "fr": "Fixation de la qualité (lgtm.com)\nInclure les mises à jour de Dependabot",
-                "it": "Fissaggio di qualità (lgtm.com)\nIncludi gli aggiornamenti di Dependabot",
-                "es": "Fijación de calidad (lgtm.com)\nIncluir actualizaciones de Dependabot",
-                "pl": "Poprawa jakości (lgtm.com)\nDołącz aktualizacje Dependabot",
-                "zh-cn": "质量修复（lgtm.com）\n包括Dependabot更新"
-            },
-            "1.0.4": {
-                "en": "Add product selection to departure timetable\nUpdate HAFAS client to 5.15.1 (Fix error Clientversion with OEBB profile)\nEnhanced information reporting on error (Sentry Breadcrumbs)\nInclude Dependabot updates",
-                "de": "Produktauswahl zum Abfahrtszeitplan hinzufügen\nAktualisieren Sie den HAFAS-Client auf 5.15.1 (Fehler Clientversion mit OEBB-Profil behoben)\nVerbesserte Informationen zur Fehlerberichterstattung (Sentry Breadcrumbs)\nFügen Sie Dependabot-Updates hinzu",
-                "ru": "Добавить выбранный продукт в расписание отправления\nОбновите клиент HAFAS до версии 5.15.1 (исправьте ошибку Clientversion с профилем OEBB)\nРасширенная информация об ошибках (Sentry Breadcrumbs)\nВключите обновления Dependabot",
-                "pt": "Adicionar seleção de produto ao horário de partida\nAtualize o cliente HAFAS para 5.15.1 (correção de erro Clientversion com perfil OEBB)\nRelatório de informações aprimorado sobre erro (Sentry Breadcrumbs)\nIncluir atualizações Dependabot",
-                "nl": "Voeg productselectie toe aan het vertrekschema\nUpdate HAFAS-client naar 5.15.1 (Fix fout Clientversion met OEBB-profiel)\nVerbeterde informatierapportage over fouten (Sentry Breadcrumbs)\nVoeg Dependabot-updates toe",
-                "fr": "Ajouter une sélection de produits à l'horaire de départ\nMettre à jour le client HAFAS vers la version 5.15.1 (correction d'erreur Clientversion avec le profil OEBB)\nRapports d'information améliorés sur les erreurs (Sentry Breadcrumbs)\nInclure les mises à jour de Dependabot",
-                "it": "Aggiungi la selezione del prodotto all'orario di partenza\nAggiorna il client HAFAS alla 5.15.1 (correzione dell'errore versione client con profilo OEBB)\nSegnalazione avanzata delle informazioni sugli errori (Sentry Breadcrumb)\nIncludi gli aggiornamenti di Dependabot",
-                "es": "Agregar selección de productos al horario de salida\nActualice el cliente HAFAS a 5.15.1 (corrija el error Clientversion con perfil OEBB)\nInforme de información mejorado sobre errores (Sentry Breadcrumbs)\nIncluir actualizaciones de Dependabot",
-                "pl": "Dodaj wybór produktów do harmonogramu odlotów\nZaktualizuj klienta HAFAS do 5.15.1 (Napraw błąd wersji klienta z profilem OEBB)\nUlepszone raportowanie informacji o błędzie (okruszki Sentry)\nDołącz aktualizacje Dependabot",
-                "zh-cn": "将产品选择添加到出发时间表\n将HAFAS客户端更新为5.15.1（使用OEBB配置文件修复错误的Clientversion）\n增强了有关错误的信息报告（哨兵面包屑）\n包括Dependabot更新"
-            },
-            "1.0.3": {
-                "en": "Station search returns only stations (Sentry Multiple results found for station)\nIntegrate SBB profile\nLeave out superflous journey per route than configured\nFix call of helper for correct counters\nInclude Dependabot updates",
-                "de": "Die Stationssuche gibt nur Stationen zurück (Sentry Mehrere Ergebnisse für Station gefunden)\nSBB-Profil integrieren\nLassen Sie überflüssige Fahrten pro Route als konfiguriert aus\nAnruf des Helfers für korrekte Zähler korrigieren\nFügen Sie Dependabot-Updates hinzu",
-                "ru": "Поиск станций возвращает только станции (для станции найдено несколько результатов Sentry)\nИнтегрировать профиль SBB\nИсключить израсходованный маршрут, превышающий настроенный\nИсправить вызов помощника для правильных счетчиков\nВключите обновления Dependabot",
-                "pt": "A pesquisa de estação retorna apenas estações (resultados múltiplos de sentinela encontrados para a estação)\nIntegrar perfil SBB\nDeixar de fora jornada supérflua por rota do que configurada\nCorrigir a chamada do ajudante para contadores corretos\nIncluir atualizações Dependabot",
-                "nl": "Station zoeken levert alleen stations op (Sentry Meerdere resultaten gevonden voor station)\nIntegreer SBB-profiel\nLaat overtollige rit per route weg dan geconfigureerd\nOproep van helper voor correcte tellers repareren\nVoeg Dependabot-updates toe",
-                "fr": "La recherche de station ne renvoie que les stations (Sentry Multiple résultats trouvés pour la station)\nIntégrer le profil CFF\nOubliez le trajet Superflous par itinéraire que celui configuré\nCorrection de l'appel de l'assistant pour les compteurs corrects\nInclure les mises à jour de Dependabot",
-                "it": "La ricerca delle stazioni restituisce solo le stazioni (Sentry più risultati trovati per la stazione)\nIntegrare il profilo FFS\nTralascia il viaggio superfluo per percorso rispetto a quanto configurato\nRisolto il problema con la chiamata dell'helper per i contatori corretti\nIncludi gli aggiornamenti di Dependabot",
-                "es": "La búsqueda de emisoras solo devuelve emisoras (Sentry se encontraron varios resultados para la emisora)\nIntegrar el perfil SBB\nDeje de lado el viaje superfluo por ruta que la configurada\nSe corrigió la llamada de ayuda para los contadores correctos.\nIncluir actualizaciones de Dependabot",
-                "pl": "Wyszukiwanie stacji zwraca tylko stacje (Sentry Znaleziono wiele wyników dla stacji)\nZintegruj profil SBB\nPomiń zbędną podróż na trasę, niż skonfigurowano\nNapraw wywołanie pomocnika dla poprawnych liczników\nDołącz aktualizacje Dependabot",
-                "zh-cn": "电台搜索仅返回电台（找到多个针对电台的结果）\n整合SBB配置文件\n忽略每个路线的多余行程\n修复呼叫助手的正确计数器\n包括Dependabot更新"
-            },
-            "1.0.2": {
-                "en": "Configurable Headline for HTML tables\nFix correct deletion of unneeded objects (Sentry)\nInclude Dependabot updates",
-                "de": "Konfigurierbare Überschrift für HTML-Tabellen\nKorrigieren Sie das korrekte Löschen nicht benötigter Objekte (Sentry).\nFügen Sie Dependabot-Updates hinzu",
-                "ru": "Настраиваемый заголовок для HTML-таблиц\nИсправить правильное удаление ненужных объектов (Sentry)\nВключите обновления Dependabot",
-                "pt": "Título configurável para tabelas HTML\nCorrigir a exclusão correta de objetos desnecessários (Sentry)\nIncluir atualizações Dependabot",
-                "nl": "Configureerbare kop voor HTML-tabellen\nCorrecte verwijdering van onnodige objecten repareren (Sentry)\nVoeg Dependabot-updates toe",
-                "fr": "Titre configurable pour les tableaux HTML\nCorrection de la suppression correcte des objets inutiles (Sentry)\nInclure les mises à jour de Dependabot",
-                "it": "Titolo configurabile per tabelle HTML\nCorreggere la corretta eliminazione di oggetti non necessari (Sentry)\nIncludi gli aggiornamenti di Dependabot",
-                "es": "Título configurable para tablas HTML\nCorregir la eliminación correcta de objetos innecesarios (Sentry)\nIncluir actualizaciones de Dependabot",
-                "pl": "Konfigurowalny nagłówek dla tabel HTML\nNapraw prawidłowe usuwanie niepotrzebnych obiektów (Sentry)\nDołącz aktualizacje Dependabot",
-                "zh-cn": "HTML表格的可配置标题\n修复了正确删除不需要的对象的问题（哨兵）\n包括Dependabot更新"
-            },
-            "1.0.1": {
-                "en": "Fixing different errors from HAFAS\nFixing identical start and destination station\nRequire vehicle in configuration\nInclude Dependabot updates",
-                "de": "Behebung verschiedener Fehler von HAFAS\nFixierung identischer Start- und Zielstation\nFahrzeug in Konfiguration erforderlich\nFügen Sie Dependabot-Updates hinzu",
-                "ru": "Исправление различных ошибок от HAFAS\nИсправление идентичной начальной и конечной станции\nТребуется автомобиль в конфигурации\nВключите обновления Dependabot",
-                "pt": "Corrigindo diferentes erros de HAFAS\nConsertando início e estação de destino idênticos\nExigir veículo na configuração\nIncluir atualizações Dependabot",
-                "nl": "Herstellen van verschillende fouten van HAFAS\nIdentiek start- en bestemmingsstation repareren\nVoertuig in configuratie vereist\nVoeg Dependabot-updates toe",
-                "fr": "Correction de différentes erreurs de HAFAS\nFixation des stations de départ et de destination identiques\nExiger un véhicule en configuration\nInclure les mises à jour de Dependabot",
-                "it": "Correzione di diversi errori da HAFAS\nCorrezione della stazione di partenza e di destinazione identiche\nRichiede veicolo in configurazione\nIncludi gli aggiornamenti di Dependabot",
-                "es": "Arreglando diferentes errores de HAFAS\nArreglar estaciones de inicio y destino idénticas\nRequiere vehículo en configuración\nIncluir actualizaciones de Dependabot",
-                "pl": "Naprawianie różnych błędów z HAFAS\nUstalenie identycznej stacji początkowej i docelowej\nWymagaj konfiguracji pojazdu\nDołącz aktualizacje Dependabot",
-                "zh-cn": "修复来自HAFAS的不同错误\n固定相同的起点站和终点站\n需要配置车辆\n包括Dependabot更新"
-            },
-            "1.0.0": {
-                "en": "First stable release",
-                "de": "Erste stabile Version",
-                "ru": "Первый стабильный выпуск",
-                "pt": "Primeira versão estável",
-                "nl": "Eerste stabiele release",
-                "fr": "Première version stable",
-                "it": "Prima versione stabile",
-                "es": "Primera versión estable",
-                "pl": "Pierwsza stabilna wersja",
-                "zh-cn": "首次稳定发布"
-            },
-            "0.2.8": {
-                "en": "Fixing connection error to HAFAS",
-                "de": "Verbindungsfehler zu HAFAS behoben",
-                "ru": "Исправление ошибки подключения к HAFAS",
-                "pt": "Corrigindo erro de conexão para HAFAS",
-                "nl": "Verbindingsfout met HAFAS verholpen",
-                "fr": "Correction d'une erreur de connexion à HAFAS",
-                "it": "Correzione dell'errore di connessione a HAFAS",
-                "es": "Arreglando el error de conexión a HAFAS",
-                "pl": "Naprawianie błędu połączenia z HAFAS",
-                "zh-cn": "修复HAFAS的连接错误"
-            },
-            "0.2.7": {
-                "en": "Fixing connection error to HAFAS",
-                "de": "Verbindungsfehler zu HAFAS behoben",
-                "ru": "Исправление ошибки подключения к HAFAS",
-                "pt": "Corrigindo erro de conexão para HAFAS",
-                "nl": "Verbindingsfout met HAFAS verholpen",
-                "fr": "Correction d'une erreur de connexion à HAFAS",
-                "it": "Correzione dell'errore di connessione a HAFAS",
-                "es": "Arreglando el error de conexión a HAFAS",
-                "pl": "Naprawianie błędu połączenia z HAFAS",
-                "zh-cn": "修复HAFAS的连接错误"
-            },
-            "0.2.6": {
-                "en": "Fixing connection error to HAFAS\nFixing verifying config",
-                "de": "Verbindungsfehler zu HAFAS behoben\nKorrektur der Überprüfung der Konfiguration",
-                "ru": "Исправление ошибки подключения к HAFAS\nИсправление проверки конфигурации",
-                "pt": "Corrigindo erro de conexão para HAFAS\nCorrigindo a verificação de configuração",
-                "nl": "Verbindingsfout met HAFAS verholpen\nHet verifiëren van config",
-                "fr": "Correction d'une erreur de connexion à HAFAS\nCorrection de la vérification de la configuration",
-                "it": "Correzione dell'errore di connessione a HAFAS\nCorrezione della verifica della configurazione",
-                "es": "Arreglando el error de conexión a HAFAS\nArreglando la configuración de verificación",
-                "pl": "Naprawianie błędu połączenia z HAFAS\nNaprawianie weryfikacji pliku config",
-                "zh-cn": "修复HAFAS的连接错误\n修复验证配置"
-            },
-            "0.2.5": {
-                "en": "Adding more information to error in deleting unneeded channels",
-                "de": "Hinzufügen weiterer Informationen zum Fehler beim Löschen nicht benötigter Kanäle",
-                "ru": "Добавление дополнительной информации к ошибке при удалении ненужных каналов",
-                "pt": "Adicionando mais informações ao erro na exclusão de canais desnecessários",
-                "nl": "Meer informatie toevoegen aan fout bij het verwijderen van onnodige kanalen",
-                "fr": "Ajout d'informations supplémentaires à l'erreur de suppression des chaînes inutiles",
-                "it": "Aggiunta di ulteriori informazioni all'errore nell'eliminazione dei canali non necessari",
-                "es": "Agregar más información al error al eliminar canales innecesarios",
-                "pl": "Dodanie większej ilości informacji do błędu przy usuwaniu niepotrzebnych kanałów",
-                "zh-cn": "在删除不需要的频道时将更多信息添加到错误中"
-            },
-            "0.2.4": {
-                "en": "Fixing connection errors to HAFAS\nSending more details about errors in Sentry",
-                "de": "Verbindungsfehler zu HAFAS beheben\nSenden weiterer Details zu Fehlern in Sentry",
-                "ru": "Исправление ошибок подключения к HAFAS\nОтправка более подробной информации об ошибках в Sentry",
-                "pt": "Corrigindo erros de conexão para HAFAS\nEnviando mais detalhes sobre erros no Sentry",
-                "nl": "Verbindingsfouten met HAFAS\nMeer details over fouten in Sentry verzenden",
-                "fr": "Correction des erreurs de connexion à HAFAS\nEnvoi de plus de détails sur les erreurs dans Sentry",
-                "it": "Correzione degli errori di connessione a HAFAS\nInvio di ulteriori dettagli sugli errori in Sentry",
-                "es": "Arreglando errores de conexión a HAFAS\nEnvío de más detalles sobre errores en Sentry",
-                "pl": "Naprawianie błędów połączenia z HAFAS\nWysyłanie szczegółowych informacji o błędach w Sentry",
-                "zh-cn": "修复HAFAS的连接错误\n发送有关Sentry中错误的更多详细信息"
-            },
-            "0.2.3": {
-                "en": "Verifying configuration\nFixing some more errors",
-                "de": "Konfiguration überprüfen\nEinige weitere Fehler beheben",
-                "ru": "Проверка конфигурации\nИсправляем еще несколько ошибок",
-                "pt": "Verificando a configuração\nCorrigindo mais alguns erros",
-                "nl": "Configuratie verifiëren\nNog wat fouten oplossen",
-                "fr": "Vérification de la configuration\nCorrection d'autres erreurs",
-                "it": "Verifica della configurazione\nCorrezione di altri errori",
-                "es": "Verificando la configuración\nArreglando algunos errores más",
-                "pl": "Weryfikacja konfiguracji\nNaprawianie kolejnych błędów",
-                "zh-cn": "验证配置\n解决更多错误"
-            },
-            "0.2.2": {
-                "en": "Fixing some errors\nIntegrating Duration for Journey",
-                "de": "Einige Fehler beheben\nIntegrationsdauer für die Reise",
-                "ru": "Исправление некоторых ошибок\nИнтегрирование продолжительности путешествия",
-                "pt": "Corrigindo alguns erros\nIntegrando Duração para Viagem",
-                "nl": "Enkele fouten verhelpen\nDuur voor reis integreren",
-                "fr": "Correction de certaines erreurs\nIntégration de la durée pour le voyage",
-                "it": "Correzione di alcuni errori\nIntegrazione della durata per il viaggio",
-                "es": "Arreglando algunos errores\nIntegración de la duración del viaje",
-                "pl": "Naprawianie niektórych błędów\nIntegracja czasu trwania podróży",
-                "zh-cn": "修正一些错误\n旅程总时长"
-            },
-            "0.2.1": {
-                "en": "Configurable number of journeys in routes\nConfigurable number of departures in departure timetable\nShow product in departure timetable\nFix platform handling in departure timetable\nInclude Sentry error reporting\nUpdate Adapter template from 1.27.0 to 1.29.0\nInclude Dependabot updates",
-                "de": "Konfigurierbare Anzahl von Fahrten in Routen\nKonfigurierbare Anzahl von Abfahrten im Abfahrtszeitplan\nProdukt im Abfahrtsplan anzeigen\nFestlegung der Plattformhandhabung im Abfahrtszeitplan\nSentry-Fehlerberichterstattung einschließen\nAktualisieren Sie die Adaptervorlage von 1.27.0 auf 1.29.0\nFügen Sie Dependabot-Updates hinzu",
-                "ru": "Настраиваемое количество поездок в маршрутах\nНастраиваемое количество отправлений в расписании отправлений\nПоказать товар в расписании отправления\nИсправить обработку платформы в расписании отправления\nВключить отчет об ошибках Sentry\nОбновите шаблон адаптера с 1.27.0 до 1.29.0\nВключите обновления Dependabot",
-                "pt": "Número configurável de viagens nas rotas\nNúmero configurável de partidas na tabela de horários de partida\nMostrar produto no horário de partida\nCorrigir o manuseio da plataforma no horário de partida\nIncluir relatório de erro do Sentry\nAtualizar modelo de adaptador de 1.27.0 para 1.29.0\nIncluir atualizações Dependabot",
-                "nl": "Configureerbaar aantal ritten in routes\nConfigureerbaar aantal vertrekken in het vertrekschema\nToon product in vertrektijdschema\nPlatformafhandeling in vertrektijdschema vastzetten\nInclusief Sentry-foutrapportage\nUpdate de adaptersjabloon van 1.27.0 naar 1.29.0\nVoeg Dependabot-updates toe",
-                "fr": "Nombre de trajets configurable dans les itinéraires\nNombre de départs configurable dans l'horaire de départ\nAfficher le produit dans l'horaire de départ\nCorrection de la gestion de la plate-forme dans l'horaire de départ\nInclure le rapport d'erreurs Sentry\nMettre à jour le modèle d'adaptateur de 1.27.0 à 1.29.0\nInclure les mises à jour de Dependabot",
-                "it": "Numero configurabile di viaggi nelle rotte\nNumero di partenze configurabile nell'orario di partenza\nMostra il prodotto nell'orario di partenza\nCorreggere la gestione della piattaforma nell'orario di partenza\nIncludere la segnalazione degli errori di Sentry\nAggiorna il modello dell'adattatore da 1.27.0 a 1.29.0\nIncludi gli aggiornamenti di Dependabot",
-                "es": "Número configurable de viajes en rutas\nNúmero configurable de salidas en horario de salida\nMostrar producto en horario de salida\nArreglar el manejo de la plataforma en el horario de salida\nIncluir informes de errores de Sentry\nActualizar la plantilla del adaptador de 1.27.0 a 1.29.0\nIncluir actualizaciones de Dependabot",
-                "pl": "Konfigurowalna liczba przejazdów na trasach\nKonfigurowalna liczba odjazdów w rozkładzie odlotów\nPokaż produkt w rozkładzie odlotów\nNapraw obsługę peronu w rozkładzie lotów\nUwzględnij raportowanie błędów Sentry\nZaktualizuj szablon adaptera z 1.27.0 do 1.29.0\nDołącz aktualizacje Dependabot",
-                "zh-cn": "可配置的路线行程数\n出发时间表中可配置的出发次数\n在出发时间表中显示产品\n修正出发时间表中的平台处理\n包括哨兵错误报告\n将适配器模板从1.27.0更新到1.29.0\n包括Dependabot更新"
-            },
-            "0.2.0": {
-                "en": "Include Departure Timetable for configured stations\nSecurity fix for serialize-javascript\nEnhanced error handling and preparation for Sentry\nsetObject replaced with setObjectNotExists\nUpdate Adapter template from 1.25.0 to 1.27.0\nInclude Dependabot with auto-merge\nInclude Dependabot updates\nFix ESLINT errors\nIntegrate Integration and Unit Tests\nRemove Travis & Snyk",
-                "de": "Abflugzeitplan für konfigurierte Stationen einschließen\nSicherheitsupdate für Serialize-Javascript\nVerbesserte Fehlerbehandlung und Vorbereitung für Sentry\nsetObject wurde durch setObjectNotExists ersetzt\nAktualisieren Sie die Adaptervorlage von 1.25.0 auf 1.27.0\nFügen Sie Dependabot in die automatische Zusammenführung ein\nFügen Sie Dependabot-Updates hinzu\nBeheben Sie ESLINT-Fehler\nIntegrieren Sie Integrations- und Unit-Tests\nEntfernen Sie Travis & Snyk",
-                "ru": "Включите расписание отправления для настроенных станций\nИсправление безопасности для serialize-javascript\nУлучшенная обработка ошибок и подготовка к Sentry\nsetObject заменен на setObjectNotExists\nОбновите шаблон адаптера с 1.25.0 до 1.27.0\nВключить Dependabot с автоматическим объединением\nВключите обновления Dependabot\nИсправить ошибки ESLINT\nИнтеграция интеграции и модульных тестов\nУдалить Трэвиса и Сника",
-                "pt": "Incluir cronograma de partida para estações configuradas\nCorreção de segurança para serialize-javascript\nTratamento aprimorado de erros e preparação para Sentry\nsetObject substituído por setObjectNotExists\nAtualizar modelo de adaptador de 1.25.0 para 1.27.0\nIncluir Dependabot com mesclagem automática\nIncluir atualizações Dependabot\nCorrigir erros ESLINT\nIntegração de integração e testes de unidade\nRemover Travis e Snyk",
-                "nl": "Inclusief vertrektijdschema voor geconfigureerde stations\nBeveiligingsfix voor serialize-javascript\nVerbeterde foutafhandeling en voorbereiding voor Sentry\nsetObject vervangen door setObjectNotExists\nUpdate adaptersjabloon van 1.25.0 naar 1.27.0\nVoeg Dependabot toe met automatisch samenvoegen\nVoeg Dependabot-updates toe\nLos ESLINT-fouten op\nIntegreer integratie en unit-tests\nVerwijder Travis & Snyk",
-                "fr": "Inclure l'horaire de départ pour les stations configurées\nCorrectif de sécurité pour serialize-javascript\nGestion des erreurs et préparation améliorées pour Sentry\nsetObject remplacé par setObjectNotExists\nMettre à jour le modèle d'adaptateur de 1.25.0 à 1.27.0\nInclure Dependabot avec la fusion automatique\nInclure les mises à jour de Dependabot\nCorrection des erreurs ESLINT\nIntégrez l'intégration et les tests unitaires\nSupprimer Travis & Snyk",
-                "it": "Includi l'orario di partenza per le stazioni configurate\nCorrezione della sicurezza per serialize-javascript\nMigliore gestione degli errori e preparazione per Sentry\nsetObject sostituito con setObjectNotExists\nAggiorna il modello dell'adattatore da 1.25.0 a 1.27.0\nIncludi Dependabot con l'unione automatica\nIncludi gli aggiornamenti di Dependabot\nCorreggi gli errori ESLINT\nIntegrazione di integrazione e test unitari\nRimuovi Travis & Snyk",
-                "es": "Incluir horario de salida para estaciones configuradas\nCorrección de seguridad para serialize-javascript\nManejo de errores y preparación mejorados para Sentry\nsetObject reemplazado por setObjectNotExists\nActualizar la plantilla del adaptador de 1.25.0 a 1.27.0\nIncluir Dependabot con fusión automática\nIncluir actualizaciones de Dependabot\nCorregir errores de ESLINT\nIntegración de pruebas unitarias y de integración\nEliminar Travis & Snyk",
-                "pl": "Uwzględnij harmonogram odlotów dla skonfigurowanych stacji\nPoprawka bezpieczeństwa dla serialize-javascript\nUlepszona obsługa błędów i przygotowanie do Sentry\nsetObject zastąpiony przez setObjectNotExists\nZaktualizuj szablon adaptera z 1.25.0 do 1.27.0\nDołącz Dependabot z automatycznym scalaniem\nDołącz aktualizacje Dependabot\nNapraw błędy ESLINT\nZintegruj integrację i testy jednostkowe\nUsuń Travis & Snyk",
-                "zh-cn": "包括已配置车站的出发时刻表\n序列化的安全修复程序-javascript\n增强的错误处理和哨兵准备\n将setObject替换为setObjectNotExists\n将适配器模板从1.25.0更新到1.27.0\n包括Dependabot与自动合并\n包括Dependabot更新\n修复ESLINT错误\n集成集成和单元测试\n删除Travis＆Snyk"
-            }
-        },
-        "title": "Fahrplan",
-        "titleLang": {
-            "en": "Fahrplan",
-            "de": "Fahrplan",
-            "ru": "Fahrplan",
-            "pt": "Fahrplan",
-            "nl": "Fahrplan",
-            "fr": "Fahrplan",
-            "it": "Fahrplan",
-            "es": "Fahrplan",
-            "pl": "Fahrplan",
-            "zh-cn": "Fahrplan"
-        },
-        "desc": {
-            "en": "Get connection information of defined routes from HAFAS",
-            "de": "Verbindungsinformationen aus HAFAS zu konfigurierten Route",
-            "ru": "Получение информации о подключении определенных маршрутов от HAFAS",
-            "pt": "Obtenha informações de conexão de rotas definidas de HAFAS",
-            "nl": "Verkrijg verbindingsinformatie van gedefinieerde routes van HAFAS",
-            "fr": "Obtenir les informations de connexion des itinéraires définis à partir de HAFAS",
-            "it": "Ottieni informazioni sulla connessione di percorsi definiti da HAFAS",
-            "es": "Obtenga información de conexión de rutas definidas de HAFAS",
-            "pl": "Uzyskaj informacje o połączeniach zdefiniowanych tras z HAFAS",
-            "zh-cn": "从HAFAS获取已定义路由的连接信息"
-        },
-        "authors": [
-            "Gaudes <ralf@gaudes.net>"
-        ],
-        "keywords": [
-            "ioBroker",
-            "Smart Home",
-            "home automation",
-            "Fahrplan",
-            "HAFAS",
-            "Deutsche Bahn"
-        ],
-        "license": "MIT",
-        "platform": "Javascript/Node.js",
-        "main": "main.js",
-        "icon": "fahrplan.png",
-        "enabled": true,
-        "extIcon": "https://raw.githubusercontent.com/gaudes/ioBroker.fahrplan/master/admin/fahrplan.png",
-        "readme": "https://github.com/gaudes/ioBroker.fahrplan/blob/master/README.md",
-        "loglevel": "info",
-        "mode": "daemon",
-        "type": "date-and-time",
-        "compact": true,
-        "connectionType": "cloud",
-        "dataSource": "poll",
-        "materialize": true,
-        "messagebox": true,
-        "dependencies": [
-            {
-                "js-controller": ">=2.0.0"
-            }
-        ],
-        "plugins": {
-            "sentry": {
-                "dsn": "https://e1304da9bf394069b7850f7e334b4657@sentry.iobroker.net/105",
-                "errorBlacklist": [
-                    "SyntaxError",
-                    "HANDLED"
-                ]
-            }
-        }
+  "common": {
+    "name": "fahrplan",
+    "version": "1.2.2",
+    "news": {
+      "1.2.2": {
+        "en": "Upgrade dependency",
+        "de": "Abhängigkeit des Upgrades",
+        "ru": "Улучшение зависимости",
+        "pt": "Aumento da dependência",
+        "nl": "Upgrade afhankelijkheid",
+        "fr": "Amélioration de la dépendance",
+        "it": "Dipendenza di aggiornamento",
+        "es": "Dependencia de actualización",
+        "pl": "Uproszczenie zależności",
+        "zh-cn": "扶养"
+      },
+      "1.2.0": {
+        "en": "Remove support for SBB, not using HAFAS anymore\nFix Hafas error \"Bad Gateway\" with code 502 (Sentry #26)\nFix unkown station in route (Sentry #7)\nRemove support for Node 10\nUpdate to newest Adapter creator for internal dependencies\nInclude Dependabot updates",
+        "de": "Support für SBB entfernen, HAFAS nicht mehr verwenden\nHafas-Fehler \"Bad Gateway\" mit Code 502 (Sentry #26) beheben\nUnbekannte Station in Route reparieren (Sentry #7)\nEntfernen Sie die Unterstützung für Node 10\nUpdate auf den neuesten Adapter-Ersteller für interne Abhängigkeiten\nDependabot-Updates einschließen",
+        "ru": "Удалите поддержку SBB, больше не используя HAFAS\nИсправьте ошибку Hafas «Плохой шлюз» с кодом 502 (Sentry # 26)\nИсправить неизвестную станцию на маршруте (Сторожевой № 7)\nУбрать поддержку Node 10\nОбновление до новейшего конструктора адаптеров для внутренних зависимостей\nВключите обновления Dependabot",
+        "pt": "Remova o suporte para SBB, não usando mais HAFAS\nCorrija o erro Hafas \"Bad Gateway\" com o código 502 (Sentry # 26)\nCorrigir estação desconhecida na rota (Sentinela # 7)\nRemova o suporte para o Nó 10\nAtualize para o mais novo criador de adaptador para dependências internas\nIncluir atualizações Dependabot",
+        "nl": "Ondersteuning voor SBB verwijderen, HAFAS niet meer gebruiken\nRepareer Hafas-fout \"Slechte Gateway\" met code 502 (Sentry #26)\nOnbekend station in route repareren (Sentry #7)\nOndersteuning voor Node 10 . verwijderen\nUpdate naar de nieuwste adaptermaker voor interne afhankelijkheden\nInclusief Dependabot-updates",
+        "fr": "Supprimer la prise en charge des CFF, ne plus utiliser HAFAS\nCorrection de l'erreur Hafas \"Bad Gateway\" avec le code 502 (Sentry #26)\nCorrection d'une station inconnue en route (Sentinelle #7)\nSupprimer la prise en charge de Node 10\nMise à jour vers le dernier créateur d'adaptateur pour les dépendances internes\nInclure les mises à jour Dependabot",
+        "it": "Rimuovere il supporto per SBB, non utilizzare più HAFAS\nCorreggi l'errore Hafas \"Bad Gateway\" con il codice 502 (Sentry #26)\nCorreggi la stazione sconosciuta nel percorso (sentinella n. 7)\nRimuovere il supporto per il nodo 10\nAggiorna al più recente creatore di adattatori per le dipendenze interne\nIncludi gli aggiornamenti di Dependabot",
+        "es": "Eliminar el soporte para SBB, ya no usar HAFAS\nCorregir el error de Hafas \"Bad Gateway\" con el código 502 (Sentry # 26)\nArreglar la estación desconocida en la ruta (Centinela # 7)\nQuitar la compatibilidad con el nodo 10\nActualización al creador de adaptadores más reciente para dependencias internas\nIncluir actualizaciones de Dependabot",
+        "pl": "Usuń obsługę SBB, nie używam już HAFAS\nNapraw błąd Hafas „Bad Gateway” z kodem 502 (Sentry #26)\nNapraw nieznaną stację na trasie (Sentry #7)\nUsuń obsługę węzła 10\nAktualizacja do najnowszego kreatora adapterów dla wewnętrznych zależności\nUwzględnij aktualizacje Dependabota",
+        "zh-cn": "删除对 SBB 的支持，不再使用 HAFAS\n使用代码 502 (Sentry #26) 修复 Hafas 错误“Bad Gateway”\n修复路线中未知的车站（哨兵 #7）\n删除对 Node 10 的支持\n更新到最新的适配器创建者以获取内部依赖项\n包括 Dependabot 更新"
+      },
+      "1.1.1": {
+        "en": "Advanced error reporting for HAFAS errors\nInclude Dependabot updates",
+        "de": "Erweiterte Fehlerberichterstattung für HAFAS-Fehler\nDependabot-Updates einschließen",
+        "ru": "Расширенные отчеты об ошибках HAFAS\nВключите обновления Dependabot",
+        "pt": "Relatório de erros avançado para erros HAFAS\nIncluir atualizações Dependabot",
+        "nl": "Geavanceerde foutrapportage voor HAFAS-fouten\nInclusief Dependabot-updates",
+        "fr": "Rapport d'erreur avancé pour les erreurs HAFAS\nInclure les mises à jour Dependabot",
+        "it": "Segnalazione avanzata degli errori per gli errori HAFAS\nIncludi gli aggiornamenti di Dependabot",
+        "es": "Informe de errores avanzado para errores HAFAS\nIncluir actualizaciones de Dependabot",
+        "pl": "Zaawansowane raportowanie błędów dla błędów HAFAS\nUwzględnij aktualizacje Dependabota",
+        "zh-cn": "HAFAS 错误的高级错误报告\n包括 Dependabot 更新"
+      },
+      "1.1.0": {
+        "en": "Time offset for routes and departure tables (Git #88)\nCheck if unloaded before writing/deleting objects (Sentry #7)\nInclude Dependabot updates",
+        "de": "Zeitversatz für Routen und Abfahrtstabellen (Git #88)\nÜberprüfen Sie, ob sie entladen sind, bevor Sie Objekte schreiben/löschen (Sentry #7)\nDependabot-Updates einschließen",
+        "ru": "Смещение времени для таблиц маршрутов и отправлений (Git # 88)\nПеред записью / удалением объектов проверьте, не выгружены ли объекты (Sentry # 7)\nВключите обновления Dependabot",
+        "pt": "Deslocamento de tempo para rotas e tabelas de partida (Git # 88)\nVerifique se descarregado antes de escrever / excluir objetos (Sentinela # 7)\nIncluir atualizações Dependabot",
+        "nl": "Tijdsverschil voor routes en vertrektabellen (Git #88)\nControleer of het is verwijderd voordat u objecten schrijft/verwijdert (Sentry #7)\nInclusief Dependabot-updates",
+        "fr": "Décalage horaire pour les itinéraires et les tables de départ (Git #88)\nVérifiez si déchargé avant d'écrire/supprimer des objets (Sentry #7)\nInclure les mises à jour Dependabot",
+        "it": "Differenza oraria per rotte e tabelle di partenza (Git #88)\nControlla se è stato scaricato prima di scrivere/eliminare oggetti (sentenza n. 7)\nIncludi gli aggiornamenti di Dependabot",
+        "es": "Desplazamiento de tiempo para rutas y tablas de salida (Git # 88)\nVerifique si está descargado antes de escribir / eliminar objetos (Sentry # 7)\nIncluir actualizaciones de Dependabot",
+        "pl": "Przesunięcie czasowe dla tras i tabel odlotów (Git #88)\nSprawdź, czy wyładowany przed zapisaniem/usunięciem obiektów (Sentry #7)\nUwzględnij aktualizacje Dependabota",
+        "zh-cn": "路线和出发表的时间偏移（Git #88）\n在写入/删除对象之前检查是否已卸载（Sentry #7）\n包括 Dependabot 更新"
+      },
+      "1.0.7": {
+        "en": "Update HAFAS client to 5.15.2 (Fix error 'invalid json response body' with OEBB profile)\nConfigurable colors for delays and on time\nPrepare for WebLate translations\nInclude Dependabot updates",
+        "de": "Aktualisieren Sie den HAFAS-Client auf 5.15.2 (Fehler 'Ungültiger JSON-Antworttext' mit OEBB-Profil behoben)\nKonfigurierbare Farben für Verzögerungen und pünktlich\nBereiten Sie sich auf WebLate-Übersetzungen vor\nFügen Sie Dependabot-Updates hinzu",
+        "ru": "Обновите клиент HAFAS до версии 5.15.2 (исправьте ошибку «недопустимое тело ответа json» с профилем OEBB)\nНастраиваемые цвета для задержек и вовремя\nПодготовьтесь к переводам WebLate\nВключите обновления Dependabot",
+        "pt": "Atualize o cliente HAFAS para 5.15.2 (corrija o erro 'corpo de resposta json inválido' com perfil OEBB)\nCores configuráveis para atrasos e pontualidade\nPrepare-se para traduções WebLate\nIncluir atualizações Dependabot",
+        "nl": "Update HAFAS-client naar 5.15.2 (Fix fout 'invalid json response body' met OEBB-profiel)\nConfigureerbare kleuren voor vertragingen en op tijd\nBereid je voor op WebLate-vertalingen\nVoeg Dependabot-updates toe",
+        "fr": "Mettez à jour le client HAFAS vers la version 5.15.2 (correction de l'erreur «corps de réponse json non valide» avec le profil OEBB)\nCouleurs configurables pour les retards et les délais\nPréparez-vous aux traductions WebLate\nInclure les mises à jour de Dependabot",
+        "it": "Aggiorna il client HAFAS alla 5.15.2 (correggi l'errore \"corpo della risposta json non valido\" con il profilo OEBB)\nColori configurabili per ritardi e puntualità\nPreparati per le traduzioni WebLate\nIncludi gli aggiornamenti di Dependabot",
+        "es": "Actualice el cliente HAFAS a 5.15.2 (corrija el error 'cuerpo de respuesta json no válido' con perfil OEBB)\nColores configurables para retrasos y puntualidad\nPrepárese para las traducciones WebLate\nIncluir actualizaciones de Dependabot",
+        "pl": "Zaktualizuj klienta HAFAS do 5.15.2 (Napraw błąd „nieprawidłowy kod odpowiedzi json” z profilem OEBB)\nKonfigurowalne kolory dla opóźnień i na czas\nPrzygotuj się na tłumaczenia WebLate\nDołącz aktualizacje Dependabot",
+        "zh-cn": "将HAFAS客户端更新为5.15.2（使用OEBB配置文件修复错误“无效的json响应正文”）\n可配置的颜色，用于延迟和准时\n准备WebLate翻译\n包括Dependabot更新"
+      },
+      "1.0.6": {
+        "en": "Fix route selection in delay config\nFix SBB product suburban-train (Sentry #21)\nInclude Dependabot updates",
+        "de": "Korrigieren Sie die Routenauswahl in der Verzögerungskonfiguration\nFix SBB Produkt S-Bahn (Sentry # 21)\nFügen Sie Dependabot-Updates hinzu",
+        "ru": "Исправить выбор маршрута в конфигурации задержки\nИсправить товарный пригородный поезд SBB (Сторожевой № 21)\nВключите обновления Dependabot",
+        "pt": "Corrigir seleção de rota na configuração de atraso\nConsertar o trem suburbano do produto SBB (Sentinela # 21)\nIncluir atualizações Dependabot",
+        "nl": "Routeselectie in vertragingsconfiguratie repareren\nSBB-product voorstadstrein repareren (Sentry # 21)\nVoeg Dependabot-updates toe",
+        "fr": "Correction de la sélection de l'itinéraire dans la configuration du délai\nRéparer le train de banlieue du produit CFF (Sentry # 21)\nInclure les mises à jour de Dependabot",
+        "it": "Risolto il problema con la selezione del percorso nella configurazione del ritardo\nFix treno suburbano prodotto FFS (Sentry # 21)\nIncludi gli aggiornamenti di Dependabot",
+        "es": "Corregir la selección de ruta en la configuración de retardo\nArreglar el tren suburbano del producto SBB (Sentry # 21)\nIncluir actualizaciones de Dependabot",
+        "pl": "Napraw wybór trasy w konfiguracji opóźnienia\nNapraw podmiejski pociąg produktu SBB (Wartownik # 21)\nDołącz aktualizacje Dependabot",
+        "zh-cn": "修复延迟配置中的路由选择\n修复SBB产品郊区火车（Sentry＃21）\n包括Dependabot更新"
+      },
+      "1.0.5": {
+        "en": "Quality fixing (lgtm.com)\nInclude Dependabot updates",
+        "de": "Qualitätsfixierung (lgtm.com)\nFügen Sie Dependabot-Updates hinzu",
+        "ru": "Исправление качества (lgtm.com)\nВключите обновления Dependabot",
+        "pt": "Fixação de qualidade (lgtm.com)\nIncluir atualizações Dependabot",
+        "nl": "Kwaliteitsfixatie (lgtm.com)\nVoeg Dependabot-updates toe",
+        "fr": "Fixation de la qualité (lgtm.com)\nInclure les mises à jour de Dependabot",
+        "it": "Fissaggio di qualità (lgtm.com)\nIncludi gli aggiornamenti di Dependabot",
+        "es": "Fijación de calidad (lgtm.com)\nIncluir actualizaciones de Dependabot",
+        "pl": "Poprawa jakości (lgtm.com)\nDołącz aktualizacje Dependabot",
+        "zh-cn": "质量修复（lgtm.com）\n包括Dependabot更新"
+      }
     },
-    "native": {
-        "Provider": "DB",
-        "CreateHTMLHeadlines": 0,
-        "CreateHTML": 1,
-        "CreateHTMLJourney": 1,
-        "SaveJSON": true,
-        "SaveObjects": 2,
-        "UpdateInterval": 5,
-        "DelayTime": 1,
-        "ColorOntime": "#008000",
-        "ColorDelay": "#ff0000",
-        "NoSentry": false,
-        "routes": [
-            {
-                "enabled": false,
-                "station_from": "",
-                "station_from_name": "",
-                "station_to": "",
-                "station_to_name": "",
-                "station_via": "",
-                "traintype": [
-                    "all"
-                ],
-                "transfers": "",
-                "number_of_departures": 3,
-                "bicycle": false,
-                "timeoffset_of_departures": 0
-            }
-        ],
-        "delays": [
-            {
-                "enabled": false,
-                "route": "",
-                "departplan": "",
-                "notistart": "",
-                "output_id": "",
-                "days": [
-                    "7"
-                ],
-                "createobjects": true
-            }
-        ],
-        "departuretimetable": [
-            {
-                "enabled": false,
-                "station_from": "",
-                "station_from_name": "",
-                "number_of_departures": 3,
-                "traintype": [
-                    "all"
-                ],
-                "timeoffset_of_departures": 0
-            }
+    "title": "Fahrplan",
+    "titleLang": {
+      "en": "Fahrplan",
+      "de": "Fahrplan",
+      "ru": "Fahrplan",
+      "pt": "Fahrplan",
+      "nl": "Fahrplan",
+      "fr": "Fahrplan",
+      "it": "Fahrplan",
+      "es": "Fahrplan",
+      "pl": "Fahrplan",
+      "zh-cn": "Fahrplan"
+    },
+    "desc": {
+      "en": "Get connection information of defined routes from HAFAS",
+      "de": "Verbindungsinformationen aus HAFAS zu konfigurierten Route",
+      "ru": "Получение информации о подключении определенных маршрутов от HAFAS",
+      "pt": "Obtenha informações de conexão de rotas definidas de HAFAS",
+      "nl": "Verkrijg verbindingsinformatie van gedefinieerde routes van HAFAS",
+      "fr": "Obtenir les informations de connexion des itinéraires définis à partir de HAFAS",
+      "it": "Ottieni informazioni sulla connessione di percorsi definiti da HAFAS",
+      "es": "Obtenga información de conexión de rutas definidas de HAFAS",
+      "pl": "Uzyskaj informacje o połączeniach zdefiniowanych tras z HAFAS",
+      "zh-cn": "从HAFAS获取已定义路由的连接信息"
+    },
+    "authors": [
+      "Gaudes <ralf@gaudes.net>"
+    ],
+    "keywords": [
+      "ioBroker",
+      "Smart Home",
+      "home automation",
+      "Fahrplan",
+      "HAFAS",
+      "Deutsche Bahn"
+    ],
+    "license": "MIT",
+    "platform": "Javascript/Node.js",
+    "main": "main.js",
+    "icon": "fahrplan.png",
+    "enabled": true,
+    "extIcon": "https://raw.githubusercontent.com/gaudes/ioBroker.fahrplan/master/admin/fahrplan.png",
+    "readme": "https://github.com/gaudes/ioBroker.fahrplan/blob/master/README.md",
+    "loglevel": "info",
+    "mode": "daemon",
+    "type": "date-and-time",
+    "compact": true,
+    "connectionType": "cloud",
+    "dataSource": "poll",
+    "materialize": true,
+    "messagebox": true,
+    "dependencies": [
+      {
+        "js-controller": ">=2.0.0"
+      }
+    ],
+    "plugins": {
+      "sentry": {
+        "dsn": "https://e1304da9bf394069b7850f7e334b4657@sentry.iobroker.net/105",
+        "errorBlacklist": [
+          "SyntaxError",
+          "HANDLED"
         ]
-    },
-    "objects": [],
-    "instanceObjects": []
+      }
+    }
+  },
+  "native": {
+    "Provider": "DB",
+    "CreateHTMLHeadlines": 0,
+    "CreateHTML": 1,
+    "CreateHTMLJourney": 1,
+    "SaveJSON": true,
+    "SaveObjects": 2,
+    "UpdateInterval": 5,
+    "DelayTime": 1,
+    "ColorOntime": "#008000",
+    "ColorDelay": "#ff0000",
+    "NoSentry": false,
+    "routes": [
+      {
+        "enabled": false,
+        "station_from": "",
+        "station_from_name": "",
+        "station_to": "",
+        "station_to_name": "",
+        "station_via": "",
+        "traintype": [
+          "all"
+        ],
+        "transfers": "",
+        "number_of_departures": 3,
+        "bicycle": false,
+        "timeoffset_of_departures": 0
+      }
+    ],
+    "delays": [
+      {
+        "enabled": false,
+        "route": "",
+        "departplan": "",
+        "notistart": "",
+        "output_id": "",
+        "days": [
+          "7"
+        ],
+        "createobjects": true
+      }
+    ],
+    "departuretimetable": [
+      {
+        "enabled": false,
+        "station_from": "",
+        "station_from_name": "",
+        "number_of_departures": 3,
+        "traintype": [
+          "all"
+        ],
+        "timeoffset_of_departures": 0
+      }
+    ]
+  },
+  "objects": [],
+  "instanceObjects": []
 }

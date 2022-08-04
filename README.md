@@ -223,7 +223,7 @@ With +-Button new entries can be added to the table.
 	Placeholder for the next version (at the beginning of the line):
 	### __WORK IN PROGRESS__
 -->
-### __WORK IN PROGRESS__
+### 1.2.2 (2022-08-04)
 * (Gaudes) Upgrade dependency
 
 ### 1.2.1 (2022-08-04)
@@ -246,12 +246,6 @@ With +-Button new entries can be added to the table.
 ### 1.1.0 (2021-06-04)
 * (Gaudes) Time offset for routes and departure tables (Git #88)
 * (Gaudes) Check if unloaded before writing/deleting objects (Sentry #7)
-* (Gaudes) Include Dependabot updates
-
-### 1.0.7 (2021-04-06)
-* (Gaudes) Update HAFAS client to 5.15.2 (Fix error 'invalid json response body' with OEBB profile)
-* (Gaudes) Configurable colors for delays and on time
-* (Gaudes) Prepare for WebLate translations
 * (Gaudes) Include Dependabot updates
 
 ## License

@@ -1,4 +1,10 @@
 # Older changes
+## 1.0.7 (2021-04-06)
+* (Gaudes) Update HAFAS client to 5.15.2 (Fix error 'invalid json response body' with OEBB profile)
+* (Gaudes) Configurable colors for delays and on time
+* (Gaudes) Prepare for WebLate translations
+* (Gaudes) Include Dependabot updates
+
 ## 1.0.6 (2021-03-16)
 * (Gaudes) Fix route selection in delay config
 * (Gaudes) Fix SBB product suburban-train (Sentry #21)

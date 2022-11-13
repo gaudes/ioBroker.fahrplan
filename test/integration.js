@@ -29,6 +29,6 @@ tests.integration(path.join(__dirname, ".."),{
 							resolve();
 						} );
 				});
-			} ).timeout(12000);
+			} ).timeout(15000);
 		} );
 	}} );

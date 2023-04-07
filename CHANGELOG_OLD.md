@@ -1,4 +1,9 @@
 # Older changes
+## 1.1.0 (2021-06-04)
+* (Gaudes) Time offset for routes and departure tables (Git #88)
+* (Gaudes) Check if unloaded before writing/deleting objects (Sentry #7)
+* (Gaudes) Include Dependabot updates
+
 ## 1.0.7 (2021-04-06)
 * (Gaudes) Update HAFAS client to 5.15.2 (Fix error 'invalid json response body' with OEBB profile)
 * (Gaudes) Configurable colors for delays and on time

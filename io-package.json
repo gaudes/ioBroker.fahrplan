@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "fahrplan",
-    "version": "1.2.2",
+    "version": "1.2.3",
     "news": {
+      "1.2.3": {
+        "en": "Upgrade hafas-client (fix for error)\nUpgrade dependency",
+        "de": "Upgrade hafas-client (Fehlerfix)\nAbhängigkeit des Upgrades",
+        "ru": "Обновление hafas-client (фикс для ошибки)\nУлучшение зависимости",
+        "pt": "Atualizar hafas-client (fixo para erro)\nAumento da dependência",
+        "nl": "Upgrade hafas-cliënt (fix voor fout)\nUpgrade afhankelijkheid",
+        "fr": "Mettre à niveau les hafas-client (fixe pour erreur)\nAmélioration de la dépendance",
+        "it": "Aggiornare hafas-client (fisso per errore)\nDipendenza di aggiornamento",
+        "es": "Hafas-cliente de actualización (fijo por error)\nDependencia de actualización",
+        "pl": "Upgrade hafas-client (ros.)\nUproszczenie zależności",
+        "uk": "Оновлення хафа-клієнта (фікс для помилки)\nПідвищення залежності",
+        "zh-cn": "等级的哈法-排他性(错误的六分之六)\n扶养"
+      },
       "1.2.2": {
         "en": "Upgrade dependency",
         "de": "Abhängigkeit des Upgrades",
@@ -74,18 +87,6 @@
         "es": "Corregir la selección de ruta en la configuración de retardo\nArreglar el tren suburbano del producto SBB (Sentry # 21)\nIncluir actualizaciones de Dependabot",
         "pl": "Napraw wybór trasy w konfiguracji opóźnienia\nNapraw podmiejski pociąg produktu SBB (Wartownik # 21)\nDołącz aktualizacje Dependabot",
         "zh-cn": "修复延迟配置中的路由选择\n修复SBB产品郊区火车（Sentry＃21）\n包括Dependabot更新"
-      },
-      "1.0.5": {
-        "en": "Quality fixing (lgtm.com)\nInclude Dependabot updates",
-        "de": "Qualitätsfixierung (lgtm.com)\nFügen Sie Dependabot-Updates hinzu",
-        "ru": "Исправление качества (lgtm.com)\nВключите обновления Dependabot",
-        "pt": "Fixação de qualidade (lgtm.com)\nIncluir atualizações Dependabot",
-        "nl": "Kwaliteitsfixatie (lgtm.com)\nVoeg Dependabot-updates toe",
-        "fr": "Fixation de la qualité (lgtm.com)\nInclure les mises à jour de Dependabot",
-        "it": "Fissaggio di qualità (lgtm.com)\nIncludi gli aggiornamenti di Dependabot",
-        "es": "Fijación de calidad (lgtm.com)\nIncluir actualizaciones de Dependabot",
-        "pl": "Poprawa jakości (lgtm.com)\nDołącz aktualizacje Dependabot",
-        "zh-cn": "质量修复（lgtm.com）\n包括Dependabot更新"
       }
     },
     "title": "Fahrplan",

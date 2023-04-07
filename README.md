@@ -223,6 +223,10 @@ With +-Button new entries can be added to the table.
 	Placeholder for the next version (at the beginning of the line):
 	### __WORK IN PROGRESS__
 -->
+### __WORK IN PROGRESS__
+* (Gaudes) Upgrade hafas-client (fix for error)
+* (Gaudes) Upgrade dependency
+
 ### 1.2.2 (2022-08-04)
 * (Gaudes) Upgrade dependency
 

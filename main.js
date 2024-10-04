@@ -9,9 +9,15 @@ const fStation = require("./lib/station.js");
 // const fStation = require("./lib/station.js");
 
 //#region Global Variables
+/* Umstellung auf ESM
 const hCreateClient = require("hafas-client");
 const hDBprofile = require("hafas-client/p/db");
 const hOEBBprofile = require("hafas-client/p/oebb");
+*/
+import {createClient as hCreateClient} from 'hafas-client'
+import {profile as hDBprofile} from "hafas-client/p/db/index.js"
+import {profile as hOEBBprofile} from "hafas-client/p/oebb/index.js"
+
 // const adapter = new utils.Adapter('fahrplan');
 let iUpdateInterval = 5;
 let tUpdateTimeout = null;

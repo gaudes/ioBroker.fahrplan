@@ -1,15 +1,23 @@
 "use strict";
 
+// Umstellung auf ESM
+/*
 const utils = require("@iobroker/adapter-core");
 const fHelpers = require("./lib/helper.js");
 const fRoute = require("./lib/route.js");
 const fOptions = require("./lib/options");
 const fDepTT = require("./lib/deptt.js");
 const fStation = require("./lib/station.js");
-// const fStation = require("./lib/station.js");
+*/
+import utils from '@iobroker/adapter-core';
+import fHelpers from './lib/helper';
+import fRoute from './lib/route';
+import fOptions from './lib/options';
+import fDepTT from './lib/deptt';
+import fStation from './lib/station';
 
 //#region Global Variables
-/* Umstellung auf ESM
+/*
 const hCreateClient = require("hafas-client");
 const hDBprofile = require("hafas-client/p/db");
 const hOEBBprofile = require("hafas-client/p/oebb");

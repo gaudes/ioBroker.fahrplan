@@ -26,7 +26,8 @@
         "it": "Dipendenza di aggiornamento",
         "es": "Dependencia de actualización",
         "pl": "Uproszczenie zależności",
-        "zh-cn": "扶养"
+        "zh-cn": "扶养",
+        "uk": "Залежність оновлення"
       },
       "1.2.0": {
         "en": "Remove support for SBB, not using HAFAS anymore\nFix Hafas error \"Bad Gateway\" with code 502 (Sentry #26)\nFix unkown station in route (Sentry #7)\nRemove support for Node 10\nUpdate to newest Adapter creator for internal dependencies\nInclude Dependabot updates",
@@ -38,7 +39,8 @@
         "it": "Rimuovere il supporto per SBB, non utilizzare più HAFAS\nCorreggi l'errore Hafas \"Bad Gateway\" con il codice 502 (Sentry #26)\nCorreggi la stazione sconosciuta nel percorso (sentinella n. 7)\nRimuovere il supporto per il nodo 10\nAggiorna al più recente creatore di adattatori per le dipendenze interne\nIncludi gli aggiornamenti di Dependabot",
         "es": "Eliminar el soporte para SBB, ya no usar HAFAS\nCorregir el error de Hafas \"Bad Gateway\" con el código 502 (Sentry # 26)\nArreglar la estación desconocida en la ruta (Centinela # 7)\nQuitar la compatibilidad con el nodo 10\nActualización al creador de adaptadores más reciente para dependencias internas\nIncluir actualizaciones de Dependabot",
         "pl": "Usuń obsługę SBB, nie używam już HAFAS\nNapraw błąd Hafas „Bad Gateway” z kodem 502 (Sentry #26)\nNapraw nieznaną stację na trasie (Sentry #7)\nUsuń obsługę węzła 10\nAktualizacja do najnowszego kreatora adapterów dla wewnętrznych zależności\nUwzględnij aktualizacje Dependabota",
-        "zh-cn": "删除对 SBB 的支持，不再使用 HAFAS\n使用代码 502 (Sentry #26) 修复 Hafas 错误“Bad Gateway”\n修复路线中未知的车站（哨兵 #7）\n删除对 Node 10 的支持\n更新到最新的适配器创建者以获取内部依赖项\n包括 Dependabot 更新"
+        "zh-cn": "删除对 SBB 的支持，不再使用 HAFAS\n使用代码 502 (Sentry #26) 修复 Hafas 错误“Bad Gateway”\n修复路线中未知的车站（哨兵 #7）\n删除对 Node 10 的支持\n更新到最新的适配器创建者以获取内部依赖项\n包括 Dependabot 更新",
+        "uk": "Вилучити підтримку SBB, більше не використовувати HAFAS\nВиправлення помилки Hafas \"Bad Gateway\" з кодом 502 (Sentry #26)\nВиправити невідому станцію на маршруті (вартовий №7)\nВидалити підтримку для Node 10\nОновіть до останньої версії Adapter creator для внутрішніх залежностей\nВключіть оновлення Dependabot"
       },
       "1.1.1": {
         "en": "Advanced error reporting for HAFAS errors\nInclude Dependabot updates",
@@ -50,7 +52,8 @@
         "it": "Segnalazione avanzata degli errori per gli errori HAFAS\nIncludi gli aggiornamenti di Dependabot",
         "es": "Informe de errores avanzado para errores HAFAS\nIncluir actualizaciones de Dependabot",
         "pl": "Zaawansowane raportowanie błędów dla błędów HAFAS\nUwzględnij aktualizacje Dependabota",
-        "zh-cn": "HAFAS 错误的高级错误报告\n包括 Dependabot 更新"
+        "zh-cn": "HAFAS 错误的高级错误报告\n包括 Dependabot 更新",
+        "uk": "Розширене звітування про помилки HAFAS\nВключіть оновлення Dependabot"
       },
       "1.1.0": {
         "en": "Time offset for routes and departure tables (Git #88)\nCheck if unloaded before writing/deleting objects (Sentry #7)\nInclude Dependabot updates",
@@ -62,7 +65,8 @@
         "it": "Differenza oraria per rotte e tabelle di partenza (Git #88)\nControlla se è stato scaricato prima di scrivere/eliminare oggetti (sentenza n. 7)\nIncludi gli aggiornamenti di Dependabot",
         "es": "Desplazamiento de tiempo para rutas y tablas de salida (Git # 88)\nVerifique si está descargado antes de escribir / eliminar objetos (Sentry # 7)\nIncluir actualizaciones de Dependabot",
         "pl": "Przesunięcie czasowe dla tras i tabel odlotów (Git #88)\nSprawdź, czy wyładowany przed zapisaniem/usunięciem obiektów (Sentry #7)\nUwzględnij aktualizacje Dependabota",
-        "zh-cn": "路线和出发表的时间偏移（Git #88）\n在写入/删除对象之前检查是否已卸载（Sentry #7）\n包括 Dependabot 更新"
+        "zh-cn": "路线和出发表的时间偏移（Git #88）\n在写入/删除对象之前检查是否已卸载（Sentry #7）\n包括 Dependabot 更新",
+        "uk": "Зміщення часу для маршрутів і таблиць відправлень (Git #88)\nПеревірте, чи вивантажено перед записом/видаленням об’єктів (Вартовий №7)\nВключіть оновлення Dependabot"
       },
       "1.0.7": {
         "en": "Update HAFAS client to 5.15.2 (Fix error 'invalid json response body' with OEBB profile)\nConfigurable colors for delays and on time\nPrepare for WebLate translations\nInclude Dependabot updates",
@@ -74,7 +78,8 @@
         "it": "Aggiorna il client HAFAS alla 5.15.2 (correggi l'errore \"corpo della risposta json non valido\" con il profilo OEBB)\nColori configurabili per ritardi e puntualità\nPreparati per le traduzioni WebLate\nIncludi gli aggiornamenti di Dependabot",
         "es": "Actualice el cliente HAFAS a 5.15.2 (corrija el error 'cuerpo de respuesta json no válido' con perfil OEBB)\nColores configurables para retrasos y puntualidad\nPrepárese para las traducciones WebLate\nIncluir actualizaciones de Dependabot",
         "pl": "Zaktualizuj klienta HAFAS do 5.15.2 (Napraw błąd „nieprawidłowy kod odpowiedzi json” z profilem OEBB)\nKonfigurowalne kolory dla opóźnień i na czas\nPrzygotuj się na tłumaczenia WebLate\nDołącz aktualizacje Dependabot",
-        "zh-cn": "将HAFAS客户端更新为5.15.2（使用OEBB配置文件修复错误“无效的json响应正文”）\n可配置的颜色，用于延迟和准时\n准备WebLate翻译\n包括Dependabot更新"
+        "zh-cn": "将HAFAS客户端更新为5.15.2（使用OEBB配置文件修复错误“无效的json响应正文”）\n可配置的颜色，用于延迟和准时\n准备WebLate翻译\n包括Dependabot更新",
+        "uk": "Оновіть клієнт HAFAS до версії 5.15.2 (виправте помилку «недійсне тіло відповіді json» із профілем OEBB)\nНастроювані кольори для затримок і вчасно\nПідготуйтеся до перекладів WebLate\nВключіть оновлення Dependabot"
       },
       "1.0.6": {
         "en": "Fix route selection in delay config\nFix SBB product suburban-train (Sentry #21)\nInclude Dependabot updates",
@@ -86,10 +91,10 @@
         "it": "Risolto il problema con la selezione del percorso nella configurazione del ritardo\nFix treno suburbano prodotto FFS (Sentry # 21)\nIncludi gli aggiornamenti di Dependabot",
         "es": "Corregir la selección de ruta en la configuración de retardo\nArreglar el tren suburbano del producto SBB (Sentry # 21)\nIncluir actualizaciones de Dependabot",
         "pl": "Napraw wybór trasy w konfiguracji opóźnienia\nNapraw podmiejski pociąg produktu SBB (Wartownik # 21)\nDołącz aktualizacje Dependabot",
-        "zh-cn": "修复延迟配置中的路由选择\n修复SBB产品郊区火车（Sentry＃21）\n包括Dependabot更新"
+        "zh-cn": "修复延迟配置中的路由选择\n修复SBB产品郊区火车（Sentry＃21）\n包括Dependabot更新",
+        "uk": "Виправлено вибір маршруту в конфігурації затримки\nВиправити приміський поїзд продукту SBB (Вартовий №21)\nВключіть оновлення Dependabot"
       }
     },
-    "title": "Fahrplan",
     "titleLang": {
       "en": "Fahrplan",
       "de": "Fahrplan",
@@ -100,32 +105,34 @@
       "it": "Fahrplan",
       "es": "Fahrplan",
       "pl": "Fahrplan",
-      "zh-cn": "Fahrplan"
+      "uk": "Фарплан",
+      "zh-cn": "法尔普兰"
     },
     "desc": {
       "en": "Get connection information of defined routes from HAFAS",
       "de": "Verbindungsinformationen aus HAFAS zu konfigurierten Route",
-      "ru": "Получение информации о подключении определенных маршрутов от HAFAS",
-      "pt": "Obtenha informações de conexão de rotas definidas de HAFAS",
-      "nl": "Verkrijg verbindingsinformatie van gedefinieerde routes van HAFAS",
-      "fr": "Obtenir les informations de connexion des itinéraires définis à partir de HAFAS",
-      "it": "Ottieni informazioni sulla connessione di percorsi definiti da HAFAS",
-      "es": "Obtenga información de conexión de rutas definidas de HAFAS",
-      "pl": "Uzyskaj informacje o połączeniach zdefiniowanych tras z HAFAS",
-      "zh-cn": "从HAFAS获取已定义路由的连接信息"
+      "ru": "Получить информацию о связи с определенными маршрутами из HAFAS",
+      "pt": "Obtenha informações de conexão de rotas definidas da HAFAS",
+      "nl": "Ontvang verbindingsinformatie van gedefinieerde routes van HAFAS",
+      "fr": "Obtenir des informations sur les liaisons définies de HAFAS",
+      "it": "Ottenere informazioni di connessione di percorsi definiti da HAFAS",
+      "es": "Obtener información de conexión de rutas definidas de HAFAS",
+      "pl": "Pobierz informacje o połączeniach określonych tras z HAFAS",
+      "uk": "Отримати інформацію про підключення визначених маршрутів від HAFAS",
+      "zh-cn": "从 HAFAS 获取定义路线的连接信息"
     },
     "authors": [
       "Gaudes <ralf@gaudes.net>"
     ],
     "keywords": [
-      "ioBroker",
-      "Smart Home",
-      "home automation",
       "Fahrplan",
       "HAFAS",
       "Deutsche Bahn"
     ],
-    "license": "MIT",
+    "licenseInformation": {
+      "type": "free",
+      "license": "MIT"
+    },
     "platform": "Javascript/Node.js",
     "main": "main.js",
     "icon": "fahrplan.png",
@@ -133,6 +140,7 @@
     "extIcon": "https://raw.githubusercontent.com/gaudes/ioBroker.fahrplan/master/admin/fahrplan.png",
     "readme": "https://github.com/gaudes/ioBroker.fahrplan/blob/master/README.md",
     "loglevel": "info",
+    "tier": 3,
     "mode": "daemon",
     "type": "date-and-time",
     "compact": true,

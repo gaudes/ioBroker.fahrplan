@@ -224,6 +224,7 @@ With +-Button new entries can be added to the table.
 	### __WORK IN PROGRESS__
 -->
 ### __WORK IN PROGRESS__
+* (simatec) Responsive Design added
 * (Gaudes) Upgrades
 
 ### 1.2.3 (2023-04-07)

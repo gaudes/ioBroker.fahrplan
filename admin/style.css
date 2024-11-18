@@ -29,4 +29,25 @@ label > i[title] {
 	white-space: nowrap;
 }
 
+/* Only for Firefox */
+@supports (-moz-appearance: none) {
+    .m .page {
+        height: calc(100vh - 70px);
+    }
+}
+
+.m .page {
+	overflow: hidden auto;
+}
+
+body {
+	overflow: hidden;
+}
+
+@media (max-width: 601px) {
+	.m .dropdown-menu {
+	  position: fixed;
+	}
+  }
+
 /* Add your styles here */

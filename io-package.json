@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "fahrplan",
-    "version": "1.2.3",
+    "version": "1.3.0",
     "news": {
+      "1.3.0": {
+        "en": "Responsive Design added\nUpgrades",
+        "de": "Responsive Design hinzugefügt\nUpgrades",
+        "ru": "Responsive Design\nОбновления",
+        "pt": "Design responsivo adicionado\nAtualizações",
+        "nl": "Responsive Design toegevoegd\nUpgrades",
+        "fr": "Design sensible ajouté\nAméliorations",
+        "it": "Responsive Design aggiunto\nAggiornamenti",
+        "es": "Diseño responsable añadido\nActualizaciones",
+        "pl": "Dodano projekt odpowiedzialny\nAktualizacja",
+        "uk": "Додано адаптивний дизайн\nОновлення",
+        "zh-cn": "添加响应设计\n升级"
+      },
       "1.2.3": {
         "en": "Upgrade hafas-client (fix for error)\nUpgrade dependency",
         "de": "Upgrade hafas-client (Fehlerfix)\nAbhängigkeit des Upgrades",
@@ -80,19 +93,6 @@
         "pl": "Zaktualizuj klienta HAFAS do 5.15.2 (Napraw błąd „nieprawidłowy kod odpowiedzi json” z profilem OEBB)\nKonfigurowalne kolory dla opóźnień i na czas\nPrzygotuj się na tłumaczenia WebLate\nDołącz aktualizacje Dependabot",
         "zh-cn": "将HAFAS客户端更新为5.15.2（使用OEBB配置文件修复错误“无效的json响应正文”）\n可配置的颜色，用于延迟和准时\n准备WebLate翻译\n包括Dependabot更新",
         "uk": "Оновіть клієнт HAFAS до версії 5.15.2 (виправте помилку «недійсне тіло відповіді json» із профілем OEBB)\nНастроювані кольори для затримок і вчасно\nПідготуйтеся до перекладів WebLate\nВключіть оновлення Dependabot"
-      },
-      "1.0.6": {
-        "en": "Fix route selection in delay config\nFix SBB product suburban-train (Sentry #21)\nInclude Dependabot updates",
-        "de": "Korrigieren Sie die Routenauswahl in der Verzögerungskonfiguration\nFix SBB Produkt S-Bahn (Sentry # 21)\nFügen Sie Dependabot-Updates hinzu",
-        "ru": "Исправить выбор маршрута в конфигурации задержки\nИсправить товарный пригородный поезд SBB (Сторожевой № 21)\nВключите обновления Dependabot",
-        "pt": "Corrigir seleção de rota na configuração de atraso\nConsertar o trem suburbano do produto SBB (Sentinela # 21)\nIncluir atualizações Dependabot",
-        "nl": "Routeselectie in vertragingsconfiguratie repareren\nSBB-product voorstadstrein repareren (Sentry # 21)\nVoeg Dependabot-updates toe",
-        "fr": "Correction de la sélection de l'itinéraire dans la configuration du délai\nRéparer le train de banlieue du produit CFF (Sentry # 21)\nInclure les mises à jour de Dependabot",
-        "it": "Risolto il problema con la selezione del percorso nella configurazione del ritardo\nFix treno suburbano prodotto FFS (Sentry # 21)\nIncludi gli aggiornamenti di Dependabot",
-        "es": "Corregir la selección de ruta en la configuración de retardo\nArreglar el tren suburbano del producto SBB (Sentry # 21)\nIncluir actualizaciones de Dependabot",
-        "pl": "Napraw wybór trasy w konfiguracji opóźnienia\nNapraw podmiejski pociąg produktu SBB (Wartownik # 21)\nDołącz aktualizacje Dependabot",
-        "zh-cn": "修复延迟配置中的路由选择\n修复SBB产品郊区火车（Sentry＃21）\n包括Dependabot更新",
-        "uk": "Виправлено вибір маршруту в конфігурації затримки\nВиправити приміський поїзд продукту SBB (Вартовий №21)\nВключіть оновлення Dependabot"
       }
     },
     "titleLang": {

@@ -1,4 +1,8 @@
 # Older changes
+## 1.1.1 (2021-06-22)
+* (Gaudes) Advanced error reporting for HAFAS errors
+* (Gaudes) Include Dependabot updates
+
 ## 1.1.0 (2021-06-04)
 * (Gaudes) Time offset for routes and departure tables (Git #88)
 * (Gaudes) Check if unloaded before writing/deleting objects (Sentry #7)

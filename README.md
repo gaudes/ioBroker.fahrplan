@@ -223,7 +223,7 @@ With +-Button new entries can be added to the table.
 	Placeholder for the next version (at the beginning of the line):
 	### __WORK IN PROGRESS__
 -->
-### __WORK IN PROGRESS__
+### 1.3.0 (2024-11-18)
 * (simatec) Responsive Design added
 * (Gaudes) Upgrades
 
@@ -245,10 +245,6 @@ With +-Button new entries can be added to the table.
 * (Gaudes) Fix unkown station in route (Sentry #7)
 * (Gaudes) Remove support for Node 10
 * (Gaudes) Update to newest Adapter creator for internal dependencies
-* (Gaudes) Include Dependabot updates
-
-### 1.1.1 (2021-06-22)
-* (Gaudes) Advanced error reporting for HAFAS errors
 * (Gaudes) Include Dependabot updates
 
 ## License

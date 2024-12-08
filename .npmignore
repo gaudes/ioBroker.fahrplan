@@ -21,8 +21,8 @@ tsconfig.json
 tsconfig.*.json
 
 # ESLint configuration
-.eslintrc.json
-.eslintrc.js
+eslintrc.config.mjs
+prettier.config.mjs
 
 # npm package files
 iobroker.*.tgz

@@ -1,17 +1,21 @@
 "use strict";
 
-const utils = require("@iobroker/adapter-core");
-const fHelpers = require("./lib/helper.js");
-const fRoute = require("./lib/route.js");
-const fOptions = require("./lib/options");
-const fDepTT = require("./lib/deptt.js");
-const fStation = require("./lib/station.js");
+import * as utils from "@iobroker/adapter-core";
+import fHelpers from "./lib/helper.js";
+import fRoute from "./lib/route.js";
+import fOptions from "./lib/options.js";
+import fDepTT from "./lib/deptt.js";
+import fStation from "./lib/station.js";
+import url from "node:url";
 // const fStation = require("./lib/station.js");
 
 //#region Global Variables
-const hCreateClient = require("hafas-client");
-const hDBprofile = require("hafas-client/p/db");
-const hOEBBprofile = require("hafas-client/p/oebb");
+import { createClient as hCreateClient } from "hafas-client";
+// import hCreateClient from "hafas-client";
+import {profile as hDBprofile} from "hafas-client/p/db/index.js";
+//import hDBprofile from "hafas-client/p/db";
+import {profile as hOEBBprofile} from "hafas-client/p/oebb/index.js";
+//import hOEBBprofile from "hafas-client/p/oebb";
 // const adapter = new utils.Adapter('fahrplan');
 let iUpdateInterval = 5;
 let tUpdateTimeout = null;
@@ -385,13 +389,10 @@ class Fahrplan extends utils.Adapter {
 }
 
 //#region Default
-if (require.main !== module) {
-	// Export the constructor in compact mode
-	/**
-	 * @param {Partial<utils.AdapterOptions>} [options={}]
-	 */
-	module.exports = (options) => new Fahrplan(options);
-} else {
+export default (options) => new Fahrplan(options);
+
+// Check if the module is the main module
+if (import.meta.url === `file://${process.argv[1]}`) {
 	// otherwise start the instance directly
 	new Fahrplan();
 }

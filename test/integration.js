@@ -1,8 +1,11 @@
-const path = require("path");
-const { tests } = require("@iobroker/testing");
-const { expect } = require("chai");
+import path from "path";
+import { tests } from "@iobroker/testing";
+import { expect } from "chai";
+import { fileURLToPath } from "url";
 
-
+// Convert import.meta.url to a file path
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Run integration tests - See https://github.com/ioBroker/testing for a detailed explanation and further options
 tests.integration(path.join(__dirname, ".."),{

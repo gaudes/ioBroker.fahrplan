@@ -1,6 +1,18 @@
-const path = require("path");
-const { tests, utils } = require("@iobroker/testing");
-const { expect } = require("chai");
+import path from "path";
+import { fileURLToPath } from "url";
+import { tests, utils } from "@iobroker/testing";
+import { expect } from "chai";
+import fHelper from "../lib/helper.js";
+import { createClient as hCreateClient } from "hafas-client";
+import {profile as hDBprofile} from "hafas-client/p/db/index.js";
+import fRouteOptions from "../lib/options.js";
+import fStation from "../lib/station.js";
+import fRoute from "../lib/route.js";
+import fDeptTT from "../lib/deptt.js";
+
+// Convert import.meta.url to a file path
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 function delay(t, val) {
 	return new Promise(function(resolve) {
@@ -9,24 +21,19 @@ function delay(t, val) {
 		}, t);
 	});
 }
-
-// Run unit tests - See https://github.com/ioBroker/testing for a detailed explanation and further options
-tests.unit(path.join(__dirname, ".."),{
-	defineAdditionalTests(){
-		//#region Global objects for tests to reduce multiple queries
+tests.unit(path.join(__dirname, ".."), {
+	defineAdditionalTests() {
+		// Run unit tests - See https://github.com/ioBroker/testing for a detailed explanation and further options
 		// @ts-ignore
 		const { adapter, database } = utils.unit.createMocks();
 		// const { assertObjectExists } = utils.unit.createAsserts(database, adapter);
-		const fHelper = require("../lib/helper.js");
-		const hCreateClient = require("hafas-client");
-		const hDBprofile = require("hafas-client/p/db");
+		//import fHelper from "../lib/helper.js";
+		//import hCreateClient from "hafas-client";
 		const Helper = new fHelper(adapter);
 		Helper.hClient = hCreateClient(hDBprofile, "ioBroker.Fahrplan");
-		const fRouteOptions = require("iobroker.fahrplan/lib/options");
 		const RouteOptions = new fRouteOptions(Helper);
-		const fStation = require("../lib/station.js");
-		const Station = new fStation(Helper);
-		const fRoute = require("../lib/route.js");
+		//import fStation from "../lib/station.js";
+		//import fRoute from "../lib/route.js";
 		const Route = new fRoute(Helper);
 		const RouteConfig = {
 			"enabled": true,
@@ -64,6 +71,7 @@ tests.unit(path.join(__dirname, ".."),{
 
 		//#region Test class Station
 		describe("Test Station", () =>{
+			const Station = new fStation(Helper);
 			it("getStation", async () =>{
 				await Station.getStation("8000105");
 				expect(Station.id).to.equal("8000105");
@@ -143,7 +151,6 @@ tests.unit(path.join(__dirname, ".."),{
 
 		//#region Test class DepTT
 		describe("Test DepTT", () =>{
-			const fDeptTT = require("../lib/deptt.js");
 			const DepTT = new fDeptTT(Helper);
 
 			it("getDepTT", async () =>{

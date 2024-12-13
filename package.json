@@ -10,6 +10,7 @@
   "homepage": "https://github.com/gaudes/ioBroker.fahrplan",
   "license": "MIT",
   "keywords": [
+    "ioBroker",
     "Fahrplan",
     "HAFAS",
     "Deutsche Bahn"

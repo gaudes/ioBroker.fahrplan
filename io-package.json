@@ -134,7 +134,6 @@
       "license": "MIT"
     },
     "platform": "Javascript/Node.js",
-    "main": "main.js",
     "icon": "fahrplan.png",
     "enabled": true,
     "extIcon": "https://raw.githubusercontent.com/gaudes/ioBroker.fahrplan/master/admin/fahrplan.png",

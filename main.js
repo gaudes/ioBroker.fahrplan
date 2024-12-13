@@ -680,14 +680,6 @@ class Fahrplan extends utils.Adapter {
 }
 
 //#region Default
-/*export default options => new Fahrplan(options);
-
-// Check if the module is the main module
-if (import.meta.url === `file://${process.argv[1]}`) {
-	// otherwise start the instance directly
-	new Fahrplan();
-}*/
-
 const modulePath = url.fileURLToPath(import.meta.url);
 if (process.argv[1] === modulePath) {
 	new Fahrplan();

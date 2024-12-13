@@ -1,4 +1,12 @@
 # Older changes
+## 1.2.0 (2021-09-19)
+* (Gaudes) Remove support for SBB, not using HAFAS anymore
+* (Gaudes) Fix Hafas error "Bad Gateway" with code 502 (Sentry #26)
+* (Gaudes) Fix unkown station in route (Sentry #7)
+* (Gaudes) Remove support for Node 10
+* (Gaudes) Update to newest Adapter creator for internal dependencies
+* (Gaudes) Include Dependabot updates
+
 ## 1.1.1 (2021-06-22)
 * (Gaudes) Advanced error reporting for HAFAS errors
 * (Gaudes) Include Dependabot updates

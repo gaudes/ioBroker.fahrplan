@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "fahrplan",
-    "version": "1.3.0",
+    "version": "1.4.0",
     "news": {
+      "1.4.0": {
+        "en": "Migrate to ESM\nUpgrade HAFAS to version 6.x\nUpgrades",
+        "de": "Migration auf ESM\nUpgrade HAFAS auf Version 6.x\nUpgrades",
+        "ru": "Мигрировать в ESM\nОбновление HAFAS к версии 6.x\nОбновления",
+        "pt": "Migrar para ESM\nAtualize HAFAS para a versão 6.x\nAtualizações",
+        "nl": "Migreren naar ESM\nHAFAS upgraden naar versie 6.x\nUpgrades",
+        "fr": "Migrer vers ESM\nMettre à niveau HAFAS vers la version 6.x\nAméliorations",
+        "it": "Migrare a ESM\nAggiorna HAFAS alla versione 6.x\nAggiornamenti",
+        "es": "Migrar a ESM\nActualizar HAFAS a la versión 6.x\nActualizaciones",
+        "pl": "Migracja do ESM\nUpgrade HAFAS do wersji 6.x\nAktualizacja",
+        "uk": "Migrate до ESM\nОновлення HAFAS до версії 6.x\nОновлення",
+        "zh-cn": "向无害环境管理过渡\n将HAFAS升级到6x版本\n升级"
+      },
       "1.3.0": {
         "en": "Responsive Design added\nUpgrades",
         "de": "Responsive Design hinzugefügt\nUpgrades",
@@ -80,19 +93,6 @@
         "pl": "Przesunięcie czasowe dla tras i tabel odlotów (Git #88)\nSprawdź, czy wyładowany przed zapisaniem/usunięciem obiektów (Sentry #7)\nUwzględnij aktualizacje Dependabota",
         "zh-cn": "路线和出发表的时间偏移（Git #88）\n在写入/删除对象之前检查是否已卸载（Sentry #7）\n包括 Dependabot 更新",
         "uk": "Зміщення часу для маршрутів і таблиць відправлень (Git #88)\nПеревірте, чи вивантажено перед записом/видаленням об’єктів (Вартовий №7)\nВключіть оновлення Dependabot"
-      },
-      "1.0.7": {
-        "en": "Update HAFAS client to 5.15.2 (Fix error 'invalid json response body' with OEBB profile)\nConfigurable colors for delays and on time\nPrepare for WebLate translations\nInclude Dependabot updates",
-        "de": "Aktualisieren Sie den HAFAS-Client auf 5.15.2 (Fehler 'Ungültiger JSON-Antworttext' mit OEBB-Profil behoben)\nKonfigurierbare Farben für Verzögerungen und pünktlich\nBereiten Sie sich auf WebLate-Übersetzungen vor\nFügen Sie Dependabot-Updates hinzu",
-        "ru": "Обновите клиент HAFAS до версии 5.15.2 (исправьте ошибку «недопустимое тело ответа json» с профилем OEBB)\nНастраиваемые цвета для задержек и вовремя\nПодготовьтесь к переводам WebLate\nВключите обновления Dependabot",
-        "pt": "Atualize o cliente HAFAS para 5.15.2 (corrija o erro 'corpo de resposta json inválido' com perfil OEBB)\nCores configuráveis para atrasos e pontualidade\nPrepare-se para traduções WebLate\nIncluir atualizações Dependabot",
-        "nl": "Update HAFAS-client naar 5.15.2 (Fix fout 'invalid json response body' met OEBB-profiel)\nConfigureerbare kleuren voor vertragingen en op tijd\nBereid je voor op WebLate-vertalingen\nVoeg Dependabot-updates toe",
-        "fr": "Mettez à jour le client HAFAS vers la version 5.15.2 (correction de l'erreur «corps de réponse json non valide» avec le profil OEBB)\nCouleurs configurables pour les retards et les délais\nPréparez-vous aux traductions WebLate\nInclure les mises à jour de Dependabot",
-        "it": "Aggiorna il client HAFAS alla 5.15.2 (correggi l'errore \"corpo della risposta json non valido\" con il profilo OEBB)\nColori configurabili per ritardi e puntualità\nPreparati per le traduzioni WebLate\nIncludi gli aggiornamenti di Dependabot",
-        "es": "Actualice el cliente HAFAS a 5.15.2 (corrija el error 'cuerpo de respuesta json no válido' con perfil OEBB)\nColores configurables para retrasos y puntualidad\nPrepárese para las traducciones WebLate\nIncluir actualizaciones de Dependabot",
-        "pl": "Zaktualizuj klienta HAFAS do 5.15.2 (Napraw błąd „nieprawidłowy kod odpowiedzi json” z profilem OEBB)\nKonfigurowalne kolory dla opóźnień i na czas\nPrzygotuj się na tłumaczenia WebLate\nDołącz aktualizacje Dependabot",
-        "zh-cn": "将HAFAS客户端更新为5.15.2（使用OEBB配置文件修复错误“无效的json响应正文”）\n可配置的颜色，用于延迟和准时\n准备WebLate翻译\n包括Dependabot更新",
-        "uk": "Оновіть клієнт HAFAS до версії 5.15.2 (виправте помилку «недійсне тіло відповіді json» із профілем OEBB)\nНастроювані кольори для затримок і вчасно\nПідготуйтеся до перекладів WebLate\nВключіть оновлення Dependabot"
       }
     },
     "titleLang": {

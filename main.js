@@ -10,12 +10,15 @@ import url from "node:url";
 
 //#region Global Variables
 import { createClient as hCreateClient } from "hafas-client";
-// import hCreateClient from "hafas-client";
-import { profile as hDBprofile } from "hafas-client/p/db/index.js";
+//import { profile as hDBprofile } from "hafas-client/p/db/index.js";
 //import hDBprofile from "hafas-client/p/db";
 import { profile as hOEBBprofile } from "hafas-client/p/oebb/index.js";
-//import hOEBBprofile from "hafas-client/p/oebb";
 // const adapter = new utils.Adapter('fahrplan');
+import { createClient as vCreateClient } from "db-vendo-client";
+import { withThrottling } from "db-vendo-client/throttle.js";
+import { profile as hDBprofile } from "db-vendo-client/p/db/index.js";
+import { profile as hDBprofileNav } from "db-vendo-client/p/dbnav/index.js";
+
 let iUpdateInterval = 5;
 let tUpdateTimeout = null;
 let iCounterRoutes = 0;
@@ -62,11 +65,15 @@ class Fahrplan extends utils.Adapter {
 				this.SysLang = SysConf.common.language;
 			}
 			if (this.config.Provider === "DB" && this.helper !== undefined) {
-				this.helper.hClient = hCreateClient(hDBprofile, "ioBroker.Fahrplan");
+				this.helper.hClient = vCreateClient(withThrottling(hDBprofile), "ioBroker.Fahrplan");
+				this.helper.hClientNav = vCreateClient(withThrottling(hDBprofileNav), "ioBroker.Fahrplan");
 				this.helper.hProfile = hDBprofile;
+				this.helper.hProfileNav = hDBprofileNav;
 			} else if (this.config.Provider === "OEBB" && this.helper !== undefined) {
 				this.helper.hClient = hCreateClient(hOEBBprofile, "ioBroker.Fahrplan");
+				this.helper.hClientNav = hCreateClient(hOEBBprofile, "ioBroker.Fahrplan");
 				this.helper.hProfile = hOEBBprofile;
+				this.helper.hProfileNav = hOEBBprofile;
 			} else {
 				this.log.error("Unknown provider configured");
 				this.terminate("Unknown provider configured");

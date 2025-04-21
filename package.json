@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@iobroker/adapter-core": "^3.2.3",
-    "db-vendo-client": "^6.3.4",
+    "db-vendo-client": "^6.8.2",
     "hafas-client": "^6.3.5"
   },
   "devDependencies": {

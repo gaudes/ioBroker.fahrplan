@@ -74,7 +74,7 @@ tests.unit(path.join(__dirname, ".."), {
 				await Station.getStation("8000105");
 				expect(Station.id).to.equal("8000105");
 				expect(Station.type).to.equal("station");
-			});
+			}).timeout(8000);
 
 			it("setStation", async () =>{
 				await Station.setStation(JSON.parse(Station.json)[0]);
@@ -99,7 +99,7 @@ tests.unit(path.join(__dirname, ".."), {
 				await Route.getRoute(RouteOptions);
 				expect(Route.Journeys[0]).to.deep.property("json");
 				JSONJourney = Route.Journeys[0].json;
-			}).timeout(8000);
+			}).timeout(10000);
 
 			it("writeBaseStates", async () =>{
 				await Route.writeBaseStates();

@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "fahrplan",
-    "version": "1.4.0",
+    "version": "1.4.1",
     "news": {
+      "1.4.1": {
+        "en": "Include platform in line\nFix product regionalExpress\nUpdates",
+        "de": "Inklusive Plattform in Zeile\nProdukt regional Express\nAktualisierung",
+        "ru": "Включите платформу в линию\nРегиональный продукт Fix экспресс\nОбновления",
+        "pt": "Incluir plataforma na linha\nFixar o produto regional Express Express Express\nAtualizações",
+        "nl": "Platform in lijn opnemen\nRegionaal product Express\nBijwerken",
+        "fr": "Inclure la plate-forme en ligne\nFixe produit régional Expression\nMises à jour",
+        "it": "Includere la piattaforma in linea\nProdotto fisso regionale Express\nAggiornamenti",
+        "es": "Incluye plataforma en línea\nProductos fijos regionales Express\nActualizaciones",
+        "pl": "Dołącz platformę w linii\nNapraw produkt regionalny Express\nAktualizacje",
+        "uk": "Включити платформу в рядку\nФіксація продукції Про нас\nОновлення",
+        "zh-cn": "在行中包含平台\n修复区域产品 运算\n最新情况"
+      },
       "1.4.0": {
         "en": "Migrate to ESM\nUpgrade HAFAS to version 6.x\nUpgrades",
         "de": "Migration auf ESM\nUpgrade HAFAS auf Version 6.x\nUpgrades",
@@ -80,19 +93,6 @@
         "pl": "Zaawansowane raportowanie błędów dla błędów HAFAS\nUwzględnij aktualizacje Dependabota",
         "zh-cn": "HAFAS 错误的高级错误报告\n包括 Dependabot 更新",
         "uk": "Розширене звітування про помилки HAFAS\nВключіть оновлення Dependabot"
-      },
-      "1.1.0": {
-        "en": "Time offset for routes and departure tables (Git #88)\nCheck if unloaded before writing/deleting objects (Sentry #7)\nInclude Dependabot updates",
-        "de": "Zeitversatz für Routen und Abfahrtstabellen (Git #88)\nÜberprüfen Sie, ob sie entladen sind, bevor Sie Objekte schreiben/löschen (Sentry #7)\nDependabot-Updates einschließen",
-        "ru": "Смещение времени для таблиц маршрутов и отправлений (Git # 88)\nПеред записью / удалением объектов проверьте, не выгружены ли объекты (Sentry # 7)\nВключите обновления Dependabot",
-        "pt": "Deslocamento de tempo para rotas e tabelas de partida (Git # 88)\nVerifique se descarregado antes de escrever / excluir objetos (Sentinela # 7)\nIncluir atualizações Dependabot",
-        "nl": "Tijdsverschil voor routes en vertrektabellen (Git #88)\nControleer of het is verwijderd voordat u objecten schrijft/verwijdert (Sentry #7)\nInclusief Dependabot-updates",
-        "fr": "Décalage horaire pour les itinéraires et les tables de départ (Git #88)\nVérifiez si déchargé avant d'écrire/supprimer des objets (Sentry #7)\nInclure les mises à jour Dependabot",
-        "it": "Differenza oraria per rotte e tabelle di partenza (Git #88)\nControlla se è stato scaricato prima di scrivere/eliminare oggetti (sentenza n. 7)\nIncludi gli aggiornamenti di Dependabot",
-        "es": "Desplazamiento de tiempo para rutas y tablas de salida (Git # 88)\nVerifique si está descargado antes de escribir / eliminar objetos (Sentry # 7)\nIncluir actualizaciones de Dependabot",
-        "pl": "Przesunięcie czasowe dla tras i tabel odlotów (Git #88)\nSprawdź, czy wyładowany przed zapisaniem/usunięciem obiektów (Sentry #7)\nUwzględnij aktualizacje Dependabota",
-        "zh-cn": "路线和出发表的时间偏移（Git #88）\n在写入/删除对象之前检查是否已卸载（Sentry #7）\n包括 Dependabot 更新",
-        "uk": "Зміщення часу для маршрутів і таблиць відправлень (Git #88)\nПеревірте, чи вивантажено перед записом/видаленням об’єктів (Вартовий №7)\nВключіть оновлення Dependabot"
       }
     },
     "titleLang": {
@@ -157,7 +157,7 @@
     "globalDependencies": [
       {
         "admin": ">=6.17.14"
-      } 
+      }
     ],
     "plugins": {
       "sentry": {

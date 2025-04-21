@@ -1,4 +1,9 @@
 # Older changes
+## 1.2.1 (2022-08-04)
+* (Gaudes) Fix channel description for timetables (Git #176)
+* (Gaudes) Fix smaller bugs (Sentry)
+* (Gaudes) Include Dependabot updates
+
 ## 1.2.0 (2021-09-19)
 * (Gaudes) Remove support for SBB, not using HAFAS anymore
 * (Gaudes) Fix Hafas error "Bad Gateway" with code 502 (Sentry #26)

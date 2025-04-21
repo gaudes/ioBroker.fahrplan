@@ -223,7 +223,7 @@ With +-Button new entries can be added to the table.
 	Placeholder for the next version (at the beginning of the line):
 	### __WORK IN PROGRESS__
 -->
-### __WORK IN PROGRESS__
+### 1.4.1 (2025-04-21)
 * (Gaudes) Include platform in line
 * (Gaudes) Fix product regionalExpress
 * (Gaudes) Updates
@@ -243,11 +243,6 @@ With +-Button new entries can be added to the table.
 
 ### 1.2.2 (2022-08-04)
 * (Gaudes) Upgrade dependency
-
-### 1.2.1 (2022-08-04)
-* (Gaudes) Fix channel description for timetables (Git #176)
-* (Gaudes) Fix smaller bugs (Sentry)
-* (Gaudes) Include Dependabot updates
 
 ## License
 MIT License

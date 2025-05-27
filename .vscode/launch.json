@@ -2,6 +2,16 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Attach to remote",
+            "port": 9229,
+            "request": "attach",
+            "resolveSourceMapLocations": [
+                "${workspaceFolder}/.dev-server/default/node_modules/**/*.js"
+            ],
+            "restart": true,
+            "type": "node"
+        },
+        {
             "type": "node",
             "request": "attach",
             "name": "Attach",

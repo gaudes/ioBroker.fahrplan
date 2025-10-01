@@ -23,7 +23,7 @@
     "node": ">=18"
   },
   "dependencies": {
-    "@iobroker/adapter-core": "^3.2.3",
+    "@iobroker/adapter-core": "^3.3.2",
     "db-vendo-client": "^6.8.0",
     "hafas-client": "^6.3.5"
   },

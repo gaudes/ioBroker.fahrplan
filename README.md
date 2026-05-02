@@ -223,6 +223,9 @@ With +-Button new entries can be added to the table.
 	Placeholder for the next version (at the beginning of the line):
 	### __WORK IN PROGRESS__
 -->
+### **WORK IN PROGRESS**
+- (copilot) Adapter requires node.js >= 22 now
+
 ### 1.4.1 (2025-04-21)
 * (Gaudes) Include platform in line
 * (Gaudes) Fix product regionalExpress

@@ -244,6 +244,8 @@ With +-Button new entries can be added to the table.
 ### 1.2.2 (2022-08-04)
 * (Gaudes) Upgrade dependency
 
+[Older changelogs can be found there](CHANGELOG_OLD.md)
+
 ## License
 MIT License
 

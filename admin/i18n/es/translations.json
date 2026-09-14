@@ -1,5 +1,5 @@
 {
-    "All": "Todas",
+    "All": "Todo",
     "Bycicle": "Transporte de bicicletas",
     "ColorDefault": "Color predeterminado",
     "ColorDelay": "Color para retrasos",
@@ -47,7 +47,7 @@
     "UpdateInterval": "Intervalo de actualización en minutos",
     "Wednesday": "miércoles",
     "Weekdays": "Días laborables",
-    "Yes": "si",
+    "Yes": "Sí",
     "active": "Activo",
     "dbfahrplan adapter settings": "Ajustes del adaptador para DBFahrplan",
     "delays": "Alarma de retraso",
